@@ -1,0 +1,14 @@
+{
+    "name": "mental-load-it-up",
+    "version": "1.0.0",
+    "description": "Track your mental load",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "http-server -c-1"
+    },
+    "author": "Mark Schumaker",
+    "license": "ISC",
+    "devDependencies": {
+        "http-server": "14.1.0"
+    }
+}
