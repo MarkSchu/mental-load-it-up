@@ -87,3 +87,11 @@ export function repeat(array, createElement) {
         return createElement(item);
     });
 }
+
+export function bindrepeat(observableArray, callback) {
+    return bind(observableArray, (array) => 
+        repeat(array, (item) => 
+            callback(item)
+        )
+    )
+}

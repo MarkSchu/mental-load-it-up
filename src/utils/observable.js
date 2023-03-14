@@ -28,6 +28,13 @@ export class ObservableArray extends ObservableVar{
     }
 }
 
+export class ObservableBool extends ObservableVar{
+    toggle() {
+        this.value = !this.value;
+        this.emit();
+    }
+}
+
 export function observeAndCompute(observable, compute) {
     const newObservableVar = new ObservableVar();
     newObservableVar.set(compute(observable.value));
