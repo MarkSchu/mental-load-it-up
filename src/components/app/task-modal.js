@@ -7,7 +7,7 @@ import {
 } from 'utils/observable.js';
 import { InputWithValidation } from 'components/common/input-with-validation.js';
 import { Modal } from 'components/common/modal.js';
-import { hasNoErrors, validate, isRequired, isLongerThan } from 'utils/validation.js';
+import { validate, isRequired, isLongerThan } from 'utils/validation.js';
 import api from 'utils/api.js';
 
 const validateName = (value) => {
@@ -67,36 +67,3 @@ export function TaskModal(showModal, tasks, domains) {
         )    
     )
 }
-
-
-  // const isValid = observeAndCompute(allErrors, hasNoErrors);
-    // const isSubmitting = new ObservableBool(false);
-    // const errorMessage = new ObservableVar(null);
-
-    // const resetFields = () => {
-    //     name.set('');
-    //     dueDate.set(null);
-    // }
-
-    // const submit = () => {
-    //     isSubmitting.toggle();
-    //     api.create('Tasks', {
-    //         name: name.value,
-    //         dueDate: dueDate.value
-    //     },
-    //         {
-    //             success: (task) => {
-    //                 tasks.push(task);
-    //                 resetFields();
-    //                 isSubmitting.toggle();
-    //                 showModal.toggle();
-    //             },
-    //             failure: (code) => {
-    //                 errorMessage.set(code);
-    //             },
-    //             done: () => {
-    //                 isSubmitting.toggle();
-    //             }
-    //         }
-    //     )
-    // }
