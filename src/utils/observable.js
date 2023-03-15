@@ -1,3 +1,5 @@
+import { hasNoErrors } from 'utils/validation.js';
+
 export class ObservableVar {
 
     constructor(value) {
@@ -83,4 +85,20 @@ export function combineAndCompute() {
         });
     });
     return newObservableVar;
+}
+
+export function createFieldObservables(...validators) {
+    const fieldObservables = [];
+    const errorObservables = [];
+    validators.forEach((validator) => {
+        const field = new ObservableVar();
+        const fieldErrors = observeAndCompute(field, validator);
+        fieldObservables.push(field);
+        errorObservables.push(fieldErrors);
+    });
+    const allErrors = combineAndObserve(...errorObservables);
+    const isValid = observeAndCompute(allErrors, hasNoErrors);
+    const result = fieldObservables.concat(errorObservables);
+    result.push(isValid);
+    return result;
 }

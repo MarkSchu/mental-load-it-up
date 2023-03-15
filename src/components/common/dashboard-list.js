@@ -2,36 +2,33 @@ import { element, bindrepeat } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 
 export function DashboardList({
-    title, cta, collection, modal, modalProps, listItemComponent
+    title,
+    model,
+    userData,
+    createModal
 }) {
-    
-    const showModal = new ObservableBool(false);
 
-    const toggleText = (el, value) => {
-        el.textContent = value 
-        ? 'Nevermind' 
-        : cta;
+    const isModalOpen = new ObservableBool(false);
+
+    const toggleButtonText = (el, value) => {
+        el.textContent = value ? 'cancel' : 'add'
     }
 
+    const toggleModalOpen = () => {
+        isModalOpen.toggle();
+    }
+    
     return (
         element('div', {},
             element('h2', {textContent: title}),
-                element('div', {},
-                    element('button', {
-                        onclick: () => showModal.toggle(),
-                        bind: [[showModal, toggleText]]
-                    }),
-                ),
-                element('div', {},
-                    bindrepeat(collection, (item) => 
-                        listItemComponent(item)
-                )
+            element('button', {
+                bind: [[isModalOpen, toggleButtonText]],
+                onclick: toggleModalOpen
+            }),
+            bindrepeat(userData[model], (instance) =>
+                element('div', {textContent: instance.name})
             ),
-            modal(
-                showModal, 
-                modalProps.tasks,
-                modalProps.domains
-            )
+            createModal(isModalOpen, userData)
         )
     )
 }

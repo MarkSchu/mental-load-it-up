@@ -19,8 +19,6 @@ function addAttrs(el, attrs) {
             binders.forEach((binder) => {
                 const observableVar = binder[0];
                 const callback = binder[1];
-                // observable.onSet(callback);
-                // bindElement(observable, callback);
                 observableVar.onSet((value) => {
                     callback(el, value);
                 });

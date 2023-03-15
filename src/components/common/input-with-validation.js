@@ -1,10 +1,16 @@
 import { element, bind } from 'utils/dom.js';
-import { ObservableVar } from 'utils/observable.js';
+import { ObservableArray, ObservableBool } from 'utils/observable.js';
+import { setValue } from 'utils/binders.js';
 
 
-export function InputWithValidation(type, label, field, errors) {
+export function InputWithValidation({
+    type, 
+    label, 
+    field,
+    errors
+}) {
 
-    const showError = new ObservableVar(false);
+    const showError = new ObservableBool(false);
 
     const oninput = (e) => {
         field.set(e.target.value);
@@ -13,6 +19,10 @@ export function InputWithValidation(type, label, field, errors) {
 
     const onblur = () => {
         showError.set(true);
+    }
+
+    const displayError = (el, values) => {
+        el.textContent = values.length || values[0];
     }
 
     return (
@@ -24,12 +34,10 @@ export function InputWithValidation(type, label, field, errors) {
                 type,
                 oninput,
                 onblur,
-                bind: [[field, (el, value) => el.value = value]]
+                bind: [[field, setValue]]
             }),
-            bind(showError, (value) => {
-                return value 
-                ? element('div', {textContent: errors.value[0]}) 
-                : element('div', {})
+            element('div', {
+                bind: [[errors, displayError]]
             })
         )
     )
