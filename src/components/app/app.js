@@ -26,7 +26,7 @@ export function App() {
             bind(userData, (data) => 
                 data
                 ? Dashboard(data) 
-                : element('div', {textContent: 'Loading...'})
+                : element('div', {textContent: 'loading...'})
             ),
             element('div', {
                 bind: [[errorMessage, showErrorMessage]]

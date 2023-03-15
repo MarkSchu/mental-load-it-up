@@ -1,6 +1,7 @@
 import { InputWithValidation } from 'components/common/input-with-validation.js';
 import { SubmissionModal } from 'components/common/submission-modal.js';
 import { createFieldObservables } from 'utils/observable.js';
+import api from 'utils/api.js';
 
 const validateName = () => {
     return [];
@@ -16,6 +17,10 @@ export function CreateDomainModal(isModalOpen, userData) {
         validateName
     );
 
+    const reset = () => {
+        name.set('');
+    }
+
     const create = (handlers) => {
         api.create('Domains', {
             name: name.value
@@ -24,8 +29,8 @@ export function CreateDomainModal(isModalOpen, userData) {
 
     const success = (instance) => {
         userData.domains.push(instance);
-        name.set('');
         isModalOpen.set(false);
+        reset();
     }
 
     const form = (
@@ -36,6 +41,8 @@ export function CreateDomainModal(isModalOpen, userData) {
             errors: nameErrors
         })
     );
+
+    reset();
 
     return SubmissionModal({
         title: 'Add Domain',

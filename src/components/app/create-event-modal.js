@@ -2,6 +2,8 @@ import { element } from 'utils/dom.js';
 import { InputWithValidation } from 'components/common/input-with-validation.js';
 import { SubmissionModal } from 'components/common/submission-modal.js';
 import { createFieldObservables } from 'utils/observable.js';
+import api from 'utils/api.js';
+
 
 const validateName = () => {
     return [];
@@ -33,7 +35,14 @@ export function CreateEventModal(isModalOpen, userData) {
         validateStartDate,
         validateEndDate,
         validateDomain
-    )
+    );
+
+    const reset = () => {
+        name.set('');
+        startDate.set(null);
+        endDate.set(null);
+        domain.set(null);
+    }
     
     const create = (handlers) => {
         api.create('Events', {
@@ -45,11 +54,8 @@ export function CreateEventModal(isModalOpen, userData) {
 
     const success = (instance) => {
         userData.events.push(instance);
-        name.set('');
-        startDate.set(null);
-        endDate.set(null);
-        domain.set(null);
         isModalOpen.set(false);
+        reset();
     }
 
     const form = (
@@ -74,6 +80,8 @@ export function CreateEventModal(isModalOpen, userData) {
             })
         )
     );
+
+    reset();
 
     return (
         SubmissionModal({

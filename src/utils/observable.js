@@ -60,7 +60,7 @@ export function combineAndObserve() {
     return newObservableVar;
 }
 
-export function combine(observableVars) {
+export function combine(...observableVars) {
     const newObservableVar = new ObservableVar();
     observableVars.forEach((observable) => {
         observable.onSet(() => {

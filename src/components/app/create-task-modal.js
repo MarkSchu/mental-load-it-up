@@ -2,6 +2,8 @@ import { element } from 'utils/dom.js';
 import { InputWithValidation } from 'components/common/input-with-validation.js';
 import { SubmissionModal } from 'components/common/submission-modal.js';
 import { createFieldObservables } from 'utils/observable.js';
+import api from 'utils/api.js';
+
 
 const validateName = () => {
     return [];
@@ -23,6 +25,11 @@ export function CreateTaskModal(isModalOpen, userData) {
         validateDueDate
     );
 
+    const reset = () => {
+        name.set('');
+        dueDate.set(null);
+    }
+
     const create = (handlers) => {
         api.create('Tasks', {
             name: name.value,
@@ -32,9 +39,8 @@ export function CreateTaskModal(isModalOpen, userData) {
 
     const success = (instance) => {
         userData.tasks.push(instance);
-        name.set('');
-        endDate.set(null);
         isModalOpen.set(false);
+        reset();
     }
 
     const form = (
@@ -53,6 +59,8 @@ export function CreateTaskModal(isModalOpen, userData) {
             })
         )
     );
+
+    reset();
 
     return SubmissionModal({
         title: 'Add Task',

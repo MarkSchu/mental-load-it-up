@@ -25,10 +25,12 @@ export function DashboardList({
                 bind: [[isModalOpen, toggleButtonText]],
                 onclick: toggleModalOpen
             }),
-            bindrepeat(userData[model], (instance) =>
-                element('div', {textContent: instance.name})
-            ),
-            createModal(isModalOpen, userData)
+            createModal(isModalOpen, userData),
+            element('div', {},
+                bindrepeat(userData[model], (instance) =>
+                    element('div', {textContent: instance.name})
+                )
+            )
         )
     )
 }
