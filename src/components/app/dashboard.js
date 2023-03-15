@@ -7,11 +7,11 @@ import { CreateDomainModal } from 'components/app/create-domain-modal.js';
 
 export function Dashboard(userData) {
     
-        userData = {
-            tasks: new ObservableArray(userData.tasks || []),
-            events: new ObservableArray(userData.events || []),
-            domains: new ObservableArray(userData.domains || [])
-        }
+    userData = {
+        tasks: new ObservableArray(userData.tasks || []),
+        events: new ObservableArray(userData.events || []),
+        domains: new ObservableArray(userData.domains || [])
+    }
 
     return (
         element('div', {},

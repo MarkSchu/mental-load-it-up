@@ -42,17 +42,17 @@ export function element(tag, attrs) {
 }
 
 export function bind(observableVar, callback) {
-    let oldChildren = toListOfChildren(callback(observableVar.value));
+    let currentChildren = toListOfChildren(callback(observableVar.value));
     observableVar.onSet((value) => {
         let newChildren = toListOfChildren(callback(value));
-        let parent = oldChildren[0].parentElement;
+        let parent = currentChildren[0].parentElement;
         if (parent) {
-            removeChildren(parent, oldChildren);
+            removeChildren(parent, currentChildren);
             addChildren(parent, newChildren);
         }
-        oldChildren = newChildren;
+        currentChildren = newChildren;
     });
-    return oldChildren;
+    return currentChildren;
 }
 
 export function bindElement(observableVar, callback) {

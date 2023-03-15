@@ -44,7 +44,7 @@ api.getUserData = function(handlers) {
     setTimeout(() => {
         handlers.success({
             tasks: getCollection('Tasks'),
-            event: getCollection('Events'),
+            events: getCollection('Events'),
             domains: getCollection('Domains'),
         })
     }, 1000);

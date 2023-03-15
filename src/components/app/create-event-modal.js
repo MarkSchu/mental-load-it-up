@@ -19,7 +19,7 @@ const validateDomain = () => {
 }
 
 export function CreateEventModal(isModalOpen, userData) {
-
+    
     const [
         name,
         startDate,
@@ -54,6 +54,8 @@ export function CreateEventModal(isModalOpen, userData) {
 
     const success = (instance) => {
         userData.events.push(instance);
+        console.log('boop', instance)
+        console.log(userData)
         isModalOpen.set(false);
         reset();
     }
@@ -67,13 +69,13 @@ export function CreateEventModal(isModalOpen, userData) {
                 errors: nameErrors
             }),
             InputWithValidation({
-                type: 'text', 
+                type: 'date', 
                 label: 'starts', 
                 field: startDate,
                 errors: startDateErrors
             }),
             InputWithValidation({
-                type: 'text', 
+                type: 'date', 
                 label: 'ends', 
                 field: endDate,
                 errors: endDateErrors

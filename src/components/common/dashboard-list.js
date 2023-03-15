@@ -1,5 +1,6 @@
 import { element, bindrepeat } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
+import { repeat } from 'utils/binders.js';
 
 export function DashboardList({
     title,
@@ -9,6 +10,7 @@ export function DashboardList({
 }) {
 
     const isModalOpen = new ObservableBool(false);
+    const list = userData[model];
 
     const toggleButtonText = (el, value) => {
         el.textContent = value ? 'cancel' : 'add'
@@ -26,11 +28,17 @@ export function DashboardList({
                 onclick: toggleModalOpen
             }),
             createModal(isModalOpen, userData),
-            element('div', {},
-                bindrepeat(userData[model], (instance) =>
-                    element('div', {textContent: instance.name})
-                )
-            )
+            element('div', {
+                bind:[[list, (el, value) =>
+                    repeat(el, value, (instance) => 
+                        element('div', {textContent: instance.name}
+                    )
+                )]]
+            }),
+            element('div', {
+                textContent: 'nothing here yet...',
+                bind: [[list, (el, value) => (el.hidden = !!value.length)]]
+            })
         )
     )
 }
