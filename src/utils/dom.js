@@ -93,3 +93,20 @@ export function bindrepeat(observableArray, callback) {
         )
     )
 }
+
+// export function bindtable(observableArray, rowCallback) {
+//     return (
+//         element('table', {},
+
+//         )
+//     )
+// }
+
+// element('table', {},
+//     element('th', {},
+//         element('td', {}),
+//         element('td', {}),
+//         element('td', {}),
+//     ),
+//     repeat()
+// )

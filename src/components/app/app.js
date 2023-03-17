@@ -2,6 +2,9 @@ import { bind, element } from 'utils/dom.js';
 import { ObservableVar } from 'utils/observable.js';
 import { Dashboard } from 'components/app/dashboard.js';
 import api from 'utils/api.js';
+import sheet from 'styles/app.css' assert { type: 'css' };
+document.adoptedStyleSheets = [sheet];
+
 
 export function App() {
 

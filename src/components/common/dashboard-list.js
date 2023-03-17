@@ -1,12 +1,15 @@
 import { element, bindrepeat } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { repeat } from 'utils/binders.js';
+import { TaskListItem } from 'components/common/task-list-item.js';
 
 export function DashboardList({
+    className,
     title,
     model,
     userData,
-    createModal
+    createModal,
+    selectedTab
 }) {
 
     const isModalOpen = new ObservableBool(false);
@@ -19,9 +22,18 @@ export function DashboardList({
     const toggleModalOpen = () => {
         isModalOpen.toggle();
     }
+
+    const displayList = (el, value) => {
+        value === model
+        ?  el.classList.add('selected')
+        : el.classList.remove('selected');
+    }
     
     return (
-        element('div', {},
+        element('div', {
+            className: `dashboard-list ${className}`,
+            bind: [[selectedTab, displayList]]
+        },
             element('h2', {textContent: title}),
             element('button', {
                 bind: [[isModalOpen, toggleButtonText]],
@@ -31,9 +43,8 @@ export function DashboardList({
             element('div', {
                 bind:[[list, (el, value) =>
                     repeat(el, value, (instance) => 
-                        element('div', {textContent: instance.name}
-                    )
-                )]]
+                        TaskListItem(instance)
+                    )]]
             }),
             element('div', {
                 textContent: 'nothing here yet...',

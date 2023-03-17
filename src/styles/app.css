@@ -1,0 +1,64 @@
+/* CSS HEX */
+
+:root {
+    --red: #ff595eff;
+    --yellow: #ffca3aff;
+    --green: #8ac926ff;
+    --blue: #1982c4ff;
+    --purple: #6a4c93ff;
+
+    --red: #ff0000ff;
+    --ut-orange: #ff8700ff;
+    --gold: #ffd300ff;
+    --chartreuse: #deff0aff;
+    --spring-bud: #a1ff0aff;
+    --spring-green: #0aff99ff;
+    --electric-blue: #0aefffff;
+    --azure: #147df5ff;
+    --electric-indigo: #580affff;
+    --electric-purple: #be0affff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    /* justify-content: space-evenly; */
+}
+
+.menu h2 {
+    padding: 8px;
+}
+
+.lists-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dashboard-list {
+    border: 1px solid black;
+    width: 321px;
+}
+
+@media screen and (max-width: 1000px) {
+    .domain-list {
+        display: none;
+    }
+}
+
+/* @media screen and (max-width: 1000px) {
+    .dashboard-list {
+        border: 1px solid red;
+    }
+
+    .dashboard-list:not(.selected) {
+        display: none;
+    }
+} */
