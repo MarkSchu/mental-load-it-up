@@ -30,12 +30,12 @@ export function TaskListItem(instance) {
                 className: 'title',
                 textContent: `${instance.name}`}
             ),
-            element('div', {
-                className: ''
-            },
-                // element('div', {className: 'circle'})
-                element('button', {textContent: 'done!'})
-            ),
+            // element('div', {
+            //     className: ''
+            // },
+            //     // element('div', {className: 'circle'})
+            //     // element('button', {textContent: 'done!'})
+            // ),
             element('div', {
                 className: 'days',
                 textContent: getDaysUntil(instance.dueDate)

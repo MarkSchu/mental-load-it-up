@@ -34,8 +34,8 @@ export function DashboardList({
             className: `dashboard-list ${className}`,
             bind: [[selectedTab, displayList]]
         },
-            element('h2', {textContent: title}),
             element('button', {
+                className: 'add-button',
                 bind: [[isModalOpen, toggleButtonText]],
                 onclick: toggleModalOpen
             }),
