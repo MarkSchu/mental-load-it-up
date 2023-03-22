@@ -41,7 +41,6 @@ export function SubmissionModal({
                 disabled = true;
             }
         }
-        
         el.disabled = disabled;
     }
 
