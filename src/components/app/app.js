@@ -34,6 +34,7 @@ export function App() {
             element('div', {
                 bind: [[errorMessage, showErrorMessage]]
             })
+        
         )   
     )
 }  

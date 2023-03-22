@@ -39,6 +39,9 @@ export function CreateTaskModal(isModalOpen, userData) {
 
     const success = (instance) => {
         userData.tasks.push(instance);
+        userData.tasks.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+        })
         isModalOpen.set(false);
         reset();
     }

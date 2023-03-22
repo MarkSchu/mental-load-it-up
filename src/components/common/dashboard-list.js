@@ -5,23 +5,14 @@ import { TaskListItem } from 'components/common/task-list-item.js';
 
 export function DashboardList({
     className,
-    title,
     model,
     userData,
     createModal,
-    selectedTab
+    selectedTab,
+    isModalOpen
 }) {
 
-    const isModalOpen = new ObservableBool(false);
     const list = userData[model];
-
-    const toggleButtonText = (el, value) => {
-        el.textContent = value ? 'cancel' : 'add'
-    }
-
-    const toggleModalOpen = () => {
-        isModalOpen.toggle();
-    }
 
     const displayList = (el, value) => {
         value === model
@@ -34,11 +25,6 @@ export function DashboardList({
             className: `dashboard-list ${className}`,
             bind: [[selectedTab, displayList]]
         },
-            element('button', {
-                className: 'add-button',
-                bind: [[isModalOpen, toggleButtonText]],
-                onclick: toggleModalOpen
-            }),
             createModal(isModalOpen, userData),
             element('div', {
                 bind:[[list, (el, value) =>

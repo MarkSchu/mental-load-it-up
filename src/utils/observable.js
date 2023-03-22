@@ -28,6 +28,11 @@ export class ObservableArray extends ObservableVar{
         this.value.push(value);
         this.emit();
     }
+
+    sort(callback) {
+        this.value.sort(callback);
+        this.emit();
+    }
 }
 
 export class ObservableBool extends ObservableVar{

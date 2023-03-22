@@ -23,23 +23,24 @@ const getDaysUntil = (dueDate) => {
 }
 
 export function TaskListItem(instance) {
-    
+
+
     return (
         element('div', {className: 'task-list-item'},
-            element('div', {
-                className: 'title',
-                textContent: `${instance.name}`}
+            element('div', {className: 'col info-col'},
+                element('div', {className: 'task-title', textContent: `${instance.name}`}),
+                element('div', {textContent: 'Due: April 5, 2023'}),
+                element('div', {textContent: 'Owner: Mark'}),
+                element('div', {textContent: 'Domain: Travel'}),
             ),
-            // element('div', {
-            //     className: ''
-            // },
-            //     // element('div', {className: 'circle'})
-            //     // element('button', {textContent: 'done!'})
-            // ),
-            element('div', {
-                className: 'days',
-                textContent: getDaysUntil(instance.dueDate)
-            }),
+            element('div', {className: 'col days-col'},
+                element('div', {textContent: getDaysUntil(instance.dueDate)}),
+                element('div', {textContent: 'Days Left'}),
+                element('div', {textContent: 'April 21'}),
+            ),
+            element('div', {className: 'col done-col'},
+                element('button', {textContent: 'Done'})
+            ),
         )
     )
 }
