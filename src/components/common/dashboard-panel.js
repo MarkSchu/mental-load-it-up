@@ -23,10 +23,17 @@ export function DashboardPanel({
         el.textContent = value ? 'Cancel' : 'Create'
     }
 
+    const showTitle = (el, value) => {
+        el.textContent = value;
+    }
+    
     return (
         element('div', {className: `panel ${className}`},
-            element('h2', {textContent: 'Tasks'}),
-            DashboardMenu({ selectedTab }),
+            element('h2', {
+                className: 'dash-title',
+                bind: [[selectedTab, showTitle]]
+            }),
+            DashboardMenu({selectedTab}),
             element('button', {
                 className: 'add-button',
                 bind: [[isModalOpen, toggleButtonText]],

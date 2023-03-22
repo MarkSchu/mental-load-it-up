@@ -9,7 +9,7 @@ export function DashboardMenu({
     }
 
     const styleTab = (el, value) => {
-        el.value === value ? el.classList.add('selected') : el.classList.remove('selected'); 
+        // el.value === value ? el.classList.add('selected') : el.classList.remove('selected'); 
     }
 
     return (

@@ -47,12 +47,13 @@ body {
     width: 321px;
 }
 
-.dashboard-list:not(.selected) {
-    display: none;
+.dash-title {
+    margin: 0;
+    text-transform: capitalize;
 }
 
-.dash-list-title {
-    margin: 0;
+.dashboard-list:not(.selected) {
+    display: none;
 }
 
 .dash-list-menu {
