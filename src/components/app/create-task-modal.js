@@ -3,7 +3,7 @@ import { InputWithValidation } from 'components/common/input-with-validation.js'
 import { SubmissionModal } from 'components/common/submission-modal.js';
 import { createFieldObservables } from 'utils/observable.js';
 import api from 'utils/api.js';
-import { convertToUTCStr } from 'utils/dates.js';
+import { formatDate } from 'utils/dates.js';
 
 
 const validateName = () => {
@@ -33,12 +33,12 @@ export function CreateTaskModal(isModalOpen, userData) {
     const create = (handlers) => {
         api.create('Tasks', {
             name: name.value,
-            dueDate: dueDate.value ? convertToUTCStr(dueDate.value) : null
+            dueDate: formatDate(dueDate.value)
         }, handlers);
     }
 
     const success = (instance) => {
-        userData.tasks.push(instance);
+        // userData.tasks.push(instance);
         isModalOpen.set(false);
         reset();
     }

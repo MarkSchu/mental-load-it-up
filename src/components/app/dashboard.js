@@ -1,6 +1,7 @@
 import { element } from 'utils/dom.js';
 import { ObservableArray } from 'utils/observable.js';
 import { DashboardPanel } from 'components/common/dashboard-panel.js';
+import { CreateTaskModal } from './create-task-modal';
 
 export function Dashboard(userData) {
     
