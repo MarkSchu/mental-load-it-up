@@ -9,10 +9,10 @@ import { show, disable } from 'utils/binders.js';
 export function SubmissionModal({ 
     title, 
     isModalOpen, 
-    callback, 
-    success,
     form,
-    isValid
+    isValid,
+    resetFields,
+    onSubmit
 }) {
 
     const isSubmitting = new ObservableBool(false);
@@ -24,11 +24,14 @@ export function SubmissionModal({
 
     const submit = () => {
         isSubmitting.set(true);
-        callback({
-            success,
-            failure: (code) => submissionError.set(code),
-            done: () => isSubmitting.set(false)
-        });
+        onSubmit().then((res) => {
+            if (res.status > 299) {
+                submissionError.set(res.status)
+            } else {
+                isModalOpen.toggle();
+                resetFields();
+            }
+        })
     }
 
     const bindSubmit = (el, values) => {

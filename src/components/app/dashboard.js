@@ -1,34 +1,23 @@
 import { element } from 'utils/dom.js';
-import { ObservableArray } from 'utils/observable.js';
 import { DashboardPanel } from 'components/common/dashboard-panel.js';
-import { CreateTaskModal } from './create-task-modal';
+import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 
-export function Dashboard(userData) {
-    
-    userData = {
-        tasks: new ObservableArray(userData.tasks || []),
-        events: new ObservableArray(userData.events || []),
-        domains: new ObservableArray(userData.domains || [])
-    }
-
+export function Dashboard() {
     return (
         element('div', {className: 'dashboard'},
             element('h1', {textContent: 'Dashboard'}),
             element('div', {className: 'panels-wrapper'},
                 DashboardPanel({
-                    userData,
                     className: 'panel-1',
-                    startTab: 'tasks'
+                    startTab: TASKS
                 }),
                 DashboardPanel({
-                    userData,
                     className: 'panel-2',
-                    startTab: 'events'
+                    startTab: EVENTS
                 }),
                 DashboardPanel({
-                    userData,
                     className: 'panel-3',
-                    startTab: 'domains'
+                    startTab: DOMAINS
                 })
             )
         )

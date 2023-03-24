@@ -1,32 +1,57 @@
-import local from 'utils/local.js'
+import local from 'data/local.js';
+import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 
 const api = {};
 
-api.create = function(model, instance, handlers) {
-    
-    // handlers.success(local.create(model, instance));
-    // handlers.done();
+api.create = (collectionName, instance) => {
+    return new Promise((resolve) => {
+        resolve({
+            instance: local.create(collectionName, instance),
+            status: 200
+        });
+    });
 }
 
-api.get = function(model, query, handlers) {
-    // handlers.success(local.get(model, query));
-    // handlers.done();
+api.getById = (collectionName, id) => {
+    return new Promise((resolve) => {
+        resolve({
+            instance: local.getById(collectionName, id),
+            status: 200
+        });
+    });
 }
 
-api.getBy = function(model, query, handlers) {
-  
+api.getAll = (collectionName) => {
+    return new Promise((resolve) => {
+        resolve({
+            instance: local.getAll(collectionName),
+            status: 200
+        });
+    });
 }
 
-api.updateById = function(model, id, attrs, handlers) {
-//    return local.updateById(model, id, attrs, handlers)
+api.getAllUserData = () => {
+    return new Promise((resolve) => {
+        resolve({
+            userdata: {
+                tasks: local.getAll(TASKS),
+                events: local.getAll(EVENTS),
+                domains: local.getAll(DOMAINS)
+            },
+            status: 200
+        })
+    });
 }
 
-api.getUserData = function(handlers) {
-    // handlers.success({
-    //     tasks: local.getCollection('Tasks'),
-    //     events: local.getCollection('Events'),
-    //     domains: local.getCollection('Domains')
-    // });
+api.updateById = (collectionName, id, properties) => {
+    return new Promise((resolve) => {
+        resolve({
+            collection: local.updateById(collectionName, properties),
+            status: 200
+        });
+    });
 }
 
 export default api;
+
+

@@ -2,8 +2,9 @@ import { element } from 'utils/dom.js';
 import { InputWithValidation } from 'components/common/input-with-validation.js';
 import { SubmissionModal } from 'components/common/submission-modal.js';
 import { createFieldObservables } from 'utils/observable.js';
-import api from 'utils/api.js';
+import { TASKS } from 'data/collection-names.js';
 import { formatDate } from 'utils/dates.js';
+import state from 'data/state.js';
 
 
 const validateName = () => {
@@ -13,7 +14,7 @@ const validateDueDate = () => {
     return [];
 }
 
-export function CreateTaskModal(isModalOpen, userData) {
+export function CreateTaskModal(isModalOpen) {
     const [
         name,
         dueDate,
@@ -25,22 +26,16 @@ export function CreateTaskModal(isModalOpen, userData) {
         validateDueDate
     );
 
-    const reset = () => {
+    const resetFields = () => {
         name.set('');
         dueDate.set(null);
     }
 
-    const create = (handlers) => {
-        api.create('Tasks', {
+    const createTask = () => {
+        return state.create(TASKS, {
             name: name.value,
             dueDate: formatDate(dueDate.value)
-        }, handlers);
-    }
-
-    const success = (instance) => {
-        // userData.tasks.push(instance);
-        isModalOpen.set(false);
-        reset();
+        });
     }
 
     const form = (
@@ -60,14 +55,14 @@ export function CreateTaskModal(isModalOpen, userData) {
         )
     );
 
-    reset();
+    resetFields();
 
     return SubmissionModal({
         title: 'Add Task',
         isModalOpen,
         form,
         isValid,
-        callback: create,
-        success
+        onSubmit: createTask,
+        resetFields,
     });
 }

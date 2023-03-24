@@ -2,15 +2,9 @@ import { element } from 'utils/dom.js';
 import { getDaysUntil } from 'utils/dates.js';
 import api from 'utils/api.js';
 
-export function TaskListItem({task}) {
+export function TaskListItem(task) {
 
-    const updateTask = () => {
-        // api.update('Tasks', task.id, {done: true}, {
-        //     success: (instance) => {
-
-        //     }
-        // })
-    }
+    const updateTask = () => {}
 
     return (
         element('div', {className: 'task-list-item'},

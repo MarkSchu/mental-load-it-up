@@ -5,9 +5,10 @@ import { DashboardMenu } from 'components/common/dashboard-menu.js';
 import { CreateTaskModal } from 'components/app/create-task-modal.js';
 import { CreateEventModal } from 'components/app/create-event-modal.js';
 import { CreateDomainModal } from 'components/app/create-domain-modal.js';
+import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
+
 
 export function DashboardPanel({
-    userData,
     className,
     startTab
 }) {
@@ -42,30 +43,21 @@ export function DashboardPanel({
             element('div', {className: 'lists-wrapper'},
                 DashboardList({
                     className: 'task-list',
-                    title: 'Tasks',
-                    model: 'tasks',
-                    userData,
+                    collectionName: TASKS,
                     selectedTab,
-                    createModal: CreateTaskModal,
-                    isModalOpen
+                    modal: CreateTaskModal(isModalOpen)
                 }),
                 DashboardList({
                     className: 'event-list',
-                    title: 'Events',
-                    model: 'events',
-                    userData,
+                    collectionName: EVENTS,
                     selectedTab,
-                    createModal: CreateEventModal,
-                    isModalOpen
+                    modal: CreateEventModal(isModalOpen)
                 }),
                 DashboardList({
                     className: 'domain-list',
-                    title: 'Domains',
-                    model: 'domains',
-                    userData,
+                    collectionName: DOMAINS,
                     selectedTab,
-                    createModal: CreateDomainModal,
-                    isModalOpen
+                    modal: CreateDomainModal(isModalOpen)
                 })
             )
         )

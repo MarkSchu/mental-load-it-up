@@ -1,21 +1,19 @@
 import { element, bindrepeat } from 'utils/dom.js';
-import { ObservableBool } from 'utils/observable.js';
 import { repeat } from 'utils/binders.js';
 import { TaskListItem } from 'components/common/task-list-item.js';
+import state from 'data/state.js';
 
 export function DashboardList({
     className,
-    model,
-    userData,
-    createModal,
+    collectionName,
+    modal,
     selectedTab,
-    isModalOpen
 }) {
 
-    const list = userData[model];
+    const list = state[collectionName];
 
     const displayList = (el, value) => {
-        value === model
+        value === collectionName
         ?  el.classList.add('selected')
         : el.classList.remove('selected');
     }
@@ -25,7 +23,7 @@ export function DashboardList({
             className: `dashboard-list ${className}`,
             bind: [[selectedTab, displayList]]
         },
-            createModal(isModalOpen, userData),
+            modal,
             element('div', {
                 bind:[[list, (el, value) =>
                     repeat(el, value, (instance) => 
