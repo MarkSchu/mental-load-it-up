@@ -46,7 +46,16 @@ api.getAllUserData = () => {
 api.updateById = (collectionName, id, properties) => {
     return new Promise((resolve) => {
         resolve({
-            collection: local.updateById(collectionName, properties),
+            collection: local.updateById(collectionName, id, properties),
+            status: 200
+        });
+    });
+}
+
+api.deleteById = (collectionName, id) => {
+    return new Promise((resolve) => {
+        resolve({
+            collection: local.deleteById(collectionName, id),
             status: 200
         });
     });

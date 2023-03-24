@@ -6,7 +6,7 @@ export function Dashboard() {
     return (
         element('div', {className: 'dashboard'},
             element('h1', {textContent: 'Dashboard'}),
-            element('div', {className: 'panels-wrapper'},
+            element('div', {className: 'dash-panels'},
                 DashboardPanel({
                     className: 'panel-1',
                     startTab: TASKS

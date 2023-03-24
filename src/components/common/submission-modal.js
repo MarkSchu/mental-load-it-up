@@ -31,7 +31,8 @@ export function SubmissionModal({
                 isModalOpen.toggle();
                 resetFields();
             }
-        })
+            isSubmitting.set(false);
+        });
     }
 
     const bindSubmit = (el, values) => {

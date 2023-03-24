@@ -8,6 +8,7 @@ export function DashboardList({
     collectionName,
     modal,
     selectedTab,
+    memberComponent
 }) {
 
     const list = state[collectionName];
@@ -20,15 +21,13 @@ export function DashboardList({
     
     return (
         element('div', {
-            className: `dashboard-list ${className}`,
+            className: `list ${className}`,
             bind: [[selectedTab, displayList]]
         },
             modal,
             element('div', {
                 bind:[[list, (el, value) =>
-                    repeat(el, value, (instance) => 
-                        TaskListItem(instance)
-                    )]]
+                    repeat(el, value, memberComponent)]]
             }),
             element('div', {
                 textContent: 'nothing here yet...',

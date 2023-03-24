@@ -24,24 +24,20 @@ export function CreateEventModal(isModalOpen, userData) {
     const [
         name,
         startDate,
-        endDate,
         domain,
         nameErrors,
         startDateErrors,
-        endDateErrors,
         domainErrors,
         isValid
     ] = createFieldObservables(
         validateName,
         validateStartDate,
-        validateEndDate,
         validateDomain
     );
 
     const resetFields = () => {
         name.set('');
         startDate.set(null);
-        endDate.set(null);
         domain.set(null);
     }
     
@@ -66,12 +62,6 @@ export function CreateEventModal(isModalOpen, userData) {
                 label: 'starts', 
                 field: startDate,
                 errors: startDateErrors
-            }),
-            InputWithValidation({
-                type: 'date', 
-                label: 'ends', 
-                field: endDate,
-                errors: endDateErrors
             })
         )
     );

@@ -40,15 +40,21 @@ local.getAll = (collectionName) => {
     return getCollection(collectionName);
 }
 
-local.updateById = (collectionName, properties) => {
+local.updateById = (collectionName, id, properties) => {
     const collection = getCollection(collectionName);
-    const index = collection.indexOf((instance) => instance.id === id);
-    const instance = collection[index];
+    const instance = collection.find((instance) => instance.id === id);
     for (const prop in properties) {
         instance[prop] = properties[prop];
     }
     saveCollection(collectionName, collection);
     return collection;
+}
+
+local.deleteById = (collectionName, id) => {
+    const collection = getCollection(collectionName);
+    const newCollection = collection.filter((instance) => instance.id !== id);
+    saveCollection(collectionName, newCollection);
+    return newCollection;
 }
 
 window.logDB = () => {

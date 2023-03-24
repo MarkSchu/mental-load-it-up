@@ -26,6 +26,15 @@ state.updateById = (collectionName, id, properties) => {
     });
 }
 
+state.deleteById = (collectionName, id) => {
+    return api.deleteById(collectionName, id).then((res) => {
+        if (res.status < 300) {
+            state[collectionName].set(res.collection);
+        }
+        return res;
+    });
+}
+
 state.getAllUserData = () => {
     return api.getAllUserData().then((res) => {
         if (res.status < 300) {
@@ -36,6 +45,7 @@ state.getAllUserData = () => {
         return res;
     });
 }
+
 
 export default state
 
