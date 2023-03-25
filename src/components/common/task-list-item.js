@@ -19,7 +19,10 @@ export function TaskListItem(task) {
                 element('div', {className: 'task-title', textContent: `${task.name}`}),
             ),
             element('div', {className: 'col days-col'},
-                element('div', {textContent: getDaysUntil(task.dueDate)}),
+                element('div', {
+                    textContent: getDaysUntil(task.dueDate),
+                    // onclick: editField()
+                }),
             ),
             element('div', {className: 'col done-col'},
                 element('button', {

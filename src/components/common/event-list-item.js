@@ -17,13 +17,7 @@ export function EventListItem(event) {
                     textContent: 'Delete',
                     onclick: () => {}
                 })
-            ),
-            element('div', {className: 'col done-col'},
-                element('button', {
-                    textContent: 'Done',
-                    onclick: () => {}
-                })
-            ),
+            )
         )
     )
 }
