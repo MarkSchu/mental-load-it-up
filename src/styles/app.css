@@ -21,6 +21,8 @@
 
 * {
     box-sizing: border-box;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: sans-serif;
 }
 
 .dash-panels {
@@ -68,18 +70,55 @@
 
 .list-item {
     display: flex;
+    border: 1px solid black;
 }
 
-.list-item .col {
+.col {
+    border: 1px solid black;
+}
+
+.list-item.tasks .col-info {
+    flex: 4;
+}
+
+.list-item.tasks .col-info .title {
+    border-bottom: 1px solid black;
+    margin: 0 4px;
+    font-weight: bold;
+}
+
+.list-item.tasks .col-days {
+    flex: 1;
+    text-align: center;
+}
+
+.list-item.tasks .col-days .days {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.list-item.tasks .col-done {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-item.tasks .col-done .done {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    font-weight: bold;
+    border: 3px solid black;
+    border-radius: 8px;
+}
+
+/* .list-item .col {
     border: 1px solid black;
 }
 
 .info-col {
     flex: 3;
-}
-
-.info-col .task-title {
-    text-transform: capitalize;
 }
 
 .days-col {
@@ -88,5 +127,5 @@
 
 .done-col {
     flex: 1;
-}
+} */
 

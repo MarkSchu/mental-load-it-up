@@ -13,29 +13,59 @@ export function TaskListItem(task) {
         state.deleteById(TASKS, task.id);
     }
 
+    const formatDate = (dueDate) => {
+        var date = new Date(dueDate);
+        var dateArray = date.toDateString().split(' ');
+        dateArray.shift();
+        dateArray.pop();
+        return dateArray.join(' ')
+    }
+
     return (
         element('div', {className: 'list-item tasks'},
-            element('div', {className: 'col info-col'},
-                element('div', {className: 'task-title', textContent: `${task.name}`}),
-            ),
-            element('div', {className: 'col days-col'},
+            element('div', {className: 'col col-info'},
                 element('div', {
-                    textContent: getDaysUntil(task.dueDate),
-                    // onclick: editField()
+                    className: 'title', 
+                    textContent: `${task.name}`
                 }),
+                element('div', {},
+                    element('button', {
+                        textContent: 'Delete'
+                    }),
+                    element('button', {
+                        textContent: 'Done'
+                    })
+                )
             ),
-            element('div', {className: 'col done-col'},
-                element('button', {
-                    textContent: 'Delete',
-                    onclick: deleteTask
+            // element('div', {className: 'col col-done'},
+            //     element('button', {
+            //         className: 'done',
+            //         textContent: 'Done',
+            //         onclick: updateTask
+            //     })
+            // ),
+            element('div', {className: 'col col-days'},
+                element('div', {
+                    className: 'date',
+                    textContent: formatDate(task.dueDate)
+                }),
+                element('div', {
+                    className: 'days',
+                    textContent: getDaysUntil(task.dueDate),
+                }),
+                element('div', {
+                    className: 'label',
+                    textContent: getDaysUntil(task.dueDate) === 1 ? 'day' : 'days'
                 })
-            ),
-            element('div', {className: 'col done-col'},
-                element('button', {
-                    textContent: 'Done',
-                    onclick: updateTask
-                })
-            ),
+            )
         )
     )
 }
+
+
+  // element('div', {className: ''},
+            //     element('button', {
+            //         textContent: 'Delete',
+            //         onclick: deleteTask
+            //     })
+            // ),
