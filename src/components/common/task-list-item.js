@@ -30,9 +30,11 @@ export function TaskListItem(task) {
                 }),
                 element('div', {},
                     element('button', {
+                        className: 'foo',
                         textContent: 'Delete'
                     }),
                     element('button', {
+                        className: 'bar',
                         textContent: 'Done'
                     })
                 )
