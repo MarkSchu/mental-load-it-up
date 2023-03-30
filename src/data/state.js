@@ -1,5 +1,5 @@
 import { ObservableArray } from 'utils/observable.js';
-import api from 'utils/api.js';
+import api from 'data/api.js';
 import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 
 const state = {
@@ -10,8 +10,10 @@ const state = {
 
 state.create = (collectionName, instance) => {
     return api.create(collectionName, instance).then((res) => {
-        if (res.status < 300) {
-            state[collectionName].push(res.instance);
+        const { status, body } = res; 
+        console.log(status, body)
+        if (status < 300) {
+            state[collectionName].push(body.instance);
         }
         return res; 
     });
@@ -19,8 +21,9 @@ state.create = (collectionName, instance) => {
 
 state.updateById = (collectionName, id, properties) => {
     return api.updateById(collectionName, id, properties).then((res) => {
-        if (res.status < 300) {
-            state[collectionName].set(res.collection);
+        const { status, body } = res; 
+        if (status < 300) {
+            state[collectionName].set(body.collection);
         }
         return res;
     });
@@ -28,8 +31,9 @@ state.updateById = (collectionName, id, properties) => {
 
 state.deleteById = (collectionName, id) => {
     return api.deleteById(collectionName, id).then((res) => {
-        if (res.status < 300) {
-            state[collectionName].set(res.collection);
+        const { status, body } = res; 
+        if (status < 300) {
+            state[collectionName].set(body.collection);
         }
         return res;
     });
@@ -37,10 +41,11 @@ state.deleteById = (collectionName, id) => {
 
 state.getAllUserData = () => {
     return api.getAllUserData().then((res) => {
-        if (res.status < 300) {
-            state[TASKS].set(res.userdata.tasks);
-            state[EVENTS].set(res.userdata.events);
-            state[DOMAINS].set(res.userdata.domains);
+        const { status, body } = res; 
+        if (status < 300) {
+            state[TASKS].set(body.userdata.tasks);
+            state[EVENTS].set(body.userdata.events);
+            state[DOMAINS].set(body.userdata.domains);
         }
         return res;
     });

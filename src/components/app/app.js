@@ -19,10 +19,12 @@ export function App() {
         el.textContent = message;
     }
 
-    state.getAllUserData().then((res) => {
-        if (res.status > 200) {
-            errorMessage.set(getErrorText(code))
-        }
+    netlifyIdentity.on('init', user => {
+        state.getAllUserData().then((res) => {
+            if (res.status > 200) {
+                errorMessage.set(getErrorText(code))
+            }
+        });
     });
 
     return (

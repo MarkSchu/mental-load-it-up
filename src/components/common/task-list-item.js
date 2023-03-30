@@ -29,14 +29,15 @@ export function TaskListItem(task) {
                     textContent: `${task.name}`
                 }),
                 element('div', {},
-                    element('button', {
-                        className: 'foo',
-                        textContent: 'Delete'
-                    }),
-                    element('button', {
-                        className: 'bar',
-                        textContent: 'Done'
-                    })
+                    // element('button', {
+                    //     className: 'foo',
+                    //     textContent: 'Delete'
+                    // }),
+                    // element('button', {
+                    //     className: 'bar',
+                    //     textContent: 'Done'
+                    // })
+                    
                 )
             ),
             // element('div', {className: 'col col-done'},
