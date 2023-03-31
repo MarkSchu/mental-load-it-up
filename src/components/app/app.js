@@ -20,6 +20,8 @@ export function App() {
     }
 
     netlifyIdentity.on('init', user => {
+        if (!user)
+            return;
         state.getAllUserData().then((res) => {
             if (res.status > 200) {
                 errorMessage.set(getErrorText(code))
@@ -37,7 +39,6 @@ export function App() {
             element('div', {
                 bind: [[errorMessage, showErrorMessage]]
             })
-        
         )   
     )
 }  

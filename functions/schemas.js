@@ -7,7 +7,8 @@ const DOMAINS = 'domains';
 const task = new mongoose.Schema({
     name: String,
     dueDate: String,
-    userId: String
+    userId: String,
+    
 });
 
 const event = new mongoose.Schema({
