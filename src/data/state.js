@@ -1,4 +1,4 @@
-import { ObservableArray } from 'utils/observable.js';
+import { ObservableArray, ObservableBool, ObservableVar } from 'utils/observable.js';
 import api from 'data/api.js';
 import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 
@@ -11,7 +11,6 @@ const state = {
 state.create = (collectionName, instance) => {
     return api.create(collectionName, instance).then((res) => {
         const { status, body } = res; 
-        console.log(status, body)
         if (status < 300) {
             state[collectionName].push(body.instance);
         }
@@ -50,6 +49,8 @@ state.getAllUserData = () => {
         return res;
     });
 }
+
+
 
 
 export default state
