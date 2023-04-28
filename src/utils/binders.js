@@ -20,3 +20,7 @@ export function repeat(el, list, createElement) {
         el.appendChild(createElement(item));
     });
 }
+
+export function showIfTrueHideIfNot(el, value) {
+    el.hidden = !value;
+}

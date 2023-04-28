@@ -7,7 +7,7 @@ const connectDB = () => {
 
 exports.handler = async (event) => {
     return connectDB().then(() => {
-        const {action, collectionName, data} = JSON.parse(event.body);
+        const {action, data, collectionName} = JSON.parse(event.body);
         return db[action](collectionName, data);
     });
 }

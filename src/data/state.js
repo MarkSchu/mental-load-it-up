@@ -1,58 +1,47 @@
-import { ObservableArray, ObservableBool, ObservableVar } from 'utils/observable.js';
+import { ObservableBool } from 'utils/observable.js';
 import api from 'data/api.js';
-import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
+import { TASKS, EVENTS, DOMAINS, TEAMS } from 'data/collection-names.js';
+import { pathname } from 'data/pathname.js';
+import { user } from 'data/user.js';
+import { Collection } from 'data/collection.js';
 
-const state = {
-    tasks: new ObservableArray([]),
-    events: new ObservableArray([]),
-    domains: new ObservableArray([])
+export const state = {
+    user,
+    isInitApp: new ObservableBool(false),
+    isRequesting: new ObservableBool(false),
+    teams: new Collection(TEAMS),
+    tasks: new Collection(TASKS),
+    events: new Collection(EVENTS),
+    domains: new Collection(DOMAINS)
 };
 
-state.create = (collectionName, instance) => {
-    return api.create(collectionName, instance).then((res) => {
-        const { status, body } = res; 
-        if (status < 300) {
-            state[collectionName].push(body.instance);
-        }
-        return res; 
-    });
-}
-
-state.updateById = (collectionName, id, properties) => {
-    return api.updateById(collectionName, id, properties).then((res) => {
-        const { status, body } = res; 
-        if (status < 300) {
-            state[collectionName].set(body.collection);
-        }
-        return res;
-    });
-}
-
-state.deleteById = (collectionName, id) => {
-    return api.deleteById(collectionName, id).then((res) => {
-        const { status, body } = res; 
-        if (status < 300) {
-            state[collectionName].set(body.collection);
-        }
-        return res;
-    });
+state.initApp = () => {
+    state.isInitApp.true();
+    if (user.isLoggedIn()) {
+        state.getAllUserData().then(() => {
+            state.isInitApp.false();
+        });
+    } else {
+        pathname.redirect('/auth');
+        state.isInitApp.false();
+    }
 }
 
 state.getAllUserData = () => {
-    return api.getAllUserData().then((res) => {
-        const { status, body } = res; 
-        if (status < 300) {
-            state[TASKS].set(body.userdata.tasks);
-            state[EVENTS].set(body.userdata.events);
-            state[DOMAINS].set(body.userdata.domains);
-        }
-        return res;
-    });
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve()
+        }, 3000);
+    })
+    // return api.getAllUserData().then((res) => {
+    //     const { status, body } = res; 
+    //     if (status < 300) {
+    //         state[TASKS].set(body.userdata.tasks);
+    //         state[EVENTS].set(body.userdata.events);
+    //         state[DOMAINS].set(body.userdata.domains);
+    //     }
+    //     return res;
+    // });
 }
 
-
-
-
-export default state
-
-
+export default state;

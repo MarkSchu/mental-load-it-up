@@ -23,7 +23,7 @@ export class ObservableVar {
     }
 }
 
-export class ObservableArray extends ObservableVar{
+export class ObservableArray extends ObservableVar {
     push(value) {
         this.value.push(value);
         this.emit();
@@ -35,9 +35,17 @@ export class ObservableArray extends ObservableVar{
     }
 }
 
-export class ObservableBool extends ObservableVar{
+export class ObservableBool extends ObservableVar {
     toggle() {
         this.value = !this.value;
+        this.emit();
+    }
+    true() {
+        this.value = true;
+        this.emit();
+    }
+    false() {
+        this.value = false;
         this.emit();
     }
 }

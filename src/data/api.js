@@ -1,5 +1,3 @@
-import local from 'data/local.js';
-import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 
 const api = {};
 
@@ -20,7 +18,6 @@ const ajax = (action, collectionName, data) => {
 }
 
 api.create = (collectionName, instance) => {
-    instance.userId = netlifyIdentity.currentUser().id;
     return ajax('create', collectionName, instance);
 }
 

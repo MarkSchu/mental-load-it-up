@@ -1,4 +1,5 @@
 import { ObservableVar } from 'utils/observable.js';
+import state from 'data/state.js';
 
 export const pathname = new ObservableVar(window.location.pathname);
 
@@ -6,13 +7,18 @@ window.addEventListener('popstate', () => {
     pathname.set(window.location.pathname);
 });
 
-window.addEventListener('navigate', () => {
+window.addEventListener('redirect', (e) => {
     pathname.set(window.location.pathname);
 });
 
-export const redirect = (newPathname) => {
+window.addEventListener('load', () => {
+    if (pathname.value === '/') {
+        state.initApp();
+    }
+});
+
+pathname.redirect = (newPathname) => {
     history.pushState({}, '',  newPathname);
-    const navEvent = new CustomEvent('navigate');
+    const navEvent = new CustomEvent('redirect');
     window.dispatchEvent(navEvent);
-    return document.createElement('div');
 }

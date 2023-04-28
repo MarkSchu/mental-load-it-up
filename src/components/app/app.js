@@ -1,28 +1,25 @@
 import { bind, element } from 'utils/dom.js';
+import { pathname } from 'data/pathname.js';
+import { LoginPage } from 'components/auth/login-page.js';
+import { SignupPage } from 'components/auth/signup-page.js';
 import { Dashboard } from 'components/app/dashboard.js';
-import { pathname, redirect } from 'utils/pathname.js';
-import { AuthPage } from 'components/auth/auth.js';
 import sheet from 'styles/app.css' assert { type: 'css' };
 document.adoptedStyleSheets = [sheet];
 
-
 export function App() {
-
-    const user = netlifyIdentity.currentUser();
-   
     return (
         element('div', {},
-            bind(pathname, (value) => {
-                if (!user) {
-                    return redirect('/auth');
+            bind(pathname, (pathnameVal) => {
+                if (pathnameVal === '/signup') {
+                    return SignupPage();
                 }
-                if (value === '/') {
+                if (pathnameVal === '/login') {
+                    return LoginPage();
+                }
+                if (pathnameVal === '/') {
                     return Dashboard();
                 }
-                if (value === '/auth') {
-                    return AuthPage()
-                }
-                return element('div', {textContent: '404 :('})
+                return Page404();
             })
         )   
     )
