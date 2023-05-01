@@ -24,3 +24,7 @@ export function repeat(el, list, createElement) {
 export function showIfTrueHideIfNot(el, value) {
     el.hidden = !value;
 }
+
+export function dispayIfTrueHideIfNot(el, value) {
+    el.style.display = value ? 'block' : 'none';
+}

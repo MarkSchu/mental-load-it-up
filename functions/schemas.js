@@ -15,10 +15,13 @@ const task = new mongoose.Schema({
 });
 
 const event = new mongoose.Schema({
+    name: String,
+    date: String,
     teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
 });
 
 const domain = new mongoose.Schema({
+    name: String,
     teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
 });
 

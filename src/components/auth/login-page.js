@@ -8,14 +8,17 @@ export function LoginPage() {
     const disableSubmit = new ObservableBool(false);
 
     const submit = (event) => {
-        disableSubmit.true();
         event.preventDefault();
-        const { email, password } = document.forms.loginForm.elements;
-        user.login(email.value, password.value)
-        .catch((err) => {
-            alert(err)
-        })
-        disableSubmit.false();
+        disableSubmit.true();
+        const form = document.forms.loginForm;
+        const isValid = form.reportValidity();
+        if (isValid) {
+            const email = form.elements.email.value;
+            const password = form.elements.password.value;
+            user.login(email, password).then(() => {
+                disableSubmit.false();
+            });
+        }
     }
 
     return (

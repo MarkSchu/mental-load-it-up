@@ -15,10 +15,10 @@ db.create = async (collectionName, data) => {
 }
 
 db.getAllUserData = async (data) => {
-    const userId = data.userId;
-    const tasks = await schemas['tasks'].find({userId});
-    const events = await schemas['events'].find({userId});
-    const domains = await schemas['domains'].find({userId});
+    const teamId = data.teamId;
+    const tasks = await schemas['tasks'].find({teamId});
+    const events = await schemas['events'].find({teamId});
+    const domains = await schemas['domains'].find({teamId});
     return {
         statusCode: 200,
         body: JSON.stringify({

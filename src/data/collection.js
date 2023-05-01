@@ -1,6 +1,7 @@
 import { ObservableArray } from 'utils/observable.js';
 import api from 'data/api.js';
-import state from 'data/state.js';
+import { state } from 'data/state.js';
+import { user } from 'data/user.js';
 
 export class Collection extends ObservableArray {
 
@@ -12,6 +13,7 @@ export class Collection extends ObservableArray {
 
     create (instance) {
         const {collectionName} = this;
+        instance.teamId = user.teamId();
         return api.create(collectionName, instance).then((res) => {
             const { status, body } = res; 
             if (status < 300) {

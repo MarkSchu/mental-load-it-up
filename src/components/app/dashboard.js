@@ -7,10 +7,6 @@ import { showIfTrueHideIfNot } from 'utils/binders.js';
 export function Dashboard() {
     return (
         element('div', {className: 'dashboard'},
-            element('div', {
-                textContent: 'Loading...',
-                bind: [[state.isInitApp, showIfTrueHideIfNot]]
-            }),
             element('h1', {textContent: 'Dashboard'}),
             element('div', {className: 'dash-panels'},
                 DashboardPanel({

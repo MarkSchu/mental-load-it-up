@@ -55,13 +55,10 @@ export function bind(observableVar, callback) {
     return currentChildren;
 }
 
-export function bindElement(observableVar, callback) {
-    return function(el) {
-        observableVar.onSet((value) => {
-            callback(el, value);
-        });
-        return el;
-    }
+export function bindElement(tag, attrs, observableVar, callback) {
+    return element(tag, attrs, bind(observableVar, (value) => 
+        callback(value)
+    ));
 }
 
 export function bindtext(observableVar) {
@@ -94,19 +91,3 @@ export function bindrepeat(observableArray, callback) {
     )
 }
 
-// export function bindtable(observableArray, rowCallback) {
-//     return (
-//         element('table', {},
-
-//         )
-//     )
-// }
-
-// element('table', {},
-//     element('th', {},
-//         element('td', {}),
-//         element('td', {}),
-//         element('td', {}),
-//     ),
-//     repeat()
-// )

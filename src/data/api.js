@@ -1,6 +1,6 @@
+import { user } from 'data/user.js';
 
 const api = {};
-
 
 const ajax = (action, collectionName, data) => {
     return fetch('/.netlify/functions/request', {
@@ -14,6 +14,10 @@ const ajax = (action, collectionName, data) => {
         return res.json().then((body) => {
             return {body, status: res.status}
         })
+    })
+    .catch((res) => {
+       alert(res);
+       return res;
     });
 }
 
@@ -30,8 +34,8 @@ api.getAll = (collectionName) => {
 }
 
 api.getAllUserData = () => {
-    const userId = netlifyIdentity.currentUser().id;
-    return ajax('getAllUserData', {userId});
+    const teamId = user.teamId();
+    return ajax('getAllUserData', {teamId});
 }
 
 api.updateById = (collectionName, id, properties) => {

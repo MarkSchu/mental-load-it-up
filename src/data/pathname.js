@@ -12,8 +12,12 @@ window.addEventListener('redirect', (e) => {
 });
 
 window.addEventListener('load', () => {
-    if (pathname.value === '/') {
-        state.initApp();
+    pathname.set(window.location.pathname);
+});
+
+pathname.onSet((pathnameVal) => {
+    if (pathnameVal === '/') {
+        state.init();
     }
 });
 

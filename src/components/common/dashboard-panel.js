@@ -2,9 +2,9 @@ import { element } from 'utils/dom.js';
 import { ObservableVar, ObservableBool } from 'utils/observable.js';
 import { DashboardList } from 'components/common/dashboard-list.js';
 import { DashboardMenu } from 'components/common/dashboard-menu.js';
-import { CreateTaskModal } from 'components/app/create-task-modal.js';
-import { CreateEventModal } from 'components/app/create-event-modal.js';
-import { CreateDomainModal } from 'components/app/create-domain-modal.js';
+import { TaskCreationModal } from 'components/app/task-creation-modal.js'
+import { EventCreationModal } from 'components/app/event-creation-modal.js';
+import { DomainCreationModal } from 'components/app/domain-creation-modal.js';
 import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 import { TaskListItem } from 'components/common/task-list-item.js';
 import { EventListItem } from 'components/common/event-list-item.js';
@@ -48,21 +48,21 @@ export function DashboardPanel({
                     className: 'task-list',
                     collectionName: TASKS,
                     selectedTab,
-                    modal: CreateTaskModal(isModalOpen),
+                    modal: TaskCreationModal(isModalOpen),
                     memberComponent: TaskListItem
                 }),
                 DashboardList({
                     className: 'event-list',
                     collectionName: EVENTS,
                     selectedTab,
-                    modal: CreateEventModal(isModalOpen),
+                    modal: EventCreationModal(isModalOpen),
                     memberComponent: EventListItem
                 }),
                 DashboardList({
                     className: 'domain-list',
                     collectionName: DOMAINS,
                     selectedTab,
-                    modal: CreateDomainModal(isModalOpen),
+                    modal: DomainCreationModal(isModalOpen),
                     memberComponent: DomainListItem
                 })
             )

@@ -8,14 +8,17 @@ export function SignupPage() {
     const disableSubmit = new ObservableBool(false);
 
     const submit = (event) => {
-        disableSubmit.true();
         event.preventDefault();
-        const { email, password } = document.forms.signupForm.elements;
-        user.signup(email.value, password.value)
-        .catch((err) => {
-            alert(err)
-        })
-        disableSubmit.false();
+        disableSubmit.true();
+        const form = document.forms.signupForm;
+        const isValid = form.reportValidity();
+        if (isValid) {
+            const email = form.elements.email.value;
+            const password = form.elements.password.value;
+            user.signup(email, password).then(() => {
+                disableSubmit.false();
+            });
+        }
     }
 
     return (
