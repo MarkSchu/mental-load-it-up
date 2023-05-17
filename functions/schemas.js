@@ -11,6 +11,7 @@ const team = new mongoose.Schema({
 const task = new mongoose.Schema({
     name: String,
     dueDate: String,
+    status: String,
     teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
 });
 

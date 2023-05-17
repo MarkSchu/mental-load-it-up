@@ -14,6 +14,19 @@ db.create = async (collectionName, data) => {
     }
 }
 
+db.updateById = async (collectionName, data) => {
+    const Schema = schemas[collectionName];
+    const doc = await Schema.findById(data._id)
+    doc.status = data.properties.status;
+    await doc.save();
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            instance: doc
+        })
+    }
+}
+
 db.getAllUserData = async (data) => {
     const teamId = data.teamId;
     const tasks = await schemas['tasks'].find({teamId});
@@ -30,5 +43,6 @@ db.getAllUserData = async (data) => {
         })
     }
 }
+
 
 module.exports = db;

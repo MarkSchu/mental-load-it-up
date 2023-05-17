@@ -1,9 +1,9 @@
 import { ObservableBool } from 'utils/observable.js';
-import api from 'data/api.js';
 import { TASKS, EVENTS, DOMAINS, TEAMS } from 'data/collection-names.js';
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
 import { Collection } from 'data/collection.js';
+import { ajax } from 'data/api.js';
 
 export const state = {
     user,
@@ -17,9 +17,7 @@ export const state = {
 state.init = () => {
     state.loading.true();
     if (user.isLoggedIn()) {
-        state.getAllUserData().then(() => {
-            state.loading.false();
-        });
+        state.getAllUserData().then(() => state.loading.false());
     } else {
         pathname.redirect('/login');
         state.loading.false();
@@ -27,7 +25,8 @@ state.init = () => {
 }
 
 state.getAllUserData = () => {
-    return api.getAllUserData().then((res) => {
+    const teamId = user.teamId();
+    return ajax('getAllUserData', {teamId}).then((res) => {
         const { status, body } = res; 
         if (status < 300) {
             state[TASKS].set(body.userdata.tasks);

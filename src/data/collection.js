@@ -12,9 +12,11 @@ export class Collection extends ObservableArray {
     }
 
     create (instance) {
-        const {collectionName} = this;
+        const action = 'create';
+        const collectionName = this.collectionName;
+        const data = instance;
         instance.teamId = user.teamId();
-        return api.create(collectionName, instance).then((res) => {
+        return apiRequest(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
                 state[collectionName].push(body.instance);
@@ -23,9 +25,11 @@ export class Collection extends ObservableArray {
         });
     }
     
-    updateById (id, properties) {
-        const {collectionName} = this;
-        return api.updateById(collectionName, id, properties).then((res) => {
+    updateById (_id, properties) {
+        const action = 'updateById'
+        const collectionName = this.collectionName;
+        const data = {_id, properties}
+        return apiRequest(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
                 state[collectionName].set(body.collection);
@@ -34,9 +38,11 @@ export class Collection extends ObservableArray {
         });
     }
     
-    deleteById (id) {
-        const {collectionName} = this;
-        return api.deleteById(collectionName, id).then((res) => {
+    deleteById (_id) {
+        const action = 'deleteById';
+        const collectionName = this.collectionName;
+        const data = {_id};
+        return apiRequest(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
                 state[collectionName].set(body.collection);

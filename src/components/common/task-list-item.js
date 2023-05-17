@@ -4,13 +4,12 @@ import state from 'data/state.js';
 import { TASKS } from 'data/collection-names.js';
 
 export function TaskListItem(task) {
-
-    const updateTask = () => {
-        state.updateById(TASKS, task.id, {status: 'done'});
+    const setTaskToDone = () => {
+        state.tasks.updateById(task._id, {status: 'done'});
     }
 
     const deleteTask = () => {
-        state.deleteById(TASKS, task.id);
+        state.tasks.deleteById(task._id);
     }
 
     const formatDate = (dueDate) => {
@@ -23,37 +22,28 @@ export function TaskListItem(task) {
 
     return (
         element('div', {className: 'list-item tasks'},
-            element('div', {className: 'col col-info'},
+            element('div', {className: 'left'},
                 element('div', {
-                    className: 'title', 
+                    className: 'title',
                     textContent: `${task.name}`
                 }),
-                element('div', {},
-                    // element('button', {
-                    //     className: 'foo',
-                    //     textContent: 'Delete'
-                    // }),
-                    // element('button', {
-                    //     className: 'bar',
-                    //     textContent: 'Done'
-                    // })
-                    
+                element('div', {className: 'bottom'},
+                    element('button', {
+                        className: 'delete',
+                        textContent: 'Delete',
+                        onclick: deleteTask
+                    }),
+                    element('button', {
+                        className: 'done',
+                        textContent: 'Done',
+                        onclick: setTaskToDone
+                    }),
                 )
             ),
-            // element('div', {className: 'col col-done'},
-            //     element('button', {
-            //         className: 'done',
-            //         textContent: 'Done',
-            //         onclick: updateTask
-            //     })
-            // ),
-            element('div', {className: 'col col-days'},
+            element('div', {className: 'days right'},
+                
                 element('div', {
-                    className: 'date',
-                    textContent: formatDate(task.dueDate)
-                }),
-                element('div', {
-                    className: 'days',
+                    className: 'number',
                     textContent: getDaysUntil(task.dueDate),
                 }),
                 element('div', {
@@ -64,11 +54,3 @@ export function TaskListItem(task) {
         )
     )
 }
-
-
-  // element('div', {className: ''},
-            //     element('button', {
-            //         textContent: 'Delete',
-            //         onclick: deleteTask
-            //     })
-            // ),

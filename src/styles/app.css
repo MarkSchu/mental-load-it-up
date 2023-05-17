@@ -7,7 +7,7 @@
     --blue: #1982c4ff;
     --purple: #6a4c93ff;
 
-    --red: #ff0000ff;
+    /* --red: #ff0000ff; */
     --ut-orange: #ff8700ff;
     --gold: #ffd300ff;
     --chartreuse: #deff0aff;
@@ -21,8 +21,9 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Noto Sans'
+    /* font-family: 'Noto Sans' */
     /* font-family: sans-serif; */
+    font-family: monospace;
 }
 
 .loader {
@@ -78,64 +79,53 @@
     width: 100%;
 }
 
-.list-item {
+.list-item.tasks {
+    margin-top: 16px;
     display: flex;
-    border: 1px solid black;
 }
 
-.col {
-    border: 1px solid black;
+.left {
+    width: 100%;
 }
 
-.list-item.tasks .col-info {
-    flex: 4;
-}
-
-.list-item.tasks .col-info .title {
+.title {
     border-bottom: 1px solid black;
-    margin: 0 4px;
-    font-weight: bold;
+    padding-bottom: 4px;
 }
 
-.list-item.tasks .col-days {
-    flex: 1;
-    text-align: center;
+.done,
+.delete {
+    border-radius: 4px;
 }
 
-.list-item.tasks .col-days .days {
-    font-size: 32px;
-    font-weight: bold;
+.done {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid var(--spring-green);
+    border-top: 1px solid var(--spring-green);
+    background-color: var(--spring-green);
+    margin-top: 4px;
 }
 
-.list-item.tasks .col-done {
-    flex: 1;
+.delete {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid var(--red);
+    border-top: 1px solid var(--red);
+    background-color: var(--red);
+    margin-right: 2px;
+    margin-top: 4px;
+}
+
+.number {
+    font-size: 24px;
+}
+
+.bottom {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.list-item.tasks .col-done .done {
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    font-weight: bold;
-    border: 3px solid black;
-    border-radius: 8px;
+.days {
+    text-align: center;
+    padding-left: 8px
 }
-
-/* .list-item .col {
-    border: 1px solid black;
-}
-
-.info-col {
-    flex: 3;
-}
-
-.days-col {
-    flex: 2;
-}
-
-.done-col {
-    flex: 1;
-} */
-

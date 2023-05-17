@@ -1,8 +1,10 @@
 import { user } from 'data/user.js';
+import state from 'data/state.js';
 
 const api = {};
 
-const ajax = (action, collectionName, data) => {
+export const ajax = (action, collectionName, data) => {
+    state.loading.true();
     return fetch('/.netlify/functions/request', {
         method: 'POST',
         body: JSON.stringify({
@@ -18,32 +20,11 @@ const ajax = (action, collectionName, data) => {
     .catch((res) => {
        alert(res);
        return res;
-    });
-}
-
-api.create = (collectionName, instance) => {
-    return ajax('create', collectionName, instance);
-}
-
-api.getById = (collectionName, id) => {
-    return ajax('getById', collectionName, {id});
-}
-
-api.getAll = (collectionName) => {
-    return ajax('getAll', collectionName);
-}
-
-api.getAllUserData = () => {
-    const teamId = user.teamId();
-    return ajax('getAllUserData', {teamId});
-}
-
-api.updateById = (collectionName, id, properties) => {
-    return ajax('updateById', collectionName, {id, properties});
-}
-
-api.deleteById = (collectionName, id) => {
-    return ajax('deleteById', collectionName, {id})
+    })
+    .finally((res) => {
+        state.loading.false();
+        return res;
+    })
 }
 
 export default api;
