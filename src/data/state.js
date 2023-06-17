@@ -3,7 +3,7 @@ import { TASKS, EVENTS, DOMAINS, TEAMS } from 'data/collection-names.js';
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
 import { Collection } from 'data/collection.js';
-import { ajax } from 'data/api.js';
+import { api } from 'data/api.js';
 
 export const state = {
     user,
@@ -26,7 +26,7 @@ state.init = () => {
 
 state.getAllUserData = () => {
     const teamId = user.teamId();
-    return ajax('getAllUserData', {teamId}).then((res) => {
+    return api('getAllUserData', {teamId}).then((res) => {
         const { status, body } = res; 
         if (status < 300) {
             state[TASKS].set(body.userdata.tasks);

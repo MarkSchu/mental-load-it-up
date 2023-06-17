@@ -1,5 +1,5 @@
 import { ObservableArray } from 'utils/observable.js';
-import api from 'data/api.js';
+import { api } from 'data/api.js';
 import { state } from 'data/state.js';
 import { user } from 'data/user.js';
 
@@ -16,7 +16,7 @@ export class Collection extends ObservableArray {
         const collectionName = this.collectionName;
         const data = instance;
         instance.teamId = user.teamId();
-        return apiRequest(action, collectionName, data).then((res) => {
+        return api(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
                 state[collectionName].push(body.instance);
@@ -29,10 +29,10 @@ export class Collection extends ObservableArray {
         const action = 'updateById'
         const collectionName = this.collectionName;
         const data = {_id, properties}
-        return apiRequest(action, collectionName, data).then((res) => {
+        return api(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
-                state[collectionName].set(body.collection);
+                state[collectionName].replace(body.instance);
             }
             return res;
         });
@@ -42,7 +42,7 @@ export class Collection extends ObservableArray {
         const action = 'deleteById';
         const collectionName = this.collectionName;
         const data = {_id};
-        return apiRequest(action, collectionName, data).then((res) => {
+        return api(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
                 state[collectionName].set(body.collection);

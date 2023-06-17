@@ -1,9 +1,7 @@
 import { user } from 'data/user.js';
 import state from 'data/state.js';
 
-const api = {};
-
-export const ajax = (action, collectionName, data) => {
+export const api = async (action, collectionName, data) => {
     state.loading.true();
     return fetch('/.netlify/functions/request', {
         method: 'POST',
@@ -27,6 +25,5 @@ export const ajax = (action, collectionName, data) => {
     })
 }
 
-export default api;
 
 

@@ -34,7 +34,7 @@ export class ObservableArray extends ObservableVar {
         this.emit();
     }
     replace(_id, newItem) {
-        const index = this.value.findIndex(index => item._id === _id);
+        const index = this.value.findIndex(item => item._id === _id);
         if (index) {
             this.value.slice(index, 0, newItem);
         }
