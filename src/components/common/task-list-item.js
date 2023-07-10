@@ -21,34 +21,28 @@ export function TaskListItem(task) {
     }
 
     return (
-        element('div', {className: 'list-item tasks'},
-            element('div', {className: 'left'},
+        element('div', {className: ''},
+            element('div', {},
                 element('div', {
-                    className: 'title',
                     textContent: `${task.name}`
                 }),
-                element('div', {className: 'bottom'},
-                    element('button', {
-                        className: 'delete',
-                        textContent: 'Delete',
-                        onclick: deleteTask
+                element('div', {className: ''},
+                    element('span', {
+                        textContent: getDaysUntil(task.dueDate),
                     }),
-                    element('button', {
-                        className: 'done',
-                        textContent: 'Done',
-                        onclick: setTaskToDone
-                    }),
+                    element('span', {
+                        textContent: getDaysUntil(task.dueDate) === 1 ? ' day' : ' days'
+                    })
                 )
-            ),
-            element('div', {className: 'days right'},
-                
-                element('div', {
-                    className: 'number',
-                    textContent: getDaysUntil(task.dueDate),
+            ), 
+            element('buttons', {},
+                element('button', {
+                    textContent: 'Delete',
+                    onclick: deleteTask
                 }),
-                element('div', {
-                    className: 'label',
-                    textContent: getDaysUntil(task.dueDate) === 1 ? 'day' : 'days'
+                element('button', {
+                    textContent: 'Done',
+                    onclick: setTaskToDone
                 })
             )
         )
