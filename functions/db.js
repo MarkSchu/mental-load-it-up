@@ -16,13 +16,24 @@ db.create = async (collectionName, data) => {
 
 db.updateById = async (collectionName, data) => {
     const Schema = schemas[collectionName];
-    const doc = await Schema.findById(data._id)
-    doc.status = data.properties.status;
-    await doc.save();
+    await Schema.findByIdAndUpdate(data._id, data.properties);
+    const doc = await Schema.findById(data._id);
     return {
         statusCode: 200,
         body: JSON.stringify({
             instance: doc
+        })
+    }
+}
+
+db.deleteById = async (collectionName, data) => {
+    const Schema = schemas[collectionName];
+    await Schema.findByIdAndDelete(data._id)
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            success: true,
+            _id: data._id
         })
     }
 }

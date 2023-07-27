@@ -33,10 +33,20 @@ export class ObservableArray extends ObservableVar {
         this.value.sort(callback);
         this.emit();
     }
-    replace(_id, newItem) {
+
+    replace(newItem) {
+        const index = this.value.findIndex(item => item._id === newItem._id);
+        if (index !== -1) {
+            this.value.splice(index, 1, newItem);
+            this.emit();
+        }
+    }
+    
+    remove(_id) {
         const index = this.value.findIndex(item => item._id === _id);
-        if (index) {
-            this.value.slice(index, 0, newItem);
+        if (index !== -1) {
+            this.value.splice(index, 1);
+            this.emit();
         }
     }
 }

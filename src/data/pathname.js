@@ -15,12 +15,6 @@ window.addEventListener('load', () => {
     pathname.set(window.location.pathname);
 });
 
-pathname.onSet((pathnameVal) => {
-    if (pathnameVal === '/') {
-        state.init();
-    }
-});
-
 pathname.redirect = (newPathname) => {
     history.pushState({}, '',  newPathname);
     const navEvent = new CustomEvent('redirect');

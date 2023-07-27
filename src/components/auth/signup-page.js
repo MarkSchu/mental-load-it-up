@@ -23,7 +23,7 @@ export function SignupPage() {
 
     return (
         element('div', {},
-            element('h1', {textContent: 'Signup'}),
+            element('h1', {textContent: 'Signup FOOP'}),
             element('form', {id: 'signupForm'},
                 element('div', {},
                     element('label', {

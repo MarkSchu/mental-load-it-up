@@ -45,7 +45,7 @@ export class Collection extends ObservableArray {
         return api(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {
-                state[collectionName].set(body.collection);
+                state[collectionName].remove(_id);
             }
             return res;
         });

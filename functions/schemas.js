@@ -5,24 +5,29 @@ const DOMAINS = 'domains';
 const TEAMS = 'teams';
 
 const team = new mongoose.Schema({
-    userIds: Array
+    deleted: Boolean,
+});
+
+const domain = new mongoose.Schema({
+    name: String,
+    deleted: Boolean,
+    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
 });
 
 const task = new mongoose.Schema({
     name: String,
     dueDate: String,
-    status: String,
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
+    complete: Boolean,
+    deleted: Boolean,
+    domainId: {type: mongoose.Schema.Types.ObjectId, ref: 'Domain'},
+    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
 });
 
 const event = new mongoose.Schema({
     name: String,
     date: String,
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
-});
-
-const domain = new mongoose.Schema({
-    name: String,
+    deleted: Boolean,
+    domainId: {type: mongoose.Schema.Types.ObjectId, ref: 'Domain'},
     teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
 });
 
@@ -32,4 +37,3 @@ module.exports = {
     [DOMAINS]: mongoose.model('Domain', domain),
     [TEAMS]: mongoose.model('Team', team)
 }
-

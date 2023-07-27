@@ -37,4 +37,6 @@ state.getAllUserData = () => {
     });
 }
 
+window.state = state;
+
 export default state;
