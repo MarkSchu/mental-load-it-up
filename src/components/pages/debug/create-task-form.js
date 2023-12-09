@@ -2,7 +2,7 @@ import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import state from 'data/state.js';
 import { disable } from 'utils/binders.js';
-import { DomainSelect } from 'components/app-mvp/domain-select.js';
+import { DomainSelect } from 'components/common/domain-select.js';
 
 export const CreateTaskForm = () => {
 
@@ -15,8 +15,8 @@ export const CreateTaskForm = () => {
         if (form.reportValidity()) {
             const name = form.elements.name.value;
             const dueDate = form.elements.dueDate.value;
-            const domainId = form.elements.domainId.value;
-            state.tasks.create({name, dueDate, domainId}).then(() => {
+            // const domainId = form.elements.domainId.value;
+            state.tasks.create({name, dueDate}).then(() => {
                 disableSubmit.false();
                 form.reset();
             });
@@ -39,7 +39,7 @@ export const CreateTaskForm = () => {
                 placeholder: 'dueDate',
                 required: true
             }),
-            DomainSelect(),
+            // DomainSelect(),
             element('button', {
                 onclick: create,
                 textContent: 'Create Task',

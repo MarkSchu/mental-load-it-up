@@ -1,8 +1,8 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
 import { repeatWith } from 'utils/binders.js';
-import { DeleteEventButton } from 'components/app-mvp/delete-event-button.js';
-import { EditEventForm } from 'components/app-mvp/edit-event-form.js';
+import { DeleteEventButton } from 'components/common/delete-event-button.js';
+import { EditEventForm } from 'components/common/edit-event-form.js';
 
 export const EventList = (parent, list) => {
     return (

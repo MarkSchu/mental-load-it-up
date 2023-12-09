@@ -1,9 +1,9 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
 import { repeatWith } from 'utils/binders.js';
-import { DeleteTaskButton } from 'components/app-mvp/delete-task-button.js';
-import { CompleteTaskButton } from 'components/app-mvp/complete-task-button.js'
-import { EditTaskForm } from 'components/app-mvp/edit-task-form.js';
+import { DeleteTaskButton } from 'components/common/delete-task-button.js';
+import { CompleteTaskButton } from 'components/common/complete-task-button.js'
+import { EditTaskForm } from 'components/common/edit-task-form.js';
 
 const displayDomainName = (task) => (el, domains) => {
     const domain = domains.find(item => item._id === task.domainId);
@@ -15,7 +15,6 @@ const displayDomainName = (task) => (el, domains) => {
 export const TaskList = () => {
     return (
         element('div', {},
-            element('h2', {textContent: 'Tasks'}),
             element('div', {
                 bind: [[state.tasks, repeatWith(TaskListItem)]]
             })

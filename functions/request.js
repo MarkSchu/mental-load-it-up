@@ -6,6 +6,7 @@ const connectDB = () => {
 }
 
 exports.handler = async (event) => {
+    console.log('netlify request')
     return connectDB().then(() => {
         const {action, data, collectionName} = JSON.parse(event.body);
         return db[action](collectionName, data);

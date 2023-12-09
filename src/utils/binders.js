@@ -6,6 +6,10 @@ export function show(el, value) {
     el.hidden = !value;
 }
 
+export function hide(el, value) {
+    el.hidden = value;
+}
+
 export function disable(el, value) {
     el.disabled = value;
 }

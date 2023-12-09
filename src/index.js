@@ -1,4 +1,4 @@
-import { App } from 'components/app/app.js';
+import { App } from 'components/app.js';
 
 document.body.appendChild(
     App()

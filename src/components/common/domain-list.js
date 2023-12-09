@@ -1,8 +1,8 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
 import { repeatWith } from 'utils/binders.js';
-import { DeleteDomainButton } from 'components/app-mvp/delete-domain-button.js';
-import { EditDomainForm } from 'components/app-mvp/edit-domain-form.js';
+import { DeleteDomainButton } from 'components/common/delete-domain-button.js';
+import { EditDomainForm } from 'components/common/edit-domain-form.js';
 
 export const DomainList = (parent, list) => {
     return (

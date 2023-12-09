@@ -4,7 +4,7 @@
     "description": "Track your mental load",
     "main": "src/index.js",
     "scripts": {
-        "start": "http-server -c-1"
+        "start": "netlify dev"
     },
     "author": "Mark Schumaker",
     "license": "ISC",

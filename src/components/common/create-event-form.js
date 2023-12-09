@@ -2,19 +2,21 @@ import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import state from 'data/state.js';
 import { disable } from 'utils/binders.js';
+import { DomainSelect } from 'components/common/domain-select.js';
 
-export const SignupForm = () => {
+export const CreateEventForm = () => {
 
     const disableSubmit = new ObservableBool(false);
 
-    const signup = (event) => {
+    const create = (event) => {
         event.preventDefault();
         disableSubmit.true();
         const form = event.target.parentElement;
         if (form.reportValidity()) {
-            const email = form.elements.email.value;
-            const password = form.elements.password.value;
-            state.user.signup(email, password).then(() => {
+            const name = form.elements.name.value;
+            const date = form.elements.date.value;
+            const domainId = form.elements.domainId.value;
+            state.events.create({name, date, domainId}).then(() => {
                 disableSubmit.false();
                 form.reset();
             });
@@ -26,20 +28,21 @@ export const SignupForm = () => {
     return (
         element('form', {},
             element('input', {
-                type: 'email',
-                name: 'email',
-                placeholder: 'email',
+                type: 'text',
+                name: 'name',
+                placeholder: 'name',
                 required: true
             }),
             element('input', {
-                type: 'password',
-                name: 'password',
-                placeholder: 'password',
+                type: 'date',
+                name: 'date',
+                placeholder: 'date',
                 required: true
             }),
+            DomainSelect(),
             element('button', {
-                onclick: signup,
-                textContent: 'Signup',
+                onclick: create,
+                textContent: 'Create Event',
                 bind:[[disableSubmit, disable]]
             })
         )

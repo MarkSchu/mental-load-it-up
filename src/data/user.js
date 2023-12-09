@@ -46,31 +46,6 @@ user.signup = (email, password) => {
     });
 }
 
-user.invite = (email, password, teamId) => {
-    state.loading.true();
-    return auth.signup(email, password)
-    .then(() => {
-        return auth.login(email, password, true)
-    })
-    .then((response) => {
-        return auth.currentUser().update({ 
-            data: { 
-                teamId,
-                teamCreator: false 
-            } 
-        }); 
-    })
-    .then(() => {
-        user.set(auth.currentUser());
-    })
-    .catch((err) => {  
-        alert(err)
-    })
-    .finally(() => {
-        state.loading.false();
-    });
-}
-
 user.login = (email, password) => {
     state.loading.true();
     return auth.login(email, password, true)

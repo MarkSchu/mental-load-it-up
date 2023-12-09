@@ -24,7 +24,17 @@ function addAttrs(el, attrs) {
                 });
                 callback(el, observableVar.value);
             });
-        } else {
+        } 
+        else if (attr === 'style') {
+            const styles = attrs[attr];
+            for (var style in styles) {
+                el.style[style] = styles[style];
+            }
+        }
+        // else if (attr === 'tabindex') {
+        //     el.setAttribute('tabindex', '0');
+        // }
+        else {
             el[attr] = attrs[attr];
         }
     }

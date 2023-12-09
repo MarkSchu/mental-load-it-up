@@ -2,7 +2,7 @@ import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import state from 'data/state.js';
 import { disable } from 'utils/binders.js';
-import { DomainSelect } from 'components/app-mvp/domain-select.js';
+import { DomainSelect } from 'components/common/domain-select.js';
 
 export const EditTaskForm = (task) => {
 
