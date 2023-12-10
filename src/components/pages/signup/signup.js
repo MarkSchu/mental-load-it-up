@@ -2,21 +2,23 @@ import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import state from 'data/state.js';
 import { disable } from 'utils/binders.js';
+import { pathname } from 'data/pathname.js';
 
-export const LoginForm = () => {
+export const SignupForm = () => {
 
     const disableSubmit = new ObservableBool(false);
 
-    const login = (event) => {
+    const signup = (event) => {
         event.preventDefault();
         disableSubmit.true();
         const form = event.target.parentElement;
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            state.user.login(email, password).then(() => {
+            state.user.signup(email, password).then(() => {
                 disableSubmit.false();
                 form.reset();
+                pathname.redirect('/dash');
             });
         } else {
             disableSubmit.false();
@@ -38,10 +40,20 @@ export const LoginForm = () => {
                 required: true
             }),
             element('button', {
-                onclick: login,
-                textContent: 'Login',
+                onclick: signup,
+                textContent: 'Signup',
                 bind:[[disableSubmit, disable]]
             })
+        )
+    )
+}
+
+export function Signup() {
+    return (
+        element('div', {},
+            element('h1', {textContent: 'Signup'},
+                SignupForm('/dash')
+            )
         )
     )
 }

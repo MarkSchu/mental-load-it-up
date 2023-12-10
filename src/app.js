@@ -2,11 +2,10 @@ import { bind, element } from 'utils/dom.js';
 import { pathname } from 'data/pathname.js';
 import state from 'data/state.js';
 import { Loader } from 'components/common/loader.js';
-import { SignupPage } from 'components/pages/signup.js';
+import { Signup } from 'components/pages/signup/signup.js';
+import { Login } from 'components/pages/login/login.js';
 import { Debug } from 'components/pages/debug/debug.js';
-import { Dash } from 'components/pages/dash.js'
-import { CreateTaskForm } from 'components/common/create-task-form.js';
-import { UX } from 'components/pages/ux/ux.js'
+import { Dash } from 'components/pages/dash/dash.js'
 
 
 pathname.onSet((pathnameVal) => {
@@ -20,20 +19,17 @@ export function App() {
         element('div', {},
             Loader(),
             bind(pathname, (pathnameVal) => {
-                if (pathnameVal === '/debug') {
-                    return Debug();
-                }
-                if (pathnameVal === '/ux') {
-                    return UX();
-                }
                 if (pathnameVal === '/signup') {
-                    return SignupPage();
+                    return Signup();
                 }
                 if (pathnameVal === '/login') {
-                    return LoginPage();
+                    return Login();
                 }
                 if (pathnameVal === '/dash') {
                     return Dash();
+                }
+                if (pathnameVal === '/debug') {
+                    return Debug();
                 }
                 return element('div', {textContent: `Page ${pathnameVal} Not Found :(`})
             })

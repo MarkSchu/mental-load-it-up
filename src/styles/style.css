@@ -1,8 +1,19 @@
+/* App */
+
 * {
     box-sizing: border-box;
     font-family: monospace;
-    color: rgb(7, 20, 38);
 }
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+}
+
+/* Dash */
 
 .task {
     display: flex;

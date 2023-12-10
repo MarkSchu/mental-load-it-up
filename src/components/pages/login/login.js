@@ -2,25 +2,22 @@ import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import state from 'data/state.js';
 import { disable } from 'utils/binders.js';
-import { pathname } from 'data/pathname.js';
 
-export const SignupForm = (navigateToPath) => {
+export const LoginForm = () => {
 
     const disableSubmit = new ObservableBool(false);
 
-    const signup = (event) => {
+    const login = (event) => {
         event.preventDefault();
         disableSubmit.true();
         const form = event.target.parentElement;
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            state.user.signup(email, password).then(() => {
+            state.user.login(email, password).then(() => {
                 disableSubmit.false();
                 form.reset();
-                if (navigateToPath) {
-                    pathname.redirect(navigateToPath);
-                }
+                pathname.redirect('/dash');
             });
         } else {
             disableSubmit.false();
@@ -42,10 +39,20 @@ export const SignupForm = (navigateToPath) => {
                 required: true
             }),
             element('button', {
-                onclick: signup,
-                textContent: 'Signup',
+                onclick: login,
+                textContent: 'Login',
                 bind:[[disableSubmit, disable]]
             })
+        )
+    )
+}
+
+export function Login() {
+    return (
+        element('div', {},
+            element('h1', {textContent: 'Login'},
+                LoginForm()
+            )
         )
     )
 }
