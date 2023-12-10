@@ -139,7 +139,7 @@ export const TaskList = () => {
             tags: ['grocery']
         }
     ]
-
+   
     return (
         element('div', {},
             // element('div', {
@@ -149,18 +149,3 @@ export const TaskList = () => {
         )
     )
 }
-
- // element('div', {},
-//     element('div', {
-//         className: `pill ${task.tags[0]}`, 
-//         textContent: task.tags[0]
-//     }),
-// )
-
-
-// element('div', {className: 'task-days-wrap'},
-//     element('div', {
-//         className: 'task-days', 
-//         textContent: task.days
-//     })
-// ),
