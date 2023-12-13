@@ -4,8 +4,11 @@ netlify dev
 Production URL
 https://spontaneous-nougat-f22d85.netlify.app/
 
-Netlify DASH 
+Netlify Site Page
 https://app.netlify.com/sites/spontaneous-nougat-f22d85/overview
+
+Netlify Site Identity Page
+https://app.netlify.com/sites/spontaneous-nougat-f22d85/integrations/identity/netlify
 
 Netlify Identity Widget Docs
 https://github.com/netlify/netlify-identity-widget

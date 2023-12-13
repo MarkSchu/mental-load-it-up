@@ -11,10 +11,6 @@ export const UserInfoDisplay = () => {
         el.textContent = `id: ${state.user?.id()}`;
     }
 
-    const displayTeamId = (el) => {
-        el.textContent = `team id: ${state.user?.teamId()}`;
-    }
-
     return (
         element('div', {},
             element('div', {},
@@ -29,9 +25,6 @@ export const UserInfoDisplay = () => {
             ]}),
             element('div', {bind: [
                 [state.user, displayId]
-            ]}),
-            element('div', {bind: [
-                [state.user, displayTeamId]
             ]}),
             element('br', {})
         )

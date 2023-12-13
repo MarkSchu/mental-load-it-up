@@ -1,4 +1,7 @@
 /* App */
+body { 
+    /* margin: 0; */
+}
 
 * {
     box-sizing: border-box;
@@ -18,10 +21,16 @@
 .task {
     display: flex;
     margin-bottom: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     align-items: center;
-    border-radius: 8px;
+    /* border-top-right-radius: 28px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 28px;
+    border-bottom-left-radius: 8px; */
+    border-radius: 16px;
     padding: 8px 8px;
+    cursor: pointer;
+
 }
 
 .task-name-wrap {

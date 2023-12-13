@@ -21,7 +21,7 @@ export const EventListItem = (event) => {
             element('div', {textContent: `name: ${event.name}`}),
             element('div', {textContent: `date: ${event.date}`}),
             element('div', {textContent: `domainId: ${event.domainId}`}),
-            element('div', {textContent: `teamId: ${event.teamId}`}),
+            element('div', {textContent: `userId: ${event.userId}`}),
             element('div', {textContent: `_id: ${event._id}`}),
             EditEventForm(event),
             DeleteEventButton(event._id),

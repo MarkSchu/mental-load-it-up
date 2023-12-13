@@ -25,17 +25,6 @@ user.signup = (email, password) => {
         return auth.login(email, password, true)
     })
     .then(() => {
-        return state.teams.create({userIds: [auth.currentUser().id]});
-    })
-    .then((response) => {
-        return auth.currentUser().update({ 
-            data: { 
-                teamId: response.body.instance._id,
-                teamCreator: true
-            } 
-        });        
-    })
-    .then(() => {
         user.set(auth.currentUser());
     })
     .catch((err) => {  
@@ -82,8 +71,4 @@ user.email = () => {
 
 user.id = () => {
     return auth.currentUser()?.id;
-}
-
-user.teamId = () => {
-    return auth.currentUser()?.user_metadata.teamId;
 }

@@ -1,5 +1,5 @@
 import { ObservableBool } from 'utils/observable.js';
-import { TASKS, EVENTS, DOMAINS, TEAMS } from 'data/collection-names.js';
+import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
 import { Collection } from 'data/collection.js';
@@ -8,7 +8,6 @@ import { api } from 'data/api.js';
 export const state = {
     user,
     loading: new ObservableBool(false),
-    teams: new Collection(TEAMS),
     tasks: new Collection(TASKS),
     events: new Collection(EVENTS),
     domains: new Collection(DOMAINS)
@@ -25,8 +24,8 @@ state.init = () => {
 }
 
 state.getAllUserData = () => {
-    const teamId = user.teamId();
-    return api('getAllUserData', {teamId}).then((res) => {
+    const userId = user.id();
+    return api('getAllUserData', {userId}).then((res) => {
         const { status, body } = res; 
         if (status < 300) {
             state[TASKS].set(body.userdata.tasks);

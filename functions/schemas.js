@@ -2,25 +2,26 @@ const mongoose = require('mongoose');
 const TASKS = 'tasks';
 const EVENTS = 'events';
 const DOMAINS = 'domains';
-const TEAMS = 'teams';
+const MEMBERS = 'members';
 
-const team = new mongoose.Schema({
-    deleted: Boolean,
+const member = new mongoose.Schema({
+    name: String,
+    userId: String
 });
 
 const domain = new mongoose.Schema({
     name: String,
     deleted: Boolean,
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
+    userId: String
 });
 
 const task = new mongoose.Schema({
-    name: String,
-    dueDate: String,
+    title: String,
+    due: String,
     complete: Boolean,
     deleted: Boolean,
     domainId: {type: mongoose.Schema.Types.ObjectId, ref: 'Domain'},
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'},
+    userId: String
 });
 
 const event = new mongoose.Schema({
@@ -28,12 +29,12 @@ const event = new mongoose.Schema({
     date: String,
     deleted: Boolean,
     domainId: {type: mongoose.Schema.Types.ObjectId, ref: 'Domain'},
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'Team'}
+    userId: String
 });
 
 module.exports = {
     [TASKS]: mongoose.model('Task', task),
     [EVENTS]: mongoose.model('Event', event),
     [DOMAINS]: mongoose.model('Domain', domain),
-    [TEAMS]: mongoose.model('Team', team)
+    [MEMBERS]: mongoose.model('Member', member)
 }

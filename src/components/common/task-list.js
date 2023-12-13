@@ -5,6 +5,7 @@ import { ObservableBool } from 'utils/observable.js';
 import { disable, hide, show } from 'utils/binders.js';
 
 
+
 export const xxTaskItem = (task) => {
 
     let el;
@@ -80,9 +81,57 @@ export const xxTaskItem = (task) => {
     )
 }
 
-export const TaskItem = (task) => {
+function Modal(modalIsOpen) {
+
     return (
-        element('div', {className: 'task'},
+        element('div', {
+            bind: [[modalIsOpen, (el, val) => {
+                el.style.display = val ? 'block' : 'none'
+                console.log(val)
+            }]],
+        style: {
+            position: 'fixed',
+            top: '16px',
+            bottom: '16px',
+            display: 'none',
+            left: '16px',
+            right: '16px',
+            backgroundColor: 'white',
+            zIndex: 2,
+            border: '1px solid #ccc',
+            borderRadius: '16px',
+            padding: '16px'
+        }},
+            element('div', {},
+                element('h1', {textContent: 'Edit Task', style: {textAlign: 'center', textDecoration: 'underline'}}),
+                element('h3', {textContent: 'Title'}),
+                element('input', {type: 'text'}),
+                element('h3', {textContent: 'Date'}),
+                element('input', {type: 'date'}),
+                element('h3', {textContent: 'Category'}),
+                element('select', {}, 
+                    element('option', {textContent: 'christmas'})
+                ),
+                element('div', {},
+                    element('button', {textContent: 'Create'}),
+                    element('button', {textContent: 'Cancel'})
+                )
+            )
+        )
+    )
+}
+
+export const TaskItem = (task) => {
+
+    const modalIsOpen = new ObservableBool(false);
+
+    const onclick = () => {
+        modalIsOpen.toggle();
+    }
+
+    return (
+        element('div', {className: 'task', onclick},
+            Modal(modalIsOpen),
             element('div', {className: 'task-name-wrap'},
                 element('div', {
                     className: 'task-name',
@@ -117,6 +166,51 @@ export const TaskList = () => {
             name: 'cut the grass', 
             days: 1,
             tags: ['house']
+        },
+        {
+            name: 'take back pants to banana republic', 
+            days: 4,
+            tags: ['misc']
+        },
+        {
+            name: 'set up the christas tree', 
+            days: 7,
+            tags: ['christmas']
+        },
+        {
+            name: 'buy gifts for oofta, sally, lisa, charlie, blop, and jala', 
+            days: 7,
+            tags: ['christmas']
+        },
+        {
+            name: 'buy more coconut milk', 
+            days: 11,
+            tags: ['grocery']
+        },
+        {
+            name: 'cut the grass', 
+            days: 1,
+            tags: ['house']
+        },
+        {
+            name: 'take back pants to banana republic', 
+            days: 4,
+            tags: ['misc']
+        },
+        {
+            name: 'set up the christas tree', 
+            days: 7,
+            tags: ['christmas']
+        },
+        {
+            name: 'buy gifts for oofta, sally, lisa, charlie, blop, and jala', 
+            days: 7,
+            tags: ['christmas']
+        },
+        {
+            name: 'buy more coconut milk', 
+            days: 11,
+            tags: ['grocery']
         },
         {
             name: 'take back pants to banana republic', 

@@ -20,7 +20,7 @@ export const DomainListItem = (domain) => {
         element('div', {},
             element('div', {textContent: `name: ${domain.name}`}),
             element('div', {textContent: `_id: ${domain._id}`}),
-            element('div', {textContent: `teamId: ${domain.teamId}`}),
+            element('div', {textContent: `userId: ${domain.userId}`}),
             EditDomainForm(domain),
             DeleteDomainButton(domain._id),
             element('br', {})

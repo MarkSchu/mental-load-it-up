@@ -15,7 +15,7 @@ export class Collection extends ObservableArray {
         const action = 'create';
         const collectionName = this.collectionName;
         const data = instance;
-        instance.teamId = user.teamId();
+        instance.userId = user.id();
         return api(action, collectionName, data).then((res) => {
             const { status, body } = res; 
             if (status < 300) {

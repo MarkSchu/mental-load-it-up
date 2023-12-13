@@ -30,7 +30,6 @@ export const TaskListItem = (task) => {
             element('div', {textContent: `complete: ${task.complete}`}),
             element('div', {textContent: `domainId: ${task.domainId}`}),
             element('div', {bind: [[state.domains, displayDomainName(task)]]}),
-            element('div', {textContent: `teamId: ${task.teamId}`}),
             element('div', {textContent: `_id: ${task._id}`}),
             EditTaskForm(task),
             DeleteTaskButton(task._id),
