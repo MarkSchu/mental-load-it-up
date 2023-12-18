@@ -16,7 +16,7 @@ pathname.onSet((pathnameVal) => {
 
 export function App() {
     return (
-        element('div', {},
+        element('div', {className: 'theme1'},
             Loader(),
             bind(pathname, (pathnameVal) => {
                 if (pathnameVal === '/signup') {

@@ -1,0 +1,97 @@
+/* App */
+body { 
+    /* margin: 0; */
+}
+
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 4px;
+}
+
+/* Dash */
+
+.task {
+    display: flex;
+    margin-bottom: 16px;
+    border: 1px solid #eee;
+    align-items: center;
+    border-radius: 16px;
+    padding: 8px 8px;
+    cursor: pointer;
+
+}
+
+.task-name-wrap {
+    width: 100%;
+}
+
+.task-pill-wrap {
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: end;
+}
+
+.task-days-wrap {
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: end;
+    margin: 0 8px;
+}
+
+.task-done-wrap {
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.task-name {
+}
+
+.task-days {
+    font-size: 18px;
+    display: inline-block;
+}
+
+.checkbox {
+    height: 24px;
+    width: 24px;
+    border: 2px solid #00f5d4;
+    border-radius: 24px;
+}
+
+.pill {
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    display: inline-block;
+}
+
+.pill.house {
+    background-color: #9b5de5;
+}
+
+.pill.misc {
+    background-color: #f15bb5;
+}
+
+.pill.christmas {
+    background-color: #00bbf9;
+}
+
+.pill.grocery {
+    background-color: #00f5d4;
+}
