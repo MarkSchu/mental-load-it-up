@@ -1,7 +1,18 @@
 :root {
+
+    /* spacing */
+    --h1-font-size: 28px;
+    --h2-font-size: 24px;
+    --h3-font-size: 18px;
+    --h4-font-size: 16px;
+    --label-font-size: 16px;
+    --text-font-size: 13px;
+    --line-break-margin: 20px 0; 
+
+    /* colors */
     --primary-blue: #00bbf9;
     --border-gray: #ccc;
-    --leftright-padding-content: 16px;
+    --leftright-padding-content: 8px;
 }
 
 * {
@@ -13,83 +24,85 @@ body {
     margin: 0;
 }
 
-.theme1 .button {
-    padding: 16px 32px;
-    border-radius: 16px;
+.h1 {
+    font-size: var(--h1-font-size);
+}
+
+.h2 {
+    font-size: var(--h2-font-size);
+}
+
+.h3 {
+    font-size: var(--h3-font-size);
+}
+
+.text {
+    font-size: var(--text-font-size);
+}
+
+.line-break {
+    margin: var(--line-break-margin);
+    border: 0.5px solid var(--border-gray);
+}
+
+.label {
+    display: block;
+    font-size: var(--label-font-size);
+    margin: 8px 0;
     font-weight: bold;
 }
 
-.theme1 .button-primary {
+.input,
+.textarea {
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: var(--text-font-size);
+    border: 1px solid var(--border-gray);
+    resize: none;
+    margin: 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: var(--text-font-size);
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid var(--border-gray);
+}
+
+.button-primary {
     border: 1px solid var(--primary-blue);
     background-color: var(--primary-blue);
     color: white;
 }
 
-.theme1 .button-secondary {
+.button-secondary {
     border: 1px solid var(--primary-blue);
     background-color: white;
     color: var(--primary-blue);;
 }
 
-.theme1 .textarea {
-    resize: none;
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid var(--border-gray);
-}
-
-.theme1 .input {
-    resize: none;
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid var(--border-gray);
-}
-
-.theme1 .modal {
+.modal {
+    background-color: white;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
-    left: 0;
-    opacity: 0;
-    z-index: -1;
+    left: 0;  
+    text-align: left;
+    padding: var(--leftright-padding-content);
 }
 
-.theme1 .modal.open {
-    z-index: 100;
-    opacity: 1;
+.form {
+    
 }
 
-.theme1 .modal-foreground {
-    position: absolute;
-    top: 16px;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    border: 1px solid var(--border-gray);
-    background-color: white;
-    padding: 16px;
-}
-
-.theme1 .modal-foreground h1 {
-    text-align: center;
-}
-
-.theme1 .modal-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 32px;
-}
-
-.theme1 .modal-footer .button {
-    flex-grow: 1;
-    flex-basis: 0;
-    margin: 2px;
-}
-
-.theme1 .dash-header {
+.dash-header {
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -105,7 +118,7 @@ body {
     background-color: white;
 }
 
-.theme1 .heading-select {
+.dash-header-select {
     font-size: 24px;
     border: none;
     padding: 16px;
@@ -113,15 +126,15 @@ body {
     padding: 0;
 }
 
-.theme1 .heading-select:focus {
+.dash-header-select:focus {
     outline: none;
 }
 
-.theme1 .heading-menu a {
+.dash-header-menu a {
     display: block;
 }
 
-.theme1 .dash-footer {
+.dash-footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -136,11 +149,7 @@ body {
     background-color: white;
 }
 
-.theme1 .create-button {
-    width: 100%;
-}
-
-.theme1 .task {
+.task {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -151,11 +160,11 @@ body {
     cursor: pointer;
 }
 
-.theme1 .task-title-wrap {
+.task-title-wrap {
     width: 100%;
 }
 
-.theme1 .task-tag-wrap {
+.task-tag-wrap {
     display: flex;
     align-items: center;
     flex-grow: 0;
@@ -163,7 +172,7 @@ body {
     justify-content: end;
 }
 
-.theme1 .task-time-wrap {
+.task-time-wrap {
     display: flex;
     align-items: center;
     flex-grow: 0;
@@ -172,26 +181,26 @@ body {
     margin: 0 8px;
 }
 
-.theme1 .task-time {
+.task-time {
     font-size: 18px;
     display: inline-block;
 }
 
-.theme1 .task-done-wrap {
+.task-done-wrap {
     display: flex;
     align-items: center;
     flex-grow: 0;
     flex-shrink: 0;
 }
 
-.theme1 .task-done {
+.task-done {
     height: 24px;
     width: 24px;
     border-radius: 18px;
     border: 2px solid var(--primary-blue);
 }
 
-.theme1 .tag {
+.tag {
     padding: 2px;
     border-radius: 4px;
     font-size: 11px;

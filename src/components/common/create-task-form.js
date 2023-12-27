@@ -4,19 +4,10 @@ import state from 'data/state.js';
 import { disable, show, hide } from 'utils/binders.js';
 import { DomainSelect } from 'components/common/domain-select.js';
 
-const parentStyle = {
-    // padding: '16px',
-    // border: '1px solid black',
-    // borderRadius: '16px',
-    // marginBottom: '16px'
-}
 
-export const CreateTaskForm = (onCancel, onSubmit) => {
-
-    let el;
+export const CreateTaskForm = (isModalOpen) => {
     
     const disableSubmit = new ObservableBool(false);
-    const isModalOpen = new ObservableBool(false);
 
     const create = (event) => {
         event.preventDefault();
@@ -36,54 +27,48 @@ export const CreateTaskForm = (onCancel, onSubmit) => {
         }
     }
 
-    const cancel = () => {
+    const cancel = (e) => {
+        console.log('cancel')
+        e.preventDefault();
         isModalOpen.false();
     }
 
-    document.addEventListener("click", (event) => {
-        if (!el.contains(event.target)) {
-            isModalOpen.false();
-        }
-    });
-    
-
-    return el = (
-        element('div', {},
-            element('button', {
-                textContent: 'Add Task',
-                onclick: () => isModalOpen.true(),
-                bind: [[isModalOpen, hide]]
+    return (
+        element('form', {className: 'form'},
+            element('h2', {className: 'h2', textContent: 'Create Task'}),
+            element('label', {
+                className: 'label',
+                textContent: 'Title'
             }),
-            element('div', {
-                className: 'task-panel',
-                bind: [[isModalOpen, show]]
-            },
-                element('form', {},
-                    element('input', {
-                        type: 'text',
-                        name: 'name',
-                        placeholder: 'name',
-                        required: true
-                    }),
-                    element('input', {
-                        type: 'date',
-                        name: 'dueDate',
-                        placeholder: 'dueDate',
-                        required: true
-                    })
-                ),
-                element('div', {},
-                    element('button', {
-                        onclick: cancel,
-                        textContent: 'Cancel',
-                        bind:[[disableSubmit, disable]]
-                    }),
-                    element('button', {
-                        onclick: create,
-                        textContent: 'Add Task',
-                        bind:[[disableSubmit, disable]]
-                    })
-                )
+            element('input', {
+                className: 'input',
+                name: 'name',
+                required: true
+            }),
+            element('label', {
+                className: 'label',
+                textContent: 'Due Date & Time'
+            }),
+            element('input', {
+                className: 'input',
+                type: 'date',
+                name: 'dueDate',
+                required: true
+            }),
+            element('div', {className: 'line-break'}),
+            element('div', {},
+                element('button', {
+                    onclick: cancel,
+                    textContent: 'Cancel',
+                    className: 'button',
+                    bind:[[disableSubmit, disable]]
+                }),
+                element('button', {
+                    onclick: create,
+                    textContent: 'Create',
+                    className: 'button',
+                    bind:[[disableSubmit, disable]]
+                })
             )
         )
     )

@@ -187,7 +187,7 @@ export const TaskList = () => {
             //     bind: [[state.tasks, repeatWith(TaskItem)]]
             // })
             repeat(tasks, (task) => TaskItem(task, isModalOpen, taskToEdit)),
-            Modal(isModalOpen, taskToEdit)
+            // Modal(isModalOpen, taskToEdit)
         )
     )
 }

@@ -5,6 +5,7 @@ import { Loader } from 'components/common/loader.js';
 import { Signup } from 'components/pages/signup/signup.js';
 import { Login } from 'components/pages/login/login.js';
 import { Debug } from 'components/pages/debug/debug.js';
+import { Styling } from 'components/pages/debug/styling.js';
 import { Dash } from 'components/pages/dash/dash.js'
 
 
@@ -30,6 +31,9 @@ export function App() {
                 }
                 if (pathnameVal === '/debug') {
                     return Debug();
+                }
+                if (pathnameVal === '/style') {
+                    return Styling();
                 }
                 return element('div', {textContent: `Page ${pathnameVal} Not Found :(`})
             })
