@@ -6,6 +6,7 @@ export const Loader = () => {
     return (
         element('div', {
             textContent: 'Loading...',
-            bind: [[state.loading, showIfTrueHideIfNot]]})
+            bind: [[state.loading, showIfTrueHideIfNot]]
+        })
     );
 }

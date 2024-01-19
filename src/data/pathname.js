@@ -20,3 +20,9 @@ pathname.redirect = (newPathname) => {
     const navEvent = new CustomEvent('redirect');
     window.dispatchEvent(navEvent);
 }
+
+pathname.onSet((pathnameVal) => {
+    if (pathnameVal === '/dash') {
+        state.init();
+    }
+});
