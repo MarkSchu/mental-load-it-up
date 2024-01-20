@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body { 
+    margin: 0;
+}
+
+:root {
+    --text-size: 14px;
+    --label-size: 16px;
+    --h4-size: 16px;
+    --h3-size: 20px;
+    --h2-size: 24px;
+    --h1-size: 28px;
+
+    --tiny-spacing: 4px;
+    --small-spacing: 8px;
+    --medium-spacing: 12px;
+    --large-spacing: 16px;
+    --big-spacing: 20px;
+    --huge-spacing: 24px;
+
+    --small-border: 1px;
+    --border-radius: 8px;
+
+    --primary-color: #F95738;
+    --input-border-color: #888;
+    --panel-border-color: #ccc;
+}
+
+.text {
+    font-size: var(--text-size);
+    line-height: 20px;
+}
+
+.label {
+    display: block;
+    font-size: var(--label-size);
+    font-weight: bold;
+}
+
+.h1 {
+    font-size: var(--h1-size);
+    margin: 0;
+}
+
+.h2 {
+    font-size: var(--h2-size);
+    margin: 0;
+}
+
+.h3 {
+    font-size: var(--h3-size);
+    margin: 0;
+}
+
+.h4 {
+    font-size: var(--h4-size);
+    margin: 0;
+}
+
+.input,
+.select
+{
+    border: var(--small-border) solid var(--input-border-color);
+}
+
+.input,
+.select,
+.button {
+    height: 52px;
+    border-radius: var(--border-radius);
+    font-size: var(--text-size);
+    cursor: pointer;
+}
+
+.select,
+.button {
+    font-weight: bold;
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    border: var(--small-border) solid var(--primary-color);
+    color: white;
+}
+
+.button-secondary {
+    background-color: white;
+    border: var(--small-border) solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ---------------- */
+
+.dash-footer {
+    position: absolute;
+    border-top: var(--small-border) solid var(--primary-color);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 4px;
+}
+
+.select-button {
+    width: 100%;
+    text-align: center;
+    font-size: var(--h1-size);
+    margin-bottom: var(--tiny-spacing);
+}
+
+.create-button {
+    width: 100%;
+}
+
+.dash-list {
+    position: absolute;
+    top:0;
+    bottom: 117px;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+}
+
+.task-panel {
+    border-bottom: var(--small-border) solid var(--primary-color);
+    padding: var(--medium-spacing);
+    margin-bottom: var(--tiny-spacing);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox {
+    width: var(--huge-spacing);
+    height: var(--huge-spacing);
+    border-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    accent-color: var(--primary-color);
+}
