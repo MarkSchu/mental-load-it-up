@@ -9,7 +9,7 @@ import { Account } from 'components/account.js'
 
 export function App() {
     return (
-        element('div', {className: 'theme1'},
+        element('div', {className: 'app'},
             Loader(),
             bind(pathname, (pathnameVal) => {
                 if (pathnameVal === '/signup') {

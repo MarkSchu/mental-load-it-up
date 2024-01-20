@@ -27,19 +27,28 @@ export const SignupForm = () => {
 
     return (
         element('form', {},
-            element('input', {
-                type: 'email',
-                name: 'email',
-                placeholder: 'email',
-                required: true
+            element('label', {
+                className: 'label',
+                textContent: 'Email'
             }),
             element('input', {
+                className: 'input form-input',
+                type: 'email',
+                name: 'email',
+                required: true
+            }),
+            element('label', {
+                className: 'label',
+                textContent: 'Password'
+            }),
+            element('input', {
+                className: 'input form-input',
                 type: 'password',
                 name: 'password',
-                placeholder: 'password',
                 required: true
             }),
             element('button', {
+                className: 'button button-primary',
                 onclick: signup,
                 textContent: 'Signup',
                 bind:[[disableSubmit, disable]]
@@ -50,10 +59,12 @@ export const SignupForm = () => {
 
 export function Signup() {
     return (
-        element('div', {},
-            element('h1', {textContent: 'Signup'},
-                SignupForm('/dash')
-            )
+        element('div', {className: 'form-page'},
+            element('h1', {
+                className: 'h1 form-h1',
+                textContent: 'Signup'
+            }),
+            SignupForm('/dash')
         )
     )
 }

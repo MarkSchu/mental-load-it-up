@@ -1,8 +1,7 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
-import { showIfTrueHideIfNot } from 'utils/binders.js';
 
-export const Loader = () => {   
+export const Saving = () => {   
 
     const handleLoading = (el, value) => {
         if (value) {
@@ -25,7 +24,6 @@ export const Loader = () => {
         },
             element('div', {className: 'spinner'}),
             element('h2', {
-                id: 'loader-message',
                 className: 'h4',
                 textContent: 'Loading...',
             })
