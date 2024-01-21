@@ -27,11 +27,9 @@ user.signup = (email, password) => {
     .then(() => {
         user.set(auth.currentUser());
     })
-    .catch((err) => {  
-        alert(err)
-    })
-    .finally(() => {
+    .catch(() => {
         state.loading.false();
+        state.alert.set('Oh no');
     });
 }
 

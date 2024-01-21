@@ -15,11 +15,15 @@ export const SignupForm = () => {
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            state.user.signup(email, password).then(() => {
-                disableSubmit.false();
-                form.reset();
-                pathname.redirect('/dash');
-            });
+            state.user.signup(email, password)
+            .then(() => {
+                console.log('success')
+                // disableSubmit.false();
+                // form.reset();
+                // pathname.redirect('/dash');
+            }).catch((err) => {
+                state.alert.show()
+            })
         } else {
             disableSubmit.false();
         }

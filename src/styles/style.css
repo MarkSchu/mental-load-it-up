@@ -7,13 +7,6 @@ body {
     margin: 0;
 }
 
-/* html,
-body,
-.app,
-.content { 
-    height: 100%;
-} */
-
 :root {
     --text-size: 14px;
     --label-size: 16px;

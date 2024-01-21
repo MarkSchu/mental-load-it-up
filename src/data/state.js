@@ -1,4 +1,4 @@
-import { ObservableBool } from 'utils/observable.js';
+import { ObservableBool, ObservableVar } from 'utils/observable.js';
 import { TASKS, EVENTS, DOMAINS } from 'data/collection-names.js';
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
@@ -7,6 +7,7 @@ import { api } from 'data/api.js';
 
 export const state = {
     user,
+    alert: new ObservableVar(),
     loading: new ObservableBool(false),
     tasks: new Collection(TASKS),
     events: new Collection(EVENTS),

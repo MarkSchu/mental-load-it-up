@@ -1,7 +1,7 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
 
-export const Saving = () => {   
+export const Alert = (msg) => {   
 
     const handleLoading = (el, value) => {
         if (value) {
@@ -13,19 +13,24 @@ export const Saving = () => {
         }
     }
 
-    setTimeout(() => {
-        state.loading.true()
-    }, 2000)
-
+    const handleClick = () => {
+        state.alert.set(null);
+    }
+    
     return (
         element('div', {
             className: 'loader',
-            bind: [[state.loading, handleLoading]]
+            bind: [[state.alert, handleLoading]]
         },
-            element('div', {className: 'spinner'}),
             element('h2', {
                 className: 'h4',
-                textContent: 'Loading...',
+                textContent: 'Uh Oh!',
+            }),
+            element('p', {textContent: 'Sorry, that user name is already in use!'}),
+            element('button', {
+                className: 'button button-primary',
+                textContent: 'Close',
+                onclick: handleClick
             })
         )
     );

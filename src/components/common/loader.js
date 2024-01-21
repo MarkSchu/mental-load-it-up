@@ -1,8 +1,7 @@
 import { element } from 'utils/dom.js';
 import state from 'data/state.js';
-import { showIfTrueHideIfNot } from 'utils/binders.js';
 
-export const Loader = () => {   
+export const Loader = (msg) => {   
 
     const handleLoading = (el, value) => {
         if (value) {
@@ -13,11 +12,7 @@ export const Loader = () => {
             el.style.opacity = 0;
         }
     }
-
-    setTimeout(() => {
-        state.loading.true()
-    }, 2000)
-
+    
     return (
         element('div', {
             className: 'loader',
@@ -25,7 +20,6 @@ export const Loader = () => {
         },
             element('div', {className: 'spinner'}),
             element('h2', {
-                id: 'loader-message',
                 className: 'h4',
                 textContent: 'Loading...',
             })
