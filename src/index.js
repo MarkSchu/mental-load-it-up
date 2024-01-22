@@ -1,6 +1,5 @@
 import { bind, element } from 'utils/dom.js';
 import { pathname } from 'data/pathname.js';
-import { Loader } from 'components/common/loader.js';
 import { Alert } from 'components/common/alert.js';
 import { Signup } from 'components/signup.js';
 import { Login } from 'components/login.js';
@@ -11,7 +10,6 @@ import { Account } from 'components/account.js'
 export function App() {
     return (
         element('div', {className: 'app'},
-            Loader(),
             Alert(),
             bind(pathname, (pathnameVal) => {
                 if (pathnameVal === '/signup') {

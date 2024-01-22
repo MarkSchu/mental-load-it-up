@@ -6,9 +6,8 @@ import { Collection } from 'data/collection.js';
 import { api } from 'data/api.js';
 
 export const state = {
-    user,
-    alert: new ObservableVar(),
     loading: new ObservableBool(false),
+    alert: new ObservableBool(false),
     tasks: new Collection(TASKS),
     events: new Collection(EVENTS),
     domains: new Collection(DOMAINS)

@@ -1,5 +1,22 @@
 import { hasNoErrors } from 'utils/validation.js';
 
+export class ObservableEvent {
+
+    constructor() {
+        this.callbacks =[];
+    }
+
+    emit(event, data) {
+        this.callbacks.forEach((callback) => {
+            callback(event, data);
+        });
+    }
+
+    onEmit(callback) {
+        this.callbacks.push(callback);
+    }
+}
+
 export class ObservableVar {
 
     constructor(value) {

@@ -92,7 +92,7 @@ body {
     }
 }
 
-.loader {
+.alert {
     background-color: white;
     position: absolute;
     z-index: -1;

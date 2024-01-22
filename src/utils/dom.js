@@ -24,16 +24,23 @@ function addAttrs(el, attrs) {
                 });
                 callback(el, observableVar.value);
             });
-        } 
+        }
+        else if (attr === 'listen') {
+            const listeners = attrs['listen'];
+            listeners.forEach((listener) => {
+                const observableEvent = listener[0];
+                const callback = listener[1];
+                observableEvent.onEmit((event, data) => {
+                    callback(el, event, data);
+                });
+            });
+        }
         else if (attr === 'style') {
             const styles = attrs[attr];
             for (var style in styles) {
                 el.style[style] = styles[style];
             }
         }
-        // else if (attr === 'tabindex') {
-        //     el.setAttribute('tabindex', '0');
-        // }
         else {
             el[attr] = attrs[attr];
         }

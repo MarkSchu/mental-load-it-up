@@ -1,6 +1,6 @@
 import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
-import state from 'data/state.js';
+import { user } from 'data/user.js';
 import { disable } from 'utils/binders.js';
 import { pathname } from 'data/pathname.js';
 
@@ -15,14 +15,10 @@ export const SignupForm = () => {
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            state.user.signup(email, password)
+            user.signup(email, password)
             .then(() => {
-                console.log('success')
-                // disableSubmit.false();
-                // form.reset();
-                // pathname.redirect('/dash');
-            }).catch((err) => {
-                state.alert.show()
+                disableSubmit.false();
+                form.reset();
             })
         } else {
             disableSubmit.false();

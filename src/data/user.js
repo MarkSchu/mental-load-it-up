@@ -1,6 +1,7 @@
 import { ObservableVar } from 'utils/observable.js';
 import { pathname } from 'data/pathname.js';
 import state from 'data/state.js';
+import { alerts } from 'data/alerts.js';
 
 const auth = new GoTrue({
   APIUrl: 'https://spontaneous-nougat-f22d85.netlify.app/.netlify/identity',
@@ -19,17 +20,17 @@ user.current = () => {
 }
 
 user.signup = (email, password) => {
-    state.loading.true();
+    alerts.emit('request', 'saving');
     return auth.signup(email, password)
-    .then(() => {
-        return auth.login(email, password, true)
-    })
+    .then(() => 
+        auth.login(email, password, true)
+    )
     .then(() => {
         user.set(auth.currentUser());
+        pathname.redirect('/dash');
     })
-    .catch(() => {
-        state.loading.false();
-        state.alert.set('Oh no');
+    .catch((err) => {
+        alerts.emit('response', 'error')
     });
 }
 

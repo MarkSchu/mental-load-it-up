@@ -1,6 +1,6 @@
 import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
-import state from 'data/state.js';
+import { user } from 'data/user.js';
 import { disable } from 'utils/binders.js';
 
 export const LoginForm = () => {
@@ -14,7 +14,7 @@ export const LoginForm = () => {
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            state.user.login(email, password).then(() => {
+            user.login(email, password).then(() => {
                 disableSubmit.false();
                 form.reset();
                 pathname.redirect('/dash');
