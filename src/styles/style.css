@@ -203,9 +203,9 @@ body {
 .task-title-parent {
     width: 100%;
     border: 1px solid black;
-    padding: 8px;
+    padding: 8px 16px;
     border-radius: 8px;
-    margin-right: 4px;
+    margin-right: 8px;
 }
 
 .task-title {
@@ -216,4 +216,17 @@ body {
     width: 28px;
     border-radius: 100%;
     border: 1px solid black;
+}
+
+.checkbox {
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    border: 1px solid black;
+    appearance: none;
+    margin: 0;
+}
+
+.checkbox:checked {
+    background-color: var(--primary-color);
 }

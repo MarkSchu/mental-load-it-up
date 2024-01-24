@@ -84,11 +84,10 @@ function TaskPanel(task) {
                 })
             ),
             element('div', {},
-                element('div', {className: 'done'})
-                // element('input', {
-                //     className: 'checkbox',
-                //     type: 'checkbox' 
-                // })
+                element('input', {
+                    className: 'checkbox',
+                    type: 'checkbox' 
+                })
             )
         )
     )
