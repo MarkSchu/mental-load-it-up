@@ -1,7 +1,15 @@
-import { ObservableEvent } from 'utils/observable.js';
+import { ObservableVar } from 'utils/observable.js';
 
-export const alerts = new ObservableEvent();
+export const alerts = new ObservableVar();
 
-alerts.showSaving = () => {
-    alerts.emit('saving', )
+alerts.creating = () => {
+    alerts.set({type: 'creating'});
+}
+
+alerts.error = (msg) => {
+    alerts.set({type: 'error', msg});
+}
+
+alerts.close = () => {
+    alerts.set({type: 'close'})
 }

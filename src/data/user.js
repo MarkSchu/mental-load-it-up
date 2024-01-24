@@ -20,7 +20,7 @@ user.current = () => {
 }
 
 user.signup = (email, password) => {
-    alerts.emit('request', 'saving');
+    alerts.creating();
     return auth.signup(email, password)
     .then(() => 
         auth.login(email, password, true)
@@ -30,7 +30,7 @@ user.signup = (email, password) => {
         pathname.redirect('/dash');
     })
     .catch((err) => {
-        alerts.emit('response', 'error')
+        alerts.error(err?.json?.msg || 'Something went wrong.');
     });
 }
 

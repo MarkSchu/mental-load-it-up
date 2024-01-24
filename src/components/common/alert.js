@@ -1,86 +1,75 @@
-import { element } from 'utils/dom.js';
+import { element, bind } from 'utils/dom.js';
 import { alerts } from 'data/alerts.js';
-import { ObservableBool } from 'utils/observable.js';
 
-export const Alert = (msg) => {   
 
-    const handleLoading = (el, value) => {
-        if (value) {
-            el.style.zIndex = 2;
-            el.style.opacity = 1;
-        } else {
-            el.style.zIndex = -1;
-            el.style.opacity = 0;
-        }
-    }
+const Creating = () => {
+    return (
+        element('div', {},
+            element('div', {className: 'spinner'}),
+            element('h2', {textContent: 'Creating...'})
+        )
+    )
+}
 
-    const display = new ObservableBool();
-
-    const handleEvent = (el, event, data) => {
-        console.log(el, event, data)
-        if (event === 'request') {
-            display.true()
-        }
-        if (event === 'response') {
-            if (data.type === 'error') {
-                // show error 
-            } else {
-                // hide
-            }
-        }
-    }
-
-    const handleClick = () => {
-        display.false();
-    }
+const Error = (msg) => {
     
+    const onclick = () => {
+        alerts.close();
+    }
+
+    return (
+        element('div', {},
+            element('h2', {textContent: 'Uh oh!'}),
+            element('p', {textContent: msg}),
+            element('button', {
+                className: 'button button-primary',
+                textContent: 'Close',
+                onclick
+            })
+        )
+    )
+}
+
+export const Alert = () => {   
+
+    const show = (el) => {
+        el.style.zIndex = 2;
+        el.style.opacity = 1;
+    }
+
+    const hide = (el) => {
+        el.style.zIndex = -1;
+        el.style.opacity = 0;
+    }
+
+    const handleEvent = (el, data) => {
+        if (data?.type === 'creating') {
+            show(el);
+        }
+        if (data?.type === 'error') {
+            show(el);
+        }
+        if (data?.type === 'close') {
+            hide(el);
+        }
+    }
+
+
     return (
         element('div', {
             className: 'alert',
-            listen: [[alerts, handleEvent]],
-            // bind: [alerts, handleEvent]
+            bind: [[alerts, handleEvent]],
         },
-            element('div', {className: 'spinner'}),
-            element('h2', {
-                className: 'h4',
-                textContent: 'Saving...',
+            bind(alerts, (data) => {
+                if (data?.type === 'creating') {
+                    return Creating()
+                }
+                if (data?.type === 'error') {
+                    return Error(data.msg);
+                }
+                return element('span', {}) 
             })
         )
     );
 }
 
-
-// export const Alert = (msg) => {   
-
-//     const handleLoading = (el, value) => {
-//         if (value) {
-//             el.style.zIndex = 2;
-//             el.style.opacity = 1;
-//         } else {
-//             el.style.zIndex = -1;
-//             el.style.opacity = 0;
-//         }
-//     }
-
-//     const handleClick = () => {
-//         state.alert.set(null);
-//     }
-    
-//     return (
-//         element('div', {
-//             className: 'loader',
-//             bind: [[state.alert, handleLoading]]
-//         },
-//             element('h2', {
-//                 className: 'h4',
-//                 textContent: 'Uh Oh!',
-//             }),
-//             element('p', {textContent: 'Sorry, that user name is already in use!'}),
-//             element('button', {
-//                 className: 'button button-primary',
-//                 textContent: 'Close',
-//                 onclick: handleClick
-//             })
-//         )
-//     );
-// }

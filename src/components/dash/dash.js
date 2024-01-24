@@ -18,7 +18,7 @@ const tasks = [
         tags: ['christmas']
     },
     {
-        name: 'buy gifts for oofta, sally, lisa, charlie, blop, and jala', 
+        name: 'Go buy a bunch of gear from REI and then go to the Himilayas. Once there, buy a permit to climb mount everest. Then head to basecamp. Then climb mount everest. At the top, shout to the Universe!', 
         days: 7,
         tags: ['christmas']
     },
@@ -78,13 +78,13 @@ function TaskPanel(task) {
     return (
         element('div', {className: 'task-panel'},
             element('div', {
-                textContent: '> ' + task.name,
-                className: 'text'
+                className: 'text title',
+                textContent: task.name,
             }),
             element('div', {},
                 element('input', {
                     className: 'checkbox',
-                    type: 'checkbox'
+                    type: 'checkbox' 
                 })
             )
         )

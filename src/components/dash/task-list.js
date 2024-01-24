@@ -155,19 +155,19 @@ export const TaskList = () => {
             name: 'buy more coconut milk', 
             days: 11,
             tags: ['grocery']
-        },
+        },s
         {
             name: 'take back pants to banana republic', 
             days: 4,
             tags: ['misc']
         },
         {
-            name: 'set up the christas tree', 
+            name: 'set up the christas tree',
             days: 7,
             tags: ['christmas']
         },
         {
-            name: 'buy gifts for oofta, sally, lisa, charlie, blop, and jala', 
+            name: 'Go buy a bunch of gear from REI and then go to the Himilayas. Once there, buy a permit to climb mount everest. Then head to basecamp. Then climb mount everest. At the top, shout out o tht euniverse', 
             days: 7,
             tags: ['christmas']
         },

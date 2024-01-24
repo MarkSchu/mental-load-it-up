@@ -18,7 +18,6 @@ export const SignupForm = () => {
             user.signup(email, password)
             .then(() => {
                 disableSubmit.false();
-                form.reset();
             })
         } else {
             disableSubmit.false();
