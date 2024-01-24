@@ -71,6 +71,31 @@ const tasks = [
         name: 'buy more coconut milk', 
         days: 11,
         tags: ['grocery']
+    },
+    {
+        name: 'buy more coconut milk', 
+        days: 11,
+        tags: ['grocery']
+    },
+    {
+        name: 'buy more coconut milk', 
+        days: 11,
+        tags: ['grocery']
+    },
+    {
+        name: 'buy more coconut milk', 
+        days: 11,
+        tags: ['grocery']
+    },
+    {
+        name: 'buy more coconut milk', 
+        days: 11,
+        tags: ['grocery']
+    },
+    {
+        name: 'buy more coconut milk', 
+        days: 11,
+        tags: ['grocery']
     }
 ]
 
@@ -83,12 +108,10 @@ function TaskPanel(task) {
                     textContent: task.name,
                 })
             ),
-            element('div', {},
-                element('input', {
-                    className: 'checkbox',
-                    type: 'checkbox' 
-                })
-            )
+            element('input', {
+                className: 'checkbox',
+                type: 'checkbox' 
+            })
         )
     )
 }
@@ -101,7 +124,7 @@ function List () {
     )
 }
 
-function DashFooter () {
+function xDashFooter () {
     return (
         element('div', {className: 'dash-footer'},
             element('div', {}, 
@@ -116,6 +139,38 @@ function DashFooter () {
                     className: 'button button-primary create-button',
                     textContent: 'Add a Task!'
                 })
+            )
+        )
+    )
+}
+
+function DashFooter () {
+    return (
+        element('div', {className: 'dash-footer'},
+            element('div', {style: { marginBottom: '4px', display: 'flex'}}, 
+                // element('button', {
+                //     className: 'button button-primary create-button',
+                //     textContent: 'Add a Task!'
+                // })
+                element('input', {
+                    style: {
+                        width: '100%',
+                        marginRight: '4px'
+                    },
+                    className: 'input',
+                    type: 'text'
+                }),
+                element('button', {
+                    className: 'button button-primary',
+                    textContent: 'Add'
+                })
+            ),
+            element('div', {}, 
+                element('select', {
+                    className: 'select button-secondary select-button '
+                },
+                    element('option', {textContent: 'Tasks'})
+                )
             )
         )
     )
