@@ -180,15 +180,16 @@ body {
 }
 
 .task-panel {
-    border-bottom: var(--small-border) solid var(--primary-color);
-    padding: var(--medium-spacing);
-    margin-bottom: var(--tiny-spacing);
+    /* border-bottom: var(--small-border) solid var(--primary-color); */
+    /* padding: var(--medium-spacing); */
+    padding: 8px;
+    /* margin-bottom: 8px; */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 
-.checkbox {
+/* .checkbox {
     width: var(--huge-spacing);
     height: var(--huge-spacing);
     border-color: var(--primary-color);
@@ -197,4 +198,22 @@ body {
 
 .checkbox:checked {
     accent-color: var(--primary-color);
+} */
+
+.task-title-parent {
+    width: 100%;
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 4px;
+}
+
+.task-title {
+}
+
+.done {
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    border: 1px solid black;
 }

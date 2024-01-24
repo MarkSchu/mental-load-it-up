@@ -77,15 +77,18 @@ const tasks = [
 function TaskPanel(task) {
     return (
         element('div', {className: 'task-panel'},
-            element('div', {
-                className: 'text title',
-                textContent: task.name,
-            }),
-            element('div', {},
-                element('input', {
-                    className: 'checkbox',
-                    type: 'checkbox' 
+            element('div', {className: 'task-title-parent'},
+                element('div', {
+                    className: 'text task-title',
+                    textContent: task.name,
                 })
+            ),
+            element('div', {},
+                element('div', {className: 'done'})
+                // element('input', {
+                //     className: 'checkbox',
+                //     type: 'checkbox' 
+                // })
             )
         )
     )
