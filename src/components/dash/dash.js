@@ -124,34 +124,38 @@ function List () {
     )
 }
 
-function xDashFooter () {
+function DashFooter () {
     return (
         element('div', {className: 'dash-footer'},
+            element('input', {
+                style: {
+                    width: '100%',
+                    marginRight: '4px'
+                },
+                className: 'input',
+                type: 'text'
+            }),
+            element('div', {}, 
+                element('button', {
+                    className: 'button button-primary create-button',
+                    textContent: 'Add a Task!'
+                })
+            ),
             element('div', {}, 
                 element('select', {
                     className: 'select button-secondary select-button '
                 },
                     element('option', {textContent: 'Tasks'})
                 )
-            ),
-            element('div', {}, 
-                element('button', {
-                    className: 'button button-primary create-button',
-                    textContent: 'Add a Task!'
-                })
             )
         )
     )
 }
 
-function DashFooter () {
+function xDashFooter () {
     return (
         element('div', {className: 'dash-footer'},
             element('div', {style: { marginBottom: '4px', display: 'flex'}}, 
-                // element('button', {
-                //     className: 'button button-primary create-button',
-                //     textContent: 'Add a Task!'
-                // })
                 element('input', {
                     style: {
                         width: '100%',
@@ -175,6 +179,19 @@ function DashFooter () {
         )
     )
 }
+
+/*
+task creation behavior 
+
+write out
+click create 
+task panel created and open in pre-edit mode
+
+    ------------------------------
+    delete  |  edit  ????
+
+off click takes task out of pre-edit mdoe
+*/
 
 export function Dash() {
     return (

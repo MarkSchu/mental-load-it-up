@@ -162,12 +162,12 @@ body {
     width: 100%;
     text-align: center;
     font-size: var(--h1-size);
-    margin-bottom: var(--tiny-spacing);
 }
 
 .create-button {
     height: 52px;
     width: 100%;
+    margin-bottom: var(--tiny-spacing);
 }
 
 .dash-list {
@@ -209,9 +209,10 @@ body {
     appearance: none;
     margin: 0;
     display: block;
+    cursor: pointer;
 }
 
 .checkbox:checked {
-    background-color: var(--primary-color);
-    color: black;
+    background-color: black; 
+    border: 1px solid black;
 }
