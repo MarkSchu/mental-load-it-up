@@ -1,3 +1,11 @@
+export const disableOnRequest = (el, data) => {
+    if (data?.supertype === 'request') {
+        el.disabled = true;
+    }
+    if (data?.supertype === 'response') {
+        el.disabled = false;
+    }
+}
 
 export function setValue (el, value) {
     el.value = value;
@@ -14,6 +22,7 @@ export function hide(el, value) {
 export function disable(el, value) {
     el.disabled = value;
 }
+
 
 export function repeat(el, list, createElement) {
     var child = el.lastElementChild; 

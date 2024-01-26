@@ -1,54 +1,59 @@
 import { ObservableArray } from 'utils/observable.js';
 import { api } from 'data/api.js';
-import { state } from 'data/state.js';
-import { user } from 'data/user.js';
+import { alerts } from 'data/alerts.js';
 
 export class Collection extends ObservableArray {
 
-    constructor(collectionName) {
-        super(collectionName);
+    constructor(collection) {
+        super(collection);
         this.value = [];
-        this.collectionName = collectionName;
+        this.collection = collection;
     }
 
-    create (instance) {
-        const action = 'create';
-        const collectionName = this.collectionName;
-        const data = instance;
-        instance.userId = user.id();
-        return api(action, collectionName, data).then((res) => {
-            const { status, body } = res; 
-            if (status < 300) {
-                state[collectionName].push(body.instance);
+    create (data) {
+        alerts.creating();
+        const collection = this.collection;
+        return api('create', collection, data).then((response) => {
+            if (response.status < 300) {
+                alerts.close();
+                collections[collection].push(response.body);
+            } else {
+                alerts.error(response.statusText);
             }
-            return res; 
         });
     }
     
     updateById (_id, properties) {
-        const action = 'updateById'
-        const collectionName = this.collectionName;
+        const collection = this.collection;
         const data = {_id, properties}
-        return api(action, collectionName, data).then((res) => {
-            const { status, body } = res; 
+        return api('updateById', collection, data).then((response) => {
+            const { status, body } = response; 
             if (status < 300) {
-                state[collectionName].replace(body.instance);
+                state[collection].replace(body.instance);
             }
-            return res;
+            return response;
         });
     }
     
     deleteById (_id) {
-        const action = 'deleteById';
-        const collectionName = this.collectionName;
+        const collection = this.collection;
         const data = {_id};
-        return api(action, collectionName, data).then((res) => {
-            const { status, body } = res; 
+        return api('deleteById', collection, data).then((response) => {
+            const { status, body } = response; 
             if (status < 300) {
-                state[collectionName].remove(_id);
+                state[collection].remove(_id);
             }
-            return res;
+            return response;
         });
     }
 }
 
+export const TASKS = 'tasks';
+export const EVENTS = 'events';
+export const DOMAINS = 'domains';
+
+export const collections = {
+    tasks: new Collection(TASKS),
+    events: new Collection(EVENTS),
+    domains: new Collection(DOMAINS)
+}

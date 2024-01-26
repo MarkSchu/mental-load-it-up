@@ -6,6 +6,11 @@ import { Login } from 'components/login.js';
 import { Dash } from 'components/dash/dash.js'
 import { Account } from 'components/account.js'
 
+pathname.onSet((pathnameVal) => {
+    if (pathnameVal === '/dash') {
+        // state.init();
+    }
+});
 
 export function App() {
     return (

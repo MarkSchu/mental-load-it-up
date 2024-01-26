@@ -1,29 +1,31 @@
 import { user } from 'data/user.js';
-import state from 'data/state.js';
 
-export const api = async (action, collectionName, data) => {
-    state.loading.true();
+
+export const api = async (action, collection, data) => {
     return fetch('/.netlify/functions/request', {
         method: 'POST',
         body: JSON.stringify({
             action,
-            collectionName,
+            userId: user.id(),
+            collection,
             data
         })
-    }).then((res) => {
-        return res.json().then((body) => {
-            return {body, status: res.status}
-        })
     })
-    .catch((res) => {
-       alert(res);
-       return res;
-    })
-    .finally((res) => {
-        state.loading.false();
-        return res;
-    })
+    .then((response) => {
+        if (response.status < 300) {
+            return response.json().then((body) => {
+                return {
+                    body,
+                    status: response.status,
+                    statusText: response.statusText
+                }
+            })
+        }
+        return {
+            status: response.status,
+            statusText: response.statusText
+        }
+    });
 }
-
 
 

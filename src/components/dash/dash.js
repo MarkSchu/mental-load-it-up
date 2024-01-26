@@ -1,7 +1,9 @@
 import { element, repeat } from 'utils/dom.js';
-import { ObservableBool } from 'utils/observable.js';
+import { collections } from 'data/collection.js';
+import { disableOnRequest } from 'utils/binders.js';
+import { alerts } from 'data/alerts.js';
 
-const tasks = [
+const xtasks = [
     {
         name: 'cut the grass', 
         days: 1,
@@ -99,6 +101,14 @@ const tasks = [
     }
 ]
 
+const tasklist = [
+    {
+        name: 'cut the grass', 
+        due: 'Wed, 24 Jan 2024 16:13:44 GMT', // UTC
+        tags: [{name: 'house'}]
+    },
+]
+
 function TaskPanel(task) {
     return (
         element('div', {className: 'task-panel'},
@@ -119,60 +129,43 @@ function TaskPanel(task) {
 function List () {
     return (
         element('div', {className: 'dash-list'},
-            repeat(tasks, TaskPanel)
+            repeat(tasklist, TaskPanel)
         )
     )
 }
 
 function DashFooter () {
-    return (
-        element('div', {className: 'dash-footer'},
-            element('input', {
-                style: {
-                    width: '100%',
-                    marginRight: '4px'
-                },
-                className: 'input',
-                type: 'text'
-            }),
-            element('div', {}, 
-                element('button', {
-                    className: 'button button-primary create-button',
-                    textContent: 'Add a Task!'
-                })
-            ),
-            element('div', {}, 
-                element('select', {
-                    className: 'select button-secondary select-button '
-                },
-                    element('option', {textContent: 'Tasks'})
-                )
-            )
-        )
-    )
-}
 
-function xDashFooter () {
+    const onsubmit = (e) => {
+        const form = e.target;
+        if (form.reportValidity()) {
+            collections.tasks
+            .create({title: 'buy a cow'})
+            .then(() => form.reset())
+        }
+        return false;
+    }
+
     return (
         element('div', {className: 'dash-footer'},
-            element('div', {style: { marginBottom: '4px', display: 'flex'}}, 
+            element('form', {onsubmit},
                 element('input', {
                     style: {
                         width: '100%',
                         marginRight: '4px'
                     },
                     className: 'input',
-                    type: 'text'
+                    type: 'text',
+                    required: true
                 }),
                 element('button', {
                     className: 'button button-primary',
-                    textContent: 'Add'
+                    textContent: 'Add',
+                    // bind: [[alerts, disableOnRequest]]
                 })
             ),
             element('div', {}, 
-                element('select', {
-                    className: 'select button-secondary select-button '
-                },
+                element('select', {className: 'select button-secondary select-button'},
                     element('option', {textContent: 'Tasks'})
                 )
             )
@@ -201,3 +194,4 @@ export function Dash() {
         )
     )
 }
+
