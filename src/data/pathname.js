@@ -1,5 +1,4 @@
 import { ObservableVar } from 'utils/observable.js';
-import state from 'data/state.js';
 
 export const pathname = new ObservableVar(window.location.pathname);
 

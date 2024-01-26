@@ -6,6 +6,9 @@ const connectDB = () => {
 }
 
 exports.handler = async (event) => {
+    /**
+     * we need to make sure the user is logged in here
+     */
     return connectDB().then(() => {
         const {action, userId, collection, data} = JSON.parse(event.body);
         return db[action](userId, collection, data);

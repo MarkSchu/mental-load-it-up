@@ -1,6 +1,6 @@
 import { ObservableVar } from 'utils/observable.js';
 import { pathname } from 'data/pathname.js';
-import state from 'data/state.js';
+import general from 'data/general.js';
 import { alerts } from 'data/alerts.js';
 
 const auth = new GoTrue({
@@ -35,7 +35,7 @@ user.signup = (email, password) => {
 }
 
 user.login = (email, password) => {
-    state.loading.true();
+    general.loading.true();
     return auth.login(email, password, true)
     .then(() => {
         pathname.redirect('/')
@@ -44,19 +44,19 @@ user.login = (email, password) => {
         alert(err)
     })
     .finally(() => {
-        state.loading.false();
+        general.loading.false();
     });
 }
 
 user.logout = () => {
-    state.loading.true();
+    general.loading.true();
     auth.currentUser().logout()
     .catch((err) => {
         alert(err)
     })
     .then(() => {
         user.set(undefined);
-        state.loading.false();
+        general.loading.false();
     });
 }
 

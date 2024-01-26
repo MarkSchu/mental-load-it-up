@@ -1,5 +1,6 @@
 import { bind, element } from 'utils/dom.js';
 import { pathname } from 'data/pathname.js';
+import { general } from 'data/general.js';
 import { Alert } from 'components/common/alert.js';
 import { Signup } from 'components/signup.js';
 import { Login } from 'components/login.js';
@@ -8,7 +9,7 @@ import { Account } from 'components/account.js'
 
 pathname.onSet((pathnameVal) => {
     if (pathnameVal === '/dash') {
-        // state.init();
+        general.init();
     }
 });
 

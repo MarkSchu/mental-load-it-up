@@ -6,6 +6,10 @@ alerts.creating = () => {
     alerts.set({type: 'creating', supertype: 'request'});
 }
 
+alerts.loading = () => {
+    alerts.set({type: 'loading', supertype: 'request'});
+}
+
 alerts.error = (msg) => {
     alerts.set({type: 'error', msg, supertype: 'response'});
 }

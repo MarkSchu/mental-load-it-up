@@ -11,6 +11,15 @@ const Creating = () => {
     )
 }
 
+const Loading = () => {
+    return (
+        element('div', {},
+            element('div', {className: 'spinner'}),
+            element('h2', {textContent: 'Loading...'})
+        )
+    )
+}
+
 const Error = (msg) => {
     
     const onclick = () => {
@@ -46,6 +55,9 @@ export const Alert = () => {
         if (data?.type === 'creating') {
             show(el);
         }
+        if (data?.type === 'loading') {
+            show(el);
+        }
         if (data?.type === 'error') {
             show(el);
         }
@@ -63,6 +75,9 @@ export const Alert = () => {
             bind(alerts, (data) => {
                 if (data?.type === 'creating') {
                     return Creating()
+                }
+                if (data?.type === 'loading') {
+                    return Loading()
                 }
                 if (data?.type === 'error') {
                     return Error(data.msg);

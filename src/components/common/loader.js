@@ -1,5 +1,4 @@
 import { element } from 'utils/dom.js';
-import state from 'data/state.js';
 
 export const Loader = (msg) => {   
 

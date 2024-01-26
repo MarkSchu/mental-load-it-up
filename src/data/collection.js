@@ -48,12 +48,8 @@ export class Collection extends ObservableArray {
     }
 }
 
-export const TASKS = 'tasks';
-export const EVENTS = 'events';
-export const DOMAINS = 'domains';
-
 export const collections = {
-    tasks: new Collection(TASKS),
-    events: new Collection(EVENTS),
-    domains: new Collection(DOMAINS)
+    tasks: new Collection('tasks'),
+    events: new Collection('events'),
+    domains: new Collection('domains')
 }
