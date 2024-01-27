@@ -7,7 +7,7 @@ import { Login } from 'components/login.js';
 import { Dash } from 'components/dash/dash.js'
 import { Account } from 'components/account.js'
 
-pathname.onSet((pathnameVal) => {
+pathname.onEmit((pathnameVal) => {
     if (pathnameVal === '/dash') {
         general.init();
     }

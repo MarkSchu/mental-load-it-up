@@ -1,7 +1,7 @@
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
 import { api } from 'data/api.js';
-import { collections } from 'data/collection.js';
+import { collections, sortByDates } from 'data/collection.js';
 import { alerts } from 'data/alerts.js';
 
 export const general = {};
@@ -19,7 +19,7 @@ general.getAllUserData = () => {
     return api('getAllUserData').then((response) => {
         const { status, body, statusText } = response; 
         if (status < 300) {
-            collections.tasks.set(body.tasks);
+            collections.tasks.set(sortByDates(body.tasks));
             collections.events.set(body.events);
             collections.domains.set(body.domains);
             alerts.close()

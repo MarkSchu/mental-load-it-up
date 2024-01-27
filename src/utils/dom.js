@@ -19,7 +19,7 @@ function addAttrs(el, attrs) {
             binders.forEach((binder) => {
                 const observableVar = binder[0];
                 const callback = binder[1];
-                observableVar.onSet((value) => {
+                observableVar.onEmit((value) => {
                     callback(el, value);
                 });
                 callback(el, observableVar.value);
@@ -60,7 +60,7 @@ export function element(tag, attrs) {
 
 export function bind(observableVar, callback) {
     let currentChildren = toListOfChildren(callback(observableVar.value));
-    observableVar.onSet((value) => {
+    observableVar.onEmit((value) => {
         let newChildren = toListOfChildren(callback(value));
         let parent = currentChildren[0].parentElement;
         if (parent) {

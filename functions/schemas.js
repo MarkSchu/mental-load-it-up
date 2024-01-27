@@ -9,7 +9,9 @@ const task = new mongoose.Schema({
 
 const event = new mongoose.Schema({
     title: String,
-    userId: String
+    userId: String,
+    dueDate: String,            // UTC string
+    creationDate: String       // UTC string
 });
 
 const domain = new mongoose.Schema({

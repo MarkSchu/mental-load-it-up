@@ -7,13 +7,13 @@ export class ObservableVar {
         this.callbacks =[];
     }
 
-    emit() {
+    emit(extras) {
         this.callbacks.forEach((callback) => {
-            callback(this.value);
+            callback(this.value, extras);
         });
     }
 
-    onSet(callback) {
+    onEmit(callback) {
         this.callbacks.push(callback);
     }
 

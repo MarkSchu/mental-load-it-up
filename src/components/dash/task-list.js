@@ -17,10 +17,14 @@ function TaskPanel(task) {
                     textContent: task.title
                 }),
             ),
-            element('div', {className: 'days'},
+            element('div', {
+                className: 'days',
+                style: {visibility: task.dueDate ? 'visible' : 'hidden'}
+            },
                 element('div', {
                     className: 'days-number',
-                    textContent: `${Math.floor((Math.random() * 100))}`}),
+                    textContent: `${Math.floor((Math.random() * 100))}`
+                }),
                 element('div', {
                     className: 'days-word',
                     textContent: 'days'
