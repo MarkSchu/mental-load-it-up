@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 
 const task = new mongoose.Schema({
     title: String,
-    userId: String
+    userId: String,             // Netlify User ID
+    dueDate: String,            // UTC string
+    creationDate: String        // UTC string
 });
 
 const event = new mongoose.Schema({

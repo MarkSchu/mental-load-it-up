@@ -11,7 +11,7 @@ function DashFooter () {
         const form = e.target;
         if (form.reportValidity()) {
             collections.tasks
-            .create({title: 'buy a cow'})
+            .create({title: form.elements.title.value})
             .then(() => form.reset())
         }
         return false;
@@ -19,14 +19,14 @@ function DashFooter () {
 
     return (
         element('div', {className: 'dash-footer'},
-            element('form', {onsubmit},
+            element('form', {
+                className: ' task-input-form',
+                onsubmit
+            },
                 element('input', {
-                    style: {
-                        width: '100%',
-                        marginRight: '4px'
-                    },
-                    className: 'input',
+                    className: 'input task-input',
                     type: 'text',
+                    name: 'title',
                     required: true
                 }),
                 element('button', {

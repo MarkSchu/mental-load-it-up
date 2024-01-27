@@ -1,9 +1,14 @@
 const schemas = require('./schemas');
 
+const getCurrentUTC = () => {
+    return (new Date()).toUTCString();
+}
+
 const db = {};
 
 db.create = async (userId, collection, data) => {
     data.userId = userId;
+    data.creationDate = getCurrentUTC();
     const Schema = schemas[collection];
     const doc = new Schema(data);
     await doc.save();

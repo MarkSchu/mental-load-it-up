@@ -1,10 +1,13 @@
 export const disableOnRequest = (el, data) => {
     if (data?.supertype === 'request') {
         el.disabled = true;
-    }
-    if (data?.supertype === 'response') {
+    } else {
         el.disabled = false;
     }
+}
+
+export const insert = () => {
+
 }
 
 export function setValue (el, value) {
@@ -50,6 +53,7 @@ export function dispayIfTrueHideIfNot(el, value) {
 // ---
 
 export const repeatWith = (createElement) => (el, list) => {
+    // el is the parent
     var child = el.lastElementChild; 
     while (child) {
         el.removeChild(child);
@@ -59,3 +63,4 @@ export const repeatWith = (createElement) => (el, list) => {
         el.appendChild(createElement(item));
     });
 }
+

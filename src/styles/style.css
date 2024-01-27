@@ -157,17 +157,27 @@ body {
     padding: 4px;
 }
 
-.select-button {
-    height: 52px;
+.task-input-form {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.task-input {
     width: 100%;
-    text-align: center;
-    font-size: var(--h1-size);
+    margin-right: 4px;
 }
 
 .create-button {
     height: 52px;
     width: 100%;
     margin-bottom: var(--tiny-spacing);
+}
+
+.select-button {
+    height: 52px;
+    width: 100%;
+    text-align: center;
+    font-size: var(--h1-size);
 }
 
 .dash-list {
@@ -190,24 +200,15 @@ body {
     border: 1px solid black;
     padding: 8px 16px;
     border-radius: 8px;
-    margin-right: 8px;
-}
-
-
-.done {
-    height: 28px;
-    width: 28px;
-    border-radius: 100%;
-    border: 1px solid black;
 }
 
 .checkbox {
-    height: 38px;
-    min-width: 38px;
+    height: 30px;
+    min-width: 30px;
     border-radius: 100%;
     border: 1px solid black;
     appearance: none;
-    margin: 0;
+    margin: 4px 4px 0 0;
     display: block;
     cursor: pointer;
 }
@@ -215,4 +216,23 @@ body {
 .checkbox:checked {
     background-color: black; 
     border: 1px solid black;
+}
+
+.days {
+    height: 30px;
+    min-width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4px;
+    margin: 4px 0 0 4px;
+    flex-direction: column;
+}
+
+.days-number {
+    font-size: 16px;
+}
+
+.days-word {
+    font-size: 12px;
 }
