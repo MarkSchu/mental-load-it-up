@@ -98,6 +98,15 @@ body {
     transition: opacity 0.25s;
 }
 
+.full-screen {
+    background-color: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
 @keyframes spin { 
     from {
         transform: rotate(0deg);
@@ -193,6 +202,7 @@ body {
     padding: 8px 4px;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .task-title-parent {

@@ -63,7 +63,7 @@ export function Signup() {
                 className: 'h1 form-h1',
                 textContent: 'Signup'
             }),
-            SignupForm('/dash')
+            SignupForm()
         )
     )
 }

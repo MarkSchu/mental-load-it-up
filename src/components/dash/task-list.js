@@ -1,12 +1,23 @@
-import { element, repeat } from 'utils/dom.js';
+import { element } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
 import { repeatWith } from 'utils/binders.js';
+import { EditTaskForm } from 'components/common/task-edit-form.js';
+import { ObservableBool } from 'utils/observable.js';
 
 function TaskPanel(task) {
+
+    const showModal = new ObservableBool(false);
+
+    const onclick = () => {
+        showModal.toggle()
+    }
+
     return (
         element('div', {
             className: 'task-panel',
+            onclick
         },
+            EditTaskForm(task, showModal),
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox' 

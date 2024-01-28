@@ -6,10 +6,6 @@ export const disableOnRequest = (el, data) => {
     }
 }
 
-export const insert = () => {
-
-}
-
 export function setValue (el, value) {
     el.value = value;
 }
