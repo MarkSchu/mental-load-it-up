@@ -6,6 +6,22 @@ export const disableOnRequest = (el, data) => {
     }
 }
 
+export function showOverlay(el) {
+    el.style.zIndex = 1;
+    el.style.opacity = 1;
+}
+
+export function hideOverlay(el) {
+    el.style.zIndex = -1;
+    el.style.opacity = 0;
+}
+
+export function toggleOverlay(el, value) {
+    value
+    ? showOverlay(el)
+    : hideOverlay(el);
+}
+
 export function setValue (el, value) {
     el.value = value;
 }

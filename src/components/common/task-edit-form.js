@@ -1,16 +1,39 @@
-import { element, bind } from 'utils/dom.js';
-import { show } from 'utils/binders.js';
+import { element } from 'utils/dom.js';
+import { toggleOverlay } from 'utils/binders.js';
+import { getDateInputValue } from 'utils/dates.js';
+import { collections } from 'data/collection.js';
+
 
 export function EditTaskForm(task, showModal) {
+
     const onsubmit = () => {
+        const form = e.target;
+        if (form.reportValidity()) {
+            collections.tasks
+            .update(task._id, {
+                
+            })
+        }
         return false;
     }
 
+    const onclick = (e) => {
+        e.stopPropagation();
+    }
+
+    const closeForm = () => {
+        showModal.false();
+    }
+    
+    var date = getDateInputValue(task.dueDate);
+    console.log(date)
+
     return (
         element('form', {
-            className: 'full-screen',
+            className: 'form overlay',
             onsubmit,
-            bind: [[showModal, show]]
+            onclick,
+            bind: [[showModal, toggleOverlay]]
         },
             element('h1', {
                 className: 'h1 form-h1',
@@ -33,15 +56,21 @@ export function EditTaskForm(task, showModal) {
             }),
             element('input', {
                 className: 'input form-input',
-                type: 'text',
+                type: 'date',
                 name: 'dueDate',
-                value: task.dueDate
+                value: ''
             }),
-            element('button', {
-                className: 'button button-primary',
-                textContent: 'Save',
-                // bind:[[disableSubmit, disable]]
-            })
+            element('div', {className: 'form-button-row'},
+                element('button', {
+                    className: 'button button-secondary',
+                    textContent: 'Cancel',
+                    onclick: closeForm
+                }),
+                element('button', {
+                    className: 'button button-primary',
+                    textContent: 'Save',
+                })
+            )
         )
     )
 }

@@ -2,6 +2,14 @@ function addChildren(parent, children) {
     children.forEach(child => parent.appendChild(child));
 }
 
+function clearChildren(el) {
+    var child = el.lastElementChild; 
+    while (child) {
+        el.removeChild(child);
+        child = el.lastElementChild;
+    }
+}
+
 function removeChildren(parent, children) {
     children.forEach((child) => {
         parent.removeChild(child);
@@ -14,6 +22,7 @@ function toListOfChildren(children) {
 
 function addAttrs(el, attrs) {
     for (const attr in attrs) {
+
         if (attr === 'bind') {
             const binders = attrs['bind'];
             binders.forEach((binder) => {
@@ -25,14 +34,16 @@ function addAttrs(el, attrs) {
                 callback(el, observableVar.value);
             });
         }
+
         else if (attr === 'listen') {
             const listeners = attrs['listen'];
             listeners.forEach((listener) => {
                 const observableEvent = listener[0];
                 const callback = listener[1];
-                observableEvent.onEmit((event, data) => {
-                    callback(el, event, data);
+                observableEvent.onEmit((value) => {
+                    callback(el, value);
                 });
+                // don't call initially, that's the difference to bind
             });
         }
         else if (attr === 'style') {
@@ -108,3 +119,7 @@ export function bindrepeat(observableArray, callback) {
     )
 }
 
+export function render(el, newChild) {
+    clearChildren(el);
+    addChildren(el, [newChild]);
+}

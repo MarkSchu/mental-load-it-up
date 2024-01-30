@@ -1,5 +1,6 @@
-import { element, bind } from 'utils/dom.js';
+import { element, render } from 'utils/dom.js';
 import { alerts } from 'data/alerts.js';
+import {  showOverlay, hideOverlay, } from 'utils/binders.js';
 
 
 const Creating = () => {
@@ -39,52 +40,28 @@ const Error = (msg) => {
     )
 }
 
-export const Alert = () => {   
-
-    const show = (el) => {
-        el.style.zIndex = 2;
-        el.style.opacity = 1;
+const handleAlert = (el, {type}) => {
+    if (type === 'creating') {
+        showOverlay(el);
+        render(el, Creating());
     }
-
-    const hide = (el) => {
-        el.style.zIndex = -1;
-        el.style.opacity = 0;
+    if (type === 'loading') {
+        showOverlay(el);
+        render(el, Loading());
     }
-
-    const handleEvent = (el, data) => {
-        if (data?.type === 'creating') {
-            show(el);
-        }
-        if (data?.type === 'loading') {
-            show(el);
-        }
-        if (data?.type === 'error') {
-            show(el);
-        }
-        if (data?.type === 'close') {
-            hide(el);
-        }
+    if (type === 'error') {
+        render(el, Error(''));
     }
-
-
-    return (
-        element('div', {
-            className: 'alert',
-            bind: [[alerts, handleEvent]],
-        },
-            bind(alerts, (data) => {
-                if (data?.type === 'creating') {
-                    return Creating()
-                }
-                if (data?.type === 'loading') {
-                    return Loading()
-                }
-                if (data?.type === 'error') {
-                    return Error(data.msg);
-                }
-                return element('span', {}) 
-            })
-        )
-    );
+    if (type === 'close') {
+        hideOverlay(el);
+    }
 }
 
+export const Alert = () => {
+    return (
+        element('div', {
+            className: 'overlay',
+            listen: [[alerts, handleAlert]],
+        })
+    )
+}

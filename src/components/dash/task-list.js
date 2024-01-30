@@ -8,21 +8,26 @@ function TaskPanel(task) {
 
     const showModal = new ObservableBool(false);
 
-    const onclick = () => {
-        showModal.toggle()
+    const onclick = (e) => {
+        showModal.true()
     }
 
     return (
         element('div', {
-            className: 'task-panel',
-            onclick
+            className: 'task-panel'
         },
             EditTaskForm(task, showModal),
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox' 
             }),
-            element('div', {className: 'task-title-parent'},
+            // element('button', {
+            //     textContent: 'Hide'                
+            // }),
+            element('div', {
+                className: 'task-title-parent',
+                onclick
+            },
                 element('div', {
                     className: 'text task-title',
                     textContent: task.title
@@ -47,9 +52,12 @@ function TaskPanel(task) {
 
 export function TaskList () {
     return (
-        element('div', {
-            className: 'dash-list',
-            bind: [[collections.tasks, repeatWith(TaskPanel)]]
-        })
+        element('div', {},
+
+            element('div', {
+                className: 'dash-list',
+                bind: [[collections.tasks, repeatWith(TaskPanel)]]
+            })
+        )
     )
 }

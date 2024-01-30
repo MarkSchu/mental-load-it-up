@@ -44,30 +44,29 @@ export class Collection extends ObservableArray {
         this.collection = collection;
     }
 
-    create (data) {
+    create(data) {
         alerts.creating();
         const collection = this.collection;
         return api('create', collection, data).then((response) => {
             if (response.status < 300) {
                 alerts.close();
-                // collections[collection].push(response.body);
                 collections[collection].addAndSort(response.body);
-                // collections[collection].inertByDate(response.body);
             } else {
                 alerts.error(response.statusText);
             }
         });
     }
     
-    updateById (_id, properties) {
+    update (_id, data) {
+        alerts.saving();
         const collection = this.collection;
-        const data = {_id, properties}
-        return api('updateById', collection, data).then((response) => {
-            const { status, body } = response; 
-            if (status < 300) {
-                state[collection].replace(body.instance);
+        return api('update', collection, data).then((response) => {
+            if (response.status < 300) {
+                alert.close();
+                collections[collection].replace(response.body);
+            } else {
+                alerts.error(response.statusText);
             }
-            return response;
         });
     }
     
