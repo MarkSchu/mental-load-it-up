@@ -43,13 +43,5 @@ export class ObservableArray extends ObservableVar {
         this.value.push(value);
         this.emit();
     }
-    
-    remove(_id) {
-        const index = this.value.findIndex(item => item._id === _id);
-        if (index !== -1) {
-            this.value.splice(index, 1);
-            this.emit();
-        }
-    }
 }
 

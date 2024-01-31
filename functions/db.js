@@ -20,13 +20,11 @@ db.create = async (userId, collection, data) => {
 
 db.updateById = async (userId, collection, data) => {
     const Schema = schemas[collection];
-    await Schema.findByIdAndUpdate(data._id, data.properties);
+    await Schema.findByIdAndUpdate(data._id, data.changes);
     const doc = await Schema.findById(data._id);
     return {
         statusCode: 200,
-        body: JSON.stringify({
-            instance: doc
-        })
+        body: JSON.stringify(doc)
     }
 }
 

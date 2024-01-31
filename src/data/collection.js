@@ -1,40 +1,8 @@
 import { ObservableArray } from 'utils/observable.js';
 import { api } from 'data/api.js';
 import { alerts } from 'data/alerts.js';
+import { sortByDates } from 'utils/dates.js';
 
-
-export const compareCreationDate = (a, b) => {
-    const aDate = new Date(a.creationDate);
-    const bDate = new Date(b.creationDate);
-    if (aDate > bDate) {
-        return 1;
-    }
-    if (aDate< bDate) {
-        return -1;s
-    }
-    return 0;
-}
-
-export const compareDueDate = (a, b) => {
-    const aDate = new Date(a.dueDate);
-    const bDate = new Date(b.dueDate);
-    if (aDate > bDate) {
-        return 1;
-    }
-    if (aDate< bDate) {
-        return -1;s
-    }
-    return 0;
-}
-
-export const sortByDates = (collection) => {
-    const withoutDueDates = collection.filter((item) => !item.dueDate);
-    const withDueDates = collection.filter((item) => !!item.dueDate);
-    withoutDueDates.sort(compareCreationDate);
-    withDueDates.sort(compareDueDate);
-    const sorted =  withoutDueDates.concat(withDueDates);
-    return sorted;
-}
 
 export class Collection extends ObservableArray {
 
@@ -57,12 +25,13 @@ export class Collection extends ObservableArray {
         });
     }
     
-    update (_id, data) {
+    update(_id, changes) {
         alerts.saving();
         const collection = this.collection;
-        return api('update', collection, data).then((response) => {
+        const data = {_id, changes };
+        return api('updateById', collection, data).then((response) => {
             if (response.status < 300) {
-                alert.close();
+                alerts.close();
                 collections[collection].replace(response.body);
             } else {
                 alerts.error(response.statusText);
@@ -82,6 +51,22 @@ export class Collection extends ObservableArray {
         });
     }
 
+    remove(_id) {
+        const index = this.value.findIndex(item => item._id === _id);
+        if (index !== -1) {
+            this.value.splice(index, 1);
+            this.emit();
+        }
+    }
+
+    replace(newItem) {
+        const index = this.value.findIndex(item => item._id === newItem._id);
+        if (index !== -1) {
+            this.value[index] = newItem;
+            this.emit();
+        }
+    }
+
     addAndSort(item) {
         this.value.push(item);
         this.value = sortByDates(this.value);
@@ -94,7 +79,6 @@ export class Collection extends ObservableArray {
         // this.value
         // item.creationDate
     }
-
 }
 
 export const collections = {

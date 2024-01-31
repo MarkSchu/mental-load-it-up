@@ -1,19 +1,20 @@
 import { element } from 'utils/dom.js';
-import { toggleOverlay } from 'utils/binders.js';
-import { getDateInputValue } from 'utils/dates.js';
+import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'data/collection.js';
+import { dateInputToUTC, utcToDateInput } from 'utils/dates.js';
 
 
 export function EditTaskForm(task, showModal) {
-
-    const onsubmit = () => {
+    
+    const onsubmit = (e) => {
         const form = e.target;
         if (form.reportValidity()) {
             collections.tasks
             .update(task._id, {
-                
-            })
-        }
+                title: form.elements.title.value,
+                dueDate: dateInputToUTC(form.elements.dueDate.value)
+            });
+        }        
         return false;
     }
 
@@ -23,17 +24,15 @@ export function EditTaskForm(task, showModal) {
 
     const closeForm = () => {
         showModal.false();
+        return false;
     }
-    
-    var date = getDateInputValue(task.dueDate);
-    console.log(date)
 
     return (
         element('form', {
             className: 'form overlay',
             onsubmit,
             onclick,
-            bind: [[showModal, toggleOverlay]]
+            bind: [[showModal, toggleModalOverlay]]
         },
             element('h1', {
                 className: 'h1 form-h1',
@@ -58,7 +57,11 @@ export function EditTaskForm(task, showModal) {
                 className: 'input form-input',
                 type: 'date',
                 name: 'dueDate',
-                value: ''
+                onchange: (e) => { 
+                    console.log(new Date(e.target.valueAsNumber))
+
+                }
+                // value: utcToDateInput(task.dueDate)
             }),
             element('div', {className: 'form-button-row'},
                 element('button', {

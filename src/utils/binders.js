@@ -6,8 +6,13 @@ export const disableOnRequest = (el, data) => {
     }
 }
 
-export function showOverlay(el) {
+export function showModalOverlay(el) {
     el.style.zIndex = 1;
+    el.style.opacity = 1;
+}
+
+export function showAlertOverlay(el) {
+    el.style.zIndex = 2;
     el.style.opacity = 1;
 }
 
@@ -16,9 +21,9 @@ export function hideOverlay(el) {
     el.style.opacity = 0;
 }
 
-export function toggleOverlay(el, value) {
+export function toggleModalOverlay(el, value) {
     value
-    ? showOverlay(el)
+    ? showModalOverlay(el)
     : hideOverlay(el);
 }
 

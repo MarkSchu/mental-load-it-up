@@ -1,7 +1,8 @@
 import { pathname } from 'data/pathname.js';
 import { user } from 'data/user.js';
 import { api } from 'data/api.js';
-import { collections, sortByDates } from 'data/collection.js';
+import { collections } from 'data/collection.js';
+import { sortByDates } from 'utils/dates.js';
 import { alerts } from 'data/alerts.js';
 
 export const general = {};

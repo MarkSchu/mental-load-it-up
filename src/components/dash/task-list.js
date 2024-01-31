@@ -1,8 +1,9 @@
 import { element } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
 import { repeatWith } from 'utils/binders.js';
-import { EditTaskForm } from 'components/common/task-edit-form.js';
 import { ObservableBool } from 'utils/observable.js';
+import { EditTaskForm } from 'components/dash/task-edit-form.js';
+import { getDaysUntilDeadline } from 'utils/dates.js';
 
 function TaskPanel(task) {
 
@@ -21,9 +22,6 @@ function TaskPanel(task) {
                 className: 'checkbox',
                 type: 'checkbox' 
             }),
-            // element('button', {
-            //     textContent: 'Hide'                
-            // }),
             element('div', {
                 className: 'task-title-parent',
                 onclick
@@ -39,7 +37,7 @@ function TaskPanel(task) {
             },
                 element('div', {
                     className: 'days-number',
-                    textContent: `${Math.floor((Math.random() * 100))}`
+                    textContent: getDaysUntilDeadline(task.dueDate || '')
                 }),
                 element('div', {
                     className: 'days-word',

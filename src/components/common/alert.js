@@ -1,13 +1,13 @@
 import { element, render } from 'utils/dom.js';
 import { alerts } from 'data/alerts.js';
-import {  showOverlay, hideOverlay, } from 'utils/binders.js';
+import {  showAlertOverlay, hideOverlay, } from 'utils/binders.js';
 
 
-const Creating = () => {
+const Saving = (msg) => {
     return (
         element('div', {},
             element('div', {className: 'spinner'}),
-            element('h2', {textContent: 'Creating...'})
+            element('h2', {textContent: msg})
         )
     )
 }
@@ -40,17 +40,21 @@ const Error = (msg) => {
     )
 }
 
-const handleAlert = (el, {type}) => {
+const handleAlert = (el, {type, msg}) => {
     if (type === 'creating') {
-        showOverlay(el);
-        render(el, Creating());
+        showAlertOverlay(el);
+        render(el, Saving('Creating...'));
     }
     if (type === 'loading') {
-        showOverlay(el);
+        showAlertOverlay(el);
         render(el, Loading());
     }
+    if (type === 'saving') {
+        showAlertOverlay(el);
+        render(el, Saving('Saving...'))
+    }
     if (type === 'error') {
-        render(el, Error(''));
+        render(el, Error(msg));
     }
     if (type === 'close') {
         hideOverlay(el);
