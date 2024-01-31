@@ -1,25 +1,27 @@
 import { element } from 'utils/dom.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'data/collection.js';
-import { dateInputToUTC, utcToDateInput } from 'utils/dates.js';
+import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
 export function EditTaskForm(task, showModal) {
+
+    let form;
     
-    const onsubmit = (e) => {
-        const form = e.target;
+    const saveChanges = (e) => {
         if (form.reportValidity()) {
             collections.tasks
             .update(task._id, {
                 title: form.elements.title.value,
-                dueDate: dateInputToUTC(form.elements.dueDate.value)
+                dueDate: inputToISO(form.elements.dueDate.value)
             });
         }        
         return false;
     }
 
-    const onclick = (e) => {
-        e.stopPropagation();
+    const deleteTask = () => {
+        collections.tasks.delete(task._id);
+        return false;
     }
 
     const closeForm = () => {
@@ -28,10 +30,8 @@ export function EditTaskForm(task, showModal) {
     }
 
     return (
-        element('form', {
+        form = element('form', {
             className: 'form overlay',
-            onsubmit,
-            onclick,
             bind: [[showModal, toggleModalOverlay]]
         },
             element('h1', {
@@ -57,13 +57,18 @@ export function EditTaskForm(task, showModal) {
                 className: 'input form-input',
                 type: 'date',
                 name: 'dueDate',
-                onchange: (e) => { 
-                    console.log(new Date(e.target.valueAsNumber))
-
-                }
-                // value: utcToDateInput(task.dueDate)
+                value: isoToInput(task.dueDate)
+            }),
+            element('label', {
+                className: 'label',
+                textContent: 'Delete'
             }),
             element('div', {className: 'form-button-row'},
+                element('button', {
+                    className: 'button button-secondary',
+                    textContent: 'Delete',
+                    onclick: deleteTask
+                }),
                 element('button', {
                     className: 'button button-secondary',
                     textContent: 'Cancel',
@@ -72,6 +77,7 @@ export function EditTaskForm(task, showModal) {
                 element('button', {
                     className: 'button button-primary',
                     textContent: 'Save',
+                    onclick: saveChanges
                 })
             )
         )

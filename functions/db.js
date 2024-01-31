@@ -1,7 +1,7 @@
 const schemas = require('./schemas');
 
 const getCurrentUTC = () => {
-    return (new Date()).toUTCString();
+    return (new Date()).toISOString();
 }
 
 const db = {};
@@ -31,12 +31,10 @@ db.updateById = async (userId, collection, data) => {
 db.deleteById = async (userId, collection, data) => {
     const Schema = schemas[collection];
     await Schema.findByIdAndDelete(data._id)
+    const {_id} = data;
     return {
         statusCode: 200,
-        body: JSON.stringify({
-            success: true,
-            _id: data._id
-        })
+        body: JSON.stringify({_id})
     }
 }
 

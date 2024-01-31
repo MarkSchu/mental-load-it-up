@@ -31,38 +31,14 @@ export const sortByDates = (collection) => {
     return sorted;
 }
 
-export const getDateInputValue = (utc) => {
-    const d = new Date(utc);
-    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+export const isoToInput = (iso) => {
+    if (!iso) return '';
+    return iso.split('T')[0];
 }
 
-export const dateInputToUTC = (yyyy_mm_dd) => {
-    if (!yyyy_mm_dd) {
-        return '';
-    }
-    const [yyyy, mm, dd] = yyyy_mm_dd.split('-');
-    if (!yyyy || !mm || !dd) {
-        return '';
-    }
-    const date = new Date(`${dd}-${mm}-${yyyy}`);
-    return date.toUTCString();
-}
-
-export const utcToDateInput = (utc) => {
-    if (!utc) {
-        return '';
-    }
-    const date = new Date(utc);
-    let yyyy = date.getFullYear();
-    let mm = date.getMonth() + 1;
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    let dd = date.getDate();
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    return `${yyyy}-${mm}-${dd}`;
+export const inputToISO = (val) => {
+    if (!val) return '';
+    return val + 'T00:00:00.000Z'
 }
 
 export const getDaysUntilDeadline = (utc) => {

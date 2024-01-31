@@ -32,20 +32,19 @@ export class Collection extends ObservableArray {
         return api('updateById', collection, data).then((response) => {
             if (response.status < 300) {
                 alerts.close();
-                collections[collection].replace(response.body);
+                collections[collection].replaceAndSort(response.body);
             } else {
                 alerts.error(response.statusText);
             }
         });
     }
     
-    deleteById (_id) {
+    delete (_id) {
         const collection = this.collection;
         const data = {_id};
         return api('deleteById', collection, data).then((response) => {
-            const { status, body } = response; 
-            if (status < 300) {
-                state[collection].remove(_id);
+            if (response.status < 300) {
+                collections[collection].remove(_id);
             }
             return response;
         });
@@ -65,6 +64,16 @@ export class Collection extends ObservableArray {
             this.value[index] = newItem;
             this.emit();
         }
+    }
+
+    replaceAndSort(newItem) {
+        const index = this.value.findIndex(item => item._id === newItem._id);
+        if (index !== -1) {
+            this.value[index] = newItem;
+            this.value = sortByDates(this.value);
+            this.emit();
+        }
+
     }
 
     addAndSort(item) {

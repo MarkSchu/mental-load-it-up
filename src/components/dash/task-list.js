@@ -29,7 +29,7 @@ function TaskPanel(task) {
                 element('div', {
                     className: 'text task-title',
                     textContent: task.title
-                }),
+                })
             ),
             element('div', {
                 className: 'days',

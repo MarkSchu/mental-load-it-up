@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const task = new mongoose.Schema({
     title: String,
     userId: String,             // Netlify User ID
-    dueDate: String,            // UTC string
-    creationDate: String        // UTC string
+    dueDate: String,            // 2024-01-31T17:20:45.958Z     date.toJSON()
+    creationDate: String        // 2024-01-31T17:20:45.958Z
 });
 
 const event = new mongoose.Schema({
     title: String,
     userId: String,
-    dueDate: String,            // UTC string
-    creationDate: String       // UTC string
+    dueDate: String,            // 2024-01-31T17:20:45.958Z
+    creationDate: String       // 2024-01-31T17:20:45.958Z
 });
 
 const domain = new mongoose.Schema({
