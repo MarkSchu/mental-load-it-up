@@ -39,6 +39,7 @@ db.deleteById = async (userId, collection, data) => {
 }
 
 db.getAllUserData = async (userId) => {
+    console.log('getAllUserData()')
     const tasks = await schemas['tasks'].find({userId});
     const events = await schemas['events'].find({userId});
     const domains = await schemas['domains'].find({userId});
