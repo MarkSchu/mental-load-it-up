@@ -20,16 +20,17 @@ function TaskPanel(task) {
             EditTaskForm(task, showModal),
             element('input', {
                 className: 'checkbox',
-                type: 'checkbox' 
+                type: 'checkbox'
             }),
             element('div', {
                 className: 'task-title-parent',
                 onclick
             },
-                element('div', {
+                element('span', {
                     className: 'text task-title',
                     textContent: task.title
-                })
+                }),
+                element('span', {className: 'tag', textContent: 'home'})
             ),
             element('div', {
                 className: 'days',
