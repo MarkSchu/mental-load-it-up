@@ -6,6 +6,8 @@ const connectDB = () => {
 }
 
 exports.handler = async (event) => {
+    console.log('Wait what?')
+    return 'I wonder if this will work?';
     /**
      * we need to make sure the user is logged in here
     */
