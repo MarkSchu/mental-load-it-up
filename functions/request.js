@@ -13,7 +13,7 @@ exports.handler = async (event) => {
         console.log('connectDB() success')
         const {action, userId, collection, data} = JSON.parse(event.body);
         return db[action](userId, collection, data);
-    }).error((err) => {
+    }).catch((err) => {
         console.log(err)
         return {
             statusText: 'boop'
