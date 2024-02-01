@@ -9,3 +9,5 @@ z-accounts.txt
 z-tasks.txt
 z-test-data.txt
 .env
+# Local Netlify folder
+.netlify

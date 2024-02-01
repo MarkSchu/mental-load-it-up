@@ -39,10 +39,13 @@ db.deleteById = async (userId, collection, data) => {
 }
 
 db.getAllUserData = async (userId) => {
-    console.log('getAllUserData()')
+    console.log('==> getAllUserData()')
     const tasks = await schemas['tasks'].find({userId});
     const events = await schemas['events'].find({userId});
     const domains = await schemas['domains'].find({userId});
+    console.log('==> tasks.length', tasks.length)
+    console.log('==> events.length', events.length)
+    console.log('==> domains.length', domains.length)
     return {
         statusCode: 200,
         body: JSON.stringify({

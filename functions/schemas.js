@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+console.log('==> load schemas.js');
+
 const task = new mongoose.Schema({
     title: String,
     userId: String,             // Netlify User ID
