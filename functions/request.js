@@ -6,8 +6,6 @@ const connectDB = () => {
 }
 
 exports.handler = async (event) => {
-    console.log('Wait what?')
-    return 'I wonder if this will work?';
     /**
      * we need to make sure the user is logged in here
     */
@@ -15,5 +13,10 @@ exports.handler = async (event) => {
         console.log('connectDB() success')
         const {action, userId, collection, data} = JSON.parse(event.body);
         return db[action](userId, collection, data);
-    });
+    }).error((err) => {
+        console.log(err)
+        return {
+            statusText: 'boop'
+        }
+    })
 }
