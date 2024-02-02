@@ -7,6 +7,7 @@ import { Login } from 'components/login.js';
 import { Dash } from 'components/dash/dash.js'
 import { Account } from 'components/account.js'
 import { DatePage } from 'components/debug/dates-page.js'
+import { StylePage } from 'components/debug/style-page.js'
 
 pathname.onEmit((pathnameVal) => {
     if (pathnameVal === '/dash') {
@@ -33,6 +34,9 @@ export function App() {
                 }
                 if (pathnameVal === '/dates') {
                     return DatePage();
+                }
+                if (pathnameVal === '/dates') {
+                    return StylePage();
                 }
                 return element('div', {textContent: `Page ${pathnameVal} Not Found :(`})
             })

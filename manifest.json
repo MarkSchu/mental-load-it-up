@@ -1,0 +1,6 @@
+{
+    "name": "Mental Load it Up",
+    "icons": [],
+    "start_url": "http://localhost:8888",
+    "display": "standalone"
+}
