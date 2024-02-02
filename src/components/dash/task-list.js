@@ -51,7 +51,6 @@ function TaskPanel(task) {
 export function TaskList () {
     return (
         element('div', {},
-
             element('div', {
                 className: 'dash-list',
                 bind: [[collections.tasks, repeatWith(TaskPanel)]]

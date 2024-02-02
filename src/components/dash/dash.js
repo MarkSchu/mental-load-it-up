@@ -37,7 +37,11 @@ function DashFooter () {
             ),
             element('div', {}, 
                 element('select', {className: 'select button-secondary select-button'},
-                    element('option', {textContent: 'Tasks'})
+                    element('option', {textContent: 'Tasks'}),
+                    element('option', {textContent: 'Tasks & Events'}),
+                    element('option', {textContent: 'Events'}),
+                    element('option', {textContent: 'Domains'}),
+                    element('option', {textContent: 'Meal Plan'})
                 )
             )
         )
