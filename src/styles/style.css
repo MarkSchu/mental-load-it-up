@@ -69,7 +69,7 @@ body {
     font-size: var(--text-size);
     cursor: pointer;
     /* padding: 0 var(--large-spacing); */
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .select,
@@ -196,17 +196,18 @@ body {
 }
 
 .task-panel {
-    padding: 8px 4px;
+    /* padding: 8px 4px; */
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    margin-bottom: 4px;
 }
 
 .task-title-parent {
     width: 100%;
     border: 1px solid black;
     /* padding: 8px 16px; */
-    padding: 1rem;
+    padding: 0.5rem;
     border-radius: 8px;
 }
 
