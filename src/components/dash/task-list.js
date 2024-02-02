@@ -29,8 +29,7 @@ function TaskPanel(task) {
                 element('span', {
                     className: 'text task-title',
                     textContent: task.title
-                }),
-                element('span', {className: 'tag', textContent: 'home'})
+                })
             ),
             element('div', {
                 className: 'days',
