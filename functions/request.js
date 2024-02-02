@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const db = require('./db');
 
-console.log('==> load request.js')
-
 const connectDB = () => {
     console.log('==> connectDB()');
     return mongoose.connect(process.env.MONGO_URI);

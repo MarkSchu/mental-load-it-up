@@ -8,6 +8,7 @@ z-domains.txt
 z-accounts.txt
 z-tasks.txt
 z-test-data.txt
+z-checklist.txt
 .env
 # Local Netlify folder
 .netlify

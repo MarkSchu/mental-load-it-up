@@ -6,7 +6,7 @@ import { Signup } from 'components/signup.js';
 import { Login } from 'components/login.js';
 import { Dash } from 'components/dash/dash.js'
 import { Account } from 'components/account.js'
-import { DatePage } from 'components/dates-page.js'
+import { DatePage } from 'components/debug/dates-page.js'
 
 pathname.onEmit((pathnameVal) => {
     if (pathnameVal === '/dash') {
