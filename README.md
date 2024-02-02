@@ -7,6 +7,10 @@ https://spontaneous-nougat-f22d85.netlify.app/
 Netlify - Site Overview
 https://app.netlify.com/sites/spontaneous-nougat-f22d85/overview
 
+
+Netlify - Deploys
+https://app.netlify.com/sites/spontaneous-nougat-f22d85/deploys
+
 Netlify - Function Logs
 https://app.netlify.com/sites/spontaneous-nougat-f22d85/logs/functions
 

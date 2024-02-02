@@ -30,7 +30,7 @@ function DashFooter () {
                     required: true
                 }),
                 element('button', {
-                    className: 'button button-primary',
+                    className: 'button button-primary create-button',
                     textContent: 'Add',
                     bind: [[alerts, disableOnRequest]]
                 })

@@ -32,7 +32,7 @@ body {
 
 .text {
     font-size: var(--text-size);
-    line-height: 20px;
+    /* line-height: 20px; */
 }
 
 .h1 {
@@ -64,11 +64,12 @@ body {
 .input,
 .select,
 .button {
-    height: 40px;
+    /* height: 80px; */
     border-radius: var(--border-radius);
     font-size: var(--text-size);
     cursor: pointer;
-    padding: 0 var(--large-spacing);
+    /* padding: 0 var(--large-spacing); */
+    padding: 1rem;
 }
 
 .select,
@@ -160,26 +161,28 @@ body {
 }
 
 .task-input-form {
-    display: flex;
+    /* display: flex; */
     margin-bottom: 4px;
 }
 
 .task-input {
     width: 100%;
-    margin-right: 4px;
+    /* margin-right: 4px; */
+    display: block;
 }
 
 .create-button {
-    height: 52px;
+    /* height: 52px; */
     width: 100%;
-    margin-bottom: var(--tiny-spacing);
+    display: block;
+    margin: var(--tiny-spacing) 0 ;
 }
 
 .select-button {
-    height: 52px;
+    /* height: 52px; */
     width: 100%;
     text-align: center;
-    font-size: var(--h1-size);
+    font-size: 1rem;
 }
 
 .dash-list {
@@ -201,7 +204,8 @@ body {
 .task-title-parent {
     width: 100%;
     border: 1px solid black;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
+    padding: 1rem;
     border-radius: 8px;
 }
 
