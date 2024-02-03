@@ -42,14 +42,18 @@ export function Task1(task) {
                     onclick
                 }),
                 element('div', {className: 'sub-info'},
+                    // element('span', {
+                    //     className: 'task-domain',
+                    //     textContent: domain + ' '
+                    // }),
+                    element('span', {
+                        className: 'task-deadline',
+                        textContent: getRandomInt(0, 50) + ' days'
+                    }),
                     element('span', {
                         className: 'task-domain',
                         textContent: domain + ' '
                     }),
-                    element('span', {
-                        className: 'task-deadline',
-                        textContent: getRandomInt(0, 50) + ' days'
-                    })
                 )
             )
         )
