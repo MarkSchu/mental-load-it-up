@@ -30,7 +30,7 @@ export function Task1(task) {
     const onclick = (e) => showModal.true();
     
     return (
-        element('div', {className: 'task5'},
+        element('div', {className: 'task6'},
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox'
@@ -42,18 +42,18 @@ export function Task1(task) {
                     onclick
                 }),
                 element('div', {className: 'sub-info'},
-                    element('span', {
-                        className: 'task-domain',
-                        textContent: domain + ' '
-                    }),
-                    element('span', {
-                        className: 'task-deadline',
-                        textContent: getRandomInt(0, 50) + ' days'
-                    }),
                     // element('span', {
                     //     className: 'task-domain',
                     //     textContent: domain + ' '
                     // }),
+                    element('span', {
+                        className: 'task-deadline',
+                        textContent: getRandomInt(0, 50) + ' days'
+                    }),
+                    element('span', {
+                        className: 'task-domain',
+                        textContent: domain + ' '
+                    })
                 )
             )
         )
