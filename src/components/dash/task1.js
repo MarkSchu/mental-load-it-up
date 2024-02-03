@@ -19,71 +19,47 @@ const domains = [
     'yard work'
 ];
 
+const recurrings = [
+    'daily',
+    'weekly', 
+    'monthly',
+    'yearly'
+]
+
 export function Task1(task) {
 
     const domain = domains[getRandomInt(0, 4)]
+    const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
     const onclick = (e) => showModal.true();
-    
+    // EditTaskForm(task, showModal),
     return (
         element('div', {className: 'task'},
-            EditTaskForm(task, showModal),
-            element('div', {className: 'task-a'},
+            element('input', {
+                className: 'checkbox',
+                type: 'checkbox'
+            }),
+            element('div', {className: 'task-info'},
                 element('div', {
-                    className: 'checkbox2',
-                    type: 'checkbox'
+                    className: 'task-description',
+                    textContent: task.title,
+                    onclick
                 }),
-                element('div', {className: 'task-b'},
-                    element('div', {
-                        className: 'task-title2',
-                        textContent: task.title,
-                        onclick
+                element('div', {className: 'sub-info'},
+                    element('span', {
+                        className: 'task-domain',
+                        textContent: domain + ' '
                     }),
-                    element('div', {className: 'super-domain'},
-                        element('span', {
-                            className: 'deadline',
-                            textContent: getRandomInt(0, 50) + ' days'
-                        }),
-                        element('span', {
-                            className: 'domain',
-                            textContent: domain
-                        })
-                    )
+                    // element('span', {
+                    //     className: 'recurring', 
+                    //     textContent: recurring + ' '
+                    // }),
+                    element('span', {
+                        className: 'task-deadline',
+                        textContent: getRandomInt(0, 50) + ' days'
+                    })
                 )
-            ),
+            )
         )
     )
 }
-
-// EditTaskForm(task, showModal),
-// element('input', {
-//     className: 'checkbox',
-//     type: 'checkbox'
-// }),
-// element('div', {
-//     className: 'domain',
-//     textContent: domain
-// }),
-// element('div', {
-//     className: 'task-title-parent',
-//     onclick
-// },
-//     element('span', {
-//         className: 'text task-title',
-//         textContent: task.title
-//     })
-// )
-
-// element('div', {
-//     className: 'days',
-//     style: {visibility: task.dueDate ? 'visible' : 'hidden'}
-// },
-//     element('div', {
-//         className: 'days-number',
-//         textContent: getDaysUntilDeadline(task.dueDate || '')
-//     }),
-//     element('div', {
-//         className: 'days-word',
-//         textContent: 'days'
-//     })
-// ),

@@ -1,57 +1,7 @@
 import { element } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
 import { repeatWith } from 'utils/binders.js';
-import { ObservableBool } from 'utils/observable.js';
-import { EditTaskForm } from 'components/dash/task-edit-form.js';
-import { getDaysUntilDeadline } from 'utils/dates.js';
 import { Task1 } from 'components/dash/task1.js';
-
-function TaskPanel(task) {
-
-    const showModal = new ObservableBool(false);
-
-    const onclick = (e) => {
-        showModal.true()
-    }
-    const domain = domains[getRandomInt(0, 4)]
-    return (
-        element('div', {
-            className: 'task-panel'
-        },
-            // EditTaskForm(task, showModal),
-            // element('div', {
-            //     className: 'days',
-            //     style: {visibility: task.dueDate ? 'visible' : 'hidden'}
-            // },
-            //     element('div', {
-            //         className: 'days-number',
-            //         textContent: getDaysUntilDeadline(task.dueDate || '')
-            //     }),
-            //     element('div', {
-            //         className: 'days-word',
-            //         textContent: 'days'
-            //     })
-            // ),
-            element('input', {
-                className: 'checkbox',
-                type: 'checkbox'
-            }),
-            element('div', {
-                className: 'domain',
-                textContent: domain
-            }),
-            element('div', {
-                className: 'task-title-parent',
-                onclick
-            },
-                element('span', {
-                    className: 'text task-title',
-                    textContent: task.title
-                })
-            )
-        )
-    )
-}
 
 export function TaskList () {
     return (

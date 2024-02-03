@@ -196,103 +196,58 @@ body {
     padding: 2rem;
 }
 
-.task-panel {
-    /* padding: 8px 4px; */
+/* ------- TaskList ------------- ---------------------------------- */
+
+.task {
     display: flex;
-    justify-content: space-between;
-    cursor: pointer;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
 }
 
 .checkbox {
     height: 2rem;
     min-width: 2rem;
     border-radius: 100%;
-    border: 1px solid black;
+    border: 1px solid #00C9A7;
     appearance: none;
-    /* margin: 4px 4px 0 0; */
+    margin-right: 2rem;
     display: block;
-    cursor: pointer;
 }
 
 .checkbox:checked {
-    background-color: black; 
-    border: 1px solid black;
+    border: 1px solid #00C9A7;
+    background-color: #00C9A7;
 }
 
-.days {
-    height: 2rem;
-    min-width: 2rem;
-    /* height: 30px;
-    min-width: 30px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* margin-left: 4px; */
-    /* margin: 4px 0 0 4px; */
-    flex-direction: column;
-}
-
-.days-number {
-    font-size: 16px;
-}
-
-.days-word {
-    font-size: 12px;
-}
-
-.task-title-parent {
+.task-info {
     width: 100%;
-    /* border: 1px solid black; */
-    /* padding: 8px 16px; */
-    /* padding: 0.5rem; */
-    border-radius: 8px;
 }
 
-/* ----------------- */
-
-.task {
-
-}
-
-.task-a {
+.sub-info {
     display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid;
+    justify-content: space-between;
 }
 
-.checkbox2 {
-    /* font-size: 1rem; */
-    height: 2rem;
-    /* width: 2rem; */
-    min-width: 2rem;
-    border-radius: 100%;
-    border: 1px solid black;
-    /* appearance: none; */
-    margin-right: 2rem;
-}
-
-.task-title2 {
-    padding-top: .25rem;
+.task-description {
+    padding-top: .5rem;
     font-size: 1rem;
-    /* border: 1px solid; */
+    margin-bottom: .5rem;
 }
 
-
-.super-domain { 
-    /* display: flex; */
-    margin-top: 0.25rem;
+.task-domain {
+    color: #845EC2;
+    font-weight: bold;   
+    margin-right: 0.5rem; 
+    font-size: 14px;
 }
 
-.deadline,
-.domain {
-    display: inline-block;
-    margin-right: 4px;
-    /* padding: 0px 4px; */
-    /* border-radius: 16px; */
+.task-deadline {
+    font-weight: bold;   
+    font-size: 14px; 
 }
 
-.domain {
-    border: 1px solid black;
-    padding: 0 .25rem;
+.recurring {
+    font-weight: bold;   
+    font-size: 14px; 
 }

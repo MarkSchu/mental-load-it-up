@@ -63,7 +63,7 @@ function DashFooter () {
 
 export function Dash() {
     return (
-        element('div', {},
+        element('div', {className: 'dash'},
             // DashHeader(),
             TaskList(),
             // DashFooter()
