@@ -30,7 +30,7 @@ export function Task1(task) {
     const onclick = (e) => showModal.true();
     
     return (
-        element('div', {className: 'task3'},
+        element('div', {className: 'task5'},
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox'

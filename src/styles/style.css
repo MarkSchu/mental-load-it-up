@@ -421,3 +421,49 @@ body {
 }
 
 /* ------- Task 5 ----------------------------------------------- */
+
+
+.task5 {
+    display: flex;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.task5 .task-info {
+    width: 100%;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 1rem; */
+    /* padding: 0.5rem; */
+}
+
+.task5 .sub-info {
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    margin-top: 0.25rem;
+    padding-top: 0.25rem;
+}
+
+.task5 .task-description {
+    /* padding-top: .5rem;  align with checkbox */
+    font-size: 1rem;
+}
+
+.task5 .task-domain {
+    color: #845EC2;
+    font-weight: bold;   
+    margin-right: 0.5rem; 
+    font-size: 14px;
+}
+
+.task5 .task-deadline {
+    font-weight: bold;   
+    font-size: 14px; 
+    margin-right: 0.5rem; 
+}
+
+.task5 .recurring {
+    font-weight: bold;   
+    font-size: 14px; 
+}
