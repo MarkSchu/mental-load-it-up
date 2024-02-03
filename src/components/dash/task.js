@@ -22,7 +22,7 @@ const recurrings = [
     'yearly'
 ]
 
-export function Task1(task) {
+export function Task(task) {
 
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
@@ -30,31 +30,29 @@ export function Task1(task) {
     const onclick = (e) => showModal.true();
     
     return (
-        element('div', {className: 'task6'},
+        element('div', {className: 'task'},
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox'
             }),
-            element('div', {className: 'task-info'},
+            element('div', {className: 'info'},
                 element('div', {
-                    className: 'task-description',
+                    className: 'title',
                     textContent: task.title,
                     onclick
                 }),
-                element('div', {className: 'sub-info'},
-                    // element('span', {
-                    //     className: 'task-domain',
-                    //     textContent: domain + ' '
-                    // }),
-                    element('span', {
-                        className: 'task-deadline',
-                        textContent: getRandomInt(0, 50) + ' days'
-                    }),
-                    element('span', {
-                        className: 'task-domain',
-                        textContent: domain + ' '
-                    })
-                )
+                element('span', {
+                    className: 'duedate',
+                    textContent: getRandomInt(0, 50) + ' days'
+                }),
+                element('span', {
+                    className: 'domain',
+                    textContent: domain
+                }),
+                element('span', {
+                    className: 'recurring',
+                    textContent: recurring
+                })
             )
         )
     )

@@ -4,11 +4,11 @@ import { disableOnRequest } from 'utils/binders.js';
 import { alerts } from 'data/alerts.js';
 import { TaskList } from 'components/dash/task-list.js';
 
-// function DashHeader() {
-//     return (
-        
-//     )
-// }
+function DashHeader() {
+    return (
+        element('div', {})       
+    )
+}
 
 function DashFooter () {
 
@@ -64,7 +64,7 @@ function DashFooter () {
 export function Dash() {
     return (
         element('div', {className: 'dash'},
-            // DashHeader(),
+            // DashHeadser(),
             TaskList(),
             // DashFooter()
         )

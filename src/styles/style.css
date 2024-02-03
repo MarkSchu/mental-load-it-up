@@ -220,295 +220,30 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.task .task-info {
+.task .info {
     width: 100%;
 }
 
-.task .sub-info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.task .task-description {
-    padding-top: .5rem;
+.task .title {
+    padding-top: 0.5rem;
     font-size: 1rem;
-    margin-bottom: .5rem;
+    /* border-bottom: 1px solid #ccc; */
 }
 
-.task .task-domain {
+.task .duedate {
+    font-weight: bold;   
+    font-size: 14px; 
+    margin-right: 0.5rem; 
+}
+
+.task .domain {
     color: #845EC2;
     font-weight: bold;   
     margin-right: 0.5rem; 
     font-size: 14px;
-}
-
-.task .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
 }
 
 .task .recurring {
-    font-weight: bold;   
     font-size: 14px; 
-}
-
-/* ------- Task 1 ----------------------------------------------- */
-
-.task1 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ccc;
-}
-
-.task1 .task-info {
-    width: 100%;
-}
-
-.task1 .sub-info {
-    display: flex;
-    justify-content: left;
-}
-
-.task1 .task-description {
-    padding-top: .5rem;
-    font-size: 1rem;
-    margin-bottom: .5rem;
-}
-
-.task1 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task1 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-.task1 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-/* ------- Task 2 ----------------------------------------------- */
-
-.task2 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ccc;
-}
-
-.task2 .task-info {
-    width: 100%;
-}
-
-.task2 .sub-info {
-    display: flex;
-    justify-content: left;
-    flex-direction: row-reverse;
-}
-
-.task2 .task-description {
-    padding-top: .5rem;
-    font-size: 1rem;
-    margin-bottom: .5rem;
-}
-
-.task2 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task2 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-    margin-right: 1rem;
-}
-
-.task2 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-/* ------- Task 3 ----------------------------------------------- */
-
-.task3 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ccc;
-}
-
-.task3 .task-info {
-    width: 100%;
-}
-
-.task3 .sub-info {
-    display: flex;
-    justify-content: right;
-}
-
-.task3 .task-description {
-    padding-top: .5rem;
-    font-size: 1rem;
-    margin-bottom: .5rem;
-}
-
-.task3 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task3 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-.task3 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-/* ------- Task 4 ----------------------------------------------- */
-
-/* ------- Task 3 ----------------------------------------------- */
-
-.task4 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.task4 .task-info {
-    width: 100%;
-}
-
-.task4 .sub-info {
-    border-top: #ccc;
-    display: flex;
-    justify-content: right;
-}
-
-.task4 .task-description {
-    padding-top: .5rem;
-    font-size: 1rem;
-    margin-bottom: .5rem;
-}
-
-.task4 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task4 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-.task4 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-/* ------- Task 5 ----------------------------------------------- */
-
-
-.task5 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.task5 .task-info {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 1rem;
-    padding: 0.5rem
-}
-
-.task5 .sub-info {
-    border-top: 1px solid #ccc;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: left;
-    margin-top: 0.25rem;
-    padding-top: 0.25rem;
-}
-
-.task5 .task-description {
-    font-size: 1rem;
-}
-
-.task5 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task5 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-    margin-right: 0.5rem; 
-}
-
-.task5 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
-}
-
-/* ------- Task 5 ----------------------------------------------- */
-
-
-.task6 {
-    display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid #ccc;
-}
-
-.task6 .task-info {
-    width: 100%;
-}
-
-.task6 .sub-info {
-    /* border-top: 1px solid #ccc; */
-    display: inline;
-    flex-direction: row-reverse;
-    justify-content: left;
-    margin-top: 0.25rem;
-    padding-top: 0.25rem;
-}
-
-.task6 .task-description {
-    padding-top: 0.5rem ;
-    font-size: 1rem;
-}
-
-.task6 .task-domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
-}
-
-.task6 .task-deadline {
-    font-weight: bold;   
-    font-size: 14px; 
-    margin-right: 0.5rem; 
-}
-
-.task6 .recurring {
-    font-weight: bold;   
-    font-size: 14px; 
+    font-style: italic;
 }
