@@ -4,7 +4,6 @@ import { repeatWith } from 'utils/binders.js';
 import { ObservableBool } from 'utils/observable.js';
 import { EditTaskForm } from 'components/dash/task-edit-form.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
-import { Task1 } from 'components/dash/task1.js';
 
 function TaskPanel(task) {
 
@@ -13,32 +12,15 @@ function TaskPanel(task) {
     const onclick = (e) => {
         showModal.true()
     }
-    const domain = domains[getRandomInt(0, 4)]
+
     return (
         element('div', {
             className: 'task-panel'
         },
-            // EditTaskForm(task, showModal),
-            // element('div', {
-            //     className: 'days',
-            //     style: {visibility: task.dueDate ? 'visible' : 'hidden'}
-            // },
-            //     element('div', {
-            //         className: 'days-number',
-            //         textContent: getDaysUntilDeadline(task.dueDate || '')
-            //     }),
-            //     element('div', {
-            //         className: 'days-word',
-            //         textContent: 'days'
-            //     })
-            // ),
+            EditTaskForm(task, showModal),
             element('input', {
                 className: 'checkbox',
                 type: 'checkbox'
-            }),
-            element('div', {
-                className: 'domain',
-                textContent: domain
             }),
             element('div', {
                 className: 'task-title-parent',
@@ -48,7 +30,20 @@ function TaskPanel(task) {
                     className: 'text task-title',
                     textContent: task.title
                 })
-            )
+            ),
+            element('div', {
+                className: 'days',
+                style: {visibility: task.dueDate ? 'visible' : 'hidden'}
+            },
+                element('div', {
+                    className: 'days-number',
+                    textContent: getDaysUntilDeadline(task.dueDate || '')
+                }),
+                element('div', {
+                    className: 'days-word',
+                    textContent: 'days'
+                })
+            ),
         )
     )
 }
@@ -58,7 +53,7 @@ export function TaskList () {
         element('div', {},
             element('div', {
                 className: 'dash-list',
-                bind: [[collections.tasks, repeatWith(Task1)]]
+                bind: [[collections.tasks, repeatWith(TaskPanel)]]
             })
         )
     )

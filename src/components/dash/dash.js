@@ -4,6 +4,11 @@ import { disableOnRequest } from 'utils/binders.js';
 import { alerts } from 'data/alerts.js';
 import { TaskList } from 'components/dash/task-list.js';
 
+// function DashHeader() {
+//     return (
+        
+//     )
+// }
 
 function DashFooter () {
 
@@ -43,6 +48,14 @@ function DashFooter () {
                     element('option', {textContent: 'Domains'}),
                     element('option', {textContent: 'Meal Plan'})
                 )
+            ),
+            element('div', {}, 
+                element('select', {className: 'select button-secondary select-button'},
+                    element('option', {textContent: 'home'}),
+                    element('option', {textContent: 'groceries'}),
+                    element('option', {textContent: 'budget'}),
+                    element('option', {textContent: 'travel'}),
+                )
             )
         )
     )
@@ -51,8 +64,9 @@ function DashFooter () {
 export function Dash() {
     return (
         element('div', {},
+            // DashHeader(),
             TaskList(),
-            DashFooter()
+            // DashFooter()
         )
     )
 }
