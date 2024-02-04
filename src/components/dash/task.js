@@ -46,13 +46,13 @@ export function Task(task) {
                     textContent: getRandomInt(0, 50) + ' days'
                 }),
                 element('span', {
+                    className: 'recurring',
+                    textContent: recurring
+                }),
+                element('span', {
                     className: 'domain',
                     textContent: domain
                 }),
-                element('span', {
-                    className: 'recurring',
-                    textContent: recurring
-                })
             )
         )
     )

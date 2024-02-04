@@ -204,13 +204,12 @@ body {
     border-radius: 100%;
     border: 1px solid #00C9A7;
     appearance: none;
-    margin-right: 1rem;
+    margin: 0 1rem 0 0;
     display: block;
 }
 
 .checkbox:checked {
     border: 1px solid #00C9A7;
-    background-color: #00C9A7;
 }
 
 .task {
@@ -225,25 +224,25 @@ body {
 }
 
 .task .title {
-    padding-top: 0.5rem;
+    /* padding-top: 0.5rem; */
     font-size: 1rem;
-    /* border-bottom: 1px solid #ccc; */
 }
 
 .task .duedate {
     font-weight: bold;   
-    font-size: 14px; 
+    font-size: 0.9rem; 
     margin-right: 0.5rem; 
 }
 
 .task .domain {
     color: #845EC2;
     font-weight: bold;   
-    margin-right: 0.5rem; 
-    font-size: 14px;
+    margin-right: 0.9rem; 
+    font-size: 0.75rem; 
 }
 
 .task .recurring {
-    font-size: 14px; 
+    font-size: 0.9rem; 
     font-style: italic;
+    margin-right: 0.5rem; 
 }
