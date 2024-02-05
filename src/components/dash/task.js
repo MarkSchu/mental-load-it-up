@@ -31,28 +31,30 @@ export function Task(task) {
     
     return (
         element('div', {className: 'task'},
-            element('input', {
-                className: 'checkbox',
-                type: 'checkbox'
-            }),
+        element('input', {
+            className: 'checkbox',
+            type: 'checkbox'
+        }),
             element('div', {className: 'info'},
                 element('div', {
                     className: 'title',
                     textContent: task.title,
                     onclick
                 }),
-                element('span', {
-                    className: 'duedate',
-                    textContent: getRandomInt(0, 50) + ' days'
-                }),
-                element('span', {
-                    className: 'recurring',
-                    textContent: recurring
-                }),
-                element('span', {
-                    className: 'domain',
-                    textContent: domain
-                }),
+                element('div', {className: 'details'},
+                    element('span', {
+                        className: 'duedate',
+                        textContent: getRandomInt(0, 50) + ' days'
+                    }),
+                    element('span', {
+                        className: 'recurring',
+                        textContent: recurring
+                    }),
+                    element('span', {
+                        className: 'domain',
+                        textContent: domain
+                    })
+                )
             )
         )
     )

@@ -158,8 +158,8 @@ body {
 .dash-header .select-user {
     font-size: 1rem;
     font-weight: bold;
-    border: none;
-    background-color: none;
+    border: 1px solid white;
+    background-color: white;
     /* border-bottom: 1px solid; */
     /* border-radius: 0.5rem; */
     padding: 0.125rem 0.5rem;
@@ -171,7 +171,7 @@ body {
 
 .dash-head .right {
     display: flex;
-    
+
 }
 
 .dash-header .account {
@@ -196,14 +196,14 @@ body {
     right: 0;
     overflow-y: scroll;
     padding: 2rem; */
-    padding: 2rem;
+    /* padding: 2rem; */
 }
 
 /* ---------------- Task ---------------- */
 
 .task .checkbox {
-    height: 2rem;
-    min-width: 2rem;
+    height: 1.5rem;
+    min-width: 1.5rem;
     border-radius: 100%;
     border: 1px solid #00C9A7;
     appearance: none;
@@ -217,14 +217,14 @@ body {
 
 .task {
     display: flex;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
     border-bottom: 1px solid #ccc;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
 }
 
 .task .title {
-    padding-top: 0.25rem;
     font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 .task .duedate {

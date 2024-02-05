@@ -20,24 +20,6 @@ function DashHeader() {
                     textContent: 'Logout'
                 })
             )
-            // element('select', {className: 'select select-user'},
-            //     element('option', {
-            //         className: 'option', 
-            //         textContent: 'Mark'
-            //     }),
-            //     element('option', {
-            //         className: 'option', 
-            //         textContent: 'Heather'
-            //     })
-            // ),
-            // element('div', {
-            //     className: 'account',
-            //     textContent: 'Account'
-            // }),
-            // element('div', {
-            //     className: 'logout',
-            //     textContent: 'Logout'
-            // })
         )       
     )
 }
