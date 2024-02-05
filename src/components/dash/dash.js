@@ -6,7 +6,29 @@ import { TaskList } from 'components/dash/task-list.js';
 
 function DashHeader() {
     return (
-        element('div', {})       
+        element('div', {className: 'dash-header'},
+            element('select', {className: 'select-user'},
+                element('option', {textContent: 'Mark'})
+            ),
+            // element('select', {className: 'select select-user'},
+            //     element('option', {
+            //         className: 'option', 
+            //         textContent: 'Mark'
+            //     }),
+            //     element('option', {
+            //         className: 'option', 
+            //         textContent: 'Heather'
+            //     })
+            // ),
+            element('div', {
+                className: 'account',
+                textContent: 'Account'
+            }),
+            element('div', {
+                className: 'logout',
+                textContent: 'Logout'
+            })
+        )       
     )
 }
 
@@ -64,7 +86,7 @@ function DashFooter () {
 export function Dash() {
     return (
         element('div', {className: 'dash'},
-            // DashHeadser(),
+            DashHeader(),
             TaskList(),
             // DashFooter()
         )

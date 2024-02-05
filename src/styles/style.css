@@ -30,52 +30,9 @@ body {
     --panel-border-color: #ccc;
 }
 
-.text {
-    font-size: var(--text-size);
-    /* line-height: 20px; */
-}
-
-.h1 {
-    font-size: var(--h1-size);
-    margin: 0;
-}
-
-.h2 {
-    font-size: var(--h2-size);
-    margin: 0;
-}
-
-.h3 {
-    font-size: var(--h3-size);
-    margin: 0;
-}
-
-.h4 {
-    font-size: var(--h4-size);
-    margin: 0;
-}
-
-.input,
-.select
-{
-    border: var(--small-border) solid black;
-}
-
-.input,
 .select,
-.button {
-    /* height: 80px; */
-    border-radius: var(--border-radius);
-    font-size: var(--text-size);
-    cursor: pointer;
-    /* padding: 0 var(--large-spacing); */
-    padding: 0.5rem;
-}
-
-.select,
-.button {
-    font-weight: bold;
-    font-size: 1.25rem;
+.option {
+    font-size: 1rem;
 }
 
 .label {
@@ -150,8 +107,6 @@ body {
     color: var(--primary-color);
 }
 
-/* ---------------- */
-
 .dash-footer {
     position: absolute;
     border-top: var(--small-border) solid black;
@@ -185,20 +140,62 @@ body {
     text-align: center;
     /* font-size: 1rem; */
 }
+/* ----------------  Dash ----------------  */
 
-.dash-list {
-    position: absolute;
+/* ----------------  DashHeader ----------------  */
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #845EC2;
+    color: white;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+.dash-header .select-user {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    background-color: #845EC2;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding: 0.125rem 0.5rem;
+}
+
+.dash-header .select-user:focus {
+    outline: none;
+}
+
+.dash-header .account {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.dash-header .logout {
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* ---------------- TaskList ----------------  */
+
+.task-list {
+    /* position: absolute;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     overflow-y: scroll;
+    padding: 2rem; */
     padding: 2rem;
 }
 
-/* ------- TaskList ------------- ---------------------------------- */
+/* ---------------- Task ---------------- */
 
-.checkbox {
+.task .checkbox {
     height: 2rem;
     min-width: 2rem;
     border-radius: 100%;
@@ -208,7 +205,7 @@ body {
     display: block;
 }
 
-.checkbox:checked {
+.task .checkbox:checked {
     border: 1px solid #00C9A7;
 }
 
@@ -219,12 +216,8 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-.task .info {
-    width: 100%;
-}
-
 .task .title {
-    /* padding-top: 0.5rem; */
+    padding-top: 0.25rem;
     font-size: 1rem;
 }
 
@@ -238,7 +231,7 @@ body {
     color: #845EC2;
     font-weight: bold;   
     margin-right: 0.9rem; 
-    font-size: 0.75rem; 
+    font-size: 0.9rem; 
 }
 
 .task .recurring {
@@ -246,3 +239,4 @@ body {
     font-style: italic;
     margin-right: 0.5rem; 
 }
+

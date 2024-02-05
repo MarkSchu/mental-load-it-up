@@ -7,7 +7,7 @@ export function TaskList () {
     return (
         element('div', {},
             element('div', {
-                className: 'dash-list',
+                className: 'task-list',
                 bind: [[collections.tasks, repeatWith(Task)]]
             })
         )

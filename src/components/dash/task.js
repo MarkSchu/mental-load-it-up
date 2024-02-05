@@ -57,8 +57,3 @@ export function Task(task) {
         )
     )
 }
-
-// element('span', {
-                    //     className: 'recurring', 
-                    //     textContent: recurring + ' '
-                    // }),
