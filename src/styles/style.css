@@ -151,6 +151,8 @@ body {
     color: white;
     padding: 0.5rem;
     align-items: center;
+    width: 100%;
+    position: fixed;
 }
 
 .dash-header .select-user {
