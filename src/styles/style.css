@@ -163,6 +163,7 @@ body {
     /* border-bottom: 1px solid; */
     /* border-radius: 0.5rem; */
     padding: 0.125rem 0.5rem;
+    color: black;
 }
 
 .dash-header .select-user:focus {
@@ -212,7 +213,7 @@ body {
 }
 
 .task .checkbox:checked {
-    border: 1px solid #00C9A7;
+    background-color: 1px solid #00C9A7;
 }
 
 .task {
