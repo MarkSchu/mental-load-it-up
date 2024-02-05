@@ -157,7 +157,7 @@ body {
 
 .dash-header .select-user {
     color: white;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     background-color: #845EC2;
@@ -172,13 +172,13 @@ body {
 
 .dash-header .account {
     color: white;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
 .dash-header .logout {
     color: white;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
