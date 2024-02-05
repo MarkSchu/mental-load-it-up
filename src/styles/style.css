@@ -147,22 +147,21 @@ body {
 .dash-header {
     display: flex;
     justify-content: space-between;
-    background-color: #845EC2;
-    color: white;
+    border-bottom: 1px solid #845EC2;
+    background-color: white;
     padding: 0.5rem;
     align-items: center;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
 }
 
 .dash-header .select-user {
-    color: white;
     font-size: 1rem;
     font-weight: bold;
     border: none;
-    background-color: #845EC2;
-    border: 1px solid;
-    border-radius: 0.5rem;
+    background-color: none;
+    /* border-bottom: 1px solid; */
+    /* border-radius: 0.5rem; */
     padding: 0.125rem 0.5rem;
 }
 
@@ -170,15 +169,20 @@ body {
     outline: none;
 }
 
+.dash-head .right {
+    display: flex;
+    
+}
+
 .dash-header .account {
-    color: white;
-    font-size: 1rem;
+    /* color: white;
+    font-size: 1rem; */
     font-weight: bold;
 }
 
 .dash-header .logout {
-    color: white;
-    font-size: 1rem;
+    /* color: white;
+    font-size: 1rem; */
     font-weight: bold;
 }
 

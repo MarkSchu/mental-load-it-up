@@ -10,6 +10,16 @@ function DashHeader() {
             element('select', {className: 'select-user'},
                 element('option', {textContent: 'Mark'})
             ),
+            element('div', {className: 'right'},
+                element('span', {
+                    className: 'account',
+                    textContent: 'Account / '
+                }),
+                element('span', {
+                    className: 'logout',
+                    textContent: 'Logout'
+                })
+            )
             // element('select', {className: 'select select-user'},
             //     element('option', {
             //         className: 'option', 
@@ -20,14 +30,14 @@ function DashHeader() {
             //         textContent: 'Heather'
             //     })
             // ),
-            element('div', {
-                className: 'account',
-                textContent: 'Account'
-            }),
-            element('div', {
-                className: 'logout',
-                textContent: 'Logout'
-            })
+            // element('div', {
+            //     className: 'account',
+            //     textContent: 'Account'
+            // }),
+            // element('div', {
+            //     className: 'logout',
+            //     textContent: 'Logout'
+            // })
         )       
     )
 }
