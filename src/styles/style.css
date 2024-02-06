@@ -165,22 +165,25 @@ body {
 }
 
 .dash-footer .form {
-    /* display: flex;
-    width: 100%; */
+    display: flex;
+    width: 100%;
 }
 
 .dash-footer .input {
-    /* font-size: 1rem;
-    width: 100%; */
+    font-size: 1rem;
+    width: 100%;
 }
 
-.dash-footer .create {
-    /* font-size: 1rem; */
+.dash-footer .add {
+    font-size: 1rem;
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid black;
 }
 
 .dash-footer .menu {
-    /* display: flex; */
-
+    display: flex;
+    width: 100%;
 }
 
 .dash-footer .select {
@@ -190,6 +193,7 @@ body {
     font-weight: bold;
     font-size: 1rem;
     text-align: -webkit-center;
+    width: 100%;
 }
 
 

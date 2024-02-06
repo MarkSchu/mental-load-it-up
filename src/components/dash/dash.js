@@ -38,11 +38,14 @@ function DashFooter () {
 
     return (
         element('div', {className: 'dash-footer'},
-            element('form', {},
-                element('input', {}),
-                element('button', {textContent: 'Add'}),
+            element('form', {className: 'form'},
+                element('input', {className: 'input'}),
+                element('button', {
+                    className: 'add',
+                    textContent: 'Add'
+                }),
             ),
-            element('div', {},
+            element('div', {className: 'menu'},
                 element('select', {className: 'select'},
                     element('option', {textContent: 'Tasks'}),
                     element('option', {textContent: 'Events'})
