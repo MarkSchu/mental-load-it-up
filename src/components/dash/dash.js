@@ -38,40 +38,23 @@ function DashFooter () {
 
     return (
         element('div', {className: 'dash-footer'},
-            element('select', {
-                className: 'select'
-            },
-                element('option', {textContent: 'Tasks'}),
-                element('option', {textContent: 'Events'})
+            element('form', {},
+                element('input', {}),
+                element('button', {textContent: 'Add'}),
+            ),
+            element('div', {},
+                element('select', {className: 'select'},
+                    element('option', {textContent: 'Tasks'}),
+                    element('option', {textContent: 'Events'})
+                ),
+                element('select', {className: 'select'},
+                    element('option', {textContent: 'home'}),
+                ),
+                element('span', {className: 'select'},
+                    element('span', {textContent: 'details'}),
+                    element('input', {type: 'checkbox'})
+                )
             )
-            // element('form', {
-            //     className: ' form',
-            //     onsubmit
-            // },
-            //     element('input', {
-            //         className: 'input',
-            //         name: 'title',
-            //         type: 'text',
-            //         required: true
-            //     }),
-            //     element('button', {
-            //         className: 'create',
-            //         textContent: 'Create',
-            //         bind: [[alerts, disableOnRequest]]
-            //     })
-            // ),
-            // element('div', {className: 'menu'},
-            //     element('select', {
-            //         className: 'select'
-            //     },
-            //         element('option', {textContent: 'Tasks'}),
-            //         element('option', {textContent: 'Events'})
-            //     ),
-            //     element('select', {
-            //         className: 'select',
-            //         textContent: 'Filter'
-            //     })
-            // )
         )
     )
 }
