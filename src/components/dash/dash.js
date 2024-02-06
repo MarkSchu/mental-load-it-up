@@ -54,7 +54,7 @@ function DashFooter () {
                     element('option', {textContent: 'home'}),
                 ),
                 element('span', {className: 'details'},
-                    element('span', {textContent: 'details'}),
+                    element('span', {textContent: 'Details'}),
                     element('input', {type: 'checkbox'})
                 )
             )
