@@ -54,18 +54,25 @@ function DashFooter () {
                     bind: [[alerts, disableOnRequest]]
                 })
             ),
-            element('div', {className: 'menu'},
-                element('select', {
-                    className: 'select'
-                },
-                    element('option', {textContent: 'Tasks'}),
-                    element('option', {textContent: 'Events'})
-                ),
-                element('button', {
-                    className: 'filter',
-                    textContent: 'Filters'
-                })
-            )
+            element('select', {
+                className: 'select'
+            },
+                element('option', {textContent: 'Tasks'}),
+                element('option', {textContent: 'Events'})
+            ),
+            // element('div', {className: 'menu'},
+            //     element('select', {
+            //         className: 'select'
+            //     },
+            //         element('option', {textContent: 'Tasks'}),
+            //         element('option', {textContent: 'Events'})
+            //     ),
+            //     element('button', {
+            //         className: 'filter',
+            //         textContent: 'Filters'
+            //     })
+            // )
+            
         )
     )
 }
