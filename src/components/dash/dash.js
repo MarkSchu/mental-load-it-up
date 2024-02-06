@@ -36,6 +36,10 @@ function DashFooter () {
         return false;
     }
 
+    const foo = () => {
+
+    }
+
     return (
         element('div', {className: 'dash-footer'},
             element('form', {className: 'form'},
@@ -48,15 +52,20 @@ function DashFooter () {
             element('div', {className: 'menu'},
                 element('select', {className: 'select'},
                     element('option', {textContent: 'Tasks'}),
-                    element('option', {textContent: 'Events'})
+                    element('option', {textContent: 'Events'}),
+                    element('option', {textContent: 'Domains'}),
+                    element('option', {textContent: 'Meal Plan'}),
                 ),
                 element('select', {className: 'filter'},
-                    element('option', {textContent: 'home'}),
+                    element('option', {textContent: 'home projects'}),
+                    element('option', {textContent: 'yard work'}),
+                    element('option', {textContent: 'kids school'}),
+                    element('option', {textContent: 'travel'}),
                 ),
-                element('span', {className: 'details'},
-                    element('span', {textContent: 'Details'}),
-                    element('input', {type: 'checkbox'})
-                )
+                // element('span', {className: 'details'},
+                //     element('span', {textContent: 'Details'}),
+                //     element('input', {type: 'checkbox'})
+                // )
             )
         )
     )
