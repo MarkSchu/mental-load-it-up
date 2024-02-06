@@ -50,10 +50,10 @@ function DashFooter () {
                     element('option', {textContent: 'Tasks'}),
                     element('option', {textContent: 'Events'})
                 ),
-                element('select', {className: 'select'},
+                element('select', {className: 'filter'},
                     element('option', {textContent: 'home'}),
                 ),
-                element('span', {className: 'select'},
+                element('span', {className: 'details'},
                     element('span', {textContent: 'details'}),
                     element('input', {type: 'checkbox'})
                 )
