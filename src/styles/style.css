@@ -156,6 +156,8 @@ body {
 .dash-footer {
     position: fixed;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
 }
 
@@ -195,7 +197,6 @@ body {
     height: 3rem;
     border: none;
     border-right: 1px solid black;
-    display: flex;
     justify-content: center;
     align-items: center;
     appearance: none;
@@ -204,7 +205,6 @@ body {
     cursor: pointer;
     font-size: 1rem;
     color: black;
-    display: block;
 }
 
 .dash-footer .select:active {
