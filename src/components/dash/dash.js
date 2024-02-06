@@ -50,22 +50,30 @@ function DashFooter () {
                 }),
             ),
             element('div', {className: 'menu'},
-                element('select', {className: 'select'},
-                    element('option', {textContent: 'Tasks'}),
-                    element('option', {textContent: 'Events'}),
-                    element('option', {textContent: 'Domains'}),
-                    element('option', {textContent: 'Meal Plan'}),
+                element('div', {className: 'select'},
+                    element('select', {},
+                        element('option', {textContent: 'Tasks'}),
+                        element('option', {textContent: 'Events'}),
+                        element('option', {textContent: 'Domains'}),
+                        element('option', {textContent: 'Meal Plan'}),
+                    ),
+                    element('div', {textContent: 'Tasks'})
                 ),
-                element('select', {className: 'filter'},
-                    element('option', {textContent: 'home projects'}),
-                    element('option', {textContent: 'yard work'}),
-                    element('option', {textContent: 'kids school'}),
-                    element('option', {textContent: 'travel'}),
+                element('div', {className: 'select middle'},
+                    element('select', {},
+                        element('option', {textContent: 'home projects'}),
+                        element('option', {textContent: 'yard work'}),
+                        element('option', {textContent: 'kids school'}),
+                        element('option', {textContent: 'travel'}),
+                    ),
+                    element('div', {textContent: 'home projects'})
                 ),
-                // element('span', {className: 'details'},
-                //     element('span', {textContent: 'Details'}),
-                //     element('input', {type: 'checkbox'})
-                // )
+                element('div', {className: 'select'},
+                    element('div', {className: 'details'},
+                        element('span', {textContent: 'Details'}),
+                        element('input', {type: 'checkbox'})
+                    )   
+                )
             )
         )
     )
