@@ -73,7 +73,7 @@ body {
     margin: 0 auto 16px auto;
 }
 
-.form {
+/* .form {
     padding: var(--huge-spacing);
 }
 
@@ -105,7 +105,7 @@ body {
     background-color: white;
     border: var(--small-border) solid var(--primary-color);
     color: var(--primary-color);
-}
+} */
 
 /* ----------------  DashHeader ----------------  */
 
@@ -162,12 +162,14 @@ body {
    padding: 1rem;
 }
 
-.dash-footer .input-form {
-    
+.dash-footer .form {
+    display: flex;
+    width: 100%;
 }
 
 .dash-footer .input {
     font-size: 1rem;
+    width: 100%;
 }
 
 .dash-footer .create {
@@ -175,15 +177,18 @@ body {
 }
 
 .dash-footer .menu {
-    
+    display: flex;
+
 }
 
 .dash-footer .select {
     font-size: 1rem;
+    width: 100%;
 }
 
 .dash-footer .filter {
     font-size: 1rem;
+    width: 100%;
 }
 
 

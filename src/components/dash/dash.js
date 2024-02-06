@@ -39,7 +39,7 @@ function DashFooter () {
     return (
         element('div', {className: 'dash-footer'},
             element('form', {
-                className: ' input-form',
+                className: ' form',
                 onsubmit
             },
                 element('input', {
