@@ -38,28 +38,28 @@ function DashFooter () {
 
     return (
         element('div', {className: 'dash-footer'},
-            element('form', {
-                className: ' form',
-                onsubmit
-            },
-                element('input', {
-                    className: 'input',
-                    name: 'title',
-                    type: 'text',
-                    required: true
-                }),
-                element('button', {
-                    className: 'create',
-                    textContent: 'Create',
-                    bind: [[alerts, disableOnRequest]]
-                })
-            ),
             element('select', {
                 className: 'select'
             },
                 element('option', {textContent: 'Tasks'}),
                 element('option', {textContent: 'Events'})
-            ),
+            )
+            // element('form', {
+            //     className: ' form',
+            //     onsubmit
+            // },
+            //     element('input', {
+            //         className: 'input',
+            //         name: 'title',
+            //         type: 'text',
+            //         required: true
+            //     }),
+            //     element('button', {
+            //         className: 'create',
+            //         textContent: 'Create',
+            //         bind: [[alerts, disableOnRequest]]
+            //     })
+            // ),
             // element('div', {className: 'menu'},
             //     element('select', {
             //         className: 'select'
@@ -67,12 +67,11 @@ function DashFooter () {
             //         element('option', {textContent: 'Tasks'}),
             //         element('option', {textContent: 'Events'})
             //     ),
-            //     element('button', {
-            //         className: 'filter',
-            //         textContent: 'Filters'
+            //     element('select', {
+            //         className: 'select',
+            //         textContent: 'Filter'
             //     })
             // )
-            
         )
     )
 }
