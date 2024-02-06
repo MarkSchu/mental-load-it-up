@@ -171,7 +171,12 @@ body {
 
 .dash-footer .input {
     font-size: 1rem;
+    padding: 0.5rem;
     width: 100%;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0;
 }
 
 .dash-footer .add {
@@ -179,6 +184,7 @@ body {
     background-color: white;
     font-weight: bold;
     border: 1px solid black;
+    border-bottom: none;
 }
 
 .dash-footer .menu {
@@ -194,6 +200,8 @@ body {
     font-size: 1rem;
     width: 100%;
     padding: 1rem 0.2rem;
+    border-radius: 0;
+    border-right: none;
 }
 
 .dash-footer .filter {
@@ -204,6 +212,7 @@ body {
     font-size: 1rem;
     width: 100%;
     padding: 1rem 0.2rem;
+    border-radius: 0;
 }
 
 .dash-footer .details {
@@ -216,6 +225,8 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 1rem 0.2rem;
+    border-radius: 0;
+    border-left: none;
 }
 
 
