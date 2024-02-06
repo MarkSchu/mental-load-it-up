@@ -125,8 +125,8 @@ body {
     font-weight: bold;
     border: 1px solid white;
     background-color: white;
-    padding: 0.125rem 0.5rem;
     color: black;
+    text-align: left;
 }
 
 .dash-header .select-user:focus {
@@ -154,82 +154,36 @@ body {
 /* ---------------- DashFooter ----------------  */
 
 .dash-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color: white;
+   border-top: 1px solid #845EC2;
+   padding: 1rem;
 }
 
 .dash-footer .input-form {
-    width: 100%;
-    display: flex;
+    
 }
 
 .dash-footer .input {
-    width: 100%;
     font-size: 1rem;
-    padding: 0.5rem;
-    resize: none;;
-    border: 1px solid #ccc;
-    border-top: 1px solid #845EC2;
 }
 
 .dash-footer .create {
     font-size: 1rem;
-    background-color: #845EC2;
-    color: white;
-    border: 1px solid #845EC2;
-    font-weight: bold;
 }
 
 .dash-footer .menu {
-    width: 100%;
-    display: flex;
-    background-color: white;
-    padding: 0.5rem 0;
+    
 }
 
 .dash-footer .select {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    height: 3rem;
-    border: none;
-    border-right: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: white;
-    cursor: pointer;
     font-size: 1rem;
-    color: black;
-}
-
-.dash-footer .select:active {
-    outline: none;
-}
-
-.dash-footer .select:focus {
-    outline: none;
 }
 
 .dash-footer .filter {
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    height: 3rem;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    appearance: none;
-    background-color: white;
-    cursor: pointer;
     font-size: 1rem;
-    color: black;
-    display: block;
 }
 
 
