@@ -73,8 +73,7 @@ function DashFooter () {
                 ),
                 element('div', {className: 'select'},
                     element('div', {className: 'details'},
-                        element('span', {textContent: 'Details'}),
-                        element('input', {type: 'checkbox'})
+                        element('div', {textContent: 'Hide Details'}),
                     )   
                 )
             )
