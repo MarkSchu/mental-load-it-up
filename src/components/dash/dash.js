@@ -13,7 +13,10 @@ function DashHeader() {
             element('div', {className: 'right'},
                 element('span', {
                     className: 'account',
-                    textContent: 'Account / '
+                    textContent: 'Account'
+                }),
+                element('span', {
+                    textContent: ' | '
                 }),
                 element('span', {
                     className: 'logout',
