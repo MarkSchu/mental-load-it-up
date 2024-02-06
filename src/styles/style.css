@@ -184,15 +184,20 @@ body {
 .dash-footer .select {
     border: none;
     background-color: white;
+    color: black;
+    text-align: center;
     font-size: 1.5rem;
     width: 100%;
     font-weight: bold;
     text-align: center;
+    appearance: none;
 }
 
 .dash-footer .filter {
     border: none;
     background-color: white;
+    color: black;
+    text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
     width: 100%;
