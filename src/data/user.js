@@ -28,6 +28,7 @@ user.signup = (email, password) => {
     .then(() => {
         user.set(auth.currentUser());
         pathname.redirect('/dash');
+        alerts.close()
     })
     .catch((err) => {
         alerts.error(err?.json?.msg || 'Something went wrong.');
@@ -35,29 +36,29 @@ user.signup = (email, password) => {
 }
 
 user.login = (email, password) => {
-    general.loading.true();
+    alerts.loading();
     return auth.login(email, password, true)
     .then(() => {
-        pathname.redirect('/')
+        user.set(auth.currentUser());
+        pathname.redirect('/dash');
+        alerts.close()
     })
     .catch((err) => {
-        alert(err)
-    })
-    .finally(() => {
-        general.loading.false();
+        alerts.error(err?.json['error_description'] || 'Something went wrong.');
     });
 }
 
 user.logout = () => {
-    general.loading.true();
+    alerts.loading();
     auth.currentUser().logout()
-    .catch((err) => {
-        alert(err)
-    })
     .then(() => {
         user.set(undefined);
-        general.loading.false();
-    });
+        pathname.redirect('/login');
+        alerts.close();
+    })
+    .catch((err) => {
+        alerts.error(err?.json['error_description'] || 'Something went wrong.');
+    })
 }
 
 user.isLoggedIn = () => {

@@ -5,7 +5,7 @@ import {  showAlertOverlay, hideOverlay, } from 'utils/binders.js';
 
 const Saving = (msg) => {
     return (
-        element('div', {},
+        element('div', {className: 'saving'},
             element('div', {className: 'spinner'}),
             element('h2', {textContent: msg})
         )
@@ -28,8 +28,8 @@ const Error = (msg) => {
     }
 
     return (
-        element('div', {},
-            element('h2', {textContent: 'Uh oh!'}),
+        element('div', {className: 'error'},
+            element('h2', {textContent: 'Uh Oh!'}),
             element('p', {textContent: msg}),
             element('button', {
                 className: 'button button-primary',

@@ -3,67 +3,54 @@ import { ObservableBool } from 'utils/observable.js';
 import { user } from 'data/user.js';
 import { disable } from 'utils/binders.js';
 
-export const LoginForm = () => {
+export const Login = () => {
 
-    const disableSubmit = new ObservableBool(false);
+    let form;
 
-    const login = (event) => {
-        event.preventDefault();
-        disableSubmit.true();
-        const form = event.target.parentElement;
+    const login = () => {
         if (form.reportValidity()) {
             const email = form.elements.email.value;
             const password = form.elements.password.value;
-            user.login(email, password).then(() => {
-                disableSubmit.false();
-                form.reset();
-                pathname.redirect('/dash');
-            });
-        } else {
-            disableSubmit.false();
-        }
+            user.login(email, password);
+        } 
     }
 
     return (
-        element('form', {},
-            element('label', {
-                className: 'label',
-                textContent: 'Email'
-            }),
-            element('input', {
-                className: 'input form-input',
-                type: 'email',
-                name: 'email',
-                required: true
-            }),
-            element('label', {
-                className: 'label',
-                textContent: 'Password'
-            }),
-            element('input', {
-                className: 'input form-input',
-                type: 'password',
-                name: 'password',
-                required: true
-            }),
-            element('button', {
-                className: 'button button-primary',
-                onclick: login,
-                textContent: 'Login',
-                bind:[[disableSubmit, disable]]
-            })
+        element('div', {className: 'form-page'}, 
+            form = element('form', {className: 'form'},
+                element('h1', {
+                    className: 'h1',
+                    textContent: 'Login'
+                }),
+                element('label', {
+                    className: 'label',
+                    textContent: 'Email'
+                }),
+                element('input', {
+                    className: 'input form-input',
+                    type: 'email',
+                    name: 'email',
+                    required: true
+                }),
+                element('label', {
+                    className: 'label',
+                    textContent: 'Password'
+                }),
+                element('input', {
+                    className: 'input form-input',
+                    type: 'password',
+                    name: 'password',
+                    required: true
+                })
+            ),
+            element('div', {className: 'buttons'},
+                element('button', {
+                    className: 'button button-primary',
+                    textContent: 'Login',
+                    onclick: login
+                })
+            )
         )
     )
 }
 
-export function Login() {
-    return (
-        element('div', {className: 'form-page'},
-            element('h1', {
-                className: 'h1 form-h1',
-                textContent: 'Login'
-            }),
-            LoginForm()
-        )
-    )
-}
