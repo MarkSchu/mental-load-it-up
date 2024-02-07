@@ -148,6 +148,7 @@ body {
 
 .dash-body {
     flex-basis: 100%;
+    overflow-y: scroll;
 }
 
 
