@@ -102,7 +102,7 @@ export function Dash() {
         element('div', {className: 'dash'},
             DashHeader(),
             TaskList(),
-            // DashFooter()
+            DashFooter()
         )
     )
 }
