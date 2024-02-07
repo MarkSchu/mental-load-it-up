@@ -3,9 +3,15 @@
     font-family: 'Noto sans';
 }
 
+html,
+bpdy {
+    overflow-y: hidden;
+}
+
 body {
     margin: 0;
 }
+
 
 :root {
     --text-size: 1rem;
@@ -128,6 +134,23 @@ body {
     justify-content: right;
 }
 
+/* ----------------  Dash ----------------  */
+
+.dash {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-body {
+    flex-basis: 100%;
+}
+
+
 /* ----------------  DashHeader ----------------  */
 
 .dash-header {
@@ -137,8 +160,9 @@ body {
     padding: 1rem 0.5rem;
     align-items: center;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     border-bottom: 1px solid #ccc;
+    flex-basis: content;
 }
 
 .dash-header .select-user {
@@ -170,11 +194,12 @@ body {
 /* ---------------- DashFooter ----------------  */
 
 .dash-footer {
-   position: fixed;
+   /* position: fixed;
    bottom: 0;
    left: 0;
-   right: 0;
+   right: 0; */
    width: 100%;
+   flex-basis: content;
    background-color: white;
    padding: 0 1rem 1rem 1rem;
 }

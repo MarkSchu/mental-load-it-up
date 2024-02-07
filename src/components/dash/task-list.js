@@ -5,7 +5,7 @@ import { Task } from 'components/dash/task.js';
 
 export function TaskList () {
     return (
-        element('div', {},
+        element('div', {className:'dash-body'},
             element('div', {
                 className: 'task-list',
                 bind: [[collections.tasks, repeatWith(Task)]]
