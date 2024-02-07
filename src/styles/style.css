@@ -151,11 +151,6 @@ body {
     overflow-y: scroll;
 }
 
-.task-list {
-    /* not sure REM means different values for these */
-    margin-top: 54.5px;   /* height of dash header */
-    margin-bottom: 127.5px; /* height of dash header */
-}
 /* ----------------  DashHeader ----------------  */
 
 .dash-header {
