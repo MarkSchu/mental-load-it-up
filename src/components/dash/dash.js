@@ -100,9 +100,9 @@ function DashFooter () {
 export function Dash() {
     return (
         element('div', {className: 'dash'},
-            // DashHeader(),
+            DashHeader(),
             TaskList(),
-            // DashFooter()
+            DashFooter()
         )
     )
 }
