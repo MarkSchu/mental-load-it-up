@@ -151,6 +151,11 @@ body {
     overflow-y: scroll;
 }
 
+.task-list {
+    margin-top: 300px;
+    margin-bottom: 300px;
+}
+
 
 /* ----------------  DashHeader ----------------  */
 
