@@ -4,8 +4,10 @@
 }
 
 html,
-bpdy {
+body 
+{
     overflow-y: hidden;
+    overscroll-behavior: none;
 }
 
 body {
@@ -147,7 +149,6 @@ body {
 }
 
 .dash-body {
-    flex-basis: 100%;
     overflow-y: scroll;
 }
 
