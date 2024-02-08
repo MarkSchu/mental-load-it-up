@@ -145,7 +145,7 @@ body
     align-items: center;
     width: 100%;
     border-bottom: 1px solid #ccc;
-
+    position:absolute
 }
 
 .dash-header .select-user {
