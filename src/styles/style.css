@@ -183,7 +183,7 @@ body
     width: 100%;
     background-color: white;
     padding: 0 1rem 1rem 1rem;
-    position: sticky;
+    position: fixed;
     bottom:0;
 }
 
