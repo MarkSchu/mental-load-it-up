@@ -254,7 +254,8 @@ body
 /* ---------------- TaskList ---------------- */
 
 .task-list {
-
+    padding-top: 54.5px;
+    padding-bottom: 127.5px 
 }
 
 
