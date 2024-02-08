@@ -145,7 +145,8 @@ body
     align-items: center;
     width: 100%;
     border-bottom: 1px solid #ccc;
-    position:absolute
+    position: fixed;
+    top:0;
 }
 
 .dash-header .select-user {
@@ -177,9 +178,11 @@ body
 /* ---------------- DashFooter ----------------  */
 
 .dash-footer {
-   width: 100%;
-   background-color: white;
-   padding: 0 1rem 1rem 1rem;
+    width: 100%;
+    background-color: white;
+    padding: 0 1rem 1rem 1rem;
+    position: fixed;
+    bottom:0;
 }
 
 .dash-footer .add-container {

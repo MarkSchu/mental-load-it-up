@@ -107,3 +107,6 @@ export function Dash() {
     )
 }
 
+window.addEventListener('scroll', (e) => {
+    // console.log(e.target)
+})
