@@ -6,14 +6,8 @@
 html,
 body 
 {
-    overflow-y: hidden;
-    overscroll-behavior: none;
-}
-
-body {
     margin: 0;
 }
-
 
 :root {
     --text-size: 1rem;
@@ -139,17 +133,6 @@ body {
 /* ----------------  Dash ----------------  */
 
 .dash {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.dash-body {
-    overflow-y: scroll;
 }
 
 /* ----------------  DashHeader ----------------  */
@@ -161,9 +144,8 @@ body {
     padding: 1rem 0.5rem;
     align-items: center;
     width: 100%;
-    position: sticky;
     border-bottom: 1px solid #ccc;
-    /* flex-basis: content; */
+
 }
 
 .dash-header .select-user {
@@ -195,12 +177,7 @@ body {
 /* ---------------- DashFooter ----------------  */
 
 .dash-footer {
-   position: sticky;
-   bottom: 0;
-   left: 0;
-   right: 0;
    width: 100%;
-   /* flex-basis: content; */
    background-color: white;
    padding: 0 1rem 1rem 1rem;
 }
@@ -269,6 +246,13 @@ body {
    bottom: 0;
    opacity: 0;
 }
+
+/* ---------------- TaskList ---------------- */
+
+.task-list {
+
+}
+
 
 /* ---------------- Task ---------------- */
 
