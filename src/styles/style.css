@@ -145,8 +145,7 @@ body
     align-items: center;
     width: 100%;
     border-bottom: 1px solid #ccc;
-    position: fixed;
-    /* position: sticky; */
+    position: sticky;
     top:0;
 }
 
@@ -182,8 +181,7 @@ body
     width: 100%;
     background-color: white;
     padding: 0 1rem 1rem 1rem;
-    position: fixed;
-    /* position: sticky; */
+    position: sticky;
     bottom:0;
 }
 
