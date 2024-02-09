@@ -40,13 +40,16 @@ export class Collection extends ObservableArray {
     }
     
     delete (_id) {
+        alerts.deleting();
         const collection = this.collection;
         const data = {_id};
         return api('deleteById', collection, data).then((response) => {
             if (response.status < 300) {
+                alerts.close();
                 collections[collection].remove(_id);
+            } else {
+                alerts.error(response.statusText);
             }
-            return response;
         });
     }
 

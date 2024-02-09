@@ -41,14 +41,21 @@ const Error = (msg) => {
 }
 
 const handleAlert = (el, {type, msg}) => {
-    if (type === 'creating') {
-        showAlertOverlay(el);
-        render(el, Saving('Creating...'));
-    }
     if (type === 'loading') {
         showAlertOverlay(el);
         render(el, Loading());
     }
+    
+    if (type === 'creating') {
+        showAlertOverlay(el);
+        render(el, Saving('Creating...'));
+    }
+
+    if (type === 'deleting') {
+        showAlertOverlay(el);
+        render(el, Saving('Deleting...'));
+    }
+    
     if (type === 'saving') {
         showAlertOverlay(el);
         render(el, Saving('Saving...'))

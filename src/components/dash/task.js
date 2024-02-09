@@ -1,5 +1,6 @@
 import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
+import { collections } from 'data/collection.js';
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -27,14 +28,19 @@ export function Task(task) {
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
+    
     const onclick = (e) => showModal.true();
+
+    const deleteTask = () => {
+        collections.tasks.delete(task._id);
+    }
     
     return (
         element('div', {className: 'task'},
-        element('input', {
-            className: 'checkbox',
-            type: 'checkbox'
-        }),
+            element('input', {
+                className: 'checkbox',
+                type: 'checkbox'
+            }),
             element('div', {className: 'info'},
                 element('div', {
                     className: 'title',
@@ -55,7 +61,12 @@ export function Task(task) {
                 //         textContent: domain
                 //     })
                 // )
-            )
+            ),
+            element('span', {
+                className: 'delete',
+                textContent: '×',
+                onclick: deleteTask
+            })
         )
     )
 }

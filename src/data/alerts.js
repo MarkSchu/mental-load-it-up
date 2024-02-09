@@ -12,6 +12,10 @@ alerts.loading = () => {
     alerts.set({type: 'loading'});
 }
 
+alerts.deleting = () => {
+    alerts.set({type: 'deleting'});
+}
+
 alerts.saving = () => {
     alerts.set({type: 'saving'});
 }
