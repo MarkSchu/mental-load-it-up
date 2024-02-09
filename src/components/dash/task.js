@@ -23,23 +23,33 @@ const recurrings = [
     'yearly'
 ]
 
+
+
 export function Task(task) {
 
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
-    
-    const onclick = (e) => showModal.true();
+
+    const toggleDone = () => {
+        collections.tasks.update(task._id, {
+            complete: !task.complete
+        });
+    }
 
     const deleteTask = () => {
         collections.tasks.delete(task._id);
     }
+
+    const onclick = (e) => showModal.true();
     
     return (
         element('div', {className: 'task'},
             element('input', {
                 className: 'checkbox',
-                type: 'checkbox'
+                type: 'checkbox',
+                checked: task.complete,
+                onchange: toggleDone
             }),
             element('div', {className: 'info'},
                 element('div', {

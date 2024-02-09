@@ -76,7 +76,6 @@ export class Collection extends ObservableArray {
             this.value = sortByDates(this.value);
             this.emit();
         }
-
     }
 
     addAndSort(item) {

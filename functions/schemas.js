@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const task = new mongoose.Schema({
     title: String,
     userId: String,             // Netlify User ID
+    complete: Boolean,
     dueDate: String,            // 2024-01-31T17:20:45.958Z     date.toJSON()
     creationDate: String        // 2024-01-31T17:20:45.958Z
 });

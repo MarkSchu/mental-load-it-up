@@ -272,7 +272,7 @@ body
 }
 
 .task .checkbox:checked {
-    background-color: 1px solid #00C9A7;
+    background-color: #00C9A7;
 }
 
 .task {
