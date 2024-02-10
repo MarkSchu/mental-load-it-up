@@ -136,6 +136,15 @@ body
     text-align: left;
 }
 
+.form-page .date-input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0
+}
+
 .form-page .buttons {
     display: flex;
     justify-content: right;

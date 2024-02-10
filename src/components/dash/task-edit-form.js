@@ -19,6 +19,10 @@ export function EditTaskForm(task, showModal) {
         return false;
     }
 
+    const displayDate = (e) => {
+        console.log(e.target.value);
+    }
+
     const closeForm = () => {
         showModal.false();
         return false;
@@ -53,8 +57,18 @@ export function EditTaskForm(task, showModal) {
                     className: 'input',
                     type: 'date',
                     name: 'dueDate',
-                    value: isoToInput(task.dueDate)
+                    value: isoToInput(task.dueDate),
+                    onchange: displayDate
                 })
+                // element('div', {className: 'input'},
+                //     element('input', {
+                //         className: 'input',
+                //         type: 'date',
+                //         name: 'dueDate',
+                //         value: isoToInput(task.dueDate),
+                //         onchange: displayDate
+                //     })
+                // )
             ),
             element('div', {className: 'buttons'},
                 element('button', {
