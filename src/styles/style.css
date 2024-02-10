@@ -132,7 +132,8 @@ body
     margin-bottom: 1rem;
     display: block;
     background-color: white;
-    appearance: none;
+    color: black;
+    text-align: left;
 }
 
 .form-page .buttons {
