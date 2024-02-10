@@ -70,20 +70,20 @@ export function Task(task) {
                     textContent: task.title,
                     onclick
                 }),
-                element('div', {className: 'details'},
-                    element('span', {
-                        className: 'duedate',
-                        textContent: getRandomInt(0, 50) + ' days'
-                    }),
-                    element('span', {
-                        className: 'recurring',
-                        textContent: recurring
-                    }),
-                    element('span', {
-                        className: 'domain',
-                        textContent: domain
-                    })
-                )
+                // element('div', {className: 'details'},
+                //     element('span', {
+                //         className: 'duedate',
+                //         textContent: getRandomInt(0, 50) + ' days'
+                //     }),
+                //     element('span', {
+                //         className: 'recurring',
+                //         textContent: recurring
+                //     }),
+                //     element('span', {
+                //         className: 'domain',
+                //         textContent: domain
+                //     })
+                // )
             ),
             element('span', {
                 className: 'delete',
