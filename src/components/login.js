@@ -17,7 +17,7 @@ export const Login = () => {
 
     return (
         element('div', {className: 'form-page'}, 
-            form = element('form', {className: 'form'},
+            form = element('form', {},
                 element('h1', {
                     className: 'h1',
                     textContent: 'Login'

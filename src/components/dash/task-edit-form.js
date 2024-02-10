@@ -19,56 +19,44 @@ export function EditTaskForm(task, showModal) {
         return false;
     }
 
-    const deleteTask = () => {
-        collections.tasks.delete(task._id);
-        return false;
-    }
-
     const closeForm = () => {
         showModal.false();
         return false;
     }
 
     return (
-        form = element('form', {
-            className: 'form overlay',
+        element('div', {
+            className: 'form-page overlay',
             bind: [[showModal, toggleModalOverlay]]
         },
-            element('h1', {
-                className: 'h1 form-h1',
-                textContent: 'Edit Task'
-            }),
-            element('label', {
-                className: 'label',
-                textContent: 'Title'
-            }),
-            element('input', {
-                className: 'input form-input',
-                type: 'text',
-                name: 'title',
-                value: task.title,
-                required: true
-            }),
-            element('label', {
-                className: 'label',
-                textContent: 'Due Date'
-            }),
-            element('input', {
-                className: 'input form-input',
-                type: 'date',
-                name: 'dueDate',
-                value: isoToInput(task.dueDate)
-            }),
-            element('label', {
-                className: 'label',
-                textContent: 'Delete'
-            }),
-            element('div', {className: 'form-button-row'},
-                element('button', {
-                    className: 'button button-secondary',
-                    textContent: 'Delete',
-                    onclick: deleteTask
+            form = element('form', {},
+                element('h1', {
+                    className: 'h1',
+                    textContent: 'Edit Task'
                 }),
+                element('label', {
+                    className: 'label',
+                    textContent: 'Title'
+                }),
+                element('input', {
+                    className: 'input form-input',
+                    type: 'text',
+                    name: 'title',
+                    value: task.title,
+                    required: true
+                }),
+                element('label', {
+                    className: 'label',
+                    textContent: 'Due Date'
+                }),
+                element('input', {
+                    className: 'input form-input',
+                    type: 'date',
+                    name: 'dueDate',
+                    value: isoToInput(task.dueDate)
+                })
+            ),
+            element('div', {className: 'buttons'},
                 element('button', {
                     className: 'button button-secondary',
                     textContent: 'Cancel',

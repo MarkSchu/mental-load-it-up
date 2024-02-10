@@ -71,7 +71,7 @@ const handleAlert = (el, {type, msg}) => {
 export const Alert = () => {
     return (
         element('div', {
-            className: 'overlay',
+            className: 'overlay alert',
             listen: [[alerts, handleAlert]],
         })
     )

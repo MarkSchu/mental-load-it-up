@@ -1,6 +1,8 @@
 import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { collections } from 'data/collection.js';
+import { EditTaskForm } from 'components/dash/task-edit-form.js';
+
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -41,10 +43,13 @@ export function Task(task) {
         collections.tasks.delete(task._id);
     }
 
-    const onclick = (e) => showModal.true();
+    const openEditModal = () => {
+        showModal.true();
+    }
     
     return (
         element('div', {className: 'task'},
+            EditTaskForm(task, showModal),
             element('div', {className: 'checkbox'},
                 element('input', {
                     className: 'checkbox-input',
@@ -56,26 +61,29 @@ export function Task(task) {
                     className: 'checkmark'
                 })
             ),
-            element('div', {className: 'info'},
+            element('div', {
+                className: 'info', 
+                onclick: openEditModal
+            },
                 element('div', {
                     className: 'title',
                     textContent: task.title,
                     onclick
                 }),
-                // element('div', {className: 'details'},
-                //     element('span', {
-                //         className: 'duedate',
-                //         textContent: getRandomInt(0, 50) + ' days'
-                //     }),
-                //     element('span', {
-                //         className: 'recurring',
-                //         textContent: recurring
-                //     }),
-                //     element('span', {
-                //         className: 'domain',
-                //         textContent: domain
-                //     })
-                // )
+                element('div', {className: 'details'},
+                    element('span', {
+                        className: 'duedate',
+                        textContent: getRandomInt(0, 50) + ' days'
+                    }),
+                    element('span', {
+                        className: 'recurring',
+                        textContent: recurring
+                    }),
+                    element('span', {
+                        className: 'domain',
+                        textContent: domain
+                    })
+                )
             ),
             element('span', {
                 className: 'delete',

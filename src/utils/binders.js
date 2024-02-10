@@ -22,6 +22,7 @@ export function hideOverlay(el) {
 }
 
 export function toggleModalOverlay(el, value) {
+    console.log(value)
     value
     ? showModalOverlay(el)
     : hideOverlay(el);

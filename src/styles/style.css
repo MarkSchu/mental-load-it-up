@@ -57,6 +57,10 @@ body
 }
 
 .button-secondary {
+    background-color: white;
+    border: 1px solid #845EC2;
+    color: #845EC2;
+    margin-right: 0.5rem;
 }
 
 /* ----------------  Alert ----------------  */
@@ -71,6 +75,9 @@ body
     z-index: -1;
     opacity: 0;
     transition: opacity 0.25s;
+}
+
+.alert {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -306,6 +313,7 @@ body
 
 .task .info {
     width: 100%;
+    cursor: pointer;
 }
 
 .task .title {
