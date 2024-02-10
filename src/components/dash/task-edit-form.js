@@ -39,7 +39,7 @@ export function EditTaskForm(task, showModal) {
                     textContent: 'Title'
                 }),
                 element('input', {
-                    className: 'input form-input',
+                    className: 'input',
                     type: 'text',
                     name: 'title',
                     value: task.title,
@@ -50,7 +50,7 @@ export function EditTaskForm(task, showModal) {
                     textContent: 'Due Date'
                 }),
                 element('input', {
-                    className: 'input form-input',
+                    className: 'input',
                     type: 'date',
                     name: 'dueDate',
                     value: isoToInput(task.dueDate)
