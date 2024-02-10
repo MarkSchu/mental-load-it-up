@@ -130,9 +130,9 @@ body
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
     display: block;
+    background-color: white;
+    appearance: none;
 }
 
 .form-page .buttons {
