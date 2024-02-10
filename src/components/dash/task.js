@@ -45,12 +45,18 @@ export function Task(task) {
     
     return (
         element('div', {className: 'task'},
-            element('input', {
-                className: 'checkbox',
-                type: 'checkbox',
-                checked: task.complete,
-                onchange: toggleDone
-            }),
+            element('div', {className: 'checkbox'},
+                element('input', {
+                    className: 'checkbox-input',
+                    type: 'checkbox',
+                    checked: task.complete,
+                    onchange: toggleDone
+                }),
+                element('div', {
+                    className: 'checkmark',
+                    textContent: '✔'
+                })
+            ),
             element('div', {className: 'info'},
                 element('div', {
                     className: 'title',
