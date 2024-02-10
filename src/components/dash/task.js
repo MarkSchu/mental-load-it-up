@@ -53,8 +53,7 @@ export function Task(task) {
                     onchange: toggleDone
                 }),
                 element('div', {
-                    className: 'checkmark',
-                    textContent: '✔'
+                    className: 'checkmark'
                 })
             ),
             element('div', {className: 'info'},
