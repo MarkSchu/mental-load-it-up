@@ -52,15 +52,15 @@ function DashFooter () {
         element('div', {className: 'dash-footer'},
             element('div', {className: 'add-container'},
                 form = element('form', {className: 'form'},
-                    element('input', {
-                        className: 'input',
-                        placeholder: 'go grocery shopping...',
-                        required: true,
-                        name: 'title' 
+                    element('textarea', {
+                        className: 'add-input',
+                        rows: 3,
+                        name: 'title',
+                        required: true
                     })
                 ),
                 element('button', {
-                    className: 'add',
+                    className: 'add-button',
                     textContent: 'Add',
                     onclick: createTake
                 }),

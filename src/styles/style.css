@@ -134,12 +134,11 @@ body
     background-color: white;
     color: black;
     text-align: left;
+    line-height: 1.5rem;
 }
 
-.date-input-container {
-    border: 1px solid green;
-    position: relative;
-    width: 100%;
+.form-page .textarea {
+    resize: none;
 }
 
 .form-page .date-input {
@@ -152,10 +151,9 @@ body
     display: block;
     background-color: white;
     color: black;
-    text-align: left;
     appearance: none;
-    /* line-height: 1.5rem; */
     text-align: left;
+    cursor: pointer;
 }
 
 .form-page .buttons {
@@ -229,19 +227,23 @@ body
     width: 100%;
 }
 
-.dash-footer .input {
+.dash-footer .add-input {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    line-height: 1.5rem;
     width: 100%;
+    padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-right: none;
     border-radius: 0;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+    height: 100%;
+    resize: none;
 }
 
-.dash-footer .add {
+.dash-footer .add-button {
     font-size: 1rem;
+    line-height: 1.5rem;
     background-color: white;
     font-weight: bold;
     border: 1px solid #ccc;
@@ -258,18 +260,18 @@ body
 }
 
 .dash-footer .select {
-   position: relative;
-   border: 1px solid #ccc;
-   width: 100%;
-   height: 4rem;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+    position: relative;
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-   font-weight: bold;
-   border-radius: 0.5rem;
-   cursor: pointer;
-   padding: 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    padding: 1rem;
 }
 
 .dash-footer .select.middle {
@@ -277,12 +279,12 @@ body
 }
 
 .dash-footer .select select {
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
 }
 
 /* ---------------- TaskList ---------------- */

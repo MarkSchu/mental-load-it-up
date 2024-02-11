@@ -31,9 +31,9 @@ export const sortByDates = (collection) => {
     return sorted;
 }
 
-export const inputToISO = (val) => {
-    if (!val) return '';
-    const date = new Date(val.split('-')); // that weird JS date thing. Look it up.
+export const inputToISO = (str) => {
+    if (!str) return '';
+    const date = new Date(str.split('-')); // that weird JS date thing. Look it up.
     return date.toJSON();
 }
 
