@@ -154,6 +154,8 @@ body
     color: black;
     text-align: left;
     appearance: none;
+    /* line-height: 1.5rem; */
+    text-align: left;
 }
 
 .form-page .buttons {
