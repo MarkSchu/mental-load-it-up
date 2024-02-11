@@ -136,9 +136,18 @@ body
     text-align: left;
 }
 
+.date-input-container {
+    position: relative;
+}
+
 .form-page .date-input {
     cursor: pointer;
-    height: 47.5px; /* copy height of input class since we don't always have text here */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid red;
 }
 
 .form-page .buttons {

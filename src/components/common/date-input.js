@@ -16,6 +16,18 @@ export function DateInput(name, iso) {
     }
 
     return (
+        element('div', {className: 'input date-input-container'},
+            element('input', {
+                className: 'date-input',
+                type: 'date', 
+                onchange: showDate,
+                name,
+                value: isoToInput(iso)
+            })
+        )
+    )
+
+    return (
         element('div', {
             className: 'input date-input',
             onclick: showDatePicker
@@ -24,7 +36,6 @@ export function DateInput(name, iso) {
                 textContent: isoToDate(iso)}),
             input = element('input', {
                 type: "date",
-                style: {opacity: 0, position: 'absolute'},
                 onchange: showDate,
                 name,
                 value: isoToInput(iso)
