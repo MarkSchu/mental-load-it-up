@@ -153,6 +153,7 @@ body
     background-color: white;
     color: black;
     text-align: left;
+    appearance: none;
 }
 
 .form-page .buttons {
