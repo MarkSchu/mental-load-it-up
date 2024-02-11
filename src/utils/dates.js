@@ -31,14 +31,21 @@ export const sortByDates = (collection) => {
     return sorted;
 }
 
+export const inputToISO = (val) => {
+    if (!val) return '';
+    const date = new Date(val.split('-')); // that weird JS date thing. Look it up.
+    return date.toJSON();
+}
+
 export const isoToInput = (iso) => {
     if (!iso) return '';
     return iso.split('T')[0];
 }
 
-export const inputToISO = (val) => {
-    if (!val) return '';
-    return val + 'T00:00:00.000Z'
+export const isoToDate = (iso) => {
+    if (!iso) return '';
+    const date = new Date(iso);
+    return date.toLocaleDateString();
 }
 
 export const getDaysUntilDeadline = (utc) => {

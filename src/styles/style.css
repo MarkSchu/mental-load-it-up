@@ -137,12 +137,8 @@ body
 }
 
 .form-page .date-input {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0
+    cursor: pointer;
+    height: 47.5px; /* copy height of input class since we don't always have text here */
 }
 
 .form-page .buttons {

@@ -2,6 +2,7 @@ import { element } from 'utils/dom.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'data/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
+import { DateInput } from 'components/common/date-input.js';
 
 
 export function EditTaskForm(task, showModal) {
@@ -17,10 +18,6 @@ export function EditTaskForm(task, showModal) {
             });
         }        
         return false;
-    }
-
-    const displayDate = (e) => {
-        console.log(e.target.value);
     }
 
     const closeForm = () => {
@@ -53,22 +50,17 @@ export function EditTaskForm(task, showModal) {
                     className: 'label',
                     textContent: 'Due Date'
                 }),
-                element('input', {
-                    className: 'input',
-                    type: 'date',
-                    name: 'dueDate',
-                    value: isoToInput(task.dueDate),
-                    onchange: displayDate
-                })
-                // element('div', {className: 'input'},
-                //     element('input', {
-                //         className: 'input',
-                //         type: 'date',
-                //         name: 'dueDate',
-                //         value: isoToInput(task.dueDate),
-                //         onchange: displayDate
-                //     })
-                // )
+                DateInput(
+                    'dueDate', 
+                    task.dueDate
+                )
+                // element('input', {
+                //     className: 'input',
+                //     type: 'date',
+                //     name: 'dueDate',
+                //     value: isoToInput(task.dueDate),
+                //     onchange: displayDate
+                // })
             ),
             element('div', {className: 'buttons'},
                 element('button', {
