@@ -148,6 +148,7 @@ body
     right: 0;
     bottom: 0;
     border: 2px solid red;
+    display: block;
 }
 
 .form-page .buttons {
