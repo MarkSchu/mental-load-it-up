@@ -143,14 +143,16 @@ body
 }
 
 .form-page .date-input {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid red;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
     display: block;
+    background-color: white;
+    color: black;
+    text-align: left;
 }
 
 .form-page .buttons {

@@ -16,15 +16,13 @@ export function DateInput(name, iso) {
     }
 
     return (
-        element('div', {className: 'input date-input-container'},
-            element('input', {
-                className: 'date-input',
-                type: 'date', 
-                onchange: showDate,
-                name,
-                value: isoToInput(iso)
-            })
-        )
+        element('input', {
+            className: 'date-input',
+            type: 'date', 
+            onchange: showDate,
+            name,
+            value: isoToInput(iso)
+        })
     )
 
     return (
