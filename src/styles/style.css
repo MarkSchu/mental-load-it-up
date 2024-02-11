@@ -137,7 +137,9 @@ body
 }
 
 .date-input-container {
+    border: 1px solid green;
     position: relative;
+    width: 100%;
 }
 
 .form-page .date-input {
