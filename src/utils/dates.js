@@ -48,9 +48,9 @@ export const isoToDate = (iso) => {
     return date.toLocaleDateString();
 }
 
-export const getDaysUntilDeadline = (utc) => {
+export const getDaysUntilDeadline = (iso) => {
     const today = new Date();
-    const dueDate = new Date(utc);
+    const dueDate = new Date(iso);
     const diff = dueDate.getTime() - today.getTime();
     return Math.round(diff / (1000 * 3600 * 24));
 }

@@ -123,3 +123,11 @@ export function render(el, newChild) {
     clearChildren(el);
     addChildren(el, [newChild]);
 }
+
+export function boolToInlineDisplay(bool) {
+    return bool ? 'inline' : 'none';
+}
+
+export function boolToBlockDisplay(bool) {
+    return bool ? 'block' : 'none';
+}

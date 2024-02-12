@@ -1,7 +1,8 @@
-import { element } from 'utils/dom.js';
+import { element, boolToInlineDisplay } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { collections } from 'data/collection.js';
 import { EditTaskForm } from 'components/dash/task-edit-form.js';
+import { getDaysUntilDeadline } from 'utils/dates.js';
 
 
 function getRandomInt(min, max) {
@@ -31,7 +32,11 @@ export function Task(task) {
 
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
+
     const showModal = new ObservableBool(false);
+    const daysUntil = getDaysUntilDeadline(task.dueDate);
+    const displayDueDate = !isNaN(daysUntil);
+    
 
     const toggleDone = () => {
         collections.tasks.update(task._id, {
@@ -46,7 +51,7 @@ export function Task(task) {
     const openEditModal = () => {
         showModal.true();
     }
-    
+
     return (
         element('div', {className: 'task'},
             EditTaskForm(task, showModal),
@@ -73,7 +78,8 @@ export function Task(task) {
                 element('div', {className: 'details'},
                     element('span', {
                         className: 'duedate',
-                        textContent: getRandomInt(0, 50) + ' days'
+                        textContent: getDaysUntilDeadline(task.dueDate) + ' days',
+                        style: {display: boolToInlineDisplay(displayDueDate)}
                     }),
                     // element('span', {
                     //     className: 'recurring',
