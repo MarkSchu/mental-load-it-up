@@ -1,7 +1,14 @@
-import { element } from 'utils/dom.js';
+import { element, bind } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
 import { TaskList } from 'components/dash/task-list.js';
 import { user } from 'data/user.js';
+import { ObservableVar } from 'utils/observable.js';
+
+const collectionNames = {
+    tasks: 'Tasks',
+    events: 'Events',
+    domains: 'Categories',
+}
 
 function DashHeader() {
 
@@ -32,7 +39,7 @@ function DashHeader() {
     )
 }
 
-function DashFooter () {
+function DashFooter (menuOption) {
 
     let form;
 
@@ -46,6 +53,14 @@ function DashFooter () {
 
     const displayCount = (el, list) => {
         el.textContent = `Tasks (${list.length})`;
+    }
+
+    const setMenuOption = (e) => {
+        menuOption.set(e.target.value);
+    }
+
+    const displayMenuOption = (collectionName) => (el, list) => {
+        el.textContent = `${collectionNames[collectionName]} (${list.length})`;
     }
 
     return (
@@ -67,26 +82,37 @@ function DashFooter () {
             ),
             element('div', {className: 'menu'},
                 element('div', {className: 'select'},
-                    element('select', {disabled: true},
-                        element('option', {textContent: 'Tasks'}),
-                        // element('option', {textContent: 'Events'}),
-                        // element('option', {textContent: 'Domains'}),
-                        // element('option', {textContent: 'Meal Plan'}),
+                    element('select', {
+                        onchange: setMenuOption
+                    },
+                        element('option', {
+                            textContent: 'Tasks',
+                            value: 'tasks'
+                        }),
+                        element('option', {
+                            textContent: 'Events',
+                            value: 'events'
+                        }),
+                        element('option', {
+                            textContent: 'Categories',
+                            value: 'domains'
+                        })
                     ),
-                    element('div', {
-                        textContent: 'Tasks (4)',
-                        bind: [[collections.tasks, displayCount]]
-                    })
+                    bind(menuOption, (value) =>
+                        element('div', {
+                            bind: [[collections[value], displayMenuOption(value)]]
+                        })
+                    )
                 ),
-                // element('div', {className: 'select middle'},
-                //     element('select', {},
-                //         element('option', {textContent: 'home projects'}),
-                //         element('option', {textContent: 'yard work'}),
-                //         element('option', {textContent: 'kids school'}),
-                //         element('option', {textContent: 'travel'}),
-                //     ),
-                //     element('div', {textContent: 'home projects'})
-                // ),
+                element('div', {className: 'select middle'},
+                    element('select', {},
+                        element('option', {textContent: 'home projects'}),
+                        element('option', {textContent: 'yard work'}),
+                        element('option', {textContent: 'kids school'}),
+                        element('option', {textContent: 'travel'}),
+                    ),
+                    element('div', {textContent: 'home projects'})
+                ),
                 // element('div', {className: 'select'},
                 //     element('div', {className: 'details'},
                 //         element('div', {textContent: 'Hide Details'}),
@@ -98,11 +124,14 @@ function DashFooter () {
 }
 
 export function Dash() {
+
+    const menuOption = new ObservableVar('tasks');
+
     return (
         element('div', {className: 'dash'},
             DashHeader(),
-            TaskList(),
-            DashFooter()
+            TaskList(menuOption),
+            DashFooter(menuOption)
         )
     )
 }

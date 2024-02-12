@@ -12,9 +12,10 @@ export function TaskList () {
     )
 }
 
-/**
- * 
- * 
- * if the header/footer are absolute, then they're effectively the html tag. 
- * so touching them is basically activating them...mmmm
- */
+export function dashList(menuOption) {
+    return (
+        element('div', {
+            className: 'list'
+        })
+    )
+}
