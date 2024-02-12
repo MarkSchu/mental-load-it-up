@@ -1,6 +1,6 @@
 import { element, bind } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
-import { TaskList } from 'components/dash/task-list.js';
+import { DashList } from 'components/dash/task-list.js';
 import { user } from 'data/user.js';
 import { ObservableVar } from 'utils/observable.js';
 
@@ -83,6 +83,7 @@ function DashFooter (menuOption) {
             element('div', {className: 'menu'},
                 element('div', {className: 'select'},
                     element('select', {
+                        className: 'primary-options',
                         onchange: setMenuOption
                     },
                         element('option', {
@@ -130,7 +131,7 @@ export function Dash() {
     return (
         element('div', {className: 'dash'},
             DashHeader(),
-            TaskList(menuOption),
+            DashList(menuOption),
             DashFooter(menuOption)
         )
     )

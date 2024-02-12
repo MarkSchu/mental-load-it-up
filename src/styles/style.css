@@ -287,9 +287,13 @@ body
     opacity: 0;
 }
 
+.dash-footer .primary-options {
+    cursor: pointer;
+}
+
 /* ---------------- TaskList ---------------- */
 
-.task-list {
+.dash-list {
     padding-top: 54.5px;
     padding-bottom: 127.5px 
 }
