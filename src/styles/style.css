@@ -239,6 +239,7 @@ body
     border-bottom-left-radius: 0.5rem;
     height: 100%;
     resize: none;
+    cursor: pointer;
 }
 
 .dash-footer .add-button {
@@ -274,8 +275,8 @@ body
     padding: 1rem;
 }
 
-.dash-footer .select.middle {
-    margin: 0 0.5rem;
+.dash-footer .left {
+    margin-right: 0.5rem;
 }
 
 .dash-footer .select select {
@@ -287,7 +288,7 @@ body
     opacity: 0;
 }
 
-.dash-footer .primary-options {
+.dash-footer select {
     cursor: pointer;
 }
 

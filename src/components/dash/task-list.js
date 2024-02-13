@@ -26,7 +26,7 @@ export function DomainList () {
     return (
         element('div', {
             className: 'dash-list',
-            bind: [[collections.tasks, repeatWith(Domain)]]
+            bind: [[collections.domains, repeatWith(Domain)]]
         })
     )
 }

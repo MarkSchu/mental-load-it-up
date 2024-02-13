@@ -14,6 +14,9 @@ export function Domain(domain) {
     return (
         element('div', {className: 'domain'},
             // EditDomainForm(domain, showModal)
+            element('div', {
+                textContent: domain.title
+            })
         )
     )
 }

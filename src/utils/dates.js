@@ -33,8 +33,7 @@ export const sortByDates = (collection) => {
 
 export const inputToISO = (str) => {
     if (!str) return '';
-    const date = new Date(str.split('-')); // that weird JS date thing. Look it up.
-    return date.toJSON();
+    return `${str}T23:59:59`;   // due time is 11:59 pm and 59 seconds
 }
 
 export const isoToInput = (iso) => {

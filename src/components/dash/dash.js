@@ -45,14 +45,10 @@ function DashFooter (menuOption) {
 
     const createTake = () => {
         if (form.reportValidity()) {
-            collections.tasks
+            collections[menuOption.value]
             .create({title: form.elements.title.value})
             .then(() => form.reset())
         }
-    }
-
-    const displayCount = (el, list) => {
-        el.textContent = `Tasks (${list.length})`;
     }
 
     const setMenuOption = (e) => {
@@ -81,7 +77,7 @@ function DashFooter (menuOption) {
                 }),
             ),
             element('div', {className: 'menu'},
-                element('div', {className: 'select'},
+                element('div', {className: 'select left'},
                     element('select', {
                         className: 'primary-options',
                         onchange: setMenuOption
@@ -105,14 +101,16 @@ function DashFooter (menuOption) {
                         })
                     )
                 ),
-                element('div', {className: 'select middle'},
+                element('div', {className: 'select'},
                     element('select', {},
+                        element('option', {textContent: 'All'}),
+                        element('option', {textContent: 'No Category'}),
                         element('option', {textContent: 'home projects'}),
                         element('option', {textContent: 'yard work'}),
                         element('option', {textContent: 'kids school'}),
                         element('option', {textContent: 'travel'}),
                     ),
-                    element('div', {textContent: 'home projects'})
+                    element('div', {textContent: 'All'})
                 ),
                 // element('div', {className: 'select'},
                 //     element('div', {className: 'details'},
