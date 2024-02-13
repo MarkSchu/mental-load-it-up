@@ -1,14 +1,15 @@
 import { element, bind } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
 import { repeatWith } from 'utils/binders.js';
-import { Task } from 'components/dash/task.js';
-import { Domain } from 'components/dash/domain.js';
+import { TaskItem } from 'components/dash/task-item.js';
+import { DomainItem } from 'components/dash/domain-item.js';
+import { EventItem } from 'components/dash/event-item.js';
 
 export function TaskList () {
     return (
         element('div', {
             className: 'dash-list',
-            bind: [[collections.tasks, repeatWith(Task)]]
+            bind: [[collections.tasks, repeatWith(TaskItem)]]
         })
     )
 }
@@ -26,7 +27,7 @@ export function DomainList () {
     return (
         element('div', {
             className: 'dash-list',
-            bind: [[collections.domains, repeatWith(Domain)]]
+            bind: [[collections.domains, repeatWith(DomainItem)]]
         })
     )
 }

@@ -27,12 +27,35 @@ const recurrings = [
 ]
 
 
+function Checkbox (task, toggleDone) {
+    return (
+        element('div', {className: 'checkbox'},
+            element('input', {
+                className: 'checkbox-input',
+                type: 'checkbox',
+                checked: task.complete,
+                onchange: toggleDone
+            }),
+            element('div', {className: 'checkmark'})
+        )
+    )
+}
 
-export function Task(task) {
+function DueDate(task, displayDueDate) {
+    return (
+        element('span', {
+            className: 'duedate',
+            textContent: getDaysUntilDeadline(task.dueDate) + ' days',
+            style: {display: boolToInlineDisplay(displayDueDate)}
+        })
+    )
+}
+
+
+export function TaskItem(task) {
 
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
-
     const showModal = new ObservableBool(false);
     const daysUntil = getDaysUntilDeadline(task.dueDate);
     const displayDueDate = !isNaN(daysUntil);
@@ -53,34 +76,14 @@ export function Task(task) {
     }
 
     return (
-        element('div', {className: 'task'},
-            EditTaskForm(task, showModal),
-            element('div', {className: 'checkbox'},
-                element('input', {
-                    className: 'checkbox-input',
-                    type: 'checkbox',
-                    checked: task.complete,
-                    onchange: toggleDone
-                }),
-                element('div', {
-                    className: 'checkmark'
-                })
+        element('div', {className: 'panel task'},
+            element('div', {className: 'left'},
+                Checkbox(task, toggleDone)
             ),
-            element('div', {
-                className: 'info', 
-                onclick: openEditModal
-            },
-                element('div', {
-                    className: 'title',
-                    textContent: task.title,
-                    onclick
-                }),
+            element('div', {className: 'center info', onclick: openEditModal},
+                element('div', {className: 'title', textContent: task.title}),
                 element('div', {className: 'details'},
-                    element('span', {
-                        className: 'duedate',
-                        textContent: getDaysUntilDeadline(task.dueDate) + ' days',
-                        style: {display: boolToInlineDisplay(displayDueDate)}
-                    }),
+                    DueDate(task, displayDueDate)
                     // element('span', {
                     //     className: 'recurring',
                     //     textContent: recurring
@@ -88,14 +91,16 @@ export function Task(task) {
                     // element('span', {
                     //     className: 'domain',
                     //     textContent: domain
-                    // })
-                )
+                    // })   
+                ),
             ),
-            element('span', {
-                className: 'delete',
-                textContent: '×',
-                onclick: deleteTask
-            })
+            element('div', {className: 'left'},
+                element('span', {
+                    className: 'delete',
+                    textContent: '×',
+                    onclick: deleteTask
+                })
+            )
         )
     )
 }

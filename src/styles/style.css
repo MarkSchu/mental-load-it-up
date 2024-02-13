@@ -299,38 +299,66 @@ body
     padding-bottom: 127.5px 
 }
 
+/* ---------------- Panel ---------------- */
 
-/* ---------------- Task ---------------- */
-
-.task .checkbox {
-    height: 1.5rem;
-    min-width: 1.5rem;
-    border: 1px solid #00C9A7;
-    border-radius: 100%;
-    margin-right: 1rem;
-    position: relative;
+.panel {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 0.75rem 1rem;
 }
 
-.task .checkbox-input {
+.panel .left {
+    min-width: 2.5rem;
+}
+
+.panel .center {
+    width: 100%;
+}
+
+.panel .title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.panel .right {
+    min-width: 2rem;
+}
+
+.panel .delete {
+    margin: 0 0 0 1rem;
+    opacity: 0.1;
+    cursor: pointer;
+    font-size: 1.75rem;
+    line-height: 1.5rem;
+}
+
+/* ---------------- Checkbox ---------------- */
+
+
+.checkbox {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid #00C9A7;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.checkbox .checkbox-input {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     opacity: 0;
-    margin: 0; /* remove default margins */
+    margin: 0;         /* remove default margins */
     z-index: 1;
     cursor: pointer;
 }
 
-.task .checkbox-input:checked ~ .checkmark {
-    opacity: 1;
-}
-
-.task .checkmark {
+.checkbox .checkmark {
     width: 85%;
     height: 85%;
     background-color: #00C9A7;
@@ -338,20 +366,15 @@ body
     opacity: 0;
 }
 
-.task {
-    display: flex;
-    border-bottom: 1px solid #ccc;
-    padding: 0.75rem 1rem;
+.checkbox .checkbox-input:checked ~ .checkmark {
+    opacity: 1;
 }
+
+/* ---------------- Task ---------------- */
+
 
 .task .info {
-    width: 100%;
     cursor: pointer;
-}
-
-.task .title {
-    font-size: 1rem;
-    line-height: 1.5rem;
 }
 
 .task .duedate {
@@ -371,14 +394,6 @@ body
     font-size: 0.9rem; 
     font-style: italic;
     margin-right: 0.5rem; 
-}
-
-.task .delete {
-    margin: 0 0 0 1rem;
-    opacity: 0.1;
-    cursor: pointer;
-    font-size: 1.75rem;
-    line-height: 1.5rem;
 }
 
 .task .delete:hover {
