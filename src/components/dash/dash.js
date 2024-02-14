@@ -1,6 +1,6 @@
-import { element, bind } from 'utils/dom.js';
+import { element, bind, repeat } from 'utils/dom.js';
 import { collections } from 'data/collection.js';
-import { DashList } from 'components/dash/task-list.js';
+import { DashList } from 'components/dash/dash-list.js';
 import { user } from 'data/user.js';
 import { ObservableVar } from 'utils/observable.js';
 
@@ -39,28 +39,50 @@ function DashHeader() {
     )
 }
 
-function DashFooter (menuOption) {
+
+function getDomainFromId (_id) {
+    return collections.domains.value.find(domain => domain._id === _id);
+}
+
+function DashFooter (mainSelection, domainSelection) {
 
     let form;
 
     const createTake = () => {
         if (form.reportValidity()) {
-            collections[menuOption.value]
+            collections[mainSelection.value]
             .create({title: form.elements.title.value})
             .then(() => form.reset())
         }
     }
 
-    const setMenuOption = (e) => {
-        menuOption.set(e.target.value);
+    const setMainSelection = (e) => {
+        mainSelection.set(e.target.value);
+    }
+    
+    const setDomainSelection = (e) => {
+        domainSelection.set(e.target.value);
     }
 
-    const displayMenuOption = (collectionName) => (el, list) => {
+    const displayMainSelection = (collectionName) => (el, list) => {
         el.textContent = `${collectionNames[collectionName]} (${list.length})`;
+    }
+
+    const displayDomainSelection = (el, value) => {
+        if (value === 'all') {
+            el.textContent = 'All';
+        } else if (value === 'none') {
+            el.textContent = 'No Category'
+        } else {
+            const domain = getDomainFromId(value);
+            el.textContent = domain.title;
+        }
     }
 
     return (
         element('div', {className: 'dash-footer'},
+
+            // Add Input 
             element('div', {className: 'add-container'},
                 form = element('form', {className: 'form'},
                     element('textarea', {
@@ -76,11 +98,15 @@ function DashFooter (menuOption) {
                     onclick: createTake
                 }),
             ),
+                
+            // Main Menu
             element('div', {className: 'menu'},
+
+                // Main Selection
                 element('div', {className: 'select left'},
                     element('select', {
                         className: 'primary-options',
-                        onchange: setMenuOption
+                        onchange: setMainSelection
                     },
                         element('option', {
                             textContent: 'Tasks',
@@ -95,23 +121,41 @@ function DashFooter (menuOption) {
                             value: 'domains'
                         })
                     ),
-                    bind(menuOption, (value) =>
+                    bind(mainSelection, (value) =>
                         element('div', {
-                            bind: [[collections[value], displayMenuOption(value)]]
+                            bind: [[collections[value], displayMainSelection(value)]]
                         })
                     )
                 ),
+
+                // Domain Selection
                 element('div', {className: 'select'},
-                    element('select', {},
-                        element('option', {textContent: 'All'}),
-                        element('option', {textContent: 'No Category'}),
-                        element('option', {textContent: 'home projects'}),
-                        element('option', {textContent: 'yard work'}),
-                        element('option', {textContent: 'kids school'}),
-                        element('option', {textContent: 'travel'}),
+                    bind(collections.domains, (domains) => 
+                        element('select', {
+                            onchange: setDomainSelection
+                        },
+                            element('option', {
+                                textContent: 'All', 
+                                value: 'all'
+                            }),
+                            element('option', {
+                                textContent: 'Uncategorized', 
+                                value: 'none'
+                            }),
+                            repeat(domains, (domain) => 
+                                element('option', {
+                                    textContent: domain.title,
+                                    value: domain._id
+                                })
+                            )
+                        )
                     ),
-                    element('div', {textContent: 'All'})
+                    element('div', {
+                        bind:[[domainSelection, displayDomainSelection]]
+                    })
                 ),
+
+                
                 // element('div', {className: 'select'},
                 //     element('div', {className: 'details'},
                 //         element('div', {textContent: 'Hide Details'}),
@@ -124,13 +168,14 @@ function DashFooter (menuOption) {
 
 export function Dash() {
 
-    const menuOption = new ObservableVar('tasks');
+    const mainSelection = new ObservableVar('tasks');
+    const domainSelection = new ObservableVar('all');
 
     return (
         element('div', {className: 'dash'},
             DashHeader(),
-            DashList(menuOption),
-            DashFooter(menuOption)
+            DashList(mainSelection, domainSelection),
+            DashFooter(mainSelection, domainSelection)
         )
     )
 }

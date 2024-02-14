@@ -5,7 +5,8 @@ const task = new mongoose.Schema({
     userId: String,             // Netlify User ID
     complete: Boolean,
     dueDate: String,            // 2024-01-31T17:20:45.958Z     date.toJSON()
-    creationDate: String        // 2024-01-31T17:20:45.958Z
+    creationDate: String,       // 2024-01-31T17:20:45.958Z
+    domain: { type: Schema.Types.ObjectId, ref: 'Domain'}
 });
 
 const event = new mongoose.Schema({

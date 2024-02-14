@@ -1,21 +1,23 @@
-import { element } from 'utils/dom.js';
+import { element, repeat, bind } from 'utils/dom.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'data/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
-export function EditTaskForm(task, showModal) {
+export function TaskEditForm(task, showModal) {
 
     let form;
     
     const saveChanges = (e) => {
-        if (form.reportValidity()) {
-            collections.tasks
-            .update(task._id, {
-                title: form.elements.title.value,
-                dueDate: inputToISO(form.elements.dueDate.value)
-            });
-        }        
+        console.log(form.elements.domain.value)
+        // if (form.reportValidity()) {
+        //     collections.tasks
+        //     .update(task._id, {
+        //         title: form.elements.title.value,
+        //         dueDate: inputToISO(form.elements.dueDate.value),
+        //         domain: form.elements.domain.value
+        //     });
+        // }        
         return false;
     }
 
@@ -23,7 +25,7 @@ export function EditTaskForm(task, showModal) {
         showModal.false();
         return false;
     }
-
+  
     return (
         element('div', {
             className: 'form-page overlay',
@@ -54,7 +56,21 @@ export function EditTaskForm(task, showModal) {
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(task.dueDate)
-                })
+                }),
+                element('label', {
+                    className: 'label',
+                    textContent: 'Category'
+                }),
+                bind(collections.domains, (domains) =>
+                    element('select', {className: 'input'},
+                        repeat(domains, (domain) => 
+                            element('option', {
+                                textContent: domain.title,
+                                value: domain._id
+                            })
+                        )
+                    )
+                )
             ),
             element('div', {className: 'buttons'},
                 element('button', {

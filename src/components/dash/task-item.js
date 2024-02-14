@@ -1,7 +1,7 @@
 import { element, boolToInlineDisplay } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { collections } from 'data/collection.js';
-import { EditTaskForm } from 'components/dash/task-edit-form.js';
+import { TaskEditForm } from 'components/dash/task-edit-form.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
 
 
@@ -53,7 +53,7 @@ function DueDate(task, displayDueDate) {
 
 
 export function TaskItem(task) {
-
+    console.log(task)
     const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
@@ -77,6 +77,7 @@ export function TaskItem(task) {
 
     return (
         element('div', {className: 'panel task'},
+            TaskEditForm(task, showModal),
             element('div', {className: 'left'},
                 Checkbox(task, toggleDone)
             ),
