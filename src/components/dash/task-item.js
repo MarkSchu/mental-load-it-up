@@ -53,7 +53,6 @@ function DueDate(task, displayDueDate) {
 
 
 export function TaskItem(task) {
-    console.log(task)
     
     // const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];

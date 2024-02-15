@@ -11,7 +11,6 @@ const auth = new GoTrue({
 export const user = new ObservableVar();
 
 netlifyIdentity.on('init', userData => {
-    console.log('init')
     user.set(userData);
 });
 

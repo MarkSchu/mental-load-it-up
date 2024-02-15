@@ -5,7 +5,7 @@ import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
 export function TaskEditForm(task, showModal) {
-    console.log(task)
+    
     let form;
     
     const saveChanges = (e) => {
@@ -68,7 +68,7 @@ export function TaskEditForm(task, showModal) {
                         element('option', {textContent: 'None', value: null}),
                         repeat(domains, (domain) => 
                             element('option', {
-                                selected: task.domain.includes(domain._id),
+                                selected: task.domain?.includes(domain._id),
                                 textContent: domain.title,
                                 value: domain._id
                             })

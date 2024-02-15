@@ -4,6 +4,7 @@ import { api } from 'data/api.js';
 import { collections } from 'data/collection.js';
 import { sortByDates } from 'utils/dates.js';
 import { alerts } from 'data/alerts.js';
+import { ObservableVar } from 'utils/observable.js';
 
 export const general = new ObservableVar();
 
@@ -23,7 +24,6 @@ general.getAllUserData = () => {
             collections.tasks.set(sortByDates(body.tasks));
             collections.events.set(body.events);
             collections.domains.set(body.domains);
-            initLoad.done();
             alerts.close()
         } else {
             alerts.error(statusText);
