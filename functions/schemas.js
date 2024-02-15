@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const task = new mongoose.Schema({
+const task = new Schema({
     title: String,
     userId: String,             // Netlify User ID
     complete: Boolean,
@@ -9,14 +10,14 @@ const task = new mongoose.Schema({
     domain: { type: Schema.Types.ObjectId, ref: 'Domain'}
 });
 
-const event = new mongoose.Schema({
+const event = new Schema({
     title: String,
     userId: String,
     dueDate: String,            // 2024-01-31T17:20:45.958Z
     creationDate: String       // 2024-01-31T17:20:45.958Z
 });
 
-const domain = new mongoose.Schema({
+const domain = new Schema({
     title: String,
     userId: String
 });

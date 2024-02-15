@@ -54,7 +54,8 @@ function DueDate(task, displayDueDate) {
 
 export function TaskItem(task) {
     console.log(task)
-    const domain = domains[getRandomInt(0, 4)]
+    
+    // const domain = domains[getRandomInt(0, 4)]
     const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
     const daysUntil = getDaysUntilDeadline(task.dueDate);
@@ -84,15 +85,15 @@ export function TaskItem(task) {
             element('div', {className: 'center info', onclick: openEditModal},
                 element('div', {className: 'title', textContent: task.title}),
                 element('div', {className: 'details'},
-                    DueDate(task, displayDueDate)
+                    DueDate(task, displayDueDate),
                     // element('span', {
                     //     className: 'recurring',
                     //     textContent: recurring
                     // }),
-                    // element('span', {
-                    //     className: 'domain',
-                    //     textContent: domain
-                    // })   
+                    element('span', {
+                        className: 'domain',
+                        textContent: 'butt'
+                    })   
                 ),
             ),
             element('div', {className: 'left'},

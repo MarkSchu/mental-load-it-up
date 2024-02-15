@@ -5,19 +5,18 @@ import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
 export function TaskEditForm(task, showModal) {
-
+    console.log(task)
     let form;
     
     const saveChanges = (e) => {
-        console.log(form.elements.domain.value)
-        // if (form.reportValidity()) {
-        //     collections.tasks
-        //     .update(task._id, {
-        //         title: form.elements.title.value,
-        //         dueDate: inputToISO(form.elements.dueDate.value),
-        //         domain: form.elements.domain.value
-        //     });
-        // }        
+        if (form.reportValidity()) {
+            collections.tasks
+            .update(task._id, {
+                title: form.elements.title.value,
+                dueDate: inputToISO(form.elements.dueDate.value),
+                domain: form.elements.domain.value
+            });
+        }        
         return false;
     }
 
@@ -62,9 +61,14 @@ export function TaskEditForm(task, showModal) {
                     textContent: 'Category'
                 }),
                 bind(collections.domains, (domains) =>
-                    element('select', {className: 'input'},
+                    element('select', {
+                        className: 'input', 
+                        name: 'domain'
+                    },
+                        element('option', {textContent: 'None', value: null}),
                         repeat(domains, (domain) => 
                             element('option', {
+                                selected: task.domain.includes(domain._id),
                                 textContent: domain.title,
                                 value: domain._id
                             })
