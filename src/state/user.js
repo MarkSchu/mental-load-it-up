@@ -1,7 +1,7 @@
 import { ObservableVar } from 'utils/observable.js';
-import { pathname } from 'data/pathname.js';
-import general from 'data/general.js';
-import { alerts } from 'data/alerts.js';
+import { pathname } from 'state/pathname.js';
+import general from 'state/general.js';
+import { alerts } from 'state/alerts.js';
 
 const auth = new GoTrue({
   APIUrl: 'https://spontaneous-nougat-f22d85.netlify.app/.netlify/identity',

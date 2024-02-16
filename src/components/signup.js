@@ -1,5 +1,5 @@
 import { element } from 'utils/dom.js';
-import { user } from 'data/user.js';
+import { user } from 'state/user.js';
 
 export const Signup = () => {
 

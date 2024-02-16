@@ -1,6 +1,6 @@
 import { element, boolToInlineDisplay } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
-import { collections } from 'data/collection.js';
+import { collections } from 'state/collection.js';
 import { TaskEditForm } from 'components/dash/task-edit-form.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
 
@@ -10,14 +10,6 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-const domains = [
-    'home projects', 
-    'travel',
-    'school',
-    'grocery',
-    'yard work'
-];
 
 const recurrings = [
     'daily',
@@ -41,7 +33,9 @@ function Checkbox (task, toggleDone) {
     )
 }
 
-function DueDate(task, displayDueDate) {
+function DueDate(task) {
+    const daysUntil = getDaysUntilDeadline(task.dueDate);
+    const displayDueDate = !isNaN(daysUntil);
     return (
         element('span', {
             className: 'duedate',
@@ -51,14 +45,22 @@ function DueDate(task, displayDueDate) {
     )
 }
 
+function Domain(task) {
+    const domains = collections.domains.value;
+    const domain = domains.find(domain => domain._id === task.domain);
+    return (
+        element('span', {
+            className: 'domain',
+            textContent: domain?.title
+        })
+    )
+}
 
 export function TaskItem(task) {
     
-    // const domain = domains[getRandomInt(0, 4)]
-    const recurring = recurrings[getRandomInt(0, 3)];
+    // const recurring = recurrings[getRandomInt(0, 3)];
     const showModal = new ObservableBool(false);
-    const daysUntil = getDaysUntilDeadline(task.dueDate);
-    const displayDueDate = !isNaN(daysUntil);
+   
     
 
     const toggleDone = () => {
@@ -84,15 +86,12 @@ export function TaskItem(task) {
             element('div', {className: 'center info', onclick: openEditModal},
                 element('div', {className: 'title', textContent: task.title}),
                 element('div', {className: 'details'},
-                    DueDate(task, displayDueDate),
+                    DueDate(task),
                     // element('span', {
                     //     className: 'recurring',
                     //     textContent: recurring
                     // }),
-                    element('span', {
-                        className: 'domain',
-                        textContent: 'butt'
-                    })   
+                    Domain(task)   
                 ),
             ),
             element('div', {className: 'left'},

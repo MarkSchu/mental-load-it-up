@@ -1,6 +1,7 @@
-import { element, repeat, bind } from 'utils/dom.js';
+import { element, repeat } from 'utils/dom.js';
+import { bind } from 'utils/binders.js';
 import { toggleModalOverlay } from 'utils/binders.js';
-import { collections } from 'data/collection.js';
+import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
@@ -68,7 +69,7 @@ export function TaskEditForm(task, showModal) {
                         element('option', {textContent: 'None', value: null}),
                         repeat(domains, (domain) => 
                             element('option', {
-                                selected: task.domain?.includes(domain._id),
+                                selected: task.domain === domain._id,
                                 textContent: domain.title,
                                 value: domain._id
                             })

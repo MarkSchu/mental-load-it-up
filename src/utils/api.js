@@ -1,4 +1,4 @@
-import { user } from 'data/user.js';
+import { user } from 'state/user.js';
 
 
 export const api = async (action, collection, data) => {

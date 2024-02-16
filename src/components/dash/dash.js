@@ -1,7 +1,8 @@
-import { element, bind, repeat } from 'utils/dom.js';
-import { collections } from 'data/collection.js';
+import { element, repeat } from 'utils/dom.js';
+import { bind } from 'utils/binders.js';
+import { collections } from 'state/collection.js';
 import { DashList } from 'components/dash/dash-list.js';
-import { user } from 'data/user.js';
+import { user } from 'state/user.js';
 import { ObservableVar } from 'utils/observable.js';
 
 const collectionNames = {
@@ -179,3 +180,4 @@ export function Dash() {
         )
     )
 }
+

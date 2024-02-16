@@ -1,5 +1,5 @@
 import { element, render } from 'utils/dom.js';
-import { alerts } from 'data/alerts.js';
+import { alerts } from 'state/alerts.js';
 import {  showAlertOverlay, hideOverlay, } from 'utils/binders.js';
 
 

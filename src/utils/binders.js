@@ -1,8 +1,43 @@
-export const disableOnRequest = (el, data) => {
-    if (data?.supertype === 'request') {
-        el.disabled = true;
-    } else {
-        el.disabled = false;
+import { element } from 'utils/dom.js';
+
+export function bind(observable, createElement) {
+    let currentEl = createElement(observable.value);
+    observable.onEmit((value) => {
+        let newEl = createElement(value);
+        let parent = currentEl.parentElement;
+        if (parent) {
+            parent.removeChild(currentEl);
+            parent.appendChild(newEl);
+        }
+        currentEl = newEl;
+    });
+    return currentEl;
+}
+
+export function listen(observable, createElement) {
+    let currentEl = element('div', {style: {display: 'none'}});
+    observable.onEmit((value) => {
+        let newEl = createElement(value);
+        let parent = currentEl.parentElement;
+        if (parent) {
+            parent.removeChild(currentEl);
+            parent.appendChild(newEl);
+        }
+        currentEl = newEl;
+    });
+    return currentEl;
+}
+
+export function repeatWith(createElement) {
+    return (el, list) => {
+        var child = el.lastElementChild; 
+        while (child) {
+            el.removeChild(child);
+            child = el.lastElementChild;
+        }
+        list.forEach((item) => {
+            el.appendChild(createElement(item));
+        });
     }
 }
 
@@ -27,58 +62,5 @@ export function toggleModalOverlay(el, value) {
     : hideOverlay(el);
 }
 
-export function setValue (el, value) {
-    el.value = value;
-}
-
-export function show(el, value) {
-    el.hidden = !value;
-}
-
-export function hide(el, value) {
-    el.hidden = value;
-}
-
-export function disable(el, value) {
-    el.disabled = value;
-}
-
-
-export function repeat(el, list, createElement) {
-    var child = el.lastElementChild; 
-    while (child) {
-        el.removeChild(child);
-        child = el.lastElementChild;
-    }
-    list.forEach((item) => {
-        el.appendChild(createElement(item));
-    });
-}
-
-export function showIfTrueHideIfNot(el, value) {
-    el.hidden = !value;
-}
-
-export function showIfFalseHideIfTrue(el, value) {
-    el.hidden = value;
-}
-
-export function dispayIfTrueHideIfNot(el, value) {
-    el.style.display = value ? 'block' : 'none';
-}
-
-// ---
-
-export const repeatWith = (createElement) => (el, list) => {
-    // el is the parent
-    var child = el.lastElementChild; 
-    while (child) {
-        el.removeChild(child);
-        child = el.lastElementChild;
-    }
-    list.forEach((item) => {
-        el.appendChild(createElement(item));
-    });
-}
 
 

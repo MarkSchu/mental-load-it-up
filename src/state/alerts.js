@@ -2,6 +2,7 @@ import { ObservableVar } from 'utils/observable.js';
 
 export const alerts = new ObservableVar();
 
+
 window.alerts = alerts;
 
 alerts.creating = () => {

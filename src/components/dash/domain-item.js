@@ -1,6 +1,6 @@
 import { element, boolToInlineDisplay } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
-import { collections } from 'data/collection.js';
+import { collections } from 'state/collection.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
 
 

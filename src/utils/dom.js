@@ -10,47 +10,45 @@ function clearChildren(el) {
     }
 }
 
-function removeChildren(parent, children) {
-    children.forEach((child) => {
-        parent.removeChild(child);
+function addBinders(el, attrs) {
+    const binders = attrs['bind'];
+    binders.forEach((binder) => {
+        const observable = binder[0];
+        const callback = binder[1];
+        observable.onEmit((value) => callback(el, value));
+        // call right away! Its bind
+        callback(el, observable.value); 
     });
 }
 
-function toListOfChildren(children) {
-    return [children].flat();
+function addListeners(el, attrs) {
+    const listeners = attrs['listen'];
+    listeners.forEach((listener) => {
+        const observable = listener[0];
+        const callback = listener[1];
+        observable.onEmit((value) => callback(el, value));
+        // don't call right away, wait for an event to fire
+    });
 }
 
-function addAttrs(el, attrs) {
+function addStyles(el, attrs) {
+    const styles = attrs['style'];
+    for (var style in styles) {
+        el.style[style] = styles[style];
+    }
+}
+
+function setAttributes(el, attrs) {
     for (const attr in attrs) {
 
         if (attr === 'bind') {
-            const binders = attrs['bind'];
-            binders.forEach((binder) => {
-                const observableVar = binder[0];
-                const callback = binder[1];
-                observableVar.onEmit((value) => {
-                    callback(el, value);
-                });
-                callback(el, observableVar.value);
-            });
+            addBinders(el, attrs);
         }
-
         else if (attr === 'listen') {
-            const listeners = attrs['listen'];
-            listeners.forEach((listener) => {
-                const observableEvent = listener[0];
-                const callback = listener[1];
-                observableEvent.onEmit((value) => {
-                    callback(el, value);
-                });
-                // don't call initially, that's the difference to bind
-            });
+            addListeners(el, attrs);
         }
         else if (attr === 'style') {
-            const styles = attrs[attr];
-            for (var style in styles) {
-                el.style[style] = styles[style];
-            }
+            addStyles(el, attrs);
         }
         else {
             el[attr] = attrs[attr];
@@ -59,69 +57,35 @@ function addAttrs(el, attrs) {
 }
 
 export function element(tag, attrs) {
+    // accepts both multiple child arguments and an array of children
+    // ('div', {}, child1, child2)
+    // ('div', {}, [child1, child2])
     const el = document.createElement(tag);
-    addAttrs(el, attrs);
-
     const children = Array.from(arguments).slice(2).flat();
-    children.forEach((child) => {
-        el.appendChild(child);
-    });
+    setAttributes(el, attrs);
+    addChildren(el, children);
     return el;
-}
-
-export function bind(observableVar, callback) {
-    let currentChildren = toListOfChildren(callback(observableVar.value));
-    observableVar.onEmit((value) => {
-        let newChildren = toListOfChildren(callback(value));
-        let parent = currentChildren[0].parentElement;
-        if (parent) {
-            removeChildren(parent, currentChildren);
-            addChildren(parent, newChildren);
-        }
-        currentChildren = newChildren;
-    });
-    return currentChildren;
-}
-
-export function bindElement(tag, attrs, observableVar, callback) {
-    return element(tag, attrs, bind(observableVar, (value) => 
-        callback(value)
-    ));
-}
-
-export function bindtext(observableVar) {
-    const el = element('span', {textContent: observableVar.value});
-    observableVar.on((value) => {
-        el.textContent = value;
-    });
-    return el;
-}
-
-export function repeatfor(n, createElement) {
-    let children = [];
-    for (var i=0; i < n; i++) {
-        children.push(createElement(i));
-    }
-    return children;
-}
-
-export function repeat(array, createElement) {
-    return array.map((item) => {
-        return createElement(item);
-    });
-}
-
-export function bindrepeat(observableArray, callback) {
-    return bind(observableArray, (array) => 
-        repeat(array, (item) => 
-            callback(item)
-        )
-    )
 }
 
 export function render(el, newChild) {
     clearChildren(el);
     addChildren(el, [newChild]);
+}
+
+export function repeat(array, createElement) {
+    // return array of elements
+    return array.map((item) => {
+        return createElement(item);
+    });
+}
+
+export function repeatFor(n, createElement) {
+    // return array of elements
+    let children = [];
+    for (var i=0; i < n; i++) {
+        children.push(createElement(i));
+    }
+    return children;
 }
 
 export function boolToInlineDisplay(bool) {

@@ -1,6 +1,7 @@
-import { bind, element } from 'utils/dom.js';
-import { pathname } from 'data/pathname.js';
-import { general } from 'data/general.js';
+import { element } from 'utils/dom.js';
+import { bind } from 'utils/binders.js';
+import { pathname } from 'state/pathname.js';
+import { general } from 'state/general.js';
 import { Alert } from 'components/common/alert.js';
 import { Signup } from 'components/signup.js';
 import { Login } from 'components/login.js';
@@ -27,7 +28,7 @@ export function App() {
                     return Login();
                 }
                 if (pathnameVal === '/dash') {
-                    return Dash();s
+                    return Dash();
                 }
                 if (pathnameVal === '/account') {
                     return Account();

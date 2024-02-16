@@ -1,14 +1,14 @@
 const schemas = require('./schemas');
 
-const getCurrentUTC = () => {
-    return (new Date()).toISOString();
+const getCurrentISO = () => {
+    return (new Date()).toISOString();  // this is probably wrong. Where is this function getting called in the USA?
 }
 
 const db = {};
 
 db.create = async (userId, collection, data) => {
     data.userId = userId;
-    data.creationDate = getCurrentUTC();
+    data.creationDate = getCurrentISO();
     const Schema = schemas[collection];
     const doc = new Schema(data);
     await doc.save();
