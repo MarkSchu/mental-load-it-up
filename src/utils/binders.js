@@ -15,7 +15,7 @@ export function bind(observable, createElement) {
 }
 
 export function listen(observable, createElement) {
-    let currentEl = element('div', {style: {display: 'none'}});
+    let currentEl = element('div', {style: {display: 'none'}}); // render dummy element to start
     observable.onEmit((value) => {
         let newEl = createElement(value);
         let parent = currentEl.parentElement;

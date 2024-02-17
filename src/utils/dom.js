@@ -95,3 +95,7 @@ export function boolToInlineDisplay(bool) {
 export function boolToBlockDisplay(bool) {
     return bool ? 'block' : 'none';
 }
+
+export function display(bool) {
+    return bool ? 'initial' : 'none';
+}

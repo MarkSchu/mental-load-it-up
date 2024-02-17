@@ -389,17 +389,3 @@ body
     margin-right: 0.9rem; 
     font-size: 0.9rem; 
 }
-
-.task .recurring {
-    font-size: 0.9rem; 
-    font-style: italic;
-    margin-right: 0.5rem; 
-}
-
-.task .delete:hover {
-    opacity: 0.5;
-}
-
-.task .delete:active {
-    opacity: 0.75;
-}

@@ -5,20 +5,6 @@ import { TaskEditForm } from 'components/dash/task-edit-form.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
 
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-const recurrings = [
-    'daily',
-    'weekly', 
-    'monthly',
-    'yearly'
-]
-
-
 function Checkbox (task, toggleDone) {
     return (
         element('div', {className: 'checkbox'},
@@ -33,36 +19,15 @@ function Checkbox (task, toggleDone) {
     )
 }
 
-function DueDate(task) {
-    const daysUntil = getDaysUntilDeadline(task.dueDate);
-    const displayDueDate = !isNaN(daysUntil);
-    return (
-        element('span', {
-            className: 'duedate',
-            textContent: getDaysUntilDeadline(task.dueDate) + ' days',
-            style: {display: boolToInlineDisplay(displayDueDate)}
-        })
-    )
-}
-
-function Domain(task) {
-    const domains = collections.domains.value;
-    const domain = domains.find(domain => domain._id === task.domain);
-    return (
-        element('span', {
-            className: 'domain',
-            textContent: domain?.title
-        })
-    )
-}
-
 export function TaskItem(task) {
-    
-    // const recurring = recurrings[getRandomInt(0, 3)];
+
+    const domain = collections.domains.value.find(domain => domain._id === task.domain);
+    const daysUntilDueDate = getDaysUntilDeadline(task.dueDate);
+    const showDomain = !!domain;
+    const showDaysUntilDueDate = !isNaN(daysUntilDueDate);
+    const showDetails = showDomain || showDaysUntilDueDate;
     const showModal = new ObservableBool(false);
    
-    
-
     const toggleDone = () => {
         collections.tasks.update(task._id, {
             complete: !task.complete
@@ -85,16 +50,27 @@ export function TaskItem(task) {
             ),
             element('div', {className: 'center info', onclick: openEditModal},
                 element('div', {className: 'title', textContent: task.title}),
-                element('div', {className: 'details'},
-                    DueDate(task),
-                    // element('span', {
-                    //     className: 'recurring',
-                    //     textContent: recurring
-                    // }),
-                    Domain(task)   
+                element('div', {
+                    className: 'details',
+                    style: {display: showDetails ? 'initial' : 'none'}
+                },
+                    element('span', {
+                        className: 'duedate',
+                        textContent: daysUntilDueDate + ' days',
+                        style: {
+                            display: daysUntilDueDate ? 'initial' : 'none'
+                        }
+                    }),
+                    element('span', {
+                        className: 'domain',
+                        textContent: domain?.title,
+                        style: {
+                            display: showDomain ? 'initial' : 'none'
+                        }
+                    })
                 ),
             ),
-            element('div', {className: 'left'},
+            element('div', {className: 'right'},
                 element('span', {
                     className: 'delete',
                     textContent: '×',
