@@ -84,11 +84,8 @@ export class Collection extends ObservableArray {
         this.emit();
     }
 
-    insertByDate(newitem) {  
-        // sort from newest to oldest creation date
-        // then sort from newest to oldest due date
-        // this.value
-        // item.creationDate
+    filter() {
+
     }
 }
 

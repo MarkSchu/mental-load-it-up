@@ -1,4 +1,4 @@
-import { element } from 'utils/dom.js';
+import { element, repeat } from 'utils/dom.js';
 import { bind, listen } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { repeatWith } from 'utils/binders.js';
@@ -7,43 +7,78 @@ import { DomainItem } from 'components/dash/domain-item.js';
 import { EventItem } from 'components/dash/event-item.js';
 import { initLoadComplete } from 'state/general.js';
 
-export function TaskList () {
+
+const filterByDomain = (list, domain) => {
+    if (domain === 'all') {
+        return list;
+    } 
+    else if (domain === 'none' ) {
+        return list.filter(item => !item.domain);
+    } 
+    else {
+        return list.filter(item => item.domain === domain);
+    }
+}
+
+const sortAlphabetically = (list) => {
+    return list.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+    });
+}
+
+export function TaskList (domainSelection) {
     return (
-        element('div', {
-            bind: [[collections.tasks, repeatWith(TaskItem)]]
-        })
+        bind(collections.tasks, (tasks) => 
+            bind(domainSelection, (domain) => {
+                const filteredTasks = filterByDomain(tasks, domain);
+                return (
+                    element('div', {},
+                        repeat(filteredTasks, TaskItem)
+                    )
+                )
+            })
+        )
     )
 }
 
-export function EventList () {
+export function EventList (domainSelection) {
     return (
-        element('div', {
-            bind: [[collections.events, repeatWith(EventItem)]]
-        })
+        bind(collections.events, (events) => 
+            bind(domainSelection, (domain) => {
+                const filteredEvents = filterByDomain(events, domain);
+                return (
+                    element('div', {},
+                        repeat(filteredEvents, EventItem)
+                    )
+                )
+            })
+        )
     )
 }
 
-export function DomainList () {
+export function DomainList (domainSelection) {
     return (
-        element('div', {
-            bind: [[collections.domains, repeatWith(DomainItem)]]
-        })
+        bind(collections.domains, (domains) =>
+            element('div', {},
+                repeat(sortAlphabetically(domains), DomainItem)
+            )
+        )
     )
 }
 
-export function DashList (menuOption) {
+export function DashList (mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-list'},
             listen(initLoadComplete, () => 
-                bind(menuOption, (value) => {
+                bind(mainSelection, (value) => {
                     if (value === 'tasks') {
-                        return TaskList();
+                        return TaskList(domainSelection);
                     }
                     if (value === 'events') {
-                        return EventList();
+                        return EventList(domainSelection);
                     }
                     if (value === 'domains') {
-                        return DomainList();
+                        return DomainList(domainSelection);
                     }
                 })
             )
