@@ -373,3 +373,63 @@ body
 .event .left {
     min-width: 4rem;
 }
+
+/* ------------------- DashFooter2 ------------------- */
+
+.dash-footer2 {
+    width: 100%;
+    background-color: white;
+    /* padding: 0 1rem 1rem 1rem; */
+    position: fixed;
+    bottom:0;
+}
+
+.main-selection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-option {
+    /* border: 1px solid #ccc; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+}
+
+.dash-footer2 .add-container {
+    display: flex;
+    width: 100%;
+}
+
+.dash-footer2 .form {
+    width: 100%;
+}
+
+.dash-footer2 .add-input {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-right: none;
+    /* border-radius: 0;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem; */
+    height: 100%;
+    resize: none;
+    cursor: pointer;
+}
+
+.dash-footer2 .add-button {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    /* border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem; */
+    color: black;
+    cursor: pointer;
+}
