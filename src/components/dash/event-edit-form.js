@@ -5,14 +5,14 @@ import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
 
 
-export function TaskEditForm(task, showModal) {
+export function EventEditForm(event, showModal) {
     
     let form;
     
     const saveChanges = (e) => {
         if (form.reportValidity()) {
-            collections.tasks
-            .update(task._id, {
+            collections.events
+            .update(event._id, {
                 title: form.elements.title.value,
                 dueDate: inputToISO(form.elements.dueDate.value),
                 domain: form.elements.domain.value
@@ -34,7 +34,7 @@ export function TaskEditForm(task, showModal) {
             form = element('form', {},
                 element('h1', {
                     className: 'h1',
-                    textContent: 'Edit Task'
+                    textContent: 'Edit Event'
                 }),
                 element('label', {
                     className: 'label',
@@ -44,7 +44,7 @@ export function TaskEditForm(task, showModal) {
                     className: 'input textarea',
                     rows: 3,
                     name: 'title',
-                    value: task.title,
+                    value: event.title,
                     required: true
                 }),
                 element('label', {
@@ -55,7 +55,7 @@ export function TaskEditForm(task, showModal) {
                     className: 'date-input',
                     type: 'date', 
                     name: 'dueDate',
-                    value: isoToInput(task.dueDate)
+                    value: isoToInput(event.dueDate)
                 }),
                 element('label', {
                     className: 'label',
@@ -69,7 +69,7 @@ export function TaskEditForm(task, showModal) {
                         element('option', {textContent: 'None', value: ''}),
                         repeat(domains, (domain) => 
                             element('option', {
-                                selected: task.domain === domain._id,
+                                selected: event.domain === domain._id,
                                 textContent: domain.title,
                                 value: domain._id
                             })

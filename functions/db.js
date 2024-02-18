@@ -30,7 +30,9 @@ db.updateById = async (userId, collection, data) => {
 
 db.deleteById = async (userId, collection, data) => {
     const Schema = schemas[collection];
-    await Schema.findByIdAndDelete(data._id)
+    await Schema.findByIdAndDelete(data._id);
+
+    
     const {_id} = data;
     return {
         statusCode: 200,

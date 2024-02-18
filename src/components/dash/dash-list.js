@@ -1,4 +1,4 @@
-import { element, repeat } from 'utils/dom.js';
+import { element, repeat, render } from 'utils/dom.js';
 import { bind, listen } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { repeatWith } from 'utils/binders.js';
@@ -28,35 +28,39 @@ const sortAlphabetically = (list) => {
 
 export function TaskList (domainSelection) {
     return (
-        bind(collections.tasks, (tasks) => 
-            bind(domainSelection, (domain) => {
-                const filteredTasks = filterByDomain(tasks, domain);
-                return (
-                    element('div', {},
-                        repeat(filteredTasks, TaskItem)
+        element('div', {},
+            bind(collections.tasks, (tasks) => 
+                bind(domainSelection, (domain) => {
+                    const filteredTasks = filterByDomain(tasks, domain);
+                    return (
+                        element('div', {},
+                            repeat(filteredTasks, TaskItem)
+                        )
                     )
-                )
-            })
+                })
+            )
         )
     )
 }
 
 export function EventList (domainSelection) {
     return (
-        bind(collections.events, (events) => 
-            bind(domainSelection, (domain) => {
-                const filteredEvents = filterByDomain(events, domain);
-                return (
-                    element('div', {},
-                        repeat(filteredEvents, EventItem)
+        element('div', {},
+            bind(collections.events, (events) => 
+                bind(domainSelection, (domain) => {
+                    const filteredEvents = filterByDomain(events, domain);
+                    return (
+                        element('div', {},
+                            repeat(filteredEvents, EventItem)
+                        )
                     )
-                )
-            })
+                })
+            )
         )
     )
 }
 
-export function DomainList (domainSelection) {
+export function DomainList () {
     return (
         bind(collections.domains, (domains) =>
             element('div', {},

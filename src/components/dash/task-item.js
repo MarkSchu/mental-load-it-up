@@ -27,6 +27,7 @@ export function TaskItem(task) {
     const showDaysUntilDueDate = !isNaN(daysUntilDueDate);
     const showDetails = showDomain || showDaysUntilDueDate;
     const showModal = new ObservableBool(false);
+    const daysUntilDueDateLabel = daysUntilDueDate === 1 ? 'day' : 'days'
    
     const toggleDone = () => {
         collections.tasks.update(task._id, {
@@ -43,7 +44,7 @@ export function TaskItem(task) {
     }
 
     return (
-        element('div', {className: 'panel task'},
+        element('div', {className: 'panel'},
             TaskEditForm(task, showModal),
             element('div', {className: 'left'},
                 Checkbox(task, toggleDone)
@@ -56,7 +57,7 @@ export function TaskItem(task) {
                 },
                     element('span', {
                         className: 'duedate',
-                        textContent: daysUntilDueDate + ' days',
+                        textContent: `${daysUntilDueDate} ${daysUntilDueDateLabel}`,
                         style: {
                             display: daysUntilDueDate ? 'initial' : 'none'
                         }

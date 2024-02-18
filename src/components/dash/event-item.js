@@ -1,7 +1,8 @@
-import { element, boolToInlineDisplay } from 'utils/dom.js';
+import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { collections } from 'state/collection.js';
 import { getDaysUntilDeadline } from 'utils/dates.js';
+import { EventEditForm } from 'components/dash/event-edit-form.js';
 
 
 export function EventItem(event) {
@@ -22,10 +23,23 @@ export function EventItem(event) {
         showModal.true();
     }
 
+    const displayDeadline = () => {
+        if (!event.dueDate) return '';
+        const dateStr = (new Date(event.dueDate))?.toDateString().split(' ');
+        const month = dateStr[1];
+        const date = dateStr[2];
+        return `${month} ${date}`;
+    }
+
     return (
         element('div', {className: 'panel event'},
-            // EventEditForm(event, showModal),
-            element('div', {className: 'left'}),
+            EventEditForm(event, showModal),
+            element('div', {className: 'left'},
+                element('div', {
+                    className: 'deadline',
+                    textContent: displayDeadline()
+                })
+            ),
             element('div', {className: 'center info', onclick: openEditModal},
                 element('div', {className: 'title', textContent: event.title}),
                 element('div', {

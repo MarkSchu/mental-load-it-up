@@ -7,14 +7,14 @@ const task = new Schema({
     complete: Boolean,
     dueDate: String,            // 2024-01-31T17:20:45.958Z     date.toJSON()
     creationDate: String,       // 2024-01-31T17:20:45.958Z
-    domain: { type: Schema.Types.ObjectId, ref: 'Domain'}
+    domain: String
 });
 
 const event = new Schema({
     title: String,
     userId: String,
     dueDate: String,            // 2024-01-31T17:20:45.958Z
-    creationDate: String       // 2024-01-31T17:20:45.958Z
+    creationDate: String        // 2024-01-31T17:20:45.958Z
 });
 
 const domain = new Schema({
@@ -27,3 +27,6 @@ module.exports = {
     'events': mongoose.model('Event', event),
     'domains': mongoose.model('Domain', domain)
 }
+
+
+ // domain: { type: Schema.Types.ObjectId, ref: 'Domain'}

@@ -318,6 +318,7 @@ body
 .panel .title {
     font-size: 1rem;
     line-height: 1.5rem;
+    cursor: pointer;
 }
 
 .panel .right {
@@ -330,6 +331,23 @@ body
     cursor: pointer;
     font-size: 1.75rem;
     line-height: 1.5rem;
+}
+
+.paenl .info {
+    cursor: pointer;
+}
+
+.paenl .duedate {
+    font-weight: bold;   
+    font-size: 0.9rem; 
+    margin-right: 0.5rem; 
+}
+
+.paenl .domain {
+    color: #845EC2;
+    font-weight: bold;   
+    margin-right: 0.9rem; 
+    font-size: 0.9rem; 
 }
 
 /* ---------------- Checkbox ---------------- */
@@ -370,22 +388,8 @@ body
     opacity: 1;
 }
 
-/* ---------------- Task ---------------- */
+/* ---------------- Deadline ---------------- */
 
-
-.task .info {
-    cursor: pointer;
-}
-
-.task .duedate {
-    font-weight: bold;   
-    font-size: 0.9rem; 
-    margin-right: 0.5rem; 
-}
-
-.task .domain {
-    color: #845EC2;
-    font-weight: bold;   
-    margin-right: 0.9rem; 
-    font-size: 0.9rem; 
+.event .left {
+    min-width: 4rem;
 }
