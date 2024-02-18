@@ -177,7 +177,7 @@ export function Dash() {
             DashHeader(),
             DashList(mainSelection, domainSelection),
             // DashFooter(mainSelection, domainSelection)
-            DashFooter()
+            DashFooter(mainSelection, domainSelection)
         )
     )
 }

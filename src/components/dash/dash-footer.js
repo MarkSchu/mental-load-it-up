@@ -11,6 +11,11 @@ const collectionNames = {
     domains: 'Categories',
 }
 
+function getDomainFromId (_id) {
+    return collections.domains.value.find(domain => domain._id === _id);
+}
+
+
 export function AddInput(mainSelection) {
 
     let form;
@@ -81,7 +86,7 @@ export function MainSelection(mainSelection) {
 }
 
 export function DomainSelection(domainSelection) {
-
+    
     const setDomainSelection = (e) => {
         domainSelection.set(e.target.value);
     }
@@ -98,31 +103,31 @@ export function DomainSelection(domainSelection) {
     }
 
     return (
-        element('div', {className: 'select'},
-            bind(collections.domains, (domains) => 
-                element('select', {
-                    onchange: setDomainSelection
-                },
-                    element('option', {
-                        textContent: 'All', 
-                        value: 'all'
-                    }),
-                    element('option', {
-                        textContent: 'Uncategorized', 
-                        value: 'none'
-                    }),
-                    repeat(domains, (domain) => 
+            element('div', {className: 'select'},
+                bind(collections.domains, (domains) => 
+                    element('select', {
+                        onchange: setDomainSelection
+                    },
                         element('option', {
-                            textContent: domain.title,
-                            value: domain._id
-                        })
+                            textContent: 'All', 
+                            value: 'all'
+                        }),
+                        element('option', {
+                            textContent: 'Uncategorized', 
+                            value: 'none'
+                        }),
+                        repeat(domains, (domain) => 
+                            element('option', {
+                                textContent: domain.title,
+                                value: domain._id
+                            })
+                        )
                     )
-                )
-            ),
-            element('div', {
-                bind:[[domainSelection, displayDomainSelection]]
-            })
-        )
+                ),
+                element('div', {
+                    bind:[[domainSelection, displayDomainSelection]]
+                })
+            )
     )
 }
 
@@ -136,6 +141,7 @@ export function DashFooter (mainSelection, domainSelection) {
 
     return (
         element('div', {className: 'dash-footer2'},    
+            DomainSelection(domainSelection),
             AddInput(mainSelection),            
             element('div', {className: 'main-selection'},
                 element('div', {

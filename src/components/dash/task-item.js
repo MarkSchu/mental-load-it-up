@@ -59,7 +59,7 @@ export function TaskItem(task) {
                         className: 'days-until',
                         textContent: `${daysUntilDueDate} ${daysUntilDueDateLabel}`,
                         style: {
-                            display: daysUntilDueDate ? 'initial' : 'none'
+                            display: showDaysUntilDueDate ? 'initial' : 'none'
                         }
                     }),
                     element('span', {
