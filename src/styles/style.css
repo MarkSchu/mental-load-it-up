@@ -333,17 +333,17 @@ body
     line-height: 1.5rem;
 }
 
-.paenl .info {
+.panel .info {
     cursor: pointer;
 }
 
-.paenl .duedate {
+.panel .days-until {
     font-weight: bold;   
     font-size: 0.9rem; 
     margin-right: 0.5rem; 
 }
 
-.paenl .domain {
+.panel .domain {
     color: #845EC2;
     font-weight: bold;   
     margin-right: 0.9rem; 

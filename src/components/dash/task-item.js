@@ -56,7 +56,7 @@ export function TaskItem(task) {
                     style: {display: showDetails ? 'initial' : 'none'}
                 },
                     element('span', {
-                        className: 'duedate',
+                        className: 'days-until',
                         textContent: `${daysUntilDueDate} ${daysUntilDueDateLabel}`,
                         style: {
                             display: daysUntilDueDate ? 'initial' : 'none'

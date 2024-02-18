@@ -47,7 +47,7 @@ export function EventItem(event) {
                     style: {display: showDetails ? 'initial' : 'none'}
                 },
                     element('span', {
-                        className: 'duedate',
+                        className: 'days-until',
                         textContent: daysUntilDueDate + ' days',
                         style: {
                             display: daysUntilDueDate ? 'initial' : 'none'
