@@ -15,7 +15,6 @@ function getDomainFromId (_id) {
     return collections.domains.value.find(domain => domain._id === _id);
 }
 
-
 export function AddInput(mainSelection) {
 
     let form;
@@ -103,6 +102,7 @@ export function DomainSelection(domainSelection) {
     }
 
     return (
+        element('div', {className: 'domain-select'},
             element('div', {className: 'select'},
                 bind(collections.domains, (domains) => 
                     element('select', {
@@ -128,6 +128,7 @@ export function DomainSelection(domainSelection) {
                     bind:[[domainSelection, displayDomainSelection]]
                 })
             )
+        )
     )
 }
 
