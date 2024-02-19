@@ -12,6 +12,10 @@ body
     margin: 0;
 }
 
+.gen-input {
+    
+}
+
 /* ----------------  Button ----------------  */
 
 .button {
@@ -378,8 +382,6 @@ body
 
 .dash-footer2 {
     width: 100%;
-    background-color: white;
-    /* padding: 0 1rem 1rem 1rem; */
     position: fixed;
     bottom:0;
 }
@@ -387,11 +389,11 @@ body
 .main-selection {
     display: flex;
     justify-content: space-between;
-    /* border: 1px solid #ccc; */
+    background-color: white;
+    border-top: 1px solid #ccc;
 }
 
 .main-option {
-    /* border: 1px solid #ccc; */
     width: 100%;
     display: flex;
     align-items: center;
@@ -402,7 +404,6 @@ body
 .dash-footer2 .add-container {
     display: flex;
     width: 100%;
-    /* margin-top: 0.5rem; */
 }
 
 .dash-footer2 .form {
@@ -416,48 +417,30 @@ body
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-right: none;
-    /* border-radius: 0;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem; */
     height: 100%;
     resize: none;
     cursor: pointer;
 }
 
 .dash-footer2 .add-button {
-    font-size: 1rem;
+    /* font-size: 1rem;
     line-height: 1.5rem;
     background-color: white;
     font-weight: bold;
     border: 1px solid #ccc;
-    /* border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem; */
     color: black;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
-
-.dash-footer2 .domain-select {
-    display: flex;
-    justify-content: left;
-}
 
 .dash-footer2 .select {
-    position: relative;
     border: 1px solid #ccc;
-    border-bottom: none;
-    width: 100%;
-    /* height: 4rem; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     font-weight: bold;
-    /* border-radius: 0.5rem; */
     cursor: pointer;
-    /* padding: 1rem; */
-    /* display: inline-block; */
     padding: 0.5rem 1rem;
+    background-color: white;
+    margin-bottom: 4px
 }
 
 .dash-footer2 .select select {
@@ -467,4 +450,50 @@ body
     right: 0;
     bottom: 0;
     opacity: 0;
+}
+
+/* NEW TAKE */
+
+.main-input {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-bottom: none;
+}
+
+.title-input {
+    resize: none;
+    width: 100%;
+    border: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.title-input:focus { 
+    outline: none;
+}
+
+.main-input .buttons {
+    display: flex;
+}
+
+.domain-button,
+.add-button {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.5rem 2rem;
+}
+
+.domain-button {
+    width: 100%;
+    margin-right: 0.5rem;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2rem;
+}
+
+.add-button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1rem;
 }

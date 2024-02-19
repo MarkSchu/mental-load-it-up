@@ -46,6 +46,52 @@ export function AddInput(mainSelection) {
     )
 }
 
+export function DomainSelection(domainSelection) {
+    
+    const setDomainSelection = (e) => {
+        domainSelection.set(e.target.value);
+    }
+
+    const displayDomainSelection = (el, value) => {
+        if (value === 'all') {
+            el.textContent = 'All';
+        } else if (value === 'none') {
+            el.textContent = 'No Category'
+        } else {
+            const domain = getDomainFromId(value);
+            el.textContent = domain.title;
+        }
+    }
+
+    return (
+            element('div', {className: 'select'},
+                bind(collections.domains, (domains) => 
+                    element('select', {
+                        onchange: setDomainSelection
+                    },
+                        element('option', {
+                            textContent: 'All', 
+                            value: 'all'
+                        }),
+                        element('option', {
+                            textContent: 'Uncategorized', 
+                            value: 'none'
+                        }),
+                        repeat(domains, (domain) => 
+                            element('option', {
+                                textContent: domain.title,
+                                value: domain._id
+                            })
+                        )
+                    )
+                ),
+                element('div', {
+                    bind:[[domainSelection, displayDomainSelection]]
+                })
+            )
+    )
+}
+
 export function MainSelection(mainSelection) {
 
     const setMainSelection = (e) => {
@@ -84,55 +130,33 @@ export function MainSelection(mainSelection) {
     )
 }
 
-export function DomainSelection(domainSelection) {
-    
-    const setDomainSelection = (e) => {
-        domainSelection.set(e.target.value);
-    }
-
-    const displayDomainSelection = (el, value) => {
-        if (value === 'all') {
-            el.textContent = 'All';
-        } else if (value === 'none') {
-            el.textContent = 'No Category'
-        } else {
-            const domain = getDomainFromId(value);
-            el.textContent = domain.title;
-        }
-    }
-
+export function MainInput() {
+    let form;
     return (
-        element('div', {className: 'domain-select'},
-            element('div', {className: 'select'},
-                bind(collections.domains, (domains) => 
-                    element('select', {
-                        onchange: setDomainSelection
-                    },
-                        element('option', {
-                            textContent: 'All', 
-                            value: 'all'
-                        }),
-                        element('option', {
-                            textContent: 'Uncategorized', 
-                            value: 'none'
-                        }),
-                        repeat(domains, (domain) => 
-                            element('option', {
-                                textContent: domain.title,
-                                value: domain._id
-                            })
-                        )
-                    )
-                ),
-                element('div', {
-                    bind:[[domainSelection, displayDomainSelection]]
+        element('div', {className: 'main-input'},
+            form = element('form', {className: 'form'},
+                element('textarea', {
+                    className: 'title-input',
+                    rows: 3,
+                    name: 'title',
+                    required: true
+                })
+            ),
+            element('div', {className: 'buttons'},
+                element('button', {
+                    className: 'domain-button button',
+                    textContent: 'Tag: All',
+                }),
+                element('button', {
+                    className: 'button',
+                    textContent: 'Add',
                 })
             )
         )
     )
 }
 
-export function DashFooter (mainSelection, domainSelection) {
+export function DashFooter2 (mainSelection, domainSelection) {
 
     let form;
 
@@ -142,8 +166,7 @@ export function DashFooter (mainSelection, domainSelection) {
 
     return (
         element('div', {className: 'dash-footer2'},    
-            DomainSelection(domainSelection),
-            AddInput(mainSelection),            
+            MainInput(),    
             element('div', {className: 'main-selection'},
                 element('div', {
                     className: 'main-option',
