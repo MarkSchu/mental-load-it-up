@@ -41,7 +41,7 @@ export function TaskEditForm(task, showModal) {
                     textContent: 'Title'
                 }),
                 element('textarea', {
-                    className: 'input textarea',
+                    className: 'input',
                     rows: 3,
                     name: 'title',
                     value: task.title,
@@ -52,7 +52,7 @@ export function TaskEditForm(task, showModal) {
                     textContent: 'Due Date'
                 }),
                 element('input', {
-                    className: 'date-input',
+                    className: 'input',
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(task.dueDate)

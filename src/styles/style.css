@@ -1,5 +1,4 @@
-:root {
-}
+:root {}
 
 * {
     box-sizing: border-box;
@@ -10,41 +9,6 @@ html,
 body 
 {
     margin: 0;
-}
-
-.gen-input {
-    
-}
-
-/* ----------------  Button ----------------  */
-
-.button {
-    font-size: 1rem;
-    padding:  0.75rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.button:hover {
-    background-color: #764cbb;
-}
-
-.button:active {
-    background-color: #6a41ac;
-}
-
-.button-primary {
-    background-color: #845EC2;
-    border: 1px solid #845EC2;
-    color: white;
-}
-
-.button-secondary {
-    background-color: white;
-    border: 1px solid #845EC2;
-    color: #845EC2;
-    margin-right: 0.5rem;
 }
 
 /* ----------------  Alert ----------------  */
@@ -80,7 +44,7 @@ body
     width: 40px;
     height: 40px;
     border-radius: 4px;
-    border: 4px solid #845EC2;
+    border: 4px solid black;
     animation: spin 1s linear infinite;
     margin-bottom: 16px;
     margin: 0 auto 16px auto;
@@ -90,8 +54,92 @@ body
     padding: 3rem;
 }
 
+/* ----------------  Select, Date  ----------------  */
 
-/* ----------------  Form ----------------  */
+.dateinput,
+.select {
+    position: relative;
+}
+
+.dateinput input,
+.select select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+
+/* ----------------  Input & Button ----------------  */
+
+.input,
+.button {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    resize: none;
+}
+
+.button {
+    font-weight: bold;
+}
+
+.button.primary {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+}
+
+.button.secondary {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.checkbox {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid #00C9A7;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.checkbox .checkbox-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    margin: 0;  /* remove default margins */
+    z-index: 1;
+    cursor: pointer;
+}
+
+.checkbox .checkmark {
+    width: 85%;
+    height: 85%;
+    background-color: #00C9A7;
+    border-radius: 100%;
+    opacity: 0;
+}
+
+.checkbox .checkbox-input:checked ~ .checkmark {
+    opacity: 1;
+}
+
+
+/* ----------------  Form Page ----------------  */
 
 .form-page {
     padding: 1rem;
@@ -108,36 +156,7 @@ body
 }
 
 .form-page .input {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
     width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    display: block;
-    background-color: white;
-    color: black;
-    text-align: left;
-    line-height: 1.5rem;
-}
-
-.form-page .textarea {
-    resize: none;
-}
-
-.form-page .date-input {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    display: block;
-    background-color: white;
-    color: black;
-    appearance: none;
-    text-align: left;
-    cursor: pointer;
 }
 
 .form-page .buttons {
@@ -145,13 +164,11 @@ body
     justify-content: right;
 }
 
-/* ----------------  Dash ----------------  */
+li:not(:last-child) {
 
-.dash {
-   
 }
 
-/* ----------------  DashHeader ----------------  */
+/* ----------------  Dash Header ----------------  */
 
 .dash-header {
     display: flex;
@@ -192,91 +209,7 @@ body
     cursor: pointer;
 }
 
-/* ---------------- DashFooter ----------------  */
-
-.dash-footer {
-    width: 100%;
-    background-color: white;
-    padding: 0 1rem 1rem 1rem;
-    position: fixed;
-    bottom:0;
-}
-
-.dash-footer .add-container {
-    display: flex;
-    width: 100%;
-}
-
-.dash-footer .form {
-    width: 100%;
-}
-
-.dash-footer .add-input {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 0;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    height: 100%;
-    resize: none;
-    cursor: pointer;
-}
-
-.dash-footer .add-button {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    background-color: white;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    color: black;
-    cursor: pointer;
-}
-
-.dash-footer .menu {
-    width: 100%;
-    display: flex;
-    margin-top: .5rem;
-}
-
-.dash-footer .select {
-    position: relative;
-    border: 1px solid #ccc;
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    padding: 1rem;
-}
-
-.dash-footer .left {
-    margin-right: 0.5rem;
-}
-
-.dash-footer .select select {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-}
-
-.dash-footer select {
-    cursor: pointer;
-}
-
-/* ---------------- TaskList ---------------- */
+/* ---------------- Dash List ---------------- */
 
 .dash-list {
     padding-top: 54.5px;
@@ -328,172 +261,62 @@ body
 }
 
 .panel .domain {
-    color: #845EC2;
+    color: black;
     font-weight: bold;   
     margin-right: 0.9rem; 
     font-size: 0.9rem; 
 }
 
-/* ---------------- Checkbox ---------------- */
-
-
-.checkbox {
-    height: 1.5rem;
-    width: 1.5rem;
-    border: 1px solid #00C9A7;
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.checkbox .checkbox-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    margin: 0;         /* remove default margins */
-    z-index: 1;
-    cursor: pointer;
-}
-
-.checkbox .checkmark {
-    width: 85%;
-    height: 85%;
-    background-color: #00C9A7;
-    border-radius: 100%;
-    opacity: 0;
-}
-
-.checkbox .checkbox-input:checked ~ .checkmark {
-    opacity: 1;
-}
-
-/* ---------------- Deadline ---------------- */
-
 .event .left {
     min-width: 4rem;
 }
 
-/* ------------------- DashFooter2 ------------------- */
+/* ------------------- Dash Footer ------------------- */
 
-.dash-footer2 {
+.dash-footer {
     width: 100%;
     position: fixed;
     bottom:0;
 }
 
-.main-selection {
+.dash-footer .input-controls {
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+.dash-footer .input-controls textarea {
+    width: 100%;
+    border: none;
+}
+
+.dash-footer .input-controls textarea:focus {
+    outline: none;
+}
+
+.dash-footer .input-controls .buttons {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+}
+
+.dash-footer .input-controls .domain-selection {
+    width: 100%;
+    margin-right: 0.5rem;
+    text-align: left;
+}
+
+.dash-footer .main-selection {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
     background-color: white;
     border-top: 1px solid #ccc;
 }
 
-.main-option {
-    width: 100%;
+.dash-footer .main-option {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 4rem;
-}
-
-.dash-footer2 .add-container {
-    display: flex;
-    width: 100%;
-}
-
-.dash-footer2 .form {
-    width: 100%;
-}
-
-.dash-footer2 .add-input {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
-    border-right: none;
-    height: 100%;
-    resize: none;
-    cursor: pointer;
-}
-
-.dash-footer2 .add-button {
-    /* font-size: 1rem;
-    line-height: 1.5rem;
-    background-color: white;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    color: black;
-    cursor: pointer; */
-}
-
-
-.dash-footer2 .select {
-    border: 1px solid #ccc;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: white;
-    margin-bottom: 4px
-}
-
-.dash-footer2 .select select {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-}
-
-/* NEW TAKE */
-
-.main-input {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    border-bottom: none;
-}
-
-.title-input {
-    resize: none;
-    width: 100%;
-    border: none;
-    font-size: 1rem;
-    line-height: 1.5rem;
-}
-
-.title-input:focus { 
-    outline: none;
-}
-
-.main-input .buttons {
-    display: flex;
-}
-
-.domain-button,
-.add-button {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    padding: 0.5rem 2rem;
-}
-
-.domain-button {
-    width: 100%;
-    margin-right: 0.5rem;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 2rem;
-}
-
-.add-button {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 1rem;
 }

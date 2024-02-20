@@ -25,7 +25,7 @@ export const Signup = () => {
                     textContent: 'Email'
                 }),
                 element('input', {
-                    className: 'input form-input',
+                    className: 'input ',
                     type: 'email',
                     name: 'email',
                     required: true
@@ -35,7 +35,7 @@ export const Signup = () => {
                     textContent: 'Password'
                 }),
                 element('input', {
-                    className: 'input form-input',
+                    className: 'input',
                     type: 'password',
                     name: 'password',
                     required: true

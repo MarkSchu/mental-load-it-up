@@ -2,7 +2,7 @@ import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { DashList } from 'components/dash/dash-list.js';
-import { DashFooter2 } from 'components/dash/dash-footer.js';
+import { DashFooter } from 'components/dash/dash-footer.js';
 import { user } from 'state/user.js';
 import { ObservableVar } from 'utils/observable.js';
 
@@ -45,7 +45,7 @@ function getDomainFromId (_id) {
     return collections.domains.value.find(domain => domain._id === _id);
 }
 
-function DashFooter (mainSelection, domainSelection) {
+function xDashFooter (mainSelection, domainSelection) {
 
     let form;
 
@@ -155,13 +155,6 @@ function DashFooter (mainSelection, domainSelection) {
                         bind:[[domainSelection, displayDomainSelection]]
                     })
                 ),
-
-                
-                // element('div', {className: 'select'},
-                //     element('div', {className: 'details'},
-                //         element('div', {textContent: 'Hide Details'}),
-                //     )   
-                // )
             )
         )
     )
@@ -176,8 +169,7 @@ export function Dash() {
         element('div', {className: 'dash'},
             DashHeader(),
             DashList(mainSelection, domainSelection),
-            // DashFooter(mainSelection, domainSelection)
-            DashFooter2(mainSelection, domainSelection)
+            DashFooter(mainSelection, domainSelection)
         )
     )
 }
