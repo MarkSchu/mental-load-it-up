@@ -8,24 +8,39 @@ import { ObservableVar } from 'utils/observable.js';
 export function InputControls() {
     return (
         element('div', {className: 'input-controls'},
+            element('button', {
+                className: ' domain-selection',
+                textContent: 'Tag: All'
+            }),
+            // element('div', {className: 'foo'},
+            //     element('button', {
+            //         className: ' domain-selection',
+            //         textContent: 'Tag: All'
+            //     })
+            // ),
             element('form', {className: 'form'},
                 element('textarea', {
                     className: 'input',
                     rows: 2,
                     name: 'title',
                     required: true
-                })
-            ),
-            element('div', {className: 'buttons'},
-                element('button', {
-                    className: 'input domain-selection',
-                    textContent: 'Tag: All'
                 }),
                 element('button', {
-                    className: 'input',
+                    id: 'foo',
+                    className: 'input add',
                     textContent: 'Add'
                 })
-            )
+            ),
+            // element('div', {className: 'buttons'},
+            //     element('button', {
+            //         className: 'input domain-selection',
+            //         textContent: 'Tag: All'
+            //     }),
+            //     element('button', {
+            //         className: 'input',
+            //         textContent: 'Add'
+            //     })
+            // )
         )
     )
 }

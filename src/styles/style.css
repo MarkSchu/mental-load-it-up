@@ -281,14 +281,17 @@ li:not(:last-child) {
 
 .dash-footer .input-controls {
     width: 100%;
-    background-color: white;
+    /* background-color: white; */
     padding: 0rem 0.5rem 0.5rem 0.5rem;
+    position: relative;
 }
 
 .dash-footer .input-controls form {
     height: 100%;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
+    display: flex;
 }
 
 .dash-footer .input-controls textarea {
@@ -307,9 +310,14 @@ li:not(:last-child) {
 }
 
 .dash-footer .input-controls .domain-selection {
-    width: 100%;
-    margin-right: 0.5rem;
-    text-align: left;
+    margin: 0.5rem;
+    /* text-align: left; */
+    float: right;
+}
+
+#foo {
+    border-top-left-radius:0 ;
+    border-bottom-left-radius:0 ;
 }
 
 .dash-footer .main-selection {
