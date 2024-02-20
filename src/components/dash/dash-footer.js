@@ -11,7 +11,6 @@ export function InputControls() {
             element('form', {className: 'form'},
                 element('textarea', {
                     className: 'input',
-                    placeholder: 'Type here...',
                     rows: 2,
                     name: 'title',
                     required: true
