@@ -279,46 +279,44 @@ li:not(:last-child) {
     bottom:0;
 }
 
-.dash-footer .input-controls {
-    width: 100%;
-    /* background-color: white; */
-    padding: 0rem 0.5rem 0.5rem 0.5rem;
-    position: relative;
-}
-
-.dash-footer .input-controls form {
-    height: 100%;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    display: flex;
-}
-
-.dash-footer .input-controls textarea {
-    width: 100%;
-    border: none;
-}
-
-.dash-footer .input-controls textarea:focus {
-    outline: none;
-}
-
-.dash-footer .input-controls .buttons {
-    width: 100%;
-    display: flex;
-    margin-top: 0.5rem;
-}
-
-.dash-footer .input-controls .domain-selection {
-    margin: 0.5rem;
-    /* text-align: left; */
+.dash-footer .domain-select {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.25rem 1rem;
     float: right;
+    margin-bottom: 0.5rem;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 1rem;
 }
 
-#foo {
-    border-top-left-radius:0 ;
-    border-bottom-left-radius:0 ;
+.dash-footer .text-input {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
+
+.dash-footer .text-input textarea {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    resize: none;
+    border: none;
+    border-radius: 0;
+}
+
+.dash-footer .text-input button {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.75rem 1rem;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
 
 .dash-footer .main-selection {
     width: 100%;
