@@ -71,12 +71,12 @@ function xDashFooter (mainSelection, domainSelection) {
 
     const displayDomainSelection = (el, value) => {
         if (value === 'all') {
-            el.textContent = 'All';
+            el.textContent = 'Tag: All';
         } else if (value === 'none') {
-            el.textContent = 'No Category'
+            el.textContent = 'Tag: No Category'
         } else {
             const domain = getDomainFromId(value);
-            el.textContent = domain.title;
+            el.textContent = `Tag: ${domain.title}`;
         }
     }
 

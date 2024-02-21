@@ -84,8 +84,8 @@ export class Collection extends ObservableArray {
         this.emit();
     }
 
-    filter() {
-
+    findById(_id) {
+        return this.value.find(domain => domain._id === _id);
     }
 }
 

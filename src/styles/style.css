@@ -138,7 +138,6 @@ body
     opacity: 1;
 }
 
-
 /* ----------------  Form Page ----------------  */
 
 .form-page {
@@ -157,6 +156,7 @@ body
 
 .form-page .input {
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .form-page .buttons {
@@ -164,8 +164,8 @@ body
     justify-content: right;
 }
 
-li:not(:last-child) {
-
+.form-page .buttons button:last-child {
+    margin-left: 0.25rem;
 }
 
 /* ----------------  Dash Header ----------------  */
@@ -278,6 +278,7 @@ li:not(:last-child) {
     position: fixed;
     bottom:0;
     padding: 0 0.5rem 0 0.5rem;
+    background-color: white;
 }
 
 .dash-footer .domain-selection {
@@ -289,11 +290,11 @@ li:not(:last-child) {
     background-color: white;
     border-radius: 1rem;
     margin-bottom: 0.25rem;
+    text-align: center;
 }
 
 .dash-footer .text-input {
     display: flex;
-    border: 1px solid black;
     margin-bottom: 0.25rem;
 }
 
@@ -303,6 +304,9 @@ li:not(:last-child) {
     padding: 0.75rem 1rem;
     width: 100%;
     resize: none;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    margin-right: 0.25rem;
 }
 
 .dash-footer .add-button {
@@ -313,6 +317,8 @@ li:not(:last-child) {
     color: white;
     font-weight: bold;
     border: 1px solid black;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .dash-footer .main-selection {
@@ -321,11 +327,13 @@ li:not(:last-child) {
     justify-content: space-around;
     background-color: white;
     border-top: 1px solid #ccc;
-    height: 4rem;
 }
 
 .dash-footer .main-option {
+    height: 4rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }

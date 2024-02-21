@@ -5,18 +5,65 @@ import { DashList } from 'components/dash/dash-list.js';
 import { user } from 'state/user.js';
 import { ObservableVar } from 'utils/observable.js';
 
-export function DomainSelect() {
+export function DomainSelect(domainSelection) {
+    
+    const setDomain = (e) => {
+        domainSelection.set(e.target.value);
+    }
+
+    const displayDomain = (el, value) => {
+        if (value === 'all') {
+            el.textContent = 'Tag: All';
+        } else if (value === 'none') {
+            el.textContent = 'Tag: None';
+        } else {
+            const domain = collections.domains.findById(value);
+            el.textContent = `Tag: ${domain.title}`;
+        }
+    }
+
     return (
-        element('button', {
-            className: 'domain-selection',
-            textContent: 'Tag: All'
-        })
+        element('div', { className: 'domain-selection select' },
+            bind(collections.domains, (domains) => 
+                element('select', {onchange: setDomain},
+                    element('option', {
+                        textContent: 'All', 
+                        value: 'all'
+                    }),
+                    element('option', {
+                        textContent: 'No Tag', 
+                        value: 'none'
+                    }),
+                    repeat(domains, (domain) => 
+                        element('option', {
+                            textContent: domain.title,
+                            value: domain._id
+                        })
+                    )
+                )
+            ),
+            element('div', {
+                bind:[[domainSelection, displayDomain]]
+            })
+        )
     )
 }
 
-export function TextInput() {
+export function TextInput(mainSelection) {
+
+    let form;
+
+    const create = (e) => {
+        if (form.reportValidity()) {
+            collections[mainSelection.value]
+            .create({title: form.elements.title.value})
+            .then(() => form.reset())
+        }
+        return false;
+    }
+
     return (
-        element('form', {className: 'text-input'},
+        form = element('form', {className: 'text-input'},
             element('textarea', {
                 className: 'input-area',
                 rows: 2,
@@ -25,41 +72,58 @@ export function TextInput() {
             }),
             element('button', {
                 className: 'add-button',
-                textContent: 'Add'
+                textContent: 'Add',
+                onclick: create
             })
         )
     )
 }
 
-export function MainSelection() {
+export function MainSelection(mainSelection) {
+
+    const onclick = (e) => {
+        mainSelection.set(e.target.dataset.value);
+    }
+
+    const showSelection = (el, value) => {
+        el.style.fontWeight = el.dataset.value === value
+            ? 'bold'
+            : 'initial';
+    }
+    
     return (
         element('div', {className: 'main-selection'},
             element('div', {
                 className: 'main-option',
-                textContent: 'Tasks'
+                textContent: 'Tasks',
+                'data-value': 'tasks',
+                bind: [[mainSelection, showSelection]],
+                onclick
             }),
             element('div', {
                 className: 'main-option',
-                textContent: 'Events'
+                textContent: 'Events',
+                'data-value': 'events',
+                bind: [[mainSelection, showSelection]],
+                onclick
             }),
             element('div', {
                 className: 'main-option',
-                textContent: 'Tags'
-            }),
-            element('div', {
-                className: 'main-option',
-                textContent: 'Meals'
+                textContent: 'Tags',
+                'data-value': 'domains',
+                bind: [[mainSelection, showSelection]],
+                onclick
             })
         )
     )
 }
 
-export function DashFooter() {
+export function DashFooter(mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-footer'}, 
-            DomainSelect(),
-            TextInput(),
-            MainSelection()
+            DomainSelect(domainSelection),
+            TextInput(mainSelection),
+            MainSelection(mainSelection)
         )
     )
 }
