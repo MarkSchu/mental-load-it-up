@@ -8,7 +8,7 @@ import { ObservableVar } from 'utils/observable.js';
 export function DomainSelect() {
     return (
         element('button', {
-            className: ' domain-select',
+            className: 'domain-selection',
             textContent: 'Tag: All'
         })
     )
@@ -18,11 +18,13 @@ export function TextInput() {
     return (
         element('form', {className: 'text-input'},
             element('textarea', {
+                className: 'input-area',
                 rows: 2,
                 name: 'title',
                 required: true
             }),
             element('button', {
+                className: 'add-button',
                 textContent: 'Add'
             })
         )
