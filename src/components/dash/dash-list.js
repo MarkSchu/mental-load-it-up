@@ -31,12 +31,15 @@ export function TaskList (domainSelection) {
         element('div', {},
             bind(collections.tasks, (tasks) => 
                 bind(domainSelection, (domain) => {
-                    const filteredTasks = filterByDomain(tasks, domain);
-                    return (
-                        element('div', {},
-                            repeat(filteredTasks, TaskItem)
-                        )
+                    element('div', {},
+                        repeat(tasks, TaskItem)
                     )
+                    // const filteredTasks = filterByDomain(tasks, domain);
+                    // return (
+                    //     element('div', {},
+                    //         repeat(filteredTasks, TaskItem)
+                    //     )
+                    // )
                 })
             )
         )
