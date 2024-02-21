@@ -17,8 +17,8 @@ export class Collection extends ObservableArray {
         const collection = this.collection;
         return api('create', collection, data).then((response) => {
             if (response.status < 300) {
-                alerts.close();
                 collections[collection].addAndSort(response.body);
+                alerts.close();
             } else {
                 alerts.error(response.statusText);
             }
@@ -31,8 +31,8 @@ export class Collection extends ObservableArray {
         const data = {_id, changes };
         return api('updateById', collection, data).then((response) => {
             if (response.status < 300) {
-                alerts.close();
                 collections[collection].replaceAndSort(response.body);
+                alerts.close();
             } else {
                 alerts.error(response.statusText);
             }
@@ -45,8 +45,8 @@ export class Collection extends ObservableArray {
         const data = {_id};
         return api('deleteById', collection, data).then((response) => {
             if (response.status < 300) {
-                alerts.close();
                 collections[collection].remove(_id);
+                alerts.close();
             } else {
                 alerts.error(response.statusText);
             }
