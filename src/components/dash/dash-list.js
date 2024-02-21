@@ -30,17 +30,14 @@ export function TaskList (domainSelection) {
     return (
         element('div', {},
             bind(collections.tasks, (tasks) => 
-                element('div', {},
-                    repeat(tasks, TaskItem)
-                )
-                // bind(domainSelection, (domain) => {
-                    // const filteredTasks = filterByDomain(tasks, domain);
-                    // return (
-                    //     element('div', {},
-                    //         repeat(filteredTasks, TaskItem)
-                    //     )
-                    // )
-                // })
+                bind(domainSelection, (domain) => {
+                    const filteredTasks = filterByDomain(tasks, domain);
+                    return (
+                        element('div', {},
+                            repeat(filteredTasks, TaskItem)
+                        )
+                    )
+                })
             )
         )
     )
