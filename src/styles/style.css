@@ -214,7 +214,6 @@ body
 .dash-list {
     padding-top: 54.5px;
     padding-bottom: 181.5px;
-    border: 3px solid red;
 }
 
 /* ---------------- Panel ---------------- */
@@ -280,7 +279,6 @@ body
     bottom:0;
     padding: 0 0.5rem 0 0.5rem;
     background-color: white;
-    border: 1px solid blue;
 }
 
 .dash-footer .domain-selection {
