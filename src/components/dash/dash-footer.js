@@ -122,7 +122,7 @@ export function DashFooter(mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-footer'}, 
             DomainSelect(domainSelection),
-            TextInput(mainSelection),
+            TextInput(mainSelection, domainSelection),
             MainSelection(mainSelection)
         )
     )
