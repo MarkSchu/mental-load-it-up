@@ -62,9 +62,11 @@ export function EventList (domainSelection) {
 
 export function DomainList () {
     return (
-        bind(collections.domains, (domains) =>
-            element('div', {},
-                repeat(sortAlphabetically(domains), DomainItem)
+        element('div', {},
+            bind(collections.domains, (domains) =>
+                element('div', {},
+                    repeat(sortAlphabetically(domains), DomainItem)
+                )
             )
         )
     )
