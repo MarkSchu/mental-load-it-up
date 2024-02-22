@@ -3,6 +3,8 @@
 * {
     box-sizing: border-box;
     font-family: 'Noto sans';
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
 html,
@@ -58,6 +60,7 @@ body
 
 .dateinput,
 .select {
+    width: 100%;
     position: relative;
     cursor: pointer;
 }
@@ -69,8 +72,9 @@ body
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
+    /* opacity: 0; */
     cursor: pointer;
+    border: 1px solid red;
 }
 
 .dateinput-display, 
