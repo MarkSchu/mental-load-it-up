@@ -38,7 +38,10 @@ export function DueDateInpout(thing) {
                 textContent: formatDate(thing.dueDate)
             }),
             input = element('input', { 
-                    style: {border: '3px solid blue'},
+                    style: {
+                        border: '3px solid yellow',
+                        width:' 100%'
+                    },
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(thing.dueDate),
