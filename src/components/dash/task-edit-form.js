@@ -27,10 +27,6 @@ export function TaskEditForm(task, showModal) {
         showModal.false();
         return false;
     }
-
-    const updateSelect = (e) => {
-        
-    }
   
     return (
         element('div', {
@@ -57,10 +53,16 @@ export function TaskEditForm(task, showModal) {
                     className: 'label',
                     textContent: 'Due Date'
                 }),
-                DueDateInpout(task),
+                // DueDateInpout(task),
+                element('input', {
+                    className: 'date-temp',
+                    type: 'date', 
+                    name: 'dueDate',
+                    value: isoToInput(task.dueDate)
+                }),
                 element('label', {
                     className: 'label',
-                    textContent: 'Category'
+                    textContent: 'Tag'
                 }),
                 DomainSelect(task)
             ),

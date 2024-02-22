@@ -15,7 +15,8 @@ export function DueDateInpout(thing) {
     }
 
     const handleClick = () => {
-        input.showPicker();
+        console.log('i mean...')
+        input.click();
     }
 
     const displayDate = (iso) => {
