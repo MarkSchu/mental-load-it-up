@@ -54,14 +54,12 @@ export function TaskEditForm(task, showModal) {
                     textContent: 'Due Date'
                 }),
                 // DueDateInpout(task),
-                element('div', {className: 'date-temp-wrap'},
-                    element('input', {
-                        className: 'date-temp',
-                        type: 'date', 
-                        name: 'dueDate',
-                        value: isoToInput(task.dueDate)
-                    })
-                ),
+                element('input', {
+                    className: 'date-temp',
+                    type: 'date', 
+                    name: 'dueDate',
+                    value: isoToInput(task.dueDate)
+                }),
                 element('label', {
                     className: 'label',
                     textContent: 'Tag'
