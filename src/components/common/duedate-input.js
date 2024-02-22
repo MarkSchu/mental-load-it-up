@@ -28,13 +28,13 @@ export function DueDateInpout(thing) {
 
     return (
         element('div', {
-            className: 'dateinput',
+            className: '',
             style: {border: '3px solid red'},
             onclick: handleClick
         },
             display = element('div', {
                 style: {border: '3px solid green'},
-                className: 'dueinput-display',
+                className: '',
                 textContent: formatDate(thing.dueDate)
             }),
             input = element('input', { 

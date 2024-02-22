@@ -58,13 +58,11 @@ body
 
 /* ----------------  Select, Date  ----------------  */
 
-.dateinput,
 .select {
     position: relative;
     cursor: pointer;
 }
 
-.dateinput input,
 .select select {
     position: absolute;
     top: 0;
@@ -75,7 +73,6 @@ body
     cursor: pointer;
 }
 
-.dateinput-display, 
 .select-display {
     cursor: pointer;
 }
