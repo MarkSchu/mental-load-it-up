@@ -3,6 +3,7 @@ import { bind } from 'utils/binders.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
+import { DomainSelect } from 'components/common/domain-select.js';
 
 
 export function TaskEditForm(task, showModal) {
@@ -24,6 +25,10 @@ export function TaskEditForm(task, showModal) {
     const closeForm = () => {
         showModal.false();
         return false;
+    }
+
+    const updateSelect = (e) => {
+        
     }
   
     return (
@@ -61,21 +66,7 @@ export function TaskEditForm(task, showModal) {
                     className: 'label',
                     textContent: 'Category'
                 }),
-                bind(collections.domains, (domains) =>
-                    element('select', {
-                        className: 'input', 
-                        name: 'domain'
-                    },
-                        element('option', {textContent: 'None', value: ''}),
-                        repeat(domains, (domain) => 
-                            element('option', {
-                                selected: task.domain === domain._id,
-                                textContent: domain.title,
-                                value: domain._id
-                            })
-                        )
-                    )
-                )
+                DomainSelect(task)
             ),
             element('div', {className: 'buttons'},
                 element('button', {
