@@ -29,6 +29,7 @@ export function DomainSelect(task) {
                 ),
             ),
             display = element('div', {
+                className: 'select-display',
                 textContent: task.domain.title || 'None'
             })
         )

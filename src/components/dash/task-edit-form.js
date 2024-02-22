@@ -4,6 +4,7 @@ import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
 import { DomainSelect } from 'components/common/domain-select.js';
+import { DueDateInpout } from 'components/common/duedate-input.js';
 
 
 export function TaskEditForm(task, showModal) {
@@ -56,12 +57,13 @@ export function TaskEditForm(task, showModal) {
                     className: 'label',
                     textContent: 'Due Date'
                 }),
-                element('input', {
-                    className: 'input',
-                    type: 'date', 
-                    name: 'dueDate',
-                    value: isoToInput(task.dueDate)
-                }),
+                DueDateInpout(task),
+                // element('input', {
+                //     className: 'input',
+                //     type: 'date', 
+                //     name: 'dueDate',
+                //     value: isoToInput(task.dueDate)
+                // }),
                 element('label', {
                     className: 'label',
                     textContent: 'Category'
