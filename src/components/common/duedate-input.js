@@ -40,7 +40,7 @@ export function DueDateInpout(thing) {
             input = element('input', { 
                     style: {
                         border: '3px solid yellow',
-                        width:' 100%'
+                        padding: '0 3rem'
                     },
                     type: 'date', 
                     name: 'dueDate',
