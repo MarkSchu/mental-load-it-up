@@ -64,6 +64,17 @@ export function TaskEditForm(task, showModal) {
                 //     name: 'dueDate',
                 //     value: isoToInput(task.dueDate)
                 // }),
+                element('input', {
+                    className: 'input',
+                    value: 'whatever man',
+                    onclick: () => {
+                        document.querySelector('#foo').showPicker()
+                    }
+                }),
+                element('input', {
+                    type: 'date',
+                    id: 'foo'
+                }),
                 element('label', {
                     className: 'label',
                     textContent: 'Category'
