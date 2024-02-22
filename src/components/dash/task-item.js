@@ -68,8 +68,7 @@ export function TaskItem(task) {
                         textContent: domain?.title,
                         style: {
                             display: showDomain ? 'initial' : 'none',
-                            color: domain?.color,
-                            opacity: 0.7
+                            color: domain?.color
                         }
                     })
                 ),
