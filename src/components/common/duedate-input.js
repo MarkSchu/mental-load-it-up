@@ -39,8 +39,8 @@ export function DueDateInpout(thing) {
             }),
             input = element('input', { 
                     style: {
-                        border: '3px solid yellow',
-                        padding: '0 3rem'
+                        border: '3px solid purple',
+                        width: '100%'
                     },
                     type: 'date', 
                     name: 'dueDate',
