@@ -97,11 +97,18 @@ body
     cursor: pointer;
 }
 
+.date-temp-wrap {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
 .date-temp {
     margin-bottom: 1rem;
     background-color: white;
     color: black;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
 }
 
 /* ----------------  Input & Button --f--------------  */
