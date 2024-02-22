@@ -53,7 +53,9 @@ export function TaskItem(task) {
                 element('div', {className: 'title', textContent: task.title}),
                 element('div', {
                     className: 'details',
-                    style: {display: showDetails ? 'initial' : 'none'}
+                    style: {
+                        display: showDetails ? 'initial' : 'none'
+                    }
                 },
                     element('span', {
                         className: 'days-until',

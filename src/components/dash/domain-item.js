@@ -7,6 +7,8 @@ import { DomainEditForm } from 'components/dash/domain-edit-form.js';
 
 export function DomainItem(domain) {
 
+    console.log(domain)
+
     const showModal = new ObservableBool(false);
 
     const deleteDomain = () => {
@@ -18,9 +20,16 @@ export function DomainItem(domain) {
     }
 
     return (
-        element('div', {className: 'panel'},
+        element('div', {className: 'panel domain'},
             DomainEditForm(domain, showModal),
-            element('div', {className: 'left'}),
+            element('div', {className: 'left'},
+                element('div', {
+                    className: 'color-circle',
+                    style: {
+                        backgroundColor: domain.color ? domain.color : 'white'
+                    }
+                })
+            ),
             element('div', {className: 'center'},
                 element('div', {
                     className: 'title', 

@@ -1,9 +1,7 @@
 import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
-import { DashList } from 'components/dash/dash-list.js';
-import { user } from 'state/user.js';
-import { ObservableVar } from 'utils/observable.js';
+import { getRandomColor } from 'utils/colors.js';
 
 export function DomainSelect(domainSelection) {
     
@@ -54,10 +52,18 @@ export function TextInput(mainSelection) {
     let form;
 
     const create = (e) => {
-        if (form.reportValidity()) {
-            collections[mainSelection.value]
-            .create({title: form.elements.title.value})
-            .then(() => form.reset())
+        try {
+            if (form.reportValidity()) {
+                const data = {title: form.elements.title.value};
+                if (mainSelection.value === 'domains') {
+                    data.color = getRandomColor();
+                }
+                collections[mainSelection.value]
+                .create(data)
+                .then(() => form.reset())
+            }
+        } catch(err) {
+            console.log(err)
         }
         return false;
     }
