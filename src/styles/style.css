@@ -62,7 +62,6 @@ body
 .select {
     position: relative;
     cursor: pointer;
-    border: 1px solid green;
 }
 
 .dateinput input,
