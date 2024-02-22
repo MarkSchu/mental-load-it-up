@@ -28,14 +28,17 @@ export function DueDateInpout(thing) {
 
     return (
         element('div', {
-            className: 'dateinput input',
+            className: 'dateinput',
+            style: {border: '3px solid red'},
             onclick: handleClick
         },
             display = element('div', {
+                style: {border: '3px solid green'},
                 className: 'dueinput-display',
                 textContent: formatDate(thing.dueDate)
             }),
             input = element('input', { 
+                    style: {border: '3px solid blue'},
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(thing.dueDate),
