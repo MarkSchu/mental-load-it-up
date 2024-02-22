@@ -20,7 +20,6 @@ function Checkbox (task, toggleDone) {
 }
 
 export function TaskItem(task) {
-
     const domain = collections.domains.value.find(domain => domain._id === task.domain);
     const daysUntilDueDate = getDaysUntilDeadline(task.dueDate);
     const showDomain = !!domain;
@@ -68,7 +67,9 @@ export function TaskItem(task) {
                         className: 'domain',
                         textContent: domain?.title,
                         style: {
-                            display: showDomain ? 'initial' : 'none'
+                            display: showDomain ? 'initial' : 'none',
+                            color: domain?.color,
+                            opacity: 0.7
                         }
                     })
                 ),

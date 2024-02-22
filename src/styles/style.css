@@ -308,6 +308,7 @@ body
     border-radius: 1rem;
     margin-bottom: 0.25rem;
     text-align: center;
+    cursor: pointer;
 }
 
 .dash-footer .text-input {

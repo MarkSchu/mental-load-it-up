@@ -36,7 +36,7 @@ export function App() {
                 if (pathnameVal === '/dates') {
                     return DatePage();
                 }
-                if (pathnameVal === '/dates') {
+                if (pathnameVal === '/colors') {
                     return StylePage();
                 }
                 return element('div', {textContent: `Page ${pathnameVal} Not Found :(`})

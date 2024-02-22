@@ -20,7 +20,7 @@ const event = new Schema({
 const domain = new Schema({
     title: String,
     userId: String,
-    color: String
+    color: Number
 });
 
 module.exports = {

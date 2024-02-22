@@ -7,8 +7,6 @@ import { DomainEditForm } from 'components/dash/domain-edit-form.js';
 
 export function DomainItem(domain) {
 
-    console.log(domain)
-
     const showModal = new ObservableBool(false);
 
     const deleteDomain = () => {
