@@ -150,6 +150,18 @@ export function Attributes() {
     what were out opf 
 */
 
+export function Dateinput() {
+
+    
+    
+    return (
+        element('div', {className: 'input'},
+            element('input', {name: 'date', style: {display: 'none'}}),
+            element('div', {})
+        )
+    )
+}
+
 export function DashFooter(mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-footer'}, 
@@ -171,8 +183,14 @@ export function DashFooter(mainSelection, domainSelection) {
                     element('span', {textContent: 'Neither'})
                 )
             ),
-            element('div', {}, 
-                element('input', {className: 'hello', type: 'datetime-local'})
+            element('div', {},
+                
+                element('input', {
+                    className: 'date-temp',
+                    type: 'date', 
+                    name: 'dueDate',
+                    value: ''// isoToInput(task.dueDate)
+                })
             )
         )
     )
