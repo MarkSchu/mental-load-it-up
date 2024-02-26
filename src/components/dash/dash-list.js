@@ -72,6 +72,18 @@ export function DomainList () {
     )
 }
 
+export function CombineList() {
+    return (
+        element('div', {},
+            bind(collections.domains, (domains) =>
+                element('div', {},
+                    repeat(sortAlphabetically(domains), DomainItem)
+                )
+            )
+        )
+    )
+}
+
 export function DashList (mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-list'},

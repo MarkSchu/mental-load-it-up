@@ -11,12 +11,12 @@ export function DomainSelect(domainSelection) {
 
     const displayDomain = (el, value) => {
         if (value === 'all') {
-            el.textContent = 'Tag: All';
+            el.textContent = '> All';
         } else if (value === 'none') {
-            el.textContent = 'Tag: None';
+            el.textContent = 'None';
         } else {
             const domain = collections.domains.findById(value);
-            el.textContent = `Tag: ${domain.title}`;
+            el.textContent = `${domain.title}`;
         }
     }
 
@@ -113,23 +113,67 @@ export function MainSelection(mainSelection) {
                 bind: [[mainSelection, showSelection]],
                 onclick
             }),
-            element('div', {
-                className: 'main-option',
-                textContent: 'Tags',
-                'data-value': 'domains',
-                bind: [[mainSelection, showSelection]],
-                onclick
-            })
+            // element('div', {
+            //     className: 'main-option',
+            //     textContent: 'Tags',
+            //     'data-value': 'domains',
+            //     bind: [[mainSelection, showSelection]],
+            //     onclick
+            // })
         )
     )
 }
 
+export function Attributes() {
+    return (
+        element('div', {},
+            element('div', {},
+
+            )
+        )
+    )
+}
+
+/*
+
+    > Need to Grab
+
+    [] Task   [] Event  [] Any 
+    
+    date  dd/mm/yyy  |  recurs every [] 
+
+
+    ---
+
+
+    upcoming events 
+    what were out opf 
+*/
+
 export function DashFooter(mainSelection, domainSelection) {
     return (
         element('div', {className: 'dash-footer'}, 
-            DomainSelect(domainSelection),
             TextInput(mainSelection, domainSelection),
-            MainSelection(mainSelection)
+            // DomainSelect(domainSelection),
+            // MainSelection(mainSelection)
+            DomainSelect(domainSelection),
+            element('div', {className: 'foo input'}, 
+                element('div', {},
+                    element('input', {type: 'radio'}),
+                    element('span', {textContent: 'Task'})
+                ),
+                element('div', {},
+                    element('input', {type: 'radio'}),
+                    element('span', {textContent: 'Event'})
+                ),
+                element('div', {},
+                    element('input', {type: 'radio'}),
+                    element('span', {textContent: 'Neither'})
+                )
+            ),
+            element('div', {className: 'input'}, 
+                element('input', {type: 'datetime-local'})
+            ),
         )
     )
 }

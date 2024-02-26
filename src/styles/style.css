@@ -335,14 +335,16 @@ body
 .dash-footer .domain-selection {
     font-size: 1rem;
     line-height: 1.5rem;
-    padding: 0.25rem 2rem;
+    padding: 0.5rem 2rem;
     border: 1px solid #ccc;
     width: fit-content;
-    background-color: white;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     margin-bottom: 0.25rem;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
+    width: 100%;
+    color:#00C9A7;
+    font-weight: bold;
 }
 
 .dash-footer .text-input {
@@ -388,4 +390,18 @@ body
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+
+.foo {
+    display: flex;
+    justify-content: left;
+}
+
+.foo input {
+    margin-right: 0.25rem;
+} 
+
+.foo div {
+    margin-right: 1.25rem;
 }
