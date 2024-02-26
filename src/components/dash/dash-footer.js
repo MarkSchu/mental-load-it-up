@@ -171,9 +171,7 @@ export function DashFooter(mainSelection, domainSelection) {
                     element('span', {textContent: 'Neither'})
                 )
             ),
-            element('div', {className: 'input'}, 
-                element('input', {className: 'hello', type: 'datetime-local'})
-            ),
+            element('input', {className: 'hello', type: 'datetime-local'})
         )
     )
 }
