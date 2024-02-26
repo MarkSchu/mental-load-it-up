@@ -405,3 +405,11 @@ body
 .foo div {
     margin-right: 1.25rem;
 }
+
+.hello {
+    border-color: white;
+    background-color: white;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: black
+}
