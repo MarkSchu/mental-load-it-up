@@ -9,6 +9,7 @@ import { Dash } from 'components/dash/dash.js'
 import { Account } from 'components/account.js'
 import { DatePage } from 'components/debug/dates-page.js'
 import { StylePage } from 'components/debug/style-page.js'
+import { WebPage } from 'components/web-page/web-page.js';
 
 pathname.onEmit((pathnameVal) => {
     if (pathnameVal === '/dash') {
@@ -21,6 +22,10 @@ export function App() {
         element('div', {className: 'app'},
             Alert(),
             bind(pathname, (pathnameVal) => {
+
+                if (pathnameVal === '/') {
+                    return WebPage();
+                }
                 if (pathnameVal === '/signup') {
                     return Signup();
                 }
