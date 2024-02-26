@@ -163,6 +163,8 @@ export function Dateinput() {
 }
 
 export function DashFooter(mainSelection, domainSelection) {
+
+
     return (
         element('div', {className: 'dash-footer'}, 
             TextInput(mainSelection, domainSelection),
@@ -184,12 +186,15 @@ export function DashFooter(mainSelection, domainSelection) {
                 )
             ),
             element('div', {},
-                
+                // element('div', {
+                //     textContent: 'dd//mm/yyyy'
+                // }),
                 element('input', {
                     className: 'date-temp',
                     type: 'date', 
                     name: 'dueDate',
-                    value: ''// isoToInput(task.dueDate)
+                    // style: { opacity: '1'},
+                    // onclick
                 })
             )
         )
