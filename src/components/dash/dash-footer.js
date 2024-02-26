@@ -186,16 +186,24 @@ export function DashFooter(mainSelection, domainSelection) {
                 )
             ),
             element('div', {},
-                // element('div', {
-                //     textContent: 'dd//mm/yyyy'
-                // }),
-                element('input', {
-                    className: 'date-temp',
-                    type: 'date', 
-                    name: 'dueDate',
-                    // style: { opacity: '1'},
-                    // onclick
-                })
+                element('div', {className: 'datewrapper'},
+                    // element('input', {
+                    //     className: 'datebutton',
+                    //     type: 'date', 
+                    //     name: 'dueDate',
+                    //     onclick: () => { console.log('ok'); }
+                    // }),
+                    element('div', {
+                        className: 'datedisplay',
+                        textContent: 'Set Date'
+                    }),
+                    element('input', {
+                        className: 'datebutton',
+                        type: 'date', 
+                        name: 'dueDate',
+                        onclick: (e) => { e.target.showPicker() }
+                    }),
+                )
             )
         )
     )
