@@ -434,14 +434,17 @@ body
 }
 
 .date-2 {
+    height: 1.5rem;
     display: block;
     margin-right: 0.5rem;
 }
 
 .date-3 {
+    height: 1.5rem;
     display: block;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid black;
     padding: 0;
+    color: black;
 }
