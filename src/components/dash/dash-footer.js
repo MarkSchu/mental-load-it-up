@@ -124,12 +124,29 @@ export function MainSelection(mainSelection) {
     )
 }
 
-export function Attributes() {
-    return (
-        element('div', {},
-            element('div', {},
+export function Dateinput() {
 
-            )
+    let display;
+
+    const updateDisplay = (e) => {
+        display.textContent = e.target.value 
+            ? e.target.value.toString() 
+            : 'dd/mm/yyyy';
+    }
+    
+    return (
+        element('div', {className: 'datewrapper'},
+            display = element('div', {
+                className: 'datedisplay',
+                textContent: 'dd/mm/yyyy'
+            }),
+            element('input', {
+                className: 'datebutton',
+                type: 'date', 
+                name: 'dueDate',
+                onclick: (e) => { e.target.showPicker() },
+                onchange: updateDisplay
+            }),
         )
     )
 }
@@ -150,7 +167,7 @@ export function Attributes() {
     what were out opf 
 */
 
-export function Dateinput() {
+export function DateInput() {
 
     
     
@@ -185,24 +202,9 @@ export function DashFooter(mainSelection, domainSelection) {
                     element('span', {textContent: 'Neither'})
                 )
             ),
-            element('div', {},
-                element('div', {className: 'datewrapper'},
-                    // element('input', {
-                    //     className: 'datebutton',
-                    //     type: 'date', 
-                    //     name: 'dueDate',
-                    //     onclick: () => { console.log('ok'); }
-                    // }),
-                    element('div', {
-                        className: 'datedisplay',
-                        textContent: 'Set Date'
-                    }),
-                    element('input', {
-                        className: 'datebutton',
-                        type: 'date', 
-                        name: 'dueDate',
-                        onclick: (e) => { e.target.showPicker() }
-                    }),
+            element('div', {className: 'input'},
+                element('label', {textContent: 'Deadline: '},
+                    element('input', {type: 'date', className: 'boop'})
                 )
             )
         )

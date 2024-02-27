@@ -105,13 +105,13 @@ body
 
 .datewrapper {
     position: relative;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: inline-block;
 }
 
 .datebutton {
     border: 1px solid blue;
-    height: 50px ;
+    /* height: 42px ; */
     position: relative;
     opacity: 0;
 }
@@ -434,4 +434,11 @@ body
     line-height: 1.5rem;
     color: black
 
+}
+
+.boop {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: white;
+    color: black;
 }
