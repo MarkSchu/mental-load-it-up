@@ -50,6 +50,9 @@ function setAttributes(el, attrs) {
         else if (attr === 'style') {
             addStyles(el, attrs);
         }
+        else if (attr === 'for') {
+            el.setAttribute(attr, attrs[attr]);
+        }
         else if (attr.startsWith('data-')) {
             el.setAttribute(attr, attrs[attr]);
         }

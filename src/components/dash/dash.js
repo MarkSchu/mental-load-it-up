@@ -34,7 +34,7 @@ function DashHeader() {
 export function Dash() {
 
     const mainSelection = new ObservableVar('tasks');
-    const domainSelection = new ObservableVar('all');
+    const domainSelection = new ObservableVar('none');
 
     return (
         element('div', {className: 'dash'},

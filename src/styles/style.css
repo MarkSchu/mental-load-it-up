@@ -353,7 +353,7 @@ body
     background-color: white;
 }
 
-.dash-footer .domain-selection {
+.dash-footer .domain-select {
     font-size: 1rem;
     line-height: 1.5rem;
     padding: 0.5rem 2rem;
@@ -361,19 +361,26 @@ body
     width: fit-content;
     border-radius: 0.5rem;
     margin-bottom: 0.25rem;
-    text-align: left;
+    text-align: center;
     cursor: pointer;
     width: 100%;
     color:#00C9A7;
     font-weight: bold;
 }
 
-.dash-footer .text-input {
+.dash-footer .title-input {
     display: flex;
     margin-bottom: 0.25rem;
 }
 
-.dash-footer .input-area {
+.dash-footer form {
+    width: 100%;
+    margin: 0;
+    line-height: 0;
+    margin-right: .25rem;
+}
+
+.dash-footer textarea {
     font-size: 1rem;
     line-height: 1.5rem;
     padding: 0.75rem 1rem;
@@ -384,7 +391,11 @@ body
     margin-right: 0.25rem;
 }
 
-.dash-footer .add-button {
+.dash-footer textarea:focus {
+    outline: 1px solid #00C9A7;
+}
+
+.dash-footer button {
     font-size: 1rem;
     line-height: 1.5rem;
     padding: 0.75rem 1rem;
@@ -396,50 +407,23 @@ body
     cursor: pointer;
 }
 
-.dash-footer .main-selection {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background-color: white;
-    border-top: 1px solid #ccc;
-}
-
-.dash-footer .main-option {
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-
-.foo {
+.dash-footer .type-select {
     display: flex;
     justify-content: left;
 }
 
-.foo input {
-    margin-right: 0.25rem;
-} 
-
-.foo div {
-    margin-right: 1.25rem;
-}
-
-.date-1 {
+.dash-footer .date-select {
     display: flex;
     align-items: center;
-    padding: 1rem;
 }
 
-.date-2 {
+.dash-footer .date-select label {
     height: 1.5rem;
     display: block;
     margin-right: 0.5rem;
 }
 
-.date-3 {
+.dash-footer  .date-select input {
     height: 1.5rem;
     display: block;
     border: none;

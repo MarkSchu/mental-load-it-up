@@ -1,7 +1,36 @@
 import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
-import { getRandomColor } from 'utils/colors.js';
+import { ObservableVar } from 'utils/observable.js';
+
+
+export function TitleInput(title, create) {
+
+    let form;
+
+    const onclick = (e) => {
+        if (form.reportValidity()) {
+            title.set(form.elements.title.value);
+            create();
+        }
+    }
+
+    return (
+        element('div', {className: 'title-input'},
+            form = element('form', {},
+                element('textarea', {
+                    rows: 2,
+                    name: 'title',
+                    required: true
+                }),
+            ),
+            element('button', {
+                textContent: 'Add',
+                onclick
+            })
+        )
+    )
+}
 
 export function DomainSelect(domainSelection) {
     
@@ -10,10 +39,8 @@ export function DomainSelect(domainSelection) {
     }
 
     const displayDomain = (el, value) => {
-        if (value === 'all') {
-            el.textContent = '> All';
-        } else if (value === 'none') {
-            el.textContent = 'None';
+        if (value === 'none') {
+            el.textContent = 'No Tag';
         } else {
             const domain = collections.domains.findById(value);
             el.textContent = `${domain.title}`;
@@ -21,13 +48,9 @@ export function DomainSelect(domainSelection) {
     }
 
     return (
-        element('div', { className: 'domain-selection select' },
+        element('div', { className: 'domain-select select' },
             bind(collections.domains, (domains) => 
                 element('select', {onchange: setDomain},
-                    element('option', {
-                        textContent: 'All', 
-                        value: 'all'
-                    }),
                     element('option', {
                         textContent: 'No Tag', 
                         value: 'none'
@@ -47,165 +70,78 @@ export function DomainSelect(domainSelection) {
     )
 }
 
-export function TextInput(mainSelection) {
-
-    let form;
-
-    const create = (e) => {
-        try {
-            if (form.reportValidity()) {
-                const data = {title: form.elements.title.value};
-                if (mainSelection.value === 'domains') {
-                    data.color = getRandomColor();
-                }
-                collections[mainSelection.value]
-                .create(data)
-                .then(() => form.reset())
-            }
-        } catch(err) {
-            console.log(err)
-        }
-        return false;
-    }
-
+export function TypeSelect() {
     return (
-        form = element('form', {className: 'text-input'},
-            element('textarea', {
-                className: 'input-area',
-                rows: 2,
-                name: 'title',
-                required: true
-            }),
-            element('button', {
-                className: 'add-button',
-                textContent: 'Add',
-                onclick: create
-            })
+        element('div', {className: 'type-select'},
+            element('div', {},
+                element('input', {
+                    type: 'radio',
+                    name: 'domain',
+                    value: 'task',
+                    id: 'task'
+                }),
+                element('label', {
+                    textContent: 'Task',
+                    for: 'task'
+                })
+            ),
+            element('div', {},
+                element('input', {
+                    type: 'radio',
+                    name: 'domain',
+                    value: 'domain',
+                    id: 'domain'
+                }),
+                element('label', {
+                    textContent: 'Event',
+                    for: 'domain'
+                })
+            ),
+            element('div', {},
+                element('input', {
+                    type: 'radio',
+                    name: 'domain',
+                    value: 'neither',
+                    id: 'neither'
+                }),
+                element('label', {
+                    textContent: 'Neither',
+                    for: 'neither'
+                })
+            )
         )
     )
 }
 
-export function MainSelection(mainSelection) {
-
-    const onclick = (e) => {
-        mainSelection.set(e.target.dataset.value);
-    }
-
-    const showSelection = (el, value) => {
-        el.style.fontWeight = el.dataset.value === value
-            ? 'bold'
-            : 'initial';
-    }
-    
+export function DateSelect() {
     return (
-        element('div', {className: 'main-selection'},
-            element('div', {
-                className: 'main-option',
-                textContent: 'Tasks',
-                'data-value': 'tasks',
-                bind: [[mainSelection, showSelection]],
-                onclick
-            }),
-            element('div', {
-                className: 'main-option',
-                textContent: 'Events',
-                'data-value': 'events',
-                bind: [[mainSelection, showSelection]],
-                onclick
-            }),
-            // element('div', {
-            //     className: 'main-option',
-            //     textContent: 'Tags',
-            //     'data-value': 'domains',
-            //     bind: [[mainSelection, showSelection]],
-            //     onclick
-            // })
-        )
-    )
-}
-
-export function Dateinput() {
-
-    let display;
-
-    const updateDisplay = (e) => {
-        display.textContent = e.target.value 
-            ? e.target.value.toString() 
-            : 'dd/mm/yyyy';
-    }
-    
-    return (
-        element('div', {className: 'datewrapper'},
-            display = element('div', {
-                className: 'datedisplay',
-                textContent: 'dd/mm/yyyy'
-            }),
-            element('input', {
-                className: 'datebutton',
-                type: 'date', 
-                name: 'dueDate',
-                onclick: (e) => { e.target.showPicker() },
-                onchange: updateDisplay
-            }),
-        )
-    )
-}
-
-/*
-
-    > Need to Grab
-
-    [] Task   [] Event  [] Any 
-    
-    date  dd/mm/yyy  |  recurs every [] 
-
-
-    ---
-
-
-    upcoming events 
-    what were out opf 
-*/
-
-export function DateInput() {
-
-    
-    
-    return (
-        element('div', {className: 'input'},
-            element('input', {name: 'date', style: {display: 'none'}}),
-            element('div', {})
+        element('div', {className: 'date-selection'},
+            element('label', {textContent: 'Deadline: '}),
+            element('input', {type: 'date'})
         )
     )
 }
 
 export function DashFooter(mainSelection, domainSelection) {
 
+    const title = new ObservableVar('');
+    const type = new ObservableVar('');
+    const date = new ObservableVar('');
+
+    const create = () => {
+        console.log('boop')
+        // collections[mainSelection.value]
+        // .create(data)
+        // .then(() => form.reset())
+    }
 
     return (
         element('div', {className: 'dash-footer'}, 
-            TextInput(mainSelection, domainSelection),
-            // DomainSelect(domainSelection),
-            // MainSelection(mainSelection)
+            // TitleInput(title, create),
             DomainSelect(domainSelection),
-            element('div', {className: 'foo input'}, 
-                element('div', {},
-                    element('input', {type: 'radio'}),
-                    element('span', {textContent: 'Task'})
-                ),
-                element('div', {},
-                    element('input', {type: 'radio'}),
-                    element('span', {textContent: 'Event'})
-                ),
-                element('div', {},
-                    element('input', {type: 'radio'}),
-                    element('span', {textContent: 'Neither'})
-                )
-            ),
-            element('div', {className: 'date-1'},
-                element('label', {className: 'date-2', textContent: 'Deadline: '}),
-                element('input', {type: 'date', className: 'date-3'})
-            )
+            TitleInput(title, create),
+            // TypeSelect(type),
+            // DateSelect(date)
         )
     )
 }
