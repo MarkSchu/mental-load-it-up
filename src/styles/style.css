@@ -434,23 +434,13 @@ body
 }
 
 .date-2 {
-    line-height: 1.5rem;
-    font-size: 1rem;
-    height: 1rem;
-    display: inline-block;
-    margin-right: 1rem;
+    display: block;
+    margin-right: 0.5rem;
 }
 
 .date-3 {
-    line-height: 1.5rem;
-    font-size: 1rem;
-    height: 1rem;
+    display: block;
     border: none;
-    border-bottom: 1px solid black;
-    display: inline-block;
-    background-color: white;
-    color: black;
     border-radius: 0;
-    margin: 0;
-    padding: 0;
+    border-bottom: 1px solid black;
 }
