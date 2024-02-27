@@ -434,7 +434,7 @@ body
 }
 
 .date-2 {
-    line-height: 1rem;
+    line-height: 1.5rem;
     font-size: 1rem;
     height: 1rem;
     display: inline-block;
@@ -442,7 +442,7 @@ body
 }
 
 .date-3 {
-    line-height: 1rem;
+    line-height: 1.5rem;
     font-size: 1rem;
     height: 1rem;
     border: none;
