@@ -202,10 +202,9 @@ export function DashFooter(mainSelection, domainSelection) {
                     element('span', {textContent: 'Neither'})
                 )
             ),
-            element('div', {className: 'yorp'},
-                element('label', {className: 'loop', textContent: 'Deadline: '},
-                    element('input', {type: 'date', className: 'boop'})
-                )
+            element('div', {className: 'date-1'},
+                element('label', {className: 'date-2', textContent: 'Deadline: '}),
+                element('input', {type: 'date', className: 'date-3'})
             )
         )
     )

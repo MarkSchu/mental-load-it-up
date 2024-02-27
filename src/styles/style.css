@@ -427,26 +427,25 @@ body
     margin-right: 1.25rem;
 }
 
-.hello {
-    border-color: white;
-    background-color: white;
+.date-1 {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.date-2 {
+    line-height: 1rem;
     font-size: 1rem;
-    line-height: 1.5rem;
-    color: black;
-    border-radius: 0;
+    display: inline-block;
+    margin-right: 1rem;
 }
 
-.boop {
+.date-3 {
+    line-height: 1rem;
+    font-size: 1rem;
     border: none;
+    border-bottom: 1px solid black;
+    display: inline-block;
     background-color: white;
     color: black;
-    border-bottom: 1px solid black;
-}
-
-/* .loop {
-    border-bottom: 1px solid black;
-} */
-
-.yorp {
-    padding: 2rem;
 }
