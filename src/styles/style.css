@@ -432,13 +432,21 @@ body
     background-color: white;
     font-size: 1rem;
     line-height: 1.5rem;
-    color: black
-
+    color: black;
+    border-radius: 0;
 }
 
 .boop {
     border: none;
-    border-bottom: 1px solid black;
     background-color: white;
     color: black;
+    border-bottom: 1px solid black;
+}
+
+/* .loop {
+    border-bottom: 1px solid black;
+} */
+
+.yorp {
+    padding: 2rem;
 }
