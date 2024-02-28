@@ -133,17 +133,21 @@ export function SelectionDisplay(showBigSelect, selection) {
         if (secondChoice === 'domains') {
             el.textContent = 'Tags';
         }
-        else if (names[firstChoice]) {
+        else if (firstChoice === 'all') {
             el.textContent = `${names[secondChoice]}`;
-        } else {
+        } 
+        else if (firstChoice === 'none') {
+            el.textContent = `Uncategorized, ${names[secondChoice]}`;
+        } 
+        else {
             const domain = collections.domains.findById(firstChoice);
-            el.textContent = `${domain.title} / ${names[secondChoice]}`;
+            el.textContent = `${domain.title}, ${names[secondChoice]}`;
         }
     }
 
     return (
         element('div', {
-            className: 'selectionDisplay',
+            className: 'input selectionDisplay',
             onclick,
             bind: [[selection, displaySelection]]
         })
