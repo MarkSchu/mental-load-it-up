@@ -1,17 +1,36 @@
 import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
-import { ObservableVar } from 'utils/observable.js';
+import { ObservableVar, ObservableBool } from 'utils/observable.js';
 
+const names = {
+    tags: 'Tags',
+    tasks: 'Tasks',
+    events: 'Events',
+    all: 'All',
+    none: 'Uncategorized'
+};
 
-export function TitleInput(title, create) {
+const parseSelection = (selection) => {
+    const [firstChoice, collection] = selection.value.split('-');
+    const domainId = (firstChoice === 'all' || firstChoice === 'none') ? ''  : firstChoice;
+    return [ domainId, collection];
+}
+
+export function TitleInput(selection) {
 
     let form;
 
     const onclick = (e) => {
+        const [domain, collection] = parseSelection(selection);
+        const data = {
+            title: form.elements.title.value,
+            domain
+        };
         if (form.reportValidity()) {
-            title.set(form.elements.title.value);
-            create();
+            collections[collection]
+            .create(data)
+            .then(() => form.reset())
         }
     }
 
@@ -32,116 +51,114 @@ export function TitleInput(title, create) {
     )
 }
 
-export function DomainSelect(domainSelection) {
-    
-    const setDomain = (e) => {
-        domainSelection.set(e.target.value);
+export function BigSelect(showBigSelect, selection) {
+
+    const onclick = (e) => {
+        selection.set(e.target.getAttribute('data-value'));
+        showBigSelect.false();
     }
 
-    const displayDomain = (el, value) => {
-        if (value === 'none') {
-            el.textContent = 'No Tag';
+    const show = (el, value) => {
+        el.style.display = value ? 'block' : 'none';
+    }
+    
+    return (
+        element('div', {
+            className: 'menu',
+            bind: [[showBigSelect, show]]
+        },
+            bind(collections.domains, (domains) => 
+                element('ol', {},
+                    element('li', {
+                        textContent: 'All'},
+                        element('ol', {},
+                            element('li', {
+                                textContent: 'Tasks',
+                                'data-value': 'all-tasks',
+                                onclick
+                            }),
+                            element('li', {
+                                textContent: 'Events',
+                                'data-value': 'all-events',
+                                onclick
+                            }),
+                        )
+                    ),
+                    element('li', {
+                        textContent: 'Uncategorized'},
+                        element('ol', {},
+                            element('li', {
+                                textContent: 'Tasks', 
+                                'data-value': 'none-tasks',
+                                onclick
+                            }),
+                            element('li', {
+                                textContent: 'Events', 
+                                'data-value': 'none-events',
+                                onclick
+                            }),
+                        )
+                    ),
+                    repeat(collections.domains.value, (domain) => 
+                        element('li', {
+                            textContent: domain.title},
+                            element('ol', {},
+                                element('li', {
+                                    textContent: 'Tasks', 
+                                    'data-value': `${domain._id}-tasks`,
+                                    onclick
+                                }),
+                                element('li', {
+                                    textContent: 'Events', 
+                                    'data-value': `${domain._id}-events`,
+                                    onclick
+                                }),
+                            )
+                        )
+                    )   
+                )
+            )
+        )  
+    )
+}
+
+export function SelectionDisplay(showBigSelect, selection) {
+
+    const onclick = () => {
+        showBigSelect.true();
+    }
+
+    const displaySelection = (el, value) => {
+        const [firstChoice, secondChoice] = value.split('-');
+        if (secondChoice === 'domains') {
+            el.textContent = 'Tags';
+        }
+        else if (names[firstChoice]) {
+            el.textContent = `${names[secondChoice]}`;
         } else {
-            const domain = collections.domains.findById(value);
-            el.textContent = `${domain.title}`;
+            const domain = collections.domains.findById(firstChoice);
+            el.textContent = `${domain.title} / ${names[secondChoice]}`;
         }
     }
 
     return (
-        element('div', { className: 'domain-select select' },
-            bind(collections.domains, (domains) => 
-                element('select', {onchange: setDomain},
-                    element('option', {
-                        textContent: 'No Tag', 
-                        value: 'none'
-                    }),
-                    repeat(domains, (domain) => 
-                        element('option', {
-                            textContent: domain.title,
-                            value: domain._id
-                        })
-                    )
-                )
-            ),
-            element('div', {
-                bind:[[domainSelection, displayDomain]]
-            })
-        )
+        element('div', {
+            className: 'selectionDisplay',
+            onclick,
+            bind: [[selection, displaySelection]]
+        })
     )
 }
 
-export function TypeSelect() {
-    return (
-        element('div', {className: 'type-select'},
-            element('div', {},
-                element('input', {
-                    type: 'radio',
-                    name: 'domain',
-                    value: 'task',
-                    id: 'task'
-                }),
-                element('label', {
-                    textContent: 'Task',
-                    for: 'task'
-                })
-            ),
-            element('div', {},
-                element('input', {
-                    type: 'radio',
-                    name: 'domain',
-                    value: 'domain',
-                    id: 'domain'
-                }),
-                element('label', {
-                    textContent: 'Event',
-                    for: 'domain'
-                })
-            ),
-            element('div', {},
-                element('input', {
-                    type: 'radio',
-                    name: 'domain',
-                    value: 'neither',
-                    id: 'neither'
-                }),
-                element('label', {
-                    textContent: 'Neither',
-                    for: 'neither'
-                })
-            )
-        )
-    )
-}
+export function DashFooter(selection) {
 
-export function DateSelect() {
-    return (
-        element('div', {className: 'date-selection'},
-            element('label', {textContent: 'Deadline: '}),
-            element('input', {type: 'date'})
-        )
-    )
-}
-
-export function DashFooter(mainSelection, domainSelection) {
-
-    const title = new ObservableVar('');
-    const type = new ObservableVar('');
-    const date = new ObservableVar('');
-
-    const create = () => {
-        console.log('boop')
-        // collections[mainSelection.value]
-        // .create(data)
-        // .then(() => form.reset())
-    }
-
+    const showBigSelect = new ObservableBool(false);
+    
     return (
         element('div', {className: 'dash-footer'}, 
-            // TitleInput(title, create),
-            DomainSelect(domainSelection),
-            TitleInput(title, create),
-            // TypeSelect(type),
-            // DateSelect(date)
+            BigSelect(showBigSelect, selection),
+            SelectionDisplay(showBigSelect, selection),
+            TitleInput(selection)
         )
     )
 }

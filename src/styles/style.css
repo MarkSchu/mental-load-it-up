@@ -1,10 +1,10 @@
-:root {}
+e:root {}
 
 * {
     box-sizing: border-box;
     font-family: 'Noto sans';
     font-size: 1rem;
-    line-height: 1.5rem;
+    /* line-height: 1.5rem; */
 }
 
 html,
@@ -351,6 +351,7 @@ body
     bottom:0;
     padding: 0 0.5rem 0 0.5rem;
     background-color: white;
+    border-top: 1px solid #ccc;
 }
 
 .dash-footer .domain-select {
@@ -431,4 +432,60 @@ body
     border-bottom: 1px solid black;
     padding: 0;
     color: black;
+}
+
+/* New */
+
+.combinedInput {
+    display: flex;
+}
+
+.firstChoice {
+    margin-right: 1rem;
+}
+
+.firstChoice, 
+.secondChoice {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* More New */
+
+.menu {
+    position: fixed;
+    overflow: scroll;
+    border: 1px solid #ccc;
+    top: 54.5px;
+    bottom: 77.5px;
+    left: 0;
+    right: 0;
+    margin: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+
+.menu ol ol {
+    margin-bottom: 1rem;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu li li:hover {
+    font-weight: bold;
+}
+
+.selectionDisplay {
+    font-size: 1.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.75rem 0;
 }

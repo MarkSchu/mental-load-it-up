@@ -33,14 +33,14 @@ function DashHeader() {
 
 export function Dash() {
 
-    const mainSelection = new ObservableVar('tasks');
-    const domainSelection = new ObservableVar('none');
+    // [all|none|domainId]-[tasks|events|domains]
+    const selection = new ObservableVar('all-tasks');   
 
     return (
         element('div', {className: 'dash'},
             DashHeader(),
-            DashList(mainSelection, domainSelection),
-            DashFooter(mainSelection, domainSelection)
+            DashList(selection),
+            DashFooter(selection)
         )
     )
 }

@@ -7,7 +7,6 @@ import { DomainItem } from 'components/dash/domain-item.js';
 import { EventItem } from 'components/dash/event-item.js';
 import { initLoadComplete } from 'state/general.js';
 
-
 const filterByDomain = (list, domain) => {
     if (domain === 'all') {
         return list;
@@ -26,36 +25,32 @@ const sortAlphabetically = (list) => {
     });
 }
 
-export function TaskList (domainSelection) {
+export function TaskList (domain) {
     return (
         element('div', {},
-            bind(collections.tasks, (tasks) => 
-                bind(domainSelection, (domain) => {
-                    const filteredTasks = filterByDomain(tasks, domain);
-                    return (
-                        element('div', {},
-                            repeat(filteredTasks, TaskItem)
-                        )
+            bind(collections.tasks, (tasks) => {
+                const filteredTasks = filterByDomain(tasks, domain);
+                return (
+                    element('div', {},
+                        repeat(filteredTasks, TaskItem)
                     )
-                })
-            )
+                )
+            })
         )
     )
 }
 
-export function EventList (domainSelection) {
+export function EventList (domain) {
     return (
         element('div', {},
-            bind(collections.events, (events) => 
-                bind(domainSelection, (domain) => {
-                    const filteredEvents = filterByDomain(events, domain);
-                    return (
-                        element('div', {},
-                            repeat(filteredEvents, EventItem)
-                        )
+            bind(collections.events, (events) => {
+                const filteredEvents = filterByDomain(events, domain);
+                return (
+                    element('div', {},
+                        repeat(filteredEvents, EventItem)
                     )
-                })
-            )
+                )
+            })
         )
     )
 }
@@ -72,35 +67,23 @@ export function DomainList () {
     )
 }
 
-export function CombineList() {
-    return (
-        element('div', {},
-            bind(collections.domains, (domains) =>
-                element('div', {},
-                    repeat(sortAlphabetically(domains), DomainItem)
-                )
-            )
-        )
-    )
-}
-
-export function DashList (mainSelection, domainSelection) {
+export function DashList (selection) {
     return (
         element('div', {className: 'dash-list'},
             listen(initLoadComplete, () => 
-                bind(mainSelection, (value) => {
-                    if (value === 'tasks') {
-                        return TaskList(domainSelection);
+                bind(selection, (value) => {
+                    const [domain, type] = value.split('-');
+                    if (type === 'tasks') {
+                        return TaskList(domain);
                     }
-                    if (value === 'events') {
-                        return EventList(domainSelection);
+                    if (type === 'events') {
+                        return EventList(domain);
                     }
-                    if (value === 'domains') {
-                        return DomainList(domainSelection);
+                    if (type === 'domains') {
+                        return DomainList();
                     }
                 })
             )
         )
     )
 }
-
