@@ -5,7 +5,6 @@ import { collections } from 'state/collection.js';
 import { sortByDates } from 'utils/dates.js';
 import { alerts } from 'state/alerts.js';
 import { ObservableVar, ObservableEvent } from 'utils/observable.js';
-// import { setColors } from 'utils/colors.js';
 
 export const general = new ObservableVar();
 export const initLoadComplete = new ObservableEvent();
@@ -26,7 +25,6 @@ general.getAllUserData = () => {
             collections.tasks.set(sortByDates(body.tasks));
             collections.events.set(sortByDates(body.events));
             collections.domains.set(body.domains);
-            // setColors(collections.domains.value);
             initLoadComplete.emit();
             alerts.close()
         } else {
