@@ -495,19 +495,20 @@ td {
 }
 
 .menu-option {
-    padding: 0.5rem 6rem;
-    border-bottom: 1px solid #ccc;;
+    padding: 0.75rem 0rem;
+    border-bottom: 1px solid #ddd;;
     cursor: pointer;
 }
 
 .menu-option.main {
-    /* text-align: left; */
     font-weight: bold;
+    padding-left: 2rem;
 }
 
 .menu-option.sub {
-    padding-left: 8rem;
-    /* text-align: right; */
-    /* padding-left: 9rem; */
-    /* text-decoration: underline; */
+    padding-left: 4rem;
+}
+
+.foo {
+    padding: 2rem;
 }

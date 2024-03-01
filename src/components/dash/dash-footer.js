@@ -58,16 +58,16 @@ export function BigSelect(selection, showBigSelect) {
                     element('div', { className: 'menu-option main', textContent: `Events` }),
                     element('div', {},
                         element('div', {className: 'menu-option main', textContent: `Uncategorized`}),
-                        element('div', {className: 'menu-option sub', textContent: `/ Items`}),
-                        element('div', {className: 'menu-option sub', textContent: `/ Tasks`}),
-                        element('div', {className: 'menu-option sub', textContent: `/ Events`})
+                        element('div', {className: 'menu-option sub', textContent: `Items`}),
+                        element('div', {className: 'menu-option sub', textContent: `Tasks`}),
+                        element('div', {className: 'menu-option sub', textContent: `Events`})
                     ),
                     repeat(collections.domains.value, (domain) => 
                         element('div', {},
                             element('div', {className: 'menu-option main', textContent: `${domain.title}`}),
-                            element('div', {className: 'menu-option sub', textContent: `/ Items`}),
-                            element('div', {className: 'menu-option sub', textContent: `/ Tasks`}),
-                            element('div', {className: 'menu-option sub', textContent: `/ Events`})
+                            element('div', {className: 'menu-option sub', textContent: `Items`}),
+                            element('div', {className: 'menu-option sub', textContent: `Tasks`}),
+                            element('div', {className: 'menu-option sub', textContent: `Events`})
                         )
                     )
                 )
