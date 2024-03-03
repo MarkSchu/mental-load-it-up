@@ -25,6 +25,16 @@ const sortAlphabetically = (list) => {
     });
 }
 
+export function ItemList () {
+    return (
+        element('div', {},
+            bind(collections.domains, (domains) =>
+                element('div', {textContent: "Show Items"})
+            )
+        )
+    )
+}
+
 export function TaskList (domain) {
     return (
         element('div', {},
@@ -73,6 +83,10 @@ export function DashList (selection) {
             listen(initLoadComplete, () => 
                 bind(selection, (value) => {
                     const [domain, type] = value.split('-');
+
+                    if (type === 'items') {
+                        return ItemList(domain);
+                    }
                     if (type === 'tasks') {
                         return TaskList(domain);
                     }
@@ -81,6 +95,11 @@ export function DashList (selection) {
                     }
                     if (type === 'domains') {
                         return DomainList();
+                    }
+                    if (type === 'all') {
+                        return (
+                            element('div', {textContent: `Show everything for domain ${domain}`})
+                        )
                     }
                 })
             )

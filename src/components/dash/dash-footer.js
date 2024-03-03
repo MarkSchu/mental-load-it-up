@@ -4,21 +4,6 @@ import { collections } from 'state/collection.js';
 import { ObservableVar, ObservableBool } from 'utils/observable.js';
 import { getTypeFromSelection, getDomainIdFromSelection } from 'utils/parse.js';
 
-/**
- * Domains
- * Items
- * Tasks
- * Events
- * 
- * Not Categorized Items
- * Not Categorized Tasks
- * Not Categorized Events
- * 
- * House Items
- * House Tasks
- * House Events
- */
-
 const names = {
     tags: 'Tags',
     items: 'Items',
@@ -38,36 +23,41 @@ export function BigSelect(selection, showBigSelect) {
     const show = (el, value) => {
         el.style.display = value ? 'block' : 'none';
     }
+
+    const Option = (subclass, dataValue, text,) => {
+        return (
+            element('div', { 
+                className: `menu-option ${subclass}`, 
+                'data-value': dataValue, 
+                textContent: text,
+                onclick
+            })
+        );
+    }
     
     return (
         element('div', {
             className: 'menu',
             bind: [[showBigSelect, show]]
         },
-            // bind(collections.domains, (domains) => 
-            //     element('table', {},
-            //         repeat(collections.domains.value, (domain) => 
-            //             element('div', {textContent: `${domain.title}`})
-            //         )
-            //     )
-            // ),
             bind(collections.domains, (domains) => 
                 element('div', {className: 'foo'},
-                    element('div', { className: 'menu-option main', textContent: `Items` }),
-                    element('div', { className: 'menu-option main', textContent: `Tasks` }),
-                    element('div', { className: 'menu-option main', textContent: `Events` }),
+                    Option('main', 'all-domains', 'Categories'),
+                    Option('main', 'all-items', 'Items'),
+                    Option('main', 'all-tasks', 'Tasks'),
+                    Option('main', 'all-events', 'Events'),
                     element('div', {},
-                        element('div', {className: 'menu-option main', textContent: `Uncategorized`}),
-                        element('div', {className: 'menu-option sub', textContent: `Items`}),
-                        element('div', {className: 'menu-option sub', textContent: `Tasks`}),
-                        element('div', {className: 'menu-option sub', textContent: `Events`})
+                        Option('main', 'none-all', 'Uncategorized'),
+                        Option('sub', 'none-items', 'Items'),
+                        Option('sub', 'none-tasks', 'Tasks'),
+                        Option('sub', 'none-events', 'Events')
                     ),
                     repeat(collections.domains.value, (domain) => 
                         element('div', {},
-                            element('div', {className: 'menu-option main', textContent: `${domain.title}`}),
-                            element('div', {className: 'menu-option sub', textContent: `Items`}),
-                            element('div', {className: 'menu-option sub', textContent: `Tasks`}),
-                            element('div', {className: 'menu-option sub', textContent: `Events`})
+                            Option('main', `${domain._id}-all`, `${domain.title}`),
+                            Option('sub', `${domain._id}-items`, 'Items'),
+                            Option('sub', `${domain._id}-tasks`, 'Tasks'),
+                            Option('sub', `${domain._id}-events`, 'Events')
                         )
                     )
                 )
@@ -83,29 +73,39 @@ export function SelectionDisplay(selection, showBigSelect) {
     }
 
     const getLeftSideTxt = (value) => {
+        const [domain, type] = value?.split('-');
         if (!value) {
             return '';
         }
-        const [domainId, type] = value.split('-');
-
-        if (type === 'domains') {
-            return names['domains'];
+        if (domain === 'all') {
+            return '';
         }
-        if (domainId === 'all' || domainId === 'none') {
-           return '';
+        if (domain === 'none') {
+            return 'Uncategorized';
         }
-        return collections.domains.findById(domainId)?.title;
+        return collections.domains.findById(domain)?.title;
     }
 
     const getRightSideTxt = (value) => {
+        const [domain, type] = value?.split('-');
         if (!value) {
             return '';
         }
-        const [_, type] = value.split('-');
-        if (type === 'domains') {
-            return ''; 
+        if (type === 'all') {
+            return '';
         }
-        return names[type];
+        if (type === 'items') {
+            return 'Items';
+        }
+        if (type === 'tasks') {
+            return 'Tasks';
+        }
+        if (type === 'events') {
+            return 'Events';
+        }
+        if (type === 'domains') {
+            return 'Categories';
+        }
     }
 
     return (
@@ -117,6 +117,12 @@ export function SelectionDisplay(selection, showBigSelect) {
                 element('div', {},
                     element('span', {
                         textContent: getLeftSideTxt(value)
+                    }),
+                    element('span', {
+                        textContent: ', ', 
+                        style: {
+                            display: getLeftSideTxt(value) ? 'inline' : 'none'
+                        }
                     }),
                     element('span', {
                         textContent: getRightSideTxt(value)
