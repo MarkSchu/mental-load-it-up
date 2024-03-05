@@ -393,7 +393,8 @@ body
 }
 
 .dash-footer textarea:focus {
-    outline: 1px solid #00C9A7;
+    outline: none;
+    border: 2px solid #00C9A7;
 }
 
 .dash-footer button {
@@ -496,7 +497,7 @@ td {
 
 .menu-option {
     padding: 0.75rem 0rem;
-    border-bottom: 1px solid #ddd;;
+    border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
 

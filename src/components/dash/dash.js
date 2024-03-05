@@ -7,8 +7,7 @@ import { ObservableVar } from 'utils/observable.js';
 
 export function Dash() {
     /*
-        type => items, tasks, events, domains
-        
+        type => items, tasks, events, domains, all
         all-type
         none-type
         domainId-type
@@ -23,4 +22,3 @@ export function Dash() {
         )
     )
 }
-
