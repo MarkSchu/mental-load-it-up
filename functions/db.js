@@ -41,12 +41,14 @@ db.deleteById = async (userId, collection, data) => {
 }
 
 db.getAllUserData = async (userId) => {
+    const items = await schemas['items'].find({userId});
     const tasks = await schemas['tasks'].find({userId});
     const events = await schemas['events'].find({userId});
     const domains = await schemas['domains'].find({userId});
     return {
         statusCode: 200,
         body: JSON.stringify({
+            items,
             tasks,
             events,
             domains

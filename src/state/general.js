@@ -22,6 +22,7 @@ general.getAllUserData = () => {
     return api('getAllUserData').then((response) => {
         const { status, body, statusText } = response; 
         if (status < 300) {
+            collections.items.set(sortByDates(body.items));
             collections.tasks.set(sortByDates(body.tasks));
             collections.events.set(sortByDates(body.events));
             collections.domains.set(body.domains);

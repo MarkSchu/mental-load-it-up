@@ -3,6 +3,7 @@ import { bind, listen } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { repeatWith } from 'utils/binders.js';
 import { TaskItem } from 'components/dash/task-item.js';
+import { Item } from 'components/dash/item.js';
 import { DomainItem } from 'components/dash/domain-item.js';
 import { EventItem } from 'components/dash/event-item.js';
 import { initLoadComplete } from 'state/general.js';
@@ -28,9 +29,14 @@ const sortAlphabetically = (list) => {
 export function ItemList () {
     return (
         element('div', {},
-            bind(collections.domains, (domains) =>
-                element('div', {textContent: "Show Items"})
-            )
+            bind(collections.items, (items) => {
+                const filteredItems = filterByDomain(items, domain);
+                return (
+                    element('div', {},
+                        repeat(filteredItems, Item)
+                    )
+                )
+            })
         )
     )
 }
