@@ -1,8 +1,59 @@
 import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
-import { ObservableVar, ObservableBool } from 'utils/observable.js';
+import { ObservableBool } from 'utils/observable.js';
 import { getTypeFromSelection, getDomainIdFromSelection } from 'utils/parse.js';
+
+
+
+export function SelectionDisplay(selection, showBigSelect) {
+
+    const onclick = () => {
+        showBigSelect.toggle();
+    }
+
+    const styleInput = (el, value) => {
+        el.style.border = value
+        ? '2px solid #00C9A7'
+        : '1px solid #ccc';
+    }
+
+    const getText = (value) => {
+        const [domainId, type] = value.split('-');
+        if (domainId === 'all') {
+            if (type === 'domains') {
+                return 'Categories';
+            }
+            if (type === 'items') {
+                return 'Items';
+            }
+            if (type === 'tasks') {
+                return 'Tasks';
+            }
+            if (type === 'events') {
+                return 'Events';
+            }
+        } 
+        if (domainId === 'none') {
+            return 'Uncategorized';
+        }
+        return collections.domains.findById(domainId)?.title;
+    }
+
+    return (
+        element('div', {
+            className: 'input selectionDisplay',
+            bind: [[showBigSelect, styleInput]],
+            onclick
+        },
+            bind(selection, (value) => 
+                element('div', {
+                    textContent: getText(value)
+                })
+            )
+        )
+    )
+}
 
 export function BigSelect(selection, showBigSelect) {
 
@@ -10,8 +61,6 @@ export function BigSelect(selection, showBigSelect) {
         selection.set(e.target.getAttribute('data-value'));
         showBigSelect.false();
     }
-
-    const doNothing = () => {}
 
     const show = (el, value) => {
         el.style.display = value ? 'block' : 'none';
@@ -36,104 +85,23 @@ export function BigSelect(selection, showBigSelect) {
             bind(collections.domains, (domains) => 
                 element('div', {},
                     Option('main', 'all-domains', 'Categories', select),
-                    // Option('main', 'all-items', 'Items', doNothing),
+                    element('hr', {}),
+                    Option('main', 'all-items', 'Items', select),
                     Option('main', 'all-tasks', 'Tasks', select),
                     Option('main', 'all-events', 'Events', select),
-                    element('div', {},
-                        Option('main', 'none-all', 'Uncategorized', doNothing),
-                        // Option('sub', 'none-items', 'Items', doNothing),
-                        Option('sub', 'none-tasks', 'Tasks', select),
-                        Option('sub', 'none-events', 'Events', select)
-                    ),
+                    element('hr', {}),
                     repeat(collections.domains.value, (domain) => 
-                        element('div', {},
-                            Option('main', `${domain._id}-all`, `${domain.title}`, doNothing),
-                            // Option('sub', `${domain._id}-items`, 'Items', doNothing),
-                            Option('sub', `${domain._id}-tasks`, 'Tasks', select),
-                            Option('sub', `${domain._id}-events`, 'Events', select)
-                        )
-                    )
+                        Option('main', `${domain._id}-any`, `${domain.title}`, select)
+                    ),
+                    element('hr', {}),
+                    Option('main', 'none-any', 'Uncategorized', select),
                 )
             )
         )  
     )
 }
 
-export function SelectionDisplay(selection, showBigSelect) {
-
-    const onclick = () => {
-        showBigSelect.toggle();
-    }
-
-    const styleInput = (el, value) => {
-        el.style.border = value
-        ? '2px solid #00C9A7'
-        : '1px solid #ccc';
-    }
-
-    const getLeftSideTxt = (value) => {
-        const [domain, type] = value?.split('-');
-        if (!value) {
-            return '';
-        }
-        if (domain === 'all') {
-            return '';
-        }
-        if (domain === 'none') {
-            return 'Uncategorized';
-        }
-        return collections.domains.findById(domain)?.title;
-    }
-
-    const getRightSideTxt = (value) => {
-        const [domain, type] = value?.split('-');
-        if (!value) {
-            return '';
-        }
-        if (type === 'all') {
-            return '';
-        }
-        if (type === 'items') {
-            return 'Items';
-        }
-        if (type === 'tasks') {
-            return 'Tasks';
-        }
-        if (type === 'events') {
-            return 'Events';
-        }
-        if (type === 'domains') {
-            return 'Categories';
-        }
-    }
-
-    return (
-        element('div', {
-            className: 'input selectionDisplay',
-            bind: [[showBigSelect, styleInput]],
-            onclick
-        },
-            bind(selection, (value) =>
-                element('div', {},
-                    element('span', {
-                        textContent: getLeftSideTxt(value)
-                    }),
-                    element('span', {
-                        textContent: ', ', 
-                        style: {
-                            display: getLeftSideTxt(value) ? 'inline' : 'none'
-                        }
-                    }),
-                    element('span', {
-                        textContent: getRightSideTxt(value)
-                    })
-                )
-            )
-        )
-    )
-}
-
-export function TitleInput(selection) {
+export function MainInput(selection) {
 
     let form;
 
@@ -141,7 +109,7 @@ export function TitleInput(selection) {
         return;
     }
     
-    const onclick = () => {
+    const onClickAdd = () => {
        
         if (!selection.value) {
             return;
@@ -161,32 +129,79 @@ export function TitleInput(selection) {
         }
     }
 
+    const displayTypeInput = (el, value) => {
+        const domain = value.split('-')[0];
+        el.style.opacity = domain === 'all' ? '0.15' : '1';
+    }
+
+    const underline = (el, value) => {
+        const type = value.split('-')[1];
+        el.style.textDecoration = (type === el.getAttribute('data-value')) ? 'underline' : 'none';
+    }
+
+    const select = (e) => {
+        const domain = selection.value.split('-')[0];
+        const type = e.target.getAttribute('data-value');
+        selection.set(`${domain}-${type}`);
+    }
+
     return (
-        element('div', {className: 'title-input'},
-            form = element('form', {},
-                element('textarea', {
-                    rows: 2,
-                    name: 'title',
-                    required: true
-                }),
+        element('div', {},
+            element('div', {className: 'title-input'},
+                form = element('form', {},
+                    element('textarea', {
+                        rows: 2,
+                        name: 'title',
+                        required: true
+                    }),
+                ),
+                element('button', {
+                    textContent: 'Add',
+                    onclick: onClickAdd
+                })
             ),
-            element('button', {
-                textContent: 'Add',
-                onclick
-            })
+            element('div', {
+                className: 'type-input input', 
+                bind: [[selection, displayTypeInput]]
+            },
+                element('div', {
+                    textContent: 'Any',
+                    'data-value': 'any',
+                    bind: [[selection, underline]],
+                    onclick: select
+                }),
+                element('div', {
+                    textContent: 'Item',
+                    'data-value': 'items',
+                    bind: [[selection, underline]],
+                    onclick: select
+                }),
+                element('div', {
+                    textContent: 'Task',
+                    'data-value': 'tasks',
+                    bind: [[selection, underline]],
+                    onclick: select
+                }),
+                element('div', {
+                    textContent: 'Event',
+                    'data-value': 'events',
+                    bind: [[selection, underline]],
+                    onclick: select
+                }),
+            )
         )
     )
 }
 
-export function DashFooter(selection) {
+export function DashFooter(selection, domainSelection, typeSelection) {
 
     const showBigSelect = new ObservableBool(false);
-    
+    // all/none/domainId-any/items/tasks/events/domains
     return (
         element('div', {className: 'dash-footer'}, 
             BigSelect(selection, showBigSelect),
             SelectionDisplay(selection, showBigSelect),
-            TitleInput(selection)
+            MainInput(selection)
         )
     )
 }

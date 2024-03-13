@@ -7,6 +7,7 @@ const getCurrentISO = () => {
 const db = {};
 
 db.create = async (userId, collection, data) => {
+    data.type = collection;
     data.userId = userId;
     data.creationDate = getCurrentISO();
     const Schema = schemas[collection];
@@ -31,8 +32,6 @@ db.updateById = async (userId, collection, data) => {
 db.deleteById = async (userId, collection, data) => {
     const Schema = schemas[collection];
     await Schema.findByIdAndDelete(data._id);
-
-    
     const {_id} = data;
     return {
         statusCode: 200,

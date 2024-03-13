@@ -7,7 +7,8 @@ import { ObservableVar } from 'utils/observable.js';
 
 export function Dash() {
 
-    const selection = new ObservableVar('all-tasks');   
+    // all/none/domainId-any/items/tasks/events/domains
+    const selection = new ObservableVar('all-items');   
 
     return (
         element('div', {className: 'dash'},

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const item = new Schema({
+    type: String,
     title: String,
     domain: String,
     userId: String,
@@ -9,6 +10,7 @@ const item = new Schema({
 });
 
 const event = new Schema({
+    type: String,
     title: String,
     domain: String,
     dueDate: String,            // 2024-01-31T17:20:45.958Z
@@ -17,6 +19,7 @@ const event = new Schema({
 });
 
 const task = new Schema({
+    type: String,
     title: String,
     domain: String,
     dueDate: String,            // 2024-01-31T17:20:45.958Z     date.toJSON()
@@ -26,6 +29,7 @@ const task = new Schema({
 });
 
 const domain = new Schema({
+    type: String,
     title: String,
     userId: String,
     color: String

@@ -90,6 +90,7 @@ export class Collection extends ObservableArray {
 }
 
 export const collections = {
+    any: new Collection('any'),
     items: new Collection('items'),
     tasks: new Collection('tasks'),
     events: new Collection('events'),

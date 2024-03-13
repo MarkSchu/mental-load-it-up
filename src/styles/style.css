@@ -459,12 +459,14 @@ body
     overflow: scroll;
     border: 1px solid #ccc;
     top: 54.5px;
-    bottom: 128.5px;
+    /* bottom: 128.5px; */
+    bottom: 180.5px;
     left: 0;
     right: 0;
     margin: 0.5rem;
     border-radius: 0.25rem;
     background-color: white;
+    padding: 1rem;
 }
 
 .menu ol ol {
@@ -497,12 +499,13 @@ td {
 
 .menu-option {
     padding: 0.75rem 0rem;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
     cursor: pointer;
+    width: 100%;
 }
 
 .menu-option.main {
-    font-weight: bold;
+    /* font-weight: bold; */
     padding-left: 2rem;
 }
 
@@ -510,6 +513,7 @@ td {
     padding-left: 4rem;
 }
 
-.foo {
-    padding: 2rem;
+.type-input {
+    display: flex;
+    justify-content: space-around;
 }
