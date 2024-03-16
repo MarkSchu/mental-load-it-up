@@ -7,8 +7,17 @@ import { ObservableVar } from 'utils/observable.js';
 
 export function Dash() {
 
-    // all/none/domainId-any/items/tasks/events/domains
-    const selection = new ObservableVar('all-items');   
+    /*
+        domain          type
+        ------          ------
+        all             any
+        none            items
+        domainId        tasks
+                        events
+                        domains
+    */
+
+    const selection = new ObservableVar('all-tasks');   
 
     return (
         element('div', {className: 'dash'},

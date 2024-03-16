@@ -86,12 +86,12 @@ export function BigSelect(selection, showBigSelect) {
                 element('div', {},
                     Option('main', 'all-domains', 'Categories', select),
                     element('hr', {}),
-                    Option('main', 'all-items', 'Items', select),
                     Option('main', 'all-tasks', 'Tasks', select),
                     Option('main', 'all-events', 'Events', select),
+                    // Option('main', 'all-items', 'Items', select),
                     element('hr', {}),
                     repeat(collections.domains.value, (domain) => 
-                        Option('main', `${domain._id}-any`, `${domain.title}`, select)
+                        Option('main', `${domain._id}-tasks`, `${domain.title}`, select)
                     ),
                     element('hr', {}),
                     Option('main', 'none-any', 'Uncategorized', select),
@@ -109,18 +109,12 @@ export function MainInput(selection) {
         return;
     }
     
-    const onClickAdd = () => {
-       
-        if (!selection.value) {
-            return;
-        }
+    const onClickAdd = () => {      
         const [domain, type] = selection.value.split('-');
         let data = {title: form.elements.title.value};
-        if (type === 'all') {
-            return;
-        }
-        if (!type === 'domains') {
-            data.domainId = domain;
+    
+        if (type !== 'domains') {
+            data.domain = domain;
         }
         
         if (form.reportValidity()) {
@@ -145,6 +139,11 @@ export function MainInput(selection) {
         selection.set(`${domain}-${type}`);
     }
 
+    const disable = (el, value) => {
+        const [domain, type] = selection.value.split('-'); 
+        el.disabled = type === 'any';
+    }
+
     return (
         element('div', {},
             element('div', {className: 'title-input'},
@@ -157,6 +156,7 @@ export function MainInput(selection) {
                 ),
                 element('button', {
                     textContent: 'Add',
+                    bind: [[selection, disable]],
                     onclick: onClickAdd
                 })
             ),
@@ -167,12 +167,6 @@ export function MainInput(selection) {
                 element('div', {
                     textContent: 'Any',
                     'data-value': 'any',
-                    bind: [[selection, underline]],
-                    onclick: select
-                }),
-                element('div', {
-                    textContent: 'Item',
-                    'data-value': 'items',
                     bind: [[selection, underline]],
                     onclick: select
                 }),
@@ -188,15 +182,21 @@ export function MainInput(selection) {
                     bind: [[selection, underline]],
                     onclick: select
                 }),
+                // element('div', {
+                //     textContent: 'Item',
+                //     'data-value': 'items',
+                //     bind: [[selection, underline]],
+                //     onclick: select
+                // }),
             )
         )
     )
 }
 
-export function DashFooter(selection, domainSelection, typeSelection) {
+export function DashFooter(selection) {
 
     const showBigSelect = new ObservableBool(false);
-    // all/none/domainId-any/items/tasks/events/domains
+   
     return (
         element('div', {className: 'dash-footer'}, 
             BigSelect(selection, showBigSelect),

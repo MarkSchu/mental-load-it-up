@@ -6,7 +6,8 @@ import { TaskItem } from 'components/dash/task-item.js';
 import { Item } from 'components/dash/item.js';
 import { DomainItem } from 'components/dash/domain-item.js';
 import { EventItem } from 'components/dash/event-item.js';
-import { initLoadComplete } from 'state/general.js';
+import { initLoadComplete } from 'state/general.js'
+import { sortByDates } from 'utils/dates.js';
 
 const filterByDomain = (list, domain) => {
     if (domain === 'all') {
@@ -26,71 +27,25 @@ const sortAlphabetically = (list) => {
     });
 }
 
-export function ItemList (domain) {
-    return (
-        element('div', {},
-            bind(collections.items, (items) => {
-                const filteredItems = filterByDomain(items, domain);
-                return (
-                    element('div', {},
-                        repeat(filteredItems, Item)
-                    )
-                )
-            })
-        )
-    )
-}
-
-export function TaskList (domain) {
-    return (
-        element('div', {},
-            bind(collections.tasks, (tasks) => {
-                const filteredTasks = filterByDomain(tasks, domain);
-                return (
-                    element('div', {},
-                        repeat(filteredTasks, TaskItem)
-                    )
-                )
-            })
-        )
-    )
-}
-
-export function EventList (domain) {
-    return (
-        element('div', {},
-            bind(collections.events, (events) => {
-                const filteredEvents = filterByDomain(events, domain);
-                return (
-                    element('div', {},
-                        repeat(filteredEvents, EventItem)
-                    )
-                )
-            })
-        )
-    )
-}
-
-export function DomainList () {
-    return (
-        element('div', {},
-            bind(collections.domains, (domains) =>
-                element('div', {},
-                    repeat(sortAlphabetically(domains), DomainItem)
-                )
-            )
-        )
-    )
-}
-
 export function List(value) {
     const [domain, type] = value.split('-');
     return (
         element('div', {},
-            bind(collections[type], (items) => {                
+            bind(collections[type], (items) => {     
+                
+                let filteredAndSorted;
+                if (type === 'domain') {
+                    filteredAndSorted = sortAlphabetically(items);
+                } else {
+                    filteredAndSorted = sortByDates(items);
+                    if (domain !== 'all' && domain !== 'none') {
+                        filteredAndSorted = filterByDomain(items, domain);
+                    }
+                }
+                
                 return (
                     element('div', {},
-                        repeat(items, (item) => {
+                        repeat(filteredAndSorted, (item) => {
                             if (item.type === 'domains') {
                                 return DomainItem(item);
                             }
@@ -119,35 +74,6 @@ export function DashList (selection) {
                 bind(selection, (value) => 
                     List(value)
                 )
-            )
-        )
-    )
-}
-
-export function Bloop (selection) {
-    return (
-        element('div', {className: 'dash-list'},
-            listen(initLoadComplete, () => 
-                bind(selection, (value) => {
-                    const [domain, type] = value.split('-');
-                    if (type === 'items') {
-                        return ItemList(domain);
-                    }
-                    if (type === 'tasks') {
-                        return TaskList(domain);
-                    }
-                    if (type === 'events') {
-                        return EventList(domain);
-                    }
-                    if (type === 'domains') {
-                        return DomainList();
-                    }
-                    if (type === 'any') {
-                        return (
-                            element('div', {textContent: `Show everything for domain ${domain}`})
-                        )
-                    }
-                })
             )
         )
     )

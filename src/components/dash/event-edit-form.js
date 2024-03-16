@@ -51,9 +51,8 @@ export function EventEditForm(event, showModal) {
                     className: 'label',
                     textContent: 'Due Date'
                 }),
-                element('div', {className: 'date-input-wrapper'},
+                element('div', {},
                     element('input', {
-                        className: 'date-temp',
                         type: 'date', 
                         name: 'dueDate',
                         value: isoToInput(event.dueDate)
