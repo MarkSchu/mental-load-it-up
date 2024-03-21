@@ -136,6 +136,9 @@ export function MainInput(selection) {
     const select = (e) => {
         const domain = selection.value.split('-')[0];
         const type = e.target.getAttribute('data-value');
+        if (type === 'any') {
+            return;
+        }
         selection.set(`${domain}-${type}`);
     }
 
