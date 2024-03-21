@@ -23,11 +23,12 @@ export class Collection extends ObservableArray {
                 alerts.error(response.statusText);
             }
         });
-    }
+    }4
     
     update(_id, changes) {
         alerts.saving();
         const collection = this.collection;
+        changes.type = collection;
         const data = {_id, changes };
         return api('updateById', collection, data).then((response) => {
             if (response.status < 300) {

@@ -27,6 +27,10 @@ const sortAlphabetically = (list) => {
     });
 }
 
+const doFilterByDomain = (domain) => {
+    return domain !== 'all' && domain !== 'none';
+}
+
 export function List(value) {
     const [domain, type] = value.split('-');
     return (
@@ -34,11 +38,14 @@ export function List(value) {
             bind(collections[type], (items) => {     
                 
                 let filteredAndSorted;
+
                 if (type === 'domain') {
                     filteredAndSorted = sortAlphabetically(items);
                 } else {
+
                     filteredAndSorted = sortByDates(items);
-                    if (domain !== 'all' && domain !== 'none') {
+                    
+                    if (doFilterByDomain(domain)) {
                         filteredAndSorted = filterByDomain(items, domain);
                     }
                 }
@@ -58,7 +65,9 @@ export function List(value) {
                             if (item.type === 'events') {
                                 return EventItem(item);
                             }
-                            return element('div', {textContent: 'wait what'})
+                            return element('div', {
+                                textContent: 'unrecognized item type'
+                            })
                         })
                     )
                 )

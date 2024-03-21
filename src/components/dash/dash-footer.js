@@ -88,7 +88,7 @@ export function BigSelect(selection, showBigSelect) {
                     element('hr', {}),
                     Option('main', 'all-tasks', 'Tasks', select),
                     Option('main', 'all-events', 'Events', select),
-                    // Option('main', 'all-items', 'Items', select),
+                    Option('main', 'all-items', 'Items', select),
                     element('hr', {}),
                     repeat(collections.domains.value, (domain) => 
                         Option('main', `${domain._id}-tasks`, `${domain.title}`, select)
@@ -182,12 +182,12 @@ export function MainInput(selection) {
                     bind: [[selection, underline]],
                     onclick: select
                 }),
-                // element('div', {
-                //     textContent: 'Item',
-                //     'data-value': 'items',
-                //     bind: [[selection, underline]],
-                //     onclick: select
-                // }),
+                element('div', {
+                    textContent: 'Item',
+                    'data-value': 'items',
+                    bind: [[selection, underline]],
+                    onclick: select
+                }),
             )
         )
     )

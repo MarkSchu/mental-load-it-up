@@ -53,16 +53,15 @@ export function TaskEditForm(task, showModal) {
                     className: 'label',
                     textContent: 'Due Date'
                 }),
-                // DueDateInpout(task),
                 element('input', {
-                    className: 'date-temp',
+                    className: 'input',
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(task.dueDate)
                 }),
                 element('label', {
                     className: 'label',
-                    textContent: 'Tag'
+                    textContent: 'Category'
                 }),
                 DomainSelect(task)
             ),

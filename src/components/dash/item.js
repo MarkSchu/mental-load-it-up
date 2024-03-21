@@ -1,8 +1,7 @@
 import { element } from 'utils/dom.js';
 import { ObservableBool } from 'utils/observable.js';
 import { collections } from 'state/collection.js';
-// import { ItemEditForm } from 'components/dash/item-edit-form.js';
-
+import { ItemEditForm } from 'components/dash/item-edit-form.js';
 
 
 export function Item(item) {
@@ -19,7 +18,7 @@ export function Item(item) {
 
     return (
         element('div', {className: 'panel item'},
-            // ItemEditForm(item, showModal),
+            ItemEditForm(item, showModal),
             element('div', {className: 'left'}),
             element('div', {className: 'center'},
                 element('div', {
