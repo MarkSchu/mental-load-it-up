@@ -49,6 +49,11 @@ export function TaskEditForm(task, showModal) {
                 }),
                 element('label', {
                     className: 'label',
+                    textContent: 'Category'
+                }),
+                DomainSelect(task),
+                element('label', {
+                    className: 'label',
                     textContent: 'Due Date'
                 }),
                 element('input', {
@@ -56,12 +61,7 @@ export function TaskEditForm(task, showModal) {
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(task.dueDate)
-                }),
-                element('label', {
-                    className: 'label',
-                    textContent: 'Category'
-                }),
-                DomainSelect(task)
+                })
             ),
             element('div', {className: 'buttons'},
                 element('button', {

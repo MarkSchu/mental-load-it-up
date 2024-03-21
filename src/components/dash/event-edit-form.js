@@ -49,6 +49,11 @@ export function EventEditForm(event, showModal) {
                 }),
                 element('label', {
                     className: 'label',
+                    textContent: 'Category'
+                }),
+                DomainSelect(event),
+                element('label', {
+                    className: 'label',
                     textContent: 'Due Date'
                 }),
                 element('input', {
@@ -56,12 +61,7 @@ export function EventEditForm(event, showModal) {
                     type: 'date', 
                     name: 'dueDate',
                     value: isoToInput(event.dueDate)
-                }),
-                element('label', {
-                    className: 'label',
-                    textContent: 'Category'
-                }),
-                DomainSelect(event)
+                })
             ),
             element('div', {className: 'buttons'},
                 element('button', {
