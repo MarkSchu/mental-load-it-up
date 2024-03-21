@@ -23,12 +23,19 @@ export function EventItem(event) {
         showModal.true();
     }
 
-    const displayDeadline = () => {
+    const displayDeadlineDate = () => {
         if (!event.dueDate) return '';
         const dateStr = (new Date(event.dueDate))?.toDateString().split(' ');
         const month = dateStr[1];
         const date = dateStr[2];
         return `${month} ${date}`;
+    }
+
+    const displayDeadlineDay = () => {
+        if (!event.dueDate) return '';
+        const dateStr = (new Date(event.dueDate))?.toDateString().split(' ');
+        const day = dateStr[0];
+        return `${day}`;
     }
 
     return (
@@ -37,7 +44,11 @@ export function EventItem(event) {
             element('div', {className: 'left'},
                 element('div', {
                     className: 'deadline',
-                    textContent: displayDeadline()
+                    textContent: displayDeadlineDate()
+                }),
+                element('div', {
+                    className: 'deadline',
+                    textContent: displayDeadlineDay()
                 })
             ),
             element('div', {className: 'center info', onclick: openEditModal},
