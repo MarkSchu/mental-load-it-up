@@ -7,15 +7,21 @@ export function DashHeader() {
         user.logout();
     }
 
+    const getToday = () => {
+        return (new Date()).toDateString();
+    }
+
     return (
         element('div', {className: 'dash-header'},
-            element('div', {className: 'right'},
-                element('span', {
-                    className: 'logout',
-                    textContent: 'Logout',
-                    onclick: logout
-                })
-            )
+            element('span', {
+                className: 'today',
+                textContent: getToday()
+            }),
+            element('span', {
+                className: 'logout',
+                textContent: 'Logout',
+                onclick: logout
+            })
         )       
     )
 }

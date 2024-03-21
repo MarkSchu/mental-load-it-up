@@ -264,6 +264,10 @@ body
     cursor: pointer;
 }
 
+.dash-header .today {
+    font-weight: bold;
+}
+
 /* ---------------- Dash List ---------------- */
 
 .dash-list {
