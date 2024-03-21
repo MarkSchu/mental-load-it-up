@@ -1,8 +1,8 @@
-import { element, repeat } from 'utils/dom.js';
-import { bind } from 'utils/binders.js';
+import { element } from 'utils/dom.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
+import { DomainSelect } from 'components/common/domain-select.js';
 
 
 export function EventEditForm(event, showModal) {
@@ -61,21 +61,7 @@ export function EventEditForm(event, showModal) {
                     className: 'label',
                     textContent: 'Category'
                 }),
-                bind(collections.domains, (domains) =>
-                    element('select', {
-                        className: 'input', 
-                        name: 'domain'
-                    },
-                        element('option', {textContent: 'None', value: ''}),
-                        repeat(domains, (domain) => 
-                            element('option', {
-                                selected: event.domain === domain._id,
-                                textContent: domain.title,
-                                value: domain._id
-                            })
-                        )
-                    )
-                )
+                DomainSelect(event)
             ),
             element('div', {className: 'buttons'},
                 element('button', {

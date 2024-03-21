@@ -2,7 +2,7 @@ import { element, repeat } from 'utils/dom.js';
 import { bind } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 
-export function DomainSelect(task) {
+export function DomainSelect(item) {
 
     let display;
 
@@ -21,7 +21,7 @@ export function DomainSelect(task) {
                     element('option', {textContent: 'None', value: ''}),
                     repeat(domains, (domain) => 
                         element('option', {
-                            selected: task.domain === domain._id,
+                            selected: item.domain === domain._id,
                             textContent: domain.title,
                             value: domain._id
                         })
@@ -30,7 +30,7 @@ export function DomainSelect(task) {
             ),
             display = element('div', {
                 className: 'select-display',
-                textContent: task.domain?.title || 'None'
+                textContent: item.domain?.title || 'None'
             })
         )
     )

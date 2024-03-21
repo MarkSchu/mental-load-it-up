@@ -1,10 +1,8 @@
-import { element, repeat } from 'utils/dom.js';
-import { bind } from 'utils/binders.js';
+import { element } from 'utils/dom.js';
 import { toggleModalOverlay } from 'utils/binders.js';
 import { collections } from 'state/collection.js';
 import { isoToInput, inputToISO } from 'utils/dates.js';
 import { DomainSelect } from 'components/common/domain-select.js';
-import { DueDateInpout } from 'components/common/duedate-input.js';
 
 
 export function TaskEditForm(task, showModal) {
