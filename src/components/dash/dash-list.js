@@ -28,7 +28,7 @@ const sortAlphabetically = (list) => {
 }
 
 const doFilterByDomain = (domain) => {
-    return domain !== 'all' && domain !== 'none';
+    return domain !== 'all';
 }
 
 export function List(value) {
@@ -42,9 +42,7 @@ export function List(value) {
                 if (type === 'domain') {
                     filteredAndSorted = sortAlphabetically(items);
                 } else {
-
                     filteredAndSorted = sortByDates(items);
-                    
                     if (doFilterByDomain(domain)) {
                         filteredAndSorted = filterByDomain(items, domain);
                     }
